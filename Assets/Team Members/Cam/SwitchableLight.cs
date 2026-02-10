@@ -1,21 +1,23 @@
 using UnityEngine;
 
-
-public class SwitchableLight : MonoBehaviour
+namespace CameronBonde
 {
-	public Light light;
-
-
-	// This is the interface entry point
-	public void Interact()
+	public class SwitchableLight : MonoBehaviour, IInteractable
 	{
-		Toggle();
-	}
+		public Light light;
 
 
-	public void Toggle()
-	{
-		Debug.Log("SwitchableLight: Toggle");
-		light.enabled = !light.enabled;
+		// This is the interface entry point
+		public void Interact()
+		{
+			Toggle();
+		}
+
+
+		public void Toggle()
+		{
+			Debug.Log("SwitchableLight: Toggle");
+			light.enabled = !light.enabled;
+		}
 	}
 }

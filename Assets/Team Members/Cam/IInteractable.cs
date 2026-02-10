@@ -1,4 +1,8 @@
-interface IInteractable
+namespace CameronBonde
 {
-	public void Interact();
+	public interface IInteractable
+	{
+		public void Interact();
+	}
+
 }
