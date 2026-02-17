@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using CameronBonde;
 using UnityEngine;
 
@@ -7,11 +8,14 @@ public partial class Button : MonoBehaviour, IInteractable
 {
 	// Add this to any interface variables to enable drag-drop in Unity
 	[SerializeInterface]
-	public IInteractable thingToInteractWith;
-
+	public List<IInteractable> thingsToInteractWith;
+	
     public void Interact()
     {
 	    // eg a Designer could hook this up to a door/light/OTHER switches etc
-	    thingToInteractWith.Interact();
+	    foreach (IInteractable interactable in thingsToInteractWith)
+	    {
+		    interactable.Interact();
+	    }
     }
 }
