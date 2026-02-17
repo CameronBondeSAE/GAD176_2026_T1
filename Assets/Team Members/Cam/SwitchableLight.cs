@@ -13,6 +13,11 @@ namespace CameronBonde
 			Toggle();
 		}
 
+		public void Interact(bool state)
+		{
+			
+		}
+
 
 		public void Toggle()
 		{

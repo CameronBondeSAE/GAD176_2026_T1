@@ -4,5 +4,10 @@ namespace CameronBonde
 	{
 		public void Interact();
 	}
+	
+	public interface IInteractableWithState
+	{
+		public void Interact(bool state);
+	}
 
 }
