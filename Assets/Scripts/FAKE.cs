@@ -1,16 +1,12 @@
+using DefaultNamespace;
 using UnityEngine;
 
-public class FAKE : MonoBehaviour
+public class FAKE : Character_Base
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+	public override void Damage(int amount)
+	{
+		base.Damage(amount);
+		
+		Debug.Log(name + " damaged " + amount);
+	}
 }
