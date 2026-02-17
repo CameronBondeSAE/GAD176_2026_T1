@@ -1,3 +1,4 @@
+/*
 using CameronBonde;
 using UnityEngine;
 
@@ -15,3 +16,4 @@ public partial class Button : MonoBehaviour, IInteractable
 	    thingToInteractWith.Interact();
     }
 }
+*/
