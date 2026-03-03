@@ -848,9 +848,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 220ff97a80f95524aa23f20ebcafcfe3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  doorList:
-  - {fileID: 1517371687}
-  - {fileID: 1058883955}
 --- !u!65 &664675406
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1871,6 +1868,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fba9b4ac414790d448daf7b37bdbdbd5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  overlapSphereReference: {fileID: 1233153986}
 --- !u!4 &1233153986
 Transform:
   m_ObjectHideFlags: 0
