@@ -18,21 +18,22 @@ namespace CameronBonde
 				ray.origin = headTransform.position;
 				ray.direction = headTransform.forward;
 				RaycastHit thingInFrontOfMe = new RaycastHit();
-				Physics.Raycast(ray, out thingInFrontOfMe, 3f);
+				// Physics.Raycast(ray, out thingInFrontOfMe, 3f);
+				Physics.SphereCast(ray, 0.35f, out thingInFrontOfMe, 3f);
 
 
 				// Interact with things
 				if (thingInFrontOfMe.transform != null)
 				{
-					Debug.Log("What I hit : " + thingInFrontOfMe.transform.gameObject.name);
-					Debug.Log("    Distance to thing I hit : " + thingInFrontOfMe.distance);
-					Debug.Log("    Where I hit : " + thingInFrontOfMe.point);
-
-
 					// Works for EVERYTHING... FOREVER
-					if (thingInFrontOfMe.transform.GetComponentInParent<IInteractable>() != null)
+					Frank.IInteractable interactable = thingInFrontOfMe.transform.GetComponentInParent<Frank.IInteractable>();
+					if (interactable != null)
 					{
-						thingInFrontOfMe.transform.GetComponentInParent<IInteractable>().Interact();
+						UnityEngine.Debug.Log("What I hit : " + thingInFrontOfMe.transform.gameObject.name);
+						Debug.Log("    Distance to thing I hit : " + thingInFrontOfMe.distance);
+						Debug.Log("    Where I hit : " + thingInFrontOfMe.point);
+
+						interactable.Interact();
 					}
 
 
