@@ -6,7 +6,7 @@ using UnityEngine.UIElements;
 
 namespace Divij
 {
-    public class Flare : MonoBehaviour, IInteractable
+    public class Flare : MonoBehaviour, Frank.IInteractable
     {
     
         public float decreaseNumber = 0.5f;
