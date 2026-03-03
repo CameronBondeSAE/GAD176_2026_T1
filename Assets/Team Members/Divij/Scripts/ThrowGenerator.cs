@@ -14,7 +14,7 @@ public partial class ThrowGenerator : MonoBehaviour,IInteractable
 
     private void Update()
     {
-        Physics.SphereCast();
+      //  Physics.SphereCast();
     }
 
 
