@@ -19,6 +19,8 @@ namespace Divij
             Debug.Log("SwitchableLight: Toggle");
             light.enabled = !light.enabled;
         }
+        
+        
     }
 }
 

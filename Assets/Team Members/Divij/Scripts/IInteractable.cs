@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace Divij
 {
-    interface IInteractable
+    public interface IInteractable
     {
     public void Interact();
     }
