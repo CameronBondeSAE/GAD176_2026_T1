@@ -2,64 +2,33 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Divij;
-using Unity.VisualScripting;
-using Unity.VisualScripting.FullSerializer;
 using UnityEngine;
 
-namespace Divij
+
+public partial class ThrowGenerator : MonoBehaviour,IInteractable
 {
-    
-    public partial class ThrowGenerator : MonoBehaviour, IInteractable
+    //[SerializeInterface] public IConnected thingConnected;
+
+    [SerializeInterface] public List<IInteractable> connectedList = new List<IInteractable>();
+
+
+    private void Update()
     {
-        
-        //[SerializeInterface] public IConnected thingConnected;
-
-        public float powerRadius = 3f;
-        public bool isOn = true;
-
-        [SerializeInterface] public List<IPowered> connectedList = new List<IPowered>();
-        
-        
-
-        public void SphereScan()
-        {
-            
-            connectedList.Clear();
-            Collider[] hits = Physics.OverlapSphere(transform.position, powerRadius);
-
-            foreach (var hit in hits)
-            {
-                IPowered powered = hit.GetComponent<IPowered>();
-
-                if (powered != null && !connectedList.Contains(powered))
-                {
-                    connectedList.Add(powered);
-                }
-            }
-        }
-
-        public void ApplyPower()
-        {
-            foreach (var powered in connectedList)
-            {
-                powered?.SetPowered(isOn);
-            }
-        }
+      //  Physics.SphereCast();
+    }
 
 
-        public void Interact()
-        {
-            
-            isOn = !isOn;
-            
-            SphereScan();
-            ApplyPower();
-            
-        }
+    public void Interact()
+    {
+        //StartCoroutine(generatorOn());
+    }
+
+    void generatorOn()
+    {
+
+        return;
     }
 }
-
-
 
 /*
  
