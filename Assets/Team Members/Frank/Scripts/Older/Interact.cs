@@ -29,9 +29,9 @@ namespace Frank
                     Debug.Log("    Where I hit : " + hitInfo.point);
 
 
-                    if (hitInfo.transform.GetComponentInParent<IInteractable>() != null)
+                    if (hitInfo.transform.GetComponentInParent<Divij.IInteractable>() != null)
                     {
-                        hitInfo.transform.GetComponentInParent<IInteractable>().Interact();
+                        hitInfo.transform.GetComponentInParent<Divij.IInteractable>().Interact();
                     }
 
 
