@@ -1,18 +1,21 @@
-
 using Divij;
+using Unity.VisualScripting;
 using UnityEngine;
-using Frank;
 
-
-public class AutomaticDoor : MonoBehaviour, IPowered
+public class PlayerDetection : MonoBehaviour, IPowered
 {
     public bool isPowered;
     public Transform playerDetectorTransform;
-    private float radius = 1000f;
+    
 
     public void SetPowered(bool powered) // the generator supplies the value "true" from the IsOn variable in the generator script when the generator is on and "false" when the generator is off
     {
         isPowered = powered;
+        
+    }
+
+    private void Start()
+    {
         
     }
     
@@ -34,7 +37,7 @@ public class AutomaticDoor : MonoBehaviour, IPowered
 
         Debug.DrawRay(rayDraw.origin, rayDraw.direction * 5f, Color.red);
 
-        Physics.SphereCast(playerDetectorTransform.position, radius, Vector3.up, out hit, 2f);
+        Physics.Raycast(playerDetectorTransform.position, Vector3.up, out hit, 2f);
         if (hit.collider != null && hit.collider.tag == "Player")
         {
 
@@ -50,5 +53,3 @@ public class AutomaticDoor : MonoBehaviour, IPowered
         
     }
 }
-
-
