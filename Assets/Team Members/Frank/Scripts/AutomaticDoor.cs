@@ -8,7 +8,7 @@ public class AutomaticDoor : MonoBehaviour, IPowered
 {
     public bool isPowered;
     public Transform playerDetectorTransform;
-    private float radius = 1000f;
+    private float radius = 10f;
 
     public void SetPowered(bool powered) // the generator supplies the value "true" from the IsOn variable in the generator script when the generator is on and "false" when the generator is off
     {
@@ -29,12 +29,12 @@ public class AutomaticDoor : MonoBehaviour, IPowered
 
     public void ActionIfPowered()
     {
-        Ray rayDraw = new Ray(playerDetectorTransform.position, Vector3.up);
+        Ray rayDraw = new Ray(playerDetectorTransform.position, Vector3.down);
         RaycastHit hit;
 
         Debug.DrawRay(rayDraw.origin, rayDraw.direction * 5f, Color.red);
 
-        Physics.SphereCast(playerDetectorTransform.position, radius, Vector3.up, out hit, 2f);
+        Physics.SphereCast(playerDetectorTransform.position, radius/100f, Vector3.down, out hit, 2f);
         if (hit.collider != null && hit.collider.tag == "Player")
         {
 
