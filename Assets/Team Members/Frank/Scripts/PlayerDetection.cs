@@ -1,4 +1,5 @@
 using Divij;
+using Frank;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -6,16 +7,13 @@ public class PlayerDetection : MonoBehaviour, IPowered
 {
     public bool isPowered;
     public Transform playerDetectorTransform;
-    
+    public GameObject gameObjectRef;
+    public GameObject secondPlayerDetector;
+    public float radius = 1f;
 
     public void SetPowered(bool powered) // the generator supplies the value "true" from the IsOn variable in the generator script when the generator is on and "false" when the generator is off
     {
         isPowered = powered;
-        
-    }
-
-    private void Start()
-    {
         
     }
     
@@ -32,23 +30,23 @@ public class PlayerDetection : MonoBehaviour, IPowered
 
     public void ActionIfPowered()
     {
-        Ray rayDraw = new Ray(playerDetectorTransform.position, Vector3.up);
+        Ray rayDraw = new Ray(playerDetectorTransform.position, Vector3.down);
         RaycastHit hit;
 
-        Debug.DrawRay(rayDraw.origin, rayDraw.direction * 5f, Color.red);
+        Debug.DrawRay(rayDraw.origin, rayDraw.direction * 2f, Color.red);
 
-        Physics.Raycast(playerDetectorTransform.position, Vector3.up, out hit, 2f);
+        Physics.SphereCast(playerDetectorTransform.position, radius, Vector3.down, out hit, 2f);
         if (hit.collider != null && hit.collider.tag == "Player")
         {
 
-            gameObject.GetComponent<BoxCollider>().isTrigger = true;
-            gameObject.GetComponent<MeshRenderer>().enabled = false;
+            gameObjectRef.GetComponent<IInteractableWithState>().Interact(true);
+            secondPlayerDetector.SetActive(false);
 
         }
         else
         {
-            gameObject.GetComponent<BoxCollider>().isTrigger = false;
-            gameObject.GetComponent<MeshRenderer>().enabled = true;
+            gameObjectRef.GetComponent<IInteractableWithState>().Interact(false);
+            secondPlayerDetector.SetActive(true);
         }
         
     }
