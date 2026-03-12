@@ -1,8 +1,8 @@
 namespace Frank
 {
-    interface ISwitchable
+    public interface ISwitchable
     {
-        public void Switch (bool on)
+        public void Activate()
         {
             
         }
