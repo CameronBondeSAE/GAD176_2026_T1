@@ -1,15 +1,21 @@
-using Frank;
 using UnityEngine;
+using Frank;
+using Divij;
 
-public class PoweredLight : MonoBehaviour, ISwitchable
+public class PoweredLight : MonoBehaviour, IPowered
 {
-    public bool activated = false;
-    public Light PoweredLightRef;
+    public Light poweredLightRef;
     
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    public void Activate()
+    public void SetPowered(bool powered)
     {
-        PoweredLightRef.enabled = !activated;
-        activated = !activated;
+        if (powered)
+        {
+            poweredLightRef.enabled = !poweredLightRef.enabled;
+        }
+
+        else
+        {
+            poweredLightRef.enabled = false;
+        }
     }
 }
