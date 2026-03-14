@@ -15,14 +15,13 @@ public class PoweredSwitch : MonoBehaviour, IInteractable, IPowered
     public Transform PoweredSwitchTransform;
     public float radius = 3f;
     
-    
     public void Interact()
     {
         if (isPowered == true)
         {
             foreach (ISwitchable CurrentSwitchable in ISwitchablelist)
             {
-                CurrentSwitchable.Activate();
+                CurrentSwitchable.Activate(true);
             }
         }
         
@@ -46,6 +45,17 @@ public class PoweredSwitch : MonoBehaviour, IInteractable, IPowered
             if(IswitchableToAdd != null)
             {
                 ISwitchablelist.Add(IswitchableToAdd);
+            }
+        }
+    }
+
+    public void Update()
+    {
+        if (isPowered == false)
+        {
+            foreach (ISwitchable CurrentSwitchable in ISwitchablelist)
+            {
+                CurrentSwitchable.Activate(false);
             }
         }
     }

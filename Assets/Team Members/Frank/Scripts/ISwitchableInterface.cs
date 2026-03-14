@@ -2,7 +2,7 @@ namespace Frank
 {
     public interface ISwitchable
     {
-        public void Activate()
+        public void Activate(bool poweredState)
         {
             
         }

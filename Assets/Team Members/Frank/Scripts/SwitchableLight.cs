@@ -7,9 +7,18 @@ public class SwitchableLight : MonoBehaviour, ISwitchable
     public Light SwitchableLightRef;
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    public void Activate()
+    public void Activate(bool poweredState)
     {
-        SwitchableLightRef.enabled = !activated;
-        activated = !activated;
+        if (poweredState == true)
+        {
+            SwitchableLightRef.enabled = !activated;
+            activated = !activated;
+        }
+        else
+        {
+            SwitchableLightRef.enabled = false;
+        }
+        //SwitchableLightRef.enabled = !activated;
+        //activated = !activated;
     }
 }
