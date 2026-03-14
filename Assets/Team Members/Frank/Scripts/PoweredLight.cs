@@ -10,5 +10,6 @@ public class PoweredLight : MonoBehaviour, ISwitchable
     public void Activate()
     {
         PoweredLightRef.enabled = !activated;
+        activated = !activated;
     }
 }

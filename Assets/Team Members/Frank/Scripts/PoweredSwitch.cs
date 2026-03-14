@@ -41,9 +41,9 @@ public class PoweredSwitch : MonoBehaviour, IInteractable, IPowered
 
         foreach (var switchableCollider in switchableArray)
         {
-            ISwitchable IswitchableToAdd = switchableCollider.GetComponent<ISwitchable>();
+            ISwitchable IswitchableToAdd = switchableCollider.gameObject.GetComponent<ISwitchable>();
             
-            if(IswitchableToAdd != null && ISwitchablelist.Contains(IswitchableToAdd))
+            if(IswitchableToAdd != null)
             {
                 ISwitchablelist.Add(IswitchableToAdd);
             }
