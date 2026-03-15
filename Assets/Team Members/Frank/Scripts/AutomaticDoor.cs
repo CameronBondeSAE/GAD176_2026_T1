@@ -1,17 +1,18 @@
 
+using System.Collections;
 using UnityEngine;
 using Frank;
 
 
 
-public class AutomaticDoor : MonoBehaviour, IInteractableWithState
+public class AutomaticDoor : MonoBehaviour, ISwitchable
 {
-
-    public void Interact(bool state)
-    { 
-        gameObject.GetComponent<MeshRenderer>().enabled = !state;
-        gameObject.GetComponent<BoxCollider>().isTrigger = state;
+    public void Activate(bool poweredState)
+    {
+         gameObject.GetComponent<MeshRenderer>().enabled = !poweredState;
+         gameObject.GetComponent<BoxCollider>().isTrigger = poweredState;
     }
+    
 }
 
 

@@ -1,3 +1,4 @@
+using System.Collections;
 using Divij;
 using Frank;
 using Unity.VisualScripting;
@@ -9,6 +10,7 @@ public class PlayerDetection : MonoBehaviour, IPowered
     public Transform playerDetectorTransform;
     public GameObject gameObjectRef;
     public GameObject secondPlayerDetector;
+    public RaycastHit hitInfo;
     public float radius = 1f;
 
     public void SetPowered(bool powered) // the generator supplies the value "true" from the IsOn variable in the generator script when the generator is on and "false" when the generator is off
@@ -23,6 +25,7 @@ public class PlayerDetection : MonoBehaviour, IPowered
         if (isPowered)
         {
             ActionIfPowered();
+            
         }
         // for objects that are continuously checking for collisions or input, I think an update function is more appropriate than using the IInteractable interface.
     }
@@ -35,19 +38,19 @@ public class PlayerDetection : MonoBehaviour, IPowered
 
         Debug.DrawRay(rayDraw.origin, rayDraw.direction * 2f, Color.red);
 
-        Physics.SphereCast(playerDetectorTransform.position, radius, Vector3.down, out hit, 2f);
-        if (hit.collider != null && hit.collider.tag == "Player")
+        Physics.SphereCast(playerDetectorTransform.position, radius, Vector3.down, out hitInfo, 2f);
+        if ((hitInfo.collider != null || secondPlayerDetector.GetComponent<PlayerDetection>().hitInfo.collider != null) && (hitInfo.collider.tag == "Player" || secondPlayerDetector.GetComponent<PlayerDetection>().hitInfo.collider.tag == "Player"))
         {
 
-            gameObjectRef.GetComponent<IInteractableWithState>().Interact(true);
-            secondPlayerDetector.SetActive(false);
-
+            gameObjectRef.GetComponent<ISwitchable>().Activate(true);
+            
         }
         else
         {
-            gameObjectRef.GetComponent<IInteractableWithState>().Interact(false);
-            secondPlayerDetector.SetActive(true);
+            gameObjectRef.GetComponent<ISwitchable>().Activate(false);
         }
         
     }
+
+    
 }
