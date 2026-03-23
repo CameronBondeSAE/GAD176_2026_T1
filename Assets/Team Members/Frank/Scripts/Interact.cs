@@ -10,7 +10,7 @@ namespace Frank
         public KeyCode pickupKey = KeyCode.G;
         public Transform headTransform;
         [SerializeField] private Vector3 Hands = new Vector3(0, 0, 0);
-        private bool isHolding = false;
+        public bool isHolding = false;
         public Transform HandsTransform;
         public GameObject heldObject;
         
@@ -78,7 +78,7 @@ namespace Frank
                 RaycastHit hitInfo = new RaycastHit();
                 Physics.Raycast(ray, out hitInfo, 3f);
 
-                if (hitInfo.transform != null)
+                if (hitInfo.transform != null && isHolding == false)
                 {
                     Debug.Log("What I hit : " + hitInfo.transform.gameObject.name);
                     Debug.Log("    Distance to thing I hit : " + hitInfo.distance);
@@ -89,13 +89,29 @@ namespace Frank
                         isHolding = true;
                         heldObject = hitInfo.transform.gameObject;
                         heldObject.transform.SetParent(headTransform, true);
+                        heldObject.GetComponent<Rigidbody>().useGravity = false;
+                        heldObject.GetComponent<BoxCollider>().isTrigger = true;
                         
                         //HandsTransform.position = hitInfo.transform.position;
                     }
                 }
                 
+                else if (hitInfo.transform != null && isHolding == true)
+                {
+                    if (Input.GetKeyDown(pickupKey))
+                    {
+                        heldObject.transform.SetParent(null);
+                        heldObject.GetComponent<Rigidbody>().useGravity = true;
+                        heldObject.GetComponent<BoxCollider>().isTrigger = false;
+                        isHolding = false;
+                    }
+                    
+                }
                 
             }
+            
+            
+            
         }
 
 

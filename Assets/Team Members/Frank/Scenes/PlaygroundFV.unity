@@ -679,6 +679,7 @@ GameObject:
   - component: {fileID: 158992657}
   - component: {fileID: 158992656}
   - component: {fileID: 158992660}
+  - component: {fileID: 158992661}
   m_Layer: 0
   m_Name: Plug
   m_TagString: Untagged
@@ -787,6 +788,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d9c7775de3b974742928ff117f9a3278, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!54 &158992661
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 158992655}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &298126466 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8616685848737228372, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}
@@ -3873,6 +3901,7 @@ MonoBehaviour:
   pickupKey: 103
   headTransform: {fileID: 8338988565591873055}
   Hands: {x: 0, y: 0, z: 0}
+  isHolding: 0
   HandsTransform: {fileID: 0}
   heldObject: {fileID: 0}
 --- !u!1 &2114283753834967212
