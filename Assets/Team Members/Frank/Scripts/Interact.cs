@@ -13,6 +13,7 @@ namespace Frank
         public bool isHolding = false;
         public Transform HandsTransform;
         public GameObject heldObject;
+        public GameObject heldItem;
         
 
         // Update is called once per frame
@@ -86,23 +87,17 @@ namespace Frank
                     
                     if (hitInfo.transform.GetComponentInParent<IHoldable>() != null) // if so then get the gameobject and if it has an IHoldable component, then do the following
                     {
+                        hitInfo.transform.GetComponentInParent<IHoldable>().Attach(headTransform);
                         isHolding = true;
-                        heldObject = hitInfo.transform.gameObject;
-                        heldObject.transform.SetParent(headTransform, true);
-                        heldObject.GetComponent<Rigidbody>().useGravity = false;
-                        heldObject.GetComponent<BoxCollider>().isTrigger = true;
-                        
-                        //HandsTransform.position = hitInfo.transform.position;
+                        heldItem = hitInfo.transform.gameObject;
                     }
                 }
                 
-                else if (hitInfo.transform != null && isHolding == true)
+                else if (hitInfo.transform != null && isHolding)
                 {
                     if (Input.GetKeyDown(pickupKey))
                     {
-                        heldObject.transform.SetParent(null);
-                        heldObject.GetComponent<Rigidbody>().useGravity = true;
-                        heldObject.GetComponent<BoxCollider>().isTrigger = false;
+                        hitInfo.transform.GetComponentInParent<IHoldable>().Detach();
                         isHolding = false;
                     }
                     
@@ -110,21 +105,12 @@ namespace Frank
                 
             }
             
+            else if (Input.GetKeyDown(KeyCode.H) && isHolding)
+            {
+                heldItem.GetComponent<Plug>().Use();
+            }
             
             
-        }
-
-
-        // You can also check collisions with Unity automatically ran functions
-        private void OnCollisionEnter(Collision other)
-        {
-            Debug.Log(other.gameObject.name);
-        }
-
-
-        private void OnTriggerEnter(Collider other)
-        {
-            Debug.Log(other.gameObject.name);
         }
     }
 
