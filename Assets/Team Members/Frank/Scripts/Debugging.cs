@@ -8,7 +8,7 @@ public class Debugging : MonoBehaviour
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
-        Gizmos.DrawLine(transform.position, transform.forward * 3f);
+        Gizmos.DrawLine(transform.position, transform.forward * 1f);
     }
     
     

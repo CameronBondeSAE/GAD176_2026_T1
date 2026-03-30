@@ -20,6 +20,7 @@ public class Plug : MonoBehaviour,IHoldable
             GetComponent<Rigidbody>().useGravity = false;
             GetComponent<BoxCollider>().isTrigger = true;
             isHeld = true;
+            isConnected = false;
         }
         
     }
@@ -53,7 +54,7 @@ public class Plug : MonoBehaviour,IHoldable
     {
         if (isHeld == true)
         {
-            Physics.SphereCast(followCameraRef.transform.position, 1f, followCameraRef.transform.forward, out RaycastHit hit, 3f);
+            Physics.SphereCast(followCameraRef.transform.position, 1f, followCameraRef.transform.forward, out RaycastHit hit, 5f, ~0, QueryTriggerInteraction.Ignore);
             Debug.Log(hit.transform.name);
             Debug.Log(hit.transform.position);
             
@@ -64,6 +65,8 @@ public class Plug : MonoBehaviour,IHoldable
             }
             
         }
+        
+        
     }
 
     

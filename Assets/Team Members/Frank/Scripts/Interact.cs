@@ -8,6 +8,7 @@ namespace Frank
     {
         public KeyCode keyCode = KeyCode.Space;
         public KeyCode pickupKey = KeyCode.G;
+        public KeyCode useKey = KeyCode.H;
         public Transform headTransform;
         [SerializeField] private Vector3 Hands = new Vector3(0, 0, 0);
         public bool isHolding = false;
@@ -105,9 +106,9 @@ namespace Frank
                 
             }
             
-            else if (Input.GetKeyDown(KeyCode.H) && isHolding)
+            else if (Input.GetKeyDown(useKey) && isHolding)
             {
-                heldItem.GetComponent<Plug>().Use();
+                    heldItem.GetComponent<Plug>().Use();
             }
             
             
