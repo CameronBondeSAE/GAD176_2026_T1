@@ -4,12 +4,12 @@ namespace Frank
 {
     interface IHoldable
     {
-        public void Attach(Transform parent)
+        public void Pickup(Transform parent)
         {
             
         }
 
-        public void Detach()
+        public void Drop()
         {
             
         }

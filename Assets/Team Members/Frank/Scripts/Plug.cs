@@ -1,3 +1,4 @@
+using System;
 using Frank;
 using UnityEngine;
 
@@ -8,8 +9,10 @@ public class Plug : MonoBehaviour,IHoldable
     public bool isHeld = false;
     public bool isConnected = false;
     [SerializeField] private Vector3 handsOffset = new Vector3(0, 1, 0);
+    public GameObject followCameraRef;
     
-    public void Attach(Transform parent) // for adding to player's hands
+    
+    public void Pickup(Transform parent) // for adding to player's hands
     {
         if (isHeld == false)
         {
@@ -21,7 +24,7 @@ public class Plug : MonoBehaviour,IHoldable
         
     }
 
-    public void Detach() // for removing from players hand
+    public void Drop() // for removing from players hand
     {
         if (isHeld)
         {
@@ -50,7 +53,10 @@ public class Plug : MonoBehaviour,IHoldable
     {
         if (isHeld == true)
         {
-            Physics.SphereCast(gameObject.transform.position, 0.2f, transform.forward, out RaycastHit hit);
+            Physics.SphereCast(followCameraRef.transform.position, 1f, followCameraRef.transform.forward, out RaycastHit hit, 3f);
+            Debug.Log(hit.transform.name);
+            Debug.Log(hit.transform.position);
+            
             if (hit.transform.gameObject.GetComponent<Socket>() != null)
             {
                 isConnected = true;
@@ -59,9 +65,12 @@ public class Plug : MonoBehaviour,IHoldable
             
         }
     }
+
+    
+
     // Update is called once per frame
-    void Update()
+    public void Update()
     {
-        
+
     }
 }

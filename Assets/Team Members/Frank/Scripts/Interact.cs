@@ -87,7 +87,7 @@ namespace Frank
                     
                     if (hitInfo.transform.GetComponentInParent<IHoldable>() != null) // if so then get the gameobject and if it has an IHoldable component, then do the following
                     {
-                        hitInfo.transform.GetComponentInParent<IHoldable>().Attach(headTransform);
+                        hitInfo.transform.GetComponentInParent<IHoldable>().Pickup(headTransform);
                         isHolding = true;
                         heldItem = hitInfo.transform.gameObject;
                     }
@@ -97,7 +97,7 @@ namespace Frank
                 {
                     if (Input.GetKeyDown(pickupKey))
                     {
-                        hitInfo.transform.GetComponentInParent<IHoldable>().Detach();
+                        hitInfo.transform.GetComponentInParent<IHoldable>().Drop();
                         isHolding = false;
                     }
                     
