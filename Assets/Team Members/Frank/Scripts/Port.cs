@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Port : MonoBehaviour
@@ -49,6 +50,7 @@ public class Port : MonoBehaviour
                 connectedlineRenderer.endWidth = 0.05f;
                 connectedlineRenderer.SetPosition(0, portTransform.position);
                 connectedlineRenderer.SetPosition(1, currentPlugTransform.position);
+                
             }
         }
     }
@@ -56,14 +58,14 @@ public class Port : MonoBehaviour
     
     void Start()
     {
-        
+        PlugListPopulate();
+        PlugTransformListPopulate();
     }
 
     // Update is called once per frame
     void Update()
     {
-        PlugListPopulate();
-        PlugTransformListPopulate();
+     
         WireMaker();
     }
 }

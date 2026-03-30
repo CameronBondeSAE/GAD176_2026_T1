@@ -62,6 +62,7 @@ public class Plug : MonoBehaviour,IHoldable
             {
                 isConnected = true;
                 PlugIn(hit.transform);
+                isHeld = false;
             }
             
         }
