@@ -8,7 +8,7 @@ public class Plug : MonoBehaviour,IHoldable
 
     public bool isHeld = false;
     public bool isConnected = false;
-    [SerializeField] private Vector3 handsOffset = new Vector3(0, 1, 0);
+    [SerializeField] private Vector3 plugOffset = new Vector3(0, 0, 1);
     public GameObject followCameraRef;
     
     
@@ -45,7 +45,9 @@ public class Plug : MonoBehaviour,IHoldable
     {
         if(isConnected == true)
         {
-             gameObject.transform.SetParent(Socket);
+            gameObject.transform.SetParent(Socket);
+            isHeld = false;
+            
         }
        
     }

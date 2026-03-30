@@ -40,7 +40,6 @@ public class Port : MonoBehaviour
             {
                 connectedlineRenderer = gameObject.AddComponent<LineRenderer>();
 
-
                 //connectedlineRenderer.material = lineMaterial;
                 connectedlineRenderer.material = new Material(Shader.Find("Sprites/Default"));
                 connectedlineRenderer.startColor = Color.green;
@@ -51,6 +50,11 @@ public class Port : MonoBehaviour
                 connectedlineRenderer.SetPosition(0, portTransform.position);
                 connectedlineRenderer.SetPosition(1, currentPlugTransform.position);
                 
+            }
+            
+            else if (currentPlugTransform.gameObject.GetComponent<Plug>().isConnected == false)
+            {
+                Destroy(gameObject.GetComponent<LineRenderer>());
             }
         }
     }
