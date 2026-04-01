@@ -9,11 +9,14 @@ public class ConnectionManager : MonoBehaviour
 
     public PowerPort initialPort;
 
+    public PowerPort secondPort;
+
     private List<(PowerPort output, PowerPort input)> connections = new();
 
     private void Awake()
     {
         Instance = this;
+        //Debug.Log("Connection Manager on");
     }
 
     public void SelectPort(PowerPort port)
@@ -21,13 +24,20 @@ public class ConnectionManager : MonoBehaviour
         if (initialPort == null)
         {
             initialPort = port;
-            return;
+        }
+        else if (secondPort == null)
+        {
+            secondPort = port;
         }
 
-        TryConnect(initialPort, port);
+        TryConnect(initialPort, secondPort);
         initialPort = null;
+        secondPort = null;
     }
 
+    
+    
+    
     public void TryConnect(PowerPort a, PowerPort b)
     {
         if (a.isOutput && !b.isOutput)
