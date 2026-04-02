@@ -35,6 +35,7 @@ namespace Divij
                 {
                     connectedList.Add(powered);
                 }
+                
             }
         }
 
@@ -56,8 +57,20 @@ namespace Divij
             ApplyPower();
             
         }
+        
+       
     }
 }
+
+
+/*
+ * InvokeRepeating("ToggleLight", 0f, 1f);
+ * Use InvokeRepeating when using wire component for a fixed check on whether the thing connected to the generator is
+ * connected to power
+ *
+ * Can also use the InvokeRepeating when picking up generator using the sophere cast to power things as you walk past them,
+ * this will use the pick
+ */
 
 
 
