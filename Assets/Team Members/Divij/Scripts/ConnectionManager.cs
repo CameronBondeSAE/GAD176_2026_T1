@@ -16,7 +16,7 @@ public class ConnectionManager : MonoBehaviour
     private void Awake()
     {
         Instance = this;
-        //Debug.Log("Connection Manager on");
+        Debug.Log("Connection Manager on");
     }
 
     public void SelectPort(PowerPort port)
@@ -52,9 +52,10 @@ public class ConnectionManager : MonoBehaviour
         }
         else
         {
-            Debug.Log("Invalid Connection typ;ew");
+            Debug.Log("Invalid Connection type");
         }
-
+           
+        Debug.Log(connections.Count);
         UpdatePower();
     }
 
@@ -65,6 +66,7 @@ public class ConnectionManager : MonoBehaviour
            WiredGenerator generator = output.GetComponentInParent<WiredGenerator>();
            
             bool hasPower = generator != null && generator.isOn && output.switchOn;
+            Debug.Log("Has power is " + hasPower);
                           
                        if (input.connectedDevice != null) 
                        {
