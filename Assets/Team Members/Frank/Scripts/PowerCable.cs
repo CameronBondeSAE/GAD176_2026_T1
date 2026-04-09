@@ -32,9 +32,22 @@ public class PowerCable : MonoBehaviour
 
     public void SetWirePosition()
     {
-        connectedlineRenderer.SetPosition(0, startPosition);
-        connectedlineRenderer.SetPosition(1, endPosition);
         
+        
+        
+    }
+/// <summary>
+/// This function gets
+/// - a transform of a powerpoint passed by the player.
+/// - a transform for the player's follow camera transform - An approximation of head
+/// It then sets
+/// - the starting positions of the wire to the PowerPoint's location
+/// - the end position of the wire to the player's head location
+/// </summary>
+    public void SetStartingWirePosition(Transform powerPointTransform, Transform playerTransform) // this function accepts the position of an power point that the player has interacted with
+    {
+        connectedlineRenderer.SetPosition(0, powerPointTransform.position);
+        connectedlineRenderer.SetPosition(1, playerTransform.position);
     }
     
     void Start()

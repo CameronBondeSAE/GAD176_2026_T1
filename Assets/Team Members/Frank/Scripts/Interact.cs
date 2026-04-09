@@ -15,8 +15,9 @@ namespace Frank
         public Transform HandsTransform;
         public GameObject heldObject;
         public GameObject heldItem;
+        public GameObject cableRef;
+        public GameObject powerCableRef;
         
-
         // Update is called once per frame
         void Update()
         {
@@ -45,7 +46,16 @@ namespace Frank
 
                     if (hitInfo.transform.GetComponentInParent<Divij.IInteractable>() != null) // if so then get the gameobject and if it has an IInteractable component, then call the interact function. 
                     {
-                        hitInfo.transform.GetComponentInParent<Divij.IInteractable>().Interact();
+                        if (hitInfo.transform.GetComponent<PowerPoint>() != null)
+                        {
+                             powerCableRef = Instantiate(cableRef, headTransform.position + Vector3.back, Quaternion.identity);
+                            
+                             powerCableRef.GetComponent<PowerCable>().SetStartingWirePosition(hitInfo.transform, headTransform);
+                        }
+                        else
+                        {
+                            hitInfo.transform.GetComponentInParent<Divij.IInteractable>().Interact();
+                        }
                     }
                     
 
