@@ -49,8 +49,7 @@ namespace Frank
                         if (hitInfo.transform.GetComponent<PowerPoint>() != null)
                         {
                              powerCableRef = Instantiate(cableRef, headTransform.position + Vector3.back, Quaternion.identity);
-                            
-                             powerCableRef.GetComponent<PowerCable>().SetStartingWirePosition(hitInfo.transform, headTransform);
+                             powerCableRef.GetComponent<PowerCable>().GetTransforms(hitInfo.transform, headTransform);
                         }
                         else
                         {

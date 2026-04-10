@@ -4,6 +4,8 @@ public class PowerCable : MonoBehaviour
 {
     public LineRenderer connectedlineRenderer;
     public Material lineMaterial;
+    public Transform playerTransformRef;
+    public Transform powerPointTransformRef;
     public Vector3 startPosition;
     public Vector3 endPosition;
 
@@ -21,19 +23,42 @@ public class PowerCable : MonoBehaviour
         
     }
 
-    public void TrackPosition()
+    public void GetTransforms(Transform powerPointTransform, Transform playerTransform) // pass in a transform for the player's head or hands and a powerpoint transform
     {
-        startPosition = transform.position;
-        endPosition = transform.position + (Vector3.forward * 5);
-        Debug.Log(startPosition);
-        Debug.Log(endPosition);
-
+        playerTransformRef = playerTransform; // stores a reference to the playerTransform, used for tracking player positions dynamically
+        powerPointTransformRef = powerPointTransform; // stores a reference to the PowerPoint transform
+        
+        SetlinePoints(); // transforms have been captured. 
+        
     }
 
-    public void SetWirePosition()
+    public void SetlinePoints() // Assign vectors to StartPosition and EndPosition Variables
+    {
+        startPosition = powerPointTransformRef.position; // assigns the transform.position of the transform held in PowerPointTransformRef 
+        endPosition = playerTransformRef.position; //assigns the transform.position of the transform held in PlayerTransformRef 
+        Debug.Log(startPosition); // Debug a line to the console to confirm the value of Start Position
+        Debug.Log(endPosition); //Debug a line to the console to confirm the value of Start Position
+    }
+    /// <summary>
+    /// Updates endPosition based on the current value of the transform representing the player's hands.
+    /// Necessary to update the direction of the LineRenderer.
+    /// Relies upon SetLinePoints() and GetTransforms()
+    /// </summary>
+    public void TrackPosition()
+    {
+        endPosition = playerTransformRef.position;
+        
+    }
+    /// <summary>
+    /// Sets the start and end positions of the linerenderer based on startPosition and endPosition.
+    /// Called every frame. Uses the current value of StartPosition and endPosition to draw the line.
+    /// Relies on TrackPosition, SetLinePoints & GetTransform functions
+    /// </summary>
+    public void SetWirePosition() 
     {
         
-        
+        connectedlineRenderer.SetPosition(0, startPosition);
+        connectedlineRenderer.SetPosition(1, endPosition);
         
     }
 /// <summary>
@@ -46,8 +71,7 @@ public class PowerCable : MonoBehaviour
 /// </summary>
     public void SetStartingWirePosition(Transform powerPointTransform, Transform playerTransform) // this function accepts the position of an power point that the player has interacted with
     {
-        connectedlineRenderer.SetPosition(0, powerPointTransform.position);
-        connectedlineRenderer.SetPosition(1, playerTransform.position);
+        
     }
     
     void Start()
