@@ -36,7 +36,7 @@ public class Port : MonoBehaviour
     {
         foreach (Transform currentPlugTransform in PlugTransformList)
         {
-            if (currentPlugTransform.gameObject.GetComponent<Plug>().isConnected == true)
+            if (currentPlugTransform.gameObject.GetComponent<CableEnd>().isConnected == true)
             {
                 connectedlineRenderer = gameObject.AddComponent<LineRenderer>();
 
@@ -52,7 +52,7 @@ public class Port : MonoBehaviour
                 
             }
             
-            else if (currentPlugTransform.gameObject.GetComponent<Plug>().isConnected == false)
+            else if (currentPlugTransform.gameObject.GetComponent<CableEnd>().isConnected == false)
             {
                 Destroy(gameObject.GetComponent<LineRenderer>());
             }

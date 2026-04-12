@@ -48,12 +48,26 @@ namespace Frank
                     {
                         if (hitInfo.transform.GetComponent<PowerPoint>() != null)
                         {
-                             powerCableRef = Instantiate(cableRef, headTransform.position + Vector3.back, Quaternion.identity);
-                             powerCableRef.GetComponent<PowerCable>().GetTransforms(hitInfo.transform, headTransform);
+                            powerCableRef = Instantiate(cableRef, HandsTransform.position, Quaternion.identity);
+                            powerCableRef.GetComponent<CableManager>().SetReferences(hitInfo.transform, HandsTransform);
+                            isHolding = !isHolding;
+                            // finds the CableManager component on the instantiated power cable.
+                            // It passes in a transform for the PowerPoint and one for the player's hands.
                         }
                         else
                         {
                             hitInfo.transform.GetComponentInParent<Divij.IInteractable>().Interact();
+                        }
+                    }
+                    
+                    else if (hitInfo.transform.GetComponent<Divij.IPowered>() != null)
+                    {
+                        if (hitInfo.transform.GetComponent<Socket>() != null)
+                        {
+                            if (isHolding == true)
+                            {
+                                heldObject.GetComponent<CableEnd>().PlugIn(hitInfo.transform.gameObject);
+                            }
                         }
                     }
                     
@@ -117,7 +131,7 @@ namespace Frank
             
             else if (Input.GetKeyDown(useKey) && isHolding)
             {
-                    heldItem.GetComponent<Plug>().Use();
+                    //heldItem.GetComponent<Plug>().Use();
             }
             
             

@@ -8,6 +8,7 @@ public class PowerCable : MonoBehaviour
     public Transform powerPointTransformRef;
     public Vector3 startPosition;
     public Vector3 endPosition;
+  
 
     public void WireMaker()
     {
@@ -63,16 +64,13 @@ public class PowerCable : MonoBehaviour
     }
 /// <summary>
 /// This function gets
-/// - a transform of a powerpoint passed by the player.
+/// - a transform of a PowerPoint passed by the player.
 /// - a transform for the player's follow camera transform - An approximation of head
 /// It then sets
 /// - the starting positions of the wire to the PowerPoint's location
 /// - the end position of the wire to the player's head location
 /// </summary>
-    public void SetStartingWirePosition(Transform powerPointTransform, Transform playerTransform) // this function accepts the position of an power point that the player has interacted with
-    {
-        
-    }
+
     
     void Start()
     {
