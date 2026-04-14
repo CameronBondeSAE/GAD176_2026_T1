@@ -1,6 +1,8 @@
 using UnityEngine;
 
-public class PowerCable : MonoBehaviour
+namespace Frank
+{
+    public class PowerCable : MonoBehaviour
 {
     public LineRenderer connectedlineRenderer;
     public Material lineMaterial;
@@ -86,4 +88,6 @@ public class PowerCable : MonoBehaviour
     }
     
     
+}
+
 }
