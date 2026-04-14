@@ -43,3 +43,8 @@ public class PowerSocket : MonoBehaviour, IPowered, IInteractable
     
     
 }
+
+/*
+ *    Power Socket will have a list of connected devices which will be set in the scene,
+ *      now we can set a single socket to an array of lights or just multiple different powered devices
+ */

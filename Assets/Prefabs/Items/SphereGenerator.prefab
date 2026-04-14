@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 4107671910241892632}
   - component: {fileID: 5751055201906905363}
   m_Layer: 0
-  m_Name: Generator
+  m_Name: SphereGenerator
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
