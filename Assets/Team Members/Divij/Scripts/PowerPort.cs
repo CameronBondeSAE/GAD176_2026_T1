@@ -1,10 +1,10 @@
 using Divij;
 using Unity.VisualScripting;
 using UnityEngine;
-//using IInteractable = CameronBonde.IInteractable;
 
 public class PowerPort : MonoBehaviour, IInteractable
 {
+    /*
     public bool isOutput;
     public bool switchOn = true;
 
@@ -12,9 +12,6 @@ public class PowerPort : MonoBehaviour, IInteractable
     public void Interact()
     {
         Debug.Log("Port Chosen");
-        
-        
-        
         ConnectionManager.Instance.SelectPort(this);
         
     }
@@ -26,7 +23,15 @@ public class PowerPort : MonoBehaviour, IInteractable
 
         ConnectionManager.Instance.UpdatePower();
     }
+    
+    */
+    public void Interact()
+    {
+        throw new System.NotImplementedException();
+    }
 }
+
+
 
 
 /* 
