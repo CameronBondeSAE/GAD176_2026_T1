@@ -31,8 +31,8 @@ public class CableManager : MonoBehaviour
     
     /// <summary>
     /// This function accepts two transforms.
-    /// powerPointTransformRef is used to set PlugA to the PowerPoints location.
-    /// playerHandsRef is used to set PlugB to the player's hands location. 
+    /// powerPointTransformRef is used to set EndA to the PowerPoints location.
+    /// playerHandsTransformRef is used to set EndB to the player's hands location. 
     /// </summary>
     public void SetReferences(Transform powerPointTransform, Transform playerHandsTransform)
     {
@@ -49,13 +49,13 @@ public class CableManager : MonoBehaviour
         CableEndBRef.transform.position = playerHandsTransformRef.position; // position of endB is set to the player's hand position
 
         heldCableEnd = CableEndBRef; // makes the held cable end equal to EndB
-        playerHandsTransformRef.GetComponent<Interact>().heldObject = heldCableEnd; // gets the object
+        playerHandsTransformRef.GetComponent<Interact>().heldObject = heldCableEnd; 
     }
     
     /// <summary>
     /// Updates endPosition based on the current value of the transform representing the player's hands.
     /// Necessary to update the direction of the LineRenderer.
-    /// Relies upon SetLinePoints() and GetTransforms()
+    /// Relies upon cablesetup()
     /// </summary>
     public void TrackEndPosition()
     {
