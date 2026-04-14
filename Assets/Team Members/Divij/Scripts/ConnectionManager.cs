@@ -5,19 +5,11 @@ using UnityEngine;
 
 public class ConnectionManager : MonoBehaviour
 {
-    public static ConnectionManager Instance;
-
-    public PowerPort initialPort;
-
-    public PowerPort secondPort;
-
-    private List<(PowerPort output, PowerPort input)> connections = new();
-
-    private void Awake()
-    {
-        Instance = this;
-        //Debug.Log("Connection Manager on");
-    }
+    /*
+    public PowerPoint firstPort;
+    public PowerPoint secondPort;
+    public PowerPort thirdPort;
+    public PowerPort fourthPort;
 
     public void SelectPort(PowerPort port)
     {
@@ -80,6 +72,8 @@ public class ConnectionManager : MonoBehaviour
         
         
     }
+    
+    */
 }
 
 
@@ -98,4 +92,43 @@ public class ConnectionManager : MonoBehaviour
     to the generator. If incorrect then it must deselect the first port and not make the connection. Need to update the power status after every 
     connection to match the generators power, should maybe make it copy the switches power status instead.
     
+*/
+
+
+/* Using connection manager as an instance, going to try and make it so that it can be placed on the wiredGenerator by itself
+        public static ConnectionManager Instance;
+
+    public PowerPort initialPort;
+
+    public PowerPort secondPort;
+
+    private List<(PowerPort output, PowerPort input)> connections = new();
+
+    private void Awake()
+    {
+        Instance = this;
+        //Debug.Log("Connection Manager on");
+    }
+
+
+*/
+
+/* Storing of ports to store them as a pair in a list. Should make a list where each PowerPoint is the first variable in the grouped variable list
+ . If the list is already made might need to use a temp variable to make the list work.
+ public void SelectPort(PowerPort port)
+    {
+        if (initialPort == null)
+        {
+            initialPort = port;
+        }
+        else if (secondPort == null)
+        {
+            secondPort = port;
+        }
+
+        TryConnect(initialPort, secondPort);
+        initialPort = null;
+        secondPort = null;
+    }
+
 */

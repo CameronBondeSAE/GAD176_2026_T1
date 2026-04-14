@@ -3,10 +3,17 @@ using UnityEngine;
 
 public class NewMonoBehaviourScript : MonoBehaviour, IInteractable
 {
+    /*
     public PowerPort port;
     public void Interact()
     {
         port.ToggleSwitch();
+    }
+    
+    */
+    public void Interact()
+    {
+        throw new System.NotImplementedException();
     }
 }
 

@@ -5,16 +5,24 @@ using UnityEngine.Rendering;
 public class WiredGenerator : MonoBehaviour, IInteractable
 {
     public bool isOn = false;
+    
+    public PowerPoint[] powerPoints;
 
 
     public void Interact()
     {
         isOn = !isOn;
         Debug.Log(isOn ? "Generator on" : "Generator off");
-        
-        ConnectionManager.Instance.UpdatePower();
+
+        foreach (var point in powerPoints)
+        {
+            point.ReceivePower(isOn);
+        }
     }
 }
+
+
+
 
 /* 
     Want the generator to have 4 ports and a switch for each port.
@@ -27,7 +35,4 @@ public class WiredGenerator : MonoBehaviour, IInteractable
             
     Also need to save the powered item as a gameObject so that we can use its transform to draw the wires using Franks script 
     
-    
-
-
 */
