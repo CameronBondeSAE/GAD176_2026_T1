@@ -4,21 +4,21 @@ using UnityEngine.InputSystem;
 
 public class Player_Controller : MonoBehaviour
 {
-	InputSystem_Actions inputSystemActions;
+	// InputSystem_Actions inputSystemActions;
 
 	public Player_Model player_Model;
+
+	public PlayerInput playerInput;
 	
 	// Start is called once before the first execution of Update after the MonoBehaviour is created
 	void Start()
 	{
-		inputSystemActions = new InputSystem_Actions();
-		inputSystemActions.Enable();
-		inputSystemActions.Player.Enable();
-		inputSystemActions.Player.Move.performed += player_Model.Move;
-		inputSystemActions.Player.Move.canceled  += player_Model.Move;
-		
-		inputSystemActions.Player.Look.performed += player_Model.Look;
-		inputSystemActions.Player.Look.canceled  += player_Model.Look;
+		var actions = playerInput.actions;
+		actions.Enable();
+		actions["Move"].performed += player_Model.Move;
+		actions["Move"].canceled += player_Model.Look;
+		actions["Look"].performed += player_Model.Look;
+		actions["Look"].canceled += player_Model.Look;
 	}
 
 	// private void OnEnable()

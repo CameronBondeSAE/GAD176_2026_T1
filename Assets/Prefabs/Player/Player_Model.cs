@@ -34,7 +34,11 @@ public class Player_Model : MonoBehaviour
 
     private void FixedUpdate()
     {
-	    rb.rotation = Quaternion.Slerp(rb.rotation, LookXZRotation,  Time.deltaTime * turnSpeed);
-	    rb.AddForce(direction * speed * Time.deltaTime, ForceMode.VelocityChange);
+	    Quaternion rbRotation = Quaternion.Slerp(rb.rotation, LookXZRotation,  Time.deltaTime * turnSpeed);
+	    if(rbRotation != Quaternion.identity) // HACK checking for zero but this is bad
+	    {
+		    rb.rotation = rbRotation.normalized;
+		    rb.AddForce(direction * speed * Time.deltaTime, ForceMode.VelocityChange);
+	    }
     }
 }

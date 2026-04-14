@@ -100,6 +100,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player_Model: {fileID: 6179665414601382094}
+  playerInput: {fileID: 1994553625233894335}
 --- !u!114 &6179665414601382094
 MonoBehaviour:
   m_ObjectHideFlags: 0
