@@ -1,0 +1,91 @@
+using Frank;
+using UnityEngine;
+
+public class CableManager : MonoBehaviour
+{
+    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    public Transform powerPointTransformRef;
+    public Transform playerHandsTransformRef;
+    public GameObject CableEndARef;
+    public GameObject CableEndBRef;
+    public Vector3 customOffset = new Vector3(0, 0.5f, 0.5f);
+    
+    public LineRenderer connectedlineRenderer;
+    public Material lineMaterial;
+    public GameObject heldCableEnd;
+    
+    public void WireMaker()
+    {
+        connectedlineRenderer = gameObject.AddComponent<LineRenderer>();
+        
+        connectedlineRenderer.material = new Material(Shader.Find("Sprites/Default"));
+        connectedlineRenderer.startColor = Color.green;
+        connectedlineRenderer.endColor = Color.green;
+        connectedlineRenderer.positionCount = 2;
+        connectedlineRenderer.startWidth = 0.05f;
+        connectedlineRenderer.endWidth = 0.05f;
+        
+        SetWirePosition();
+        
+    }
+    
+    /// <summary>
+    /// This function accepts two transforms.
+    /// powerPointTransformRef is used to set PlugA to the PowerPoints location.
+    /// playerHandsRef is used to set PlugB to the player's hands location. 
+    /// </summary>
+    public void SetReferences(Transform powerPointTransform, Transform playerHandsTransform)
+    {
+        powerPointTransformRef = powerPointTransform; // variable is assigned the transform of a PowerPoint passed in by the player
+        playerHandsTransformRef = playerHandsTransform; // variable is assigned a transform for the player's hands also passed in. 
+        
+        CableSetup(); // uses the above stored references to set the positions of each cable end in space. 
+    }
+    
+    public void CableSetup()
+    {
+        CableEndARef.transform.position = (powerPointTransformRef.position + customOffset);
+        CableEndBRef.transform.position = playerHandsTransformRef.position;
+
+        heldCableEnd = CableEndBRef;
+        playerHandsTransformRef.GetComponent<Interact>().heldObject = heldCableEnd;
+    }
+    
+    /// <summary>
+    /// Updates endPosition based on the current value of the transform representing the player's hands.
+    /// Necessary to update the direction of the LineRenderer.
+    /// Relies upon SetLinePoints() and GetTransforms()
+    /// </summary>
+    public void TrackEndPosition()
+    {
+        CableEndBRef.transform.position = playerHandsTransformRef.position;
+        
+    }
+    
+    /// <summary>
+    /// Sets the start and end positions of the linerenderer based on startPosition and endPosition.
+    /// Called every frame. Uses the current value of StartPosition and endPosition to draw the line.
+    /// Relies on TrackPosition, SetLinePoints & GetTransform functions
+    /// </summary>
+    public void SetWirePosition() 
+    {
+        
+        connectedlineRenderer.SetPosition(0, CableEndARef.transform.position);
+        connectedlineRenderer.SetPosition(1, CableEndBRef.transform.position);
+        
+    }
+    
+    public void Start()
+    {
+        WireMaker();
+    }
+
+
+    // Update is called once per frame
+    public void Update()
+    {
+        TrackEndPosition();
+        SetWirePosition();
+    }
+
+}

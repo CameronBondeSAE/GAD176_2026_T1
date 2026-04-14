@@ -26,8 +26,8 @@ namespace Divij
                 if (hitInfo.transform != null)
                 {
                     Debug.Log("What I hit : " + hitInfo.transform.gameObject.name);
-                    Debug.Log("    Distance to thing I hit : " + hitInfo.distance);
-                    Debug.Log("    Where I hit : " + hitInfo.point);
+                    // Debug.Log("    Distance to thing I hit : " + hitInfo.distance);
+                    // Debug.Log("    Where I hit : " + hitInfo.point);
 
 
                     if (hitInfo.transform.GetComponentInParent<IInteractable>() != null)

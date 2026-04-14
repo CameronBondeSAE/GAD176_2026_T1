@@ -2,33 +2,77 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Divij;
+using Unity.VisualScripting;
+using Unity.VisualScripting.FullSerializer;
 using UnityEngine;
 
-
-public partial class ThrowGenerator : MonoBehaviour,IInteractable
+namespace Divij
 {
-    //[SerializeInterface] public IConnected thingConnected;
-
-    [SerializeInterface] public List<IInteractable> connectedList = new List<IInteractable>();
-
-
-    private void Update()
+    
+    public partial class ThrowGenerator : MonoBehaviour, IInteractable
     {
-      //  Physics.SphereCast();
-    }
+        
+        //[SerializeInterface] public IConnected thingConnected;
+
+        public float powerRadius = 3f;
+        public bool isOn = true;
+
+        [SerializeInterface] public List<IPowered> connectedList = new List<IPowered>();
+        
+        
+
+        public void SphereScan()
+        {
+            
+            connectedList.Clear();
+            Collider[] hits = Physics.OverlapSphere(transform.position, powerRadius);
+
+            foreach (var hit in hits)
+            {
+                IPowered powered = hit.GetComponent<IPowered>();
+
+                if (powered != null && !connectedList.Contains(powered))
+                {
+                    connectedList.Add(powered);
+                }
+                
+            }
+        }
+
+        public void ApplyPower()
+        {
+            foreach (var powered in connectedList)
+            {
+                powered?.SetPowered(isOn);
+            }
+        }
 
 
-    public void Interact()
-    {
-        //StartCoroutine(generatorOn());
-    }
-
-    void generatorOn()
-    {
-
-        return;
+        public void Interact()
+        {
+            
+            isOn = !isOn;
+            
+            SphereScan();
+            ApplyPower();
+            
+        }
+        
+       
     }
 }
+
+
+/*
+ * InvokeRepeating("ToggleLight", 0f, 1f);
+ * Use InvokeRepeating when using wire component for a fixed check on whether the thing connected to the generator is
+ * connected to power
+ *
+ * Can also use the InvokeRepeating when picking up generator using the sophere cast to power things as you walk past them,
+ * this will use the pick
+ */
+
+
 
 /*
  

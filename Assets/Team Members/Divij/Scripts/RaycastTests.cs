@@ -1,23 +1,27 @@
 using UnityEngine;
 
-public class RaycastTests : MonoBehaviour
+namespace Divij
 {
-    // Update is called once per frame
-    void Update()
+    public class RaycastTests : MonoBehaviour
     {
-        RaycastHit hitInfo; // This is EMPTY. Raycast fills it in via the 'out' keyword
-        bool raycastHitSomething = Physics.Raycast(transform.position, transform.forward, out hitInfo);
-      
-        if (raycastHitSomething)
+        // Update is called once per frame
+        void Update()
         {
-            Vector3 bouncePos = hitInfo.point;
-            Vector3 bounceRef = Vector3.Reflect(transform.forward, hitInfo.normal);
+            RaycastHit hitInfo; // This is EMPTY. Raycast fills it in via the 'out' keyword
+            bool raycastHitSomething = Physics.Raycast(transform.position, transform.forward, out hitInfo);
+      
+            if (raycastHitSomething)
+            {
+                Vector3 bouncePos = hitInfo.point;
+                Vector3 bounceRef = Vector3.Reflect(transform.forward, hitInfo.normal);
             
             
-            Physics.Raycast(bouncePos, bounceRef);
-        }
+                Physics.Raycast(bouncePos, bounceRef);
+            }
 
         
+        }
     }
 }
+
 
