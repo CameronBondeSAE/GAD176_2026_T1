@@ -39,16 +39,17 @@ public class CableManager : MonoBehaviour
         powerPointTransformRef = powerPointTransform; // variable is assigned the transform of a PowerPoint passed in by the player
         playerHandsTransformRef = playerHandsTransform; // variable is assigned a transform for the player's hands also passed in. 
         
+        WireMaker();
         CableSetup(); // uses the above stored references to set the positions of each cable end in space. 
     }
     
     public void CableSetup()
     {
-        CableEndARef.transform.position = (powerPointTransformRef.position + customOffset);
-        CableEndBRef.transform.position = playerHandsTransformRef.position;
+        CableEndARef.transform.position = (powerPointTransformRef.position + customOffset); // the position of endA is set to the power points position
+        CableEndBRef.transform.position = playerHandsTransformRef.position; // position of endB is set to the player's hand position
 
-        heldCableEnd = CableEndBRef;
-        playerHandsTransformRef.GetComponent<Interact>().heldObject = heldCableEnd;
+        heldCableEnd = CableEndBRef; // makes the held cable end equal to EndB
+        playerHandsTransformRef.GetComponent<Interact>().heldObject = heldCableEnd; // gets the object
     }
     
     /// <summary>
@@ -77,7 +78,7 @@ public class CableManager : MonoBehaviour
     
     public void Start()
     {
-        WireMaker();
+        //WireMaker();
     }
 
 

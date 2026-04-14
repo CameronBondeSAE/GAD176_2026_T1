@@ -44,13 +44,16 @@ namespace Frank
                     Debug.Log("    Where I hit : " + hitInfo.point);
 
 
-                    if (hitInfo.transform.GetComponentInParent<Divij.IInteractable>() != null) // if so then get the gameobject and if it has an IInteractable component, then call the interact function. 
+                    if (hitInfo.transform.GetComponentInParent<IInteractable>() != null) 
                     {
                         if (hitInfo.transform.GetComponent<PowerPoint>() != null)
                         {
+                            
                             powerCableRef = Instantiate(cableRef, HandsTransform.position, Quaternion.identity);
                             powerCableRef.GetComponent<CableManager>().SetReferences(hitInfo.transform, HandsTransform);
-                            isHolding = !isHolding;
+                            isHolding = true;
+                            Debug.Log(isHolding);
+                            
                             // finds the CableManager component on the instantiated power cable.
                             // It passes in a transform for the PowerPoint and one for the player's hands.
                         }
