@@ -1,0 +1,13 @@
+using UnityEngine;
+
+public class MoveForward : AIBase
+{
+    [SerializeField] private Rigidbody rb;
+    [SerializeField] private float speed = 100;
+
+    private void FixedUpdate()
+    {
+        rb.AddRelativeForce(0, 0, speed);
+    }
+}
+ 
