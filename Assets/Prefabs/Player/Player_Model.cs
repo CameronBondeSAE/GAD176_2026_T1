@@ -8,16 +8,14 @@ public class Player_Model : MonoBehaviour
 	public float     speed;
 	public float     turnSpeed = 10f;
 
-	public Vector3 direction;
+	public Vector3 moveDirection;
 	Quaternion     LookXZRotation;
 	
-	public void Look(InputAction.CallbackContext callbackContext)
+	public void Look(Vector2 lookDirection)
     {
-	    Vector2 readValue = callbackContext.ReadValue<Vector2>();
-	    Debug.Log("Look direction = "+readValue.ToString());
-	    Debug.Log("		- Phase = " + callbackContext.phase.ToString());
+	    Debug.Log("Look direction = "+lookDirection);
 
-	    Vector3 XZDirection = new Vector3(readValue.x,0,readValue.y);
+	    Vector3 XZDirection = new Vector3(lookDirection.x,0,lookDirection.y);
 	    if(XZDirection.sqrMagnitude > 0.01f) // Avoid looking at ZERO
 		    LookXZRotation = Quaternion.LookRotation(XZDirection, Vector3.up);
     }
@@ -29,7 +27,7 @@ public class Player_Model : MonoBehaviour
 	    Debug.Log("Move direction = "+readValue.ToString());
 	    Debug.Log("		- Phase = " + callbackContext.phase.ToString());
 	    
-	    direction = XZDirection;
+	    moveDirection = XZDirection;
     }
 
     private void FixedUpdate()
@@ -38,7 +36,7 @@ public class Player_Model : MonoBehaviour
 	    if(rbRotation != Quaternion.identity) // HACK checking for zero but this is bad
 	    {
 		    rb.rotation = rbRotation.normalized;
-		    rb.AddForce(direction * speed * Time.deltaTime, ForceMode.VelocityChange);
+		    rb.AddForce(moveDirection * speed * Time.deltaTime, ForceMode.VelocityChange);
 	    }
     }
 }
