@@ -36,8 +36,7 @@ namespace Frank
 				foreach (Collider c in colliders)
 				{
 					// Interact with things
-					if (c !=
-					    null) // primary check - did I hit something - more specifically is there a transform
+					if (c != null) // primary check - did I hit something - more specifically is there a transform
 					{
 						Debug.Log("What I hit : " + c.transform.gameObject.name);
 
@@ -72,24 +71,6 @@ namespace Frank
 							}
 						}
 
-
-						/*
-						// BAD CODE. But... it works!
-						// Why? Because if you have a hundred interactable things!!! The code would be a nightmare
-						// It needs to know about EVERY SINGLE ITEM SPECIFICALLY
-						if (hitInfo.transform.GetComponent<SwitchableLight>() != null)
-						{
-						   hitInfo.transform.GetComponent<SwitchableLight>().Toggle();
-						}
-
-						// STILL BAD. What if I have another hundred to go???
-						// What if another team member wants to add another interactable object?
-						//    THEY NOW NEED TO CHANGE THE PLAYER CODE.
-						if (hitInfo.transform.GetComponent<Door>() != null)
-						{
-						   hitInfo.transform.GetComponent<Door>().ToggleDoor();
-						}
-						*/
 					}
 				}
 			}

@@ -49,7 +49,7 @@ public class CableManager : MonoBehaviour
         CableEndBRef.transform.position = playerHandsTransformRef.position; // position of endB is set to the player's hand position
 
         heldCableEnd = CableEndBRef; // makes the held cable end equal to EndB
-        playerHandsTransformRef.GetComponent<Interact>().heldObject = heldCableEnd; 
+        playerHandsTransformRef.GetComponent<Interact>().heldObject = heldCableEnd;
     }
     
     /// <summary>

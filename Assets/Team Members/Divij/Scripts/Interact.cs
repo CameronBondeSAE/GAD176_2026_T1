@@ -1,7 +1,6 @@
 using System;
 using UnityEngine;
 
-
 namespace Divij
 {
     public class Interact : MonoBehaviour
@@ -34,26 +33,6 @@ namespace Divij
                     {
                         hitInfo.transform.GetComponentInParent<IInteractable>().Interact();
                     }
-
-
-
-                    /*
-            // BAD CODE. But... it works!
-            // Why? Because if you have a hundred interactable things!!! The code would be a nightmare
-            // It needs to know about EVERY SINGLE ITEM SPECIFICALLY
-            if (hitInfo.transform.GetComponent<SwitchableLight>() != null)
-            {
-               hitInfo.transform.GetComponent<SwitchableLight>().Toggle();
-            }
-           
-            // STILL BAD. What if I have another hundred to go???
-            // What if another team member wants to add another interactable object?
-            //    THEY NOW NEED TO CHANGE THE PLAYER CODE.
-            if (hitInfo.transform.GetComponent<Door>() != null)
-            {
-               hitInfo.transform.GetComponent<Door>().ToggleDoor();
-            }
-            */
                 }
             }
         }
