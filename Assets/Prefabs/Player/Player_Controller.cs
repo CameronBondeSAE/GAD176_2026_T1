@@ -13,6 +13,8 @@ public class Player_Controller : MonoBehaviour
 	public Vector2 mousePosition;
 
 	public bool usingMouse = false;
+	
+	public Frank.Interact interact;
 
 	// Start is called once before the first execution of Update after the MonoBehaviour is created
 	void Start()
@@ -23,8 +25,22 @@ public class Player_Controller : MonoBehaviour
 		actions["Move"].canceled += player_Model.Move;
 		actions["Look"].performed += Look;
 		actions["Look"].canceled += Look;
+		actions["Interact"].performed += InteractWith;
+		actions["Pickup"].performed += Pickup;
 		actions["Mouse Position"].performed += UpdateMousePosition;
 		actions["Mouse Position"].canceled += UpdateMousePosition;
+	}
+
+	// Just pass along to the real function, without input stuff
+	private void Pickup(InputAction.CallbackContext obj)
+	{
+		interact.Pickup();
+	}
+
+	// Just pass along to the real function, without input stuff
+	private void InteractWith(InputAction.CallbackContext obj)
+	{
+		interact.InteractWith();
 	}
 
 	private void Look(InputAction.CallbackContext obj)
@@ -47,8 +63,8 @@ public class Player_Controller : MonoBehaviour
 		if (!usingMouse)
 		{
 			var stickInput = callbackContext.ReadValue<Vector2>();
-			// if (stickInput.sqrMagnitude > 0.01f)
-			player_Model.moveDirection = stickInput.normalized;
+			if (stickInput.sqrMagnitude > 0.01f)
+				player_Model.Look(stickInput.normalized);
 		}
 		else
 		{
@@ -71,7 +87,7 @@ public class Player_Controller : MonoBehaviour
 
 			// Flatten to XZ and normalize → Vector2(x, z)
 			var dir = new Vector2(offset.x, offset.z);
-			return dir.sqrMagnitude > 0.001f ? dir.normalized : Vector2.zero;
+			return dir.sqrMagnitude > 0.01f ? dir.normalized : Vector2.zero;
 		}
 		else
 		{

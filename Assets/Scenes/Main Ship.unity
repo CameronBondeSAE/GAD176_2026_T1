@@ -18861,6 +18861,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PowerCable
       objectReference: {fileID: 0}
+    - target: {fileID: 430190629158645207, guid: 325ece26724815b47829169d024c48f0, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3702710997960586653, guid: 325ece26724815b47829169d024c48f0, type: 3}
       propertyPath: m_LocalPosition.x
       value: 44.826538
@@ -22636,6 +22640,10 @@ PrefabInstance:
     - target: {fileID: 4630921107042037647, guid: 52f322377ca081143bd4f68b9be1aba4, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 4630921107042037647, guid: 52f322377ca081143bd4f68b9be1aba4, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7313568232634554606, guid: 52f322377ca081143bd4f68b9be1aba4, type: 3}
       propertyPath: m_LocalPosition.x
