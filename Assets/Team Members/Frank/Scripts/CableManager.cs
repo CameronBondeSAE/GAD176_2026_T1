@@ -31,30 +31,31 @@ public class CableManager : MonoBehaviour
     
     /// <summary>
     /// This function accepts two transforms.
-    /// powerPointTransformRef is used to set PlugA to the PowerPoints location.
-    /// playerHandsRef is used to set PlugB to the player's hands location. 
+    /// powerPointTransformRef is used to set EndA to the PowerPoints location.
+    /// playerHandsTransformRef is used to set EndB to the player's hands location. 
     /// </summary>
     public void SetReferences(Transform powerPointTransform, Transform playerHandsTransform)
     {
         powerPointTransformRef = powerPointTransform; // variable is assigned the transform of a PowerPoint passed in by the player
         playerHandsTransformRef = playerHandsTransform; // variable is assigned a transform for the player's hands also passed in. 
         
+        WireMaker();
         CableSetup(); // uses the above stored references to set the positions of each cable end in space. 
     }
     
     public void CableSetup()
     {
-        CableEndARef.transform.position = (powerPointTransformRef.position + customOffset);
-        CableEndBRef.transform.position = playerHandsTransformRef.position;
+        CableEndARef.transform.position = (powerPointTransformRef.position + customOffset); // the position of endA is set to the power points position
+        CableEndBRef.transform.position = playerHandsTransformRef.position; // position of endB is set to the player's hand position
 
-        heldCableEnd = CableEndBRef;
+        heldCableEnd = CableEndBRef; // makes the held cable end equal to EndB
         playerHandsTransformRef.GetComponent<Interact>().heldObject = heldCableEnd;
     }
     
     /// <summary>
     /// Updates endPosition based on the current value of the transform representing the player's hands.
     /// Necessary to update the direction of the LineRenderer.
-    /// Relies upon SetLinePoints() and GetTransforms()
+    /// Relies upon cablesetup()
     /// </summary>
     public void TrackEndPosition()
     {
@@ -77,7 +78,7 @@ public class CableManager : MonoBehaviour
     
     public void Start()
     {
-        WireMaker();
+        //WireMaker();
     }
 
 
