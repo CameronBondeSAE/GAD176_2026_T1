@@ -80,5 +80,5 @@ AssetOrigin:
   productId: 239351
   packageName: Fast Script Reload
   packageVersion: 1.6.1
-  assetPath: Assets/FastScriptReload/Plugins/Harmony/net48/0Harmony.dll
+  assetPath: Assets/Plugins/FastScriptReload/Plugins/Harmony/net48/0Harmony.dll
   uploadId: 710802

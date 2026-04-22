@@ -14,5 +14,5 @@ AssetOrigin:
   productId: 239351
   packageName: Fast Script Reload
   packageVersion: 1.6.1
-  assetPath: Assets/FastScriptReload/Samples/Basic/Scripts/FunctionLibrary.cs
+  assetPath: Assets/Plugins/FastScriptReload/Samples/Basic/Scripts/FunctionLibrary.cs
   uploadId: 710802

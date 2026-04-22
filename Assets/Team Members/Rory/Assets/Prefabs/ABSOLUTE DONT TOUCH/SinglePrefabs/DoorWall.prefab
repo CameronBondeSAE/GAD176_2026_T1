@@ -46,7 +46,6 @@ GameObject:
   - component: {fileID: 4391637064912865315}
   - component: {fileID: 6244727898432503018}
   - component: {fileID: 5619878015036092143}
-  - component: {fileID: 6038154023341679871}
   m_Layer: 0
   m_Name: DoorWallSection
   m_TagString: Untagged
@@ -94,6 +93,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 257
   m_RendererPriority: 0
   m_Materials:
@@ -182,18 +184,3 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.8422022, y: 3.541383, z: 1.3}
   m_Center: {x: -3.578899, y: 1.57943, z: -2.516746}
---- !u!114 &6038154023341679871
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3834767027921415333}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e829c87dc2a2ed2419c5f67848317fe4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  material: {fileID: 11400000, guid: a086f686223eed942816c70be67841b0, type: 2}
-  exportAllChildren: 0
-  terrainSimplificationLevel: 0
