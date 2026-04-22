@@ -139,6 +139,10 @@ PrefabInstance:
       propertyPath: reachedEndEvent.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 2770105060155926456, guid: 17f22a701a5e450488858478f099f81b, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2865454814989997619, guid: 17f22a701a5e450488858478f099f81b, type: 3}
       propertyPath: backpack
       value: 

@@ -1,33 +1,36 @@
 using UnityEngine;
 
-public class TurnTowards : AIBase
+namespace Team_Members.Jackson.AI_Behaviours
 {
-    [SerializeField] private float turnSpeed = 5f;
-    private Transform _targetTransform;
-    [SerializeField] private Vector3 targetPosition;
-    [SerializeField] private Rigidbody rb;
-
-    private void Start()
+    public class TurnTowards : AIBase
     {
-        _targetTransform = GameObject.FindGameObjectWithTag("Player").transform;
-    }
+        [SerializeField] private float turnSpeed = 5f;
+        private Transform _targetTransform;
+        [SerializeField] private Vector3 targetPosition;
+        [SerializeField] private Rigidbody rb;
 
-    private void FixedUpdate()
-    {
-        Vector3 targetDir;
-
-        if (targetPosition != Vector3.zero)
+        private void Start()
         {
-            targetDir = (targetPosition - transform.position).normalized;
-        }    
-        
-        else
-        {
-            targetDir = (_targetTransform.position - transform.position).normalized;
+            _targetTransform = GameObject.FindGameObjectWithTag("Player").transform;
         }
 
-        float angle = Vector3.SignedAngle(transform.forward, targetDir, transform.up);
+        private void FixedUpdate()
+        {
+            Vector3 targetDir;
 
-        rb.AddRelativeTorque(0, angle * turnSpeed, 0);
+            if (targetPosition != Vector3.zero)
+            {
+                targetDir = (targetPosition - transform.position).normalized;
+            }    
+        
+            else
+            {
+                targetDir = (_targetTransform.position - transform.position).normalized;
+            }
+
+            float angle = Vector3.SignedAngle(transform.forward, targetDir, transform.up);
+
+            rb.AddRelativeTorque(0, angle * turnSpeed, 0);
+        }
     }
 }

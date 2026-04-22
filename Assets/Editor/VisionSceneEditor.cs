@@ -1,3 +1,4 @@
+using Team_Members.Jackson.AI_Senses.Vision;
 using UnityEditor;
 using UnityEngine;
 

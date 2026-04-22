@@ -1,24 +1,27 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NeighboursManager : MonoBehaviour
+namespace Team_Members.Jackson.AI_Management
 {
-    public List<Transform> neighboursList;
-
-    private void OnTriggerEnter(Collider other)
+    public class NeighboursManager : MonoBehaviour
     {
-        if (other.CompareTag("AI"))
-        {
-            neighboursList.Add(other.transform);
-        }
-    }
+        public List<Transform> neighboursList;
 
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.CompareTag("AI"))
+        private void OnTriggerEnter(Collider other)
         {
-            neighboursList.Remove(other.transform);
+            if (other.CompareTag("AI"))
+            {
+                neighboursList.Add(other.transform);
+            }
         }
-    }
+
+        private void OnTriggerExit(Collider other)
+        {
+            if (other.CompareTag("AI"))
+            {
+                neighboursList.Remove(other.transform);
+            }
+        }
     
+    }
 }

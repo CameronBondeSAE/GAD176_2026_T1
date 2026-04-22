@@ -1,13 +1,16 @@
 using UnityEngine;
 
-public class MoveForward : AIBase
+namespace Team_Members.Jackson.AI_Behaviours
 {
-    [SerializeField] private Rigidbody rb;
-    [SerializeField] private float speed = 100;
-
-    private void FixedUpdate()
+    public class MoveForward : AIBase
     {
-        rb.AddRelativeForce(0, 0, speed);
+        [SerializeField] private Rigidbody rb;
+        [SerializeField] private float speed = 100;
+
+        private void FixedUpdate()
+        {
+            rb.AddRelativeForce(0, 0, speed);
+        }
     }
 }
  

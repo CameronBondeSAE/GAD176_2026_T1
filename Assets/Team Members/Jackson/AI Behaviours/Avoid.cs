@@ -1,32 +1,35 @@
 using UnityEngine;
 
-public class Avoid : AIBase
+namespace Team_Members.Jackson.AI_Behaviours
 {
-    [SerializeField] private float maxDistance = 3f;
-    [SerializeField] private Rigidbody rb;
-    [SerializeField] private float turnSpeed = 3f;
-    [SerializeField] private AnimationCurve curve;
-    [SerializeField] private float curveEval;
-
-    private void FixedUpdate()
+    public class Avoid : AIBase
     {
-        bool didItHitAnything = Physics.Raycast(transform.position, transform.forward, out RaycastHit hitInfo, maxDistance);
+        [SerializeField] private float maxDistance = 3f;
+        [SerializeField] private Rigidbody rb;
+        [SerializeField] private float turnSpeed = 3f;
+        [SerializeField] private AnimationCurve curve;
+        [SerializeField] private float curveEval;
 
-        if (didItHitAnything)
+        private void FixedUpdate()
         {
-            Debug.DrawLine(transform.position, hitInfo.point, Color.red);
+            bool didItHitAnything = Physics.Raycast(transform.position, transform.forward, out RaycastHit hitInfo, maxDistance);
 
-            curveEval = curve.Evaluate(hitInfo.distance / maxDistance);
-
-            if (rb != null)
+            if (didItHitAnything)
             {
-                curve.Evaluate(hitInfo.distance);
-                rb.AddRelativeTorque(0, (turnSpeed / hitInfo.distance), 0, ForceMode.Impulse);
+                Debug.DrawLine(transform.position, hitInfo.point, Color.red);
+
+                curveEval = curve.Evaluate(hitInfo.distance / maxDistance);
+
+                if (rb != null)
+                {
+                    curve.Evaluate(hitInfo.distance);
+                    rb.AddRelativeTorque(0, (turnSpeed / hitInfo.distance), 0, ForceMode.Impulse);
+                }
             }
-        }
-        else
-        {
-            Debug.DrawLine(transform.position, transform.position + transform.forward, Color.green);
+            else
+            {
+                Debug.DrawLine(transform.position, transform.position + transform.forward, Color.green);
+            }
         }
     }
 }

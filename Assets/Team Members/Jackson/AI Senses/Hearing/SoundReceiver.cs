@@ -1,12 +1,15 @@
 using UnityEngine;
 using UnityEngine.Events;
 
-public class SoundReceiver : MonoBehaviour
+namespace Team_Members.Jackson.AI_Senses.Hearing
 {
-    public static UnityEvent ScaredSoundEvent = new();
-    
-    public void HeardSound(SoundTypes soundType)
+    public class SoundReceiver : MonoBehaviour
     {
-        ScaredSoundEvent.Invoke();
+        public static UnityEvent ScaredSoundEvent = new();
+    
+        public void HeardSound(SoundTypes soundType)
+        {
+            ScaredSoundEvent.Invoke();
+        }
     }
 }

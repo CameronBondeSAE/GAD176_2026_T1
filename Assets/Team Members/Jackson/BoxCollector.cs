@@ -1,4 +1,5 @@
 using System;
+using Team_Members.Jackson.AI_Senses;
 using UnityEngine;
 
 public class BoxCollector : MonoBehaviour

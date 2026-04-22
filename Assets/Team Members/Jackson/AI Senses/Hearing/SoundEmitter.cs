@@ -1,28 +1,31 @@
 using UnityEngine;
 
-public class SoundEmitter : MonoBehaviour
+namespace Team_Members.Jackson.AI_Senses.Hearing
 {
-    [SerializeField] private float radius = 20f;
-    [SerializeField] private LayerMask soundReceiverMask;
-    [SerializeField] private LayerMask obstacleMask;
-
-    public void Emit(SoundTypes soundType)
+    public class SoundEmitter : MonoBehaviour
     {
-        Collider[] results = new Collider[50];
+        [SerializeField] private float radius = 20f;
+        [SerializeField] private LayerMask soundReceiverMask;
+        [SerializeField] private LayerMask obstacleMask;
 
-        Physics.OverlapSphereNonAlloc(transform.position, radius, results, soundReceiverMask);
-        
-        foreach (Collider result in results)
+        public void Emit(SoundTypes soundType)
         {
-            if (result != null)
-            {
-                SoundReceiver soundReceiver = result.GetComponent<SoundReceiver>();
+            Collider[] results = new Collider[50];
 
-                bool didItHitAnything = Physics.Linecast(transform.position, result.transform.position, obstacleMask);
+            Physics.OverlapSphereNonAlloc(transform.position, radius, results, soundReceiverMask);
+        
+            foreach (Collider result in results)
+            {
+                if (result != null)
+                {
+                    SoundReceiver soundReceiver = result.GetComponent<SoundReceiver>();
+
+                    bool didItHitAnything = Physics.Linecast(transform.position, result.transform.position, obstacleMask);
                 
-                if (soundReceiver != null && !didItHitAnything)
-                { 
-                    soundReceiver.HeardSound(SoundTypes.Roaring);
+                    if (soundReceiver != null && !didItHitAnything)
+                    { 
+                        soundReceiver.HeardSound(SoundTypes.Roaring);
+                    }
                 }
             }
         }

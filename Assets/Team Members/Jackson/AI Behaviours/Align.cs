@@ -1,46 +1,50 @@
 using System.Collections.Generic;
+using Team_Members.Jackson.AI_Management;
 using UnityEngine;
 
-public class Align : AIBase
+namespace Team_Members.Jackson.AI_Behaviours
 {
-    [SerializeField] private NeighboursManager neighbours;
-    [SerializeField] private Rigidbody rb;
-    [SerializeField] private float force = 100f;
-
-    private void FixedUpdate()
+    public class Align : AIBase
     {
-        // Some are Torque, some are Force
-        Vector3 targetDirection = CalculateMove(neighbours.neighboursList);
-        
-        // Cross takes YOUR direction and the TARGET direction and turns it into a rotation force vector
-        Vector3 cross = Vector3.Cross(transform.forward, targetDirection);
-        
-        rb.AddTorque(cross * force);
-    }
+        [SerializeField] private NeighboursManager neighbours;
+        [SerializeField] private Rigidbody rb;
+        [SerializeField] private float force = 100f;
 
-    private Vector3 CalculateMove(List<Transform> neighboursList)
-    {
-        if (neighboursList.Count == 0)
+        private void FixedUpdate()
         {
-            return Vector3.zero;
-        }
+            // Some are Torque, some are Force
+            Vector3 targetDirection = CalculateMove(neighbours.neighboursList);
         
-        Vector3 alignmentDirection = Vector3.zero;
+            // Cross takes YOUR direction and the TARGET direction and turns it into a rotation force vector
+            Vector3 cross = Vector3.Cross(transform.forward, targetDirection);
+        
+            rb.AddTorque(cross * force);
+        }
+
+        private Vector3 CalculateMove(List<Transform> neighboursList)
+        {
+            if (neighboursList.Count == 0)
+            {
+                return Vector3.zero;
+            }
+        
+            Vector3 alignmentDirection = Vector3.zero;
             
-        // Average of all neighbours directions
-        foreach (Transform item in neighboursList)
-        {
-            alignmentDirection += item.transform.forward;
+            // Average of all neighbours directions
+            foreach (Transform item in neighboursList)
+            {
+                alignmentDirection += item.transform.forward;
+            }
+
+            alignmentDirection /= neighboursList.Count;
+        
+            // Where I WANT to face
+            Debug.DrawRay(transform.position, alignmentDirection * 10f, Color.blue);
+        
+            // Where I'm facing right now 
+            Debug.DrawRay(transform.position, transform.forward * 10f, Color.green);
+
+            return alignmentDirection;
         }
-
-        alignmentDirection /= neighboursList.Count;
-        
-        // Where I WANT to face
-        Debug.DrawRay(transform.position, alignmentDirection * 10f, Color.blue);
-        
-        // Where I'm facing right now 
-        Debug.DrawRay(transform.position, transform.forward * 10f, Color.green);
-
-        return alignmentDirection;
     }
 }
