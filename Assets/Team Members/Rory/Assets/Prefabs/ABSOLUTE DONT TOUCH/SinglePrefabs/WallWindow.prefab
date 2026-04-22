@@ -44,7 +44,6 @@ GameObject:
   - component: {fileID: 7651835261756162617}
   - component: {fileID: 7527106619206298159}
   - component: {fileID: 7029441273337337211}
-  - component: {fileID: 7592528631983223194}
   m_Layer: 14
   m_Name: WindowWallSection
   m_TagString: Untagged
@@ -92,6 +91,9 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 257
   m_RendererPriority: 0
   m_Materials:
@@ -138,18 +140,3 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.7006438, y: 5.6230125, z: 7.9187}
   m_Center: {x: 3.6496782, y: 2.8115063, z: -0.0000015497208}
---- !u!114 &7592528631983223194
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8306521197334858484}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e829c87dc2a2ed2419c5f67848317fe4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  material: {fileID: 11400000, guid: a086f686223eed942816c70be67841b0, type: 2}
-  exportAllChildren: 0
-  terrainSimplificationLevel: 0
