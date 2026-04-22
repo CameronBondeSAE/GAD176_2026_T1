@@ -1,5 +1,5 @@
 using Anthill.AI;
-using Anthill.Utils;
+using Anthill.AI;
 using UnityEngine;
 
 public enum AggresiveAlienAI
