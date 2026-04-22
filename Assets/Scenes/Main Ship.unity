@@ -4496,23 +4496,23 @@ MonoBehaviour:
   - _gameObject: {fileID: 1627943584}
     _prefab: Assets/Prefabs/Utilities/SpawnPoint.prefab
   - _gameObject: {fileID: 1403686773}
-    _prefab: Assets/Space/Prefabs/Spawn Points.prefab
+    _prefab: Assets/Prefabs/Space/Prefabs/Spawn Points.prefab
   - _gameObject: {fileID: 1068730606}
-    _prefab: Assets/Space/Prefabs/Spawn Points.prefab
+    _prefab: Assets/Prefabs/Space/Prefabs/Spawn Points.prefab
   - _gameObject: {fileID: 1142598394}
-    _prefab: Assets/Space/Prefabs/Spawn Points.prefab
+    _prefab: Assets/Prefabs/Space/Prefabs/Spawn Points.prefab
   - _gameObject: {fileID: 565555895}
-    _prefab: Assets/Space/Prefabs/Spawn Points.prefab
+    _prefab: Assets/Prefabs/Space/Prefabs/Spawn Points.prefab
   - _gameObject: {fileID: 89990408}
-    _prefab: Assets/Space/Prefabs/Spawn Points.prefab
+    _prefab: Assets/Prefabs/Space/Prefabs/Spawn Points.prefab
   - _gameObject: {fileID: 1398079727}
-    _prefab: Assets/Space/Prefabs/Spawn Points.prefab
+    _prefab: Assets/Prefabs/Space/Prefabs/Spawn Points.prefab
   - _gameObject: {fileID: 5299257}
-    _prefab: Assets/Space/Prefabs/Enemy Spawn Points.prefab
+    _prefab: Assets/Prefabs/Space/Prefabs/Enemy Spawn Points.prefab
   - _gameObject: {fileID: 2003252866}
-    _prefab: Assets/Space/Prefabs/Enemy Spawn Points.prefab
+    _prefab: Assets/Prefabs/Space/Prefabs/Enemy Spawn Points.prefab
   - _gameObject: {fileID: 1590570444}
-    _prefab: Assets/Space/Prefabs/Enemy Spawn Points.prefab
+    _prefab: Assets/Prefabs/Space/Prefabs/Enemy Spawn Points.prefab
   - _gameObject: {fileID: 2038071900}
     _prefab: Assets/Team Members/Rory/Assets/Prefabs/Normal Size/OpenFloor.prefab
   - _gameObject: {fileID: 2038071904}
@@ -5694,91 +5694,91 @@ MonoBehaviour:
   - _gameObject: {fileID: 5064924557731951609}
     _prefab: Assets/Team Members/Rory/Assets/Prefabs/Normal Size/Server Rack.prefab
   - _gameObject: {fileID: 5064924557731951608}
-    _prefab: Assets/Space/Prefabs/Level items/ServerBox.prefab
+    _prefab: Assets/Prefabs/Space/Prefabs/Level items/ServerBox.prefab
   - _gameObject: {fileID: 5064924557731951607}
-    _prefab: Assets/Space/Prefabs/Level items/ServerBox.prefab
+    _prefab: Assets/Prefabs/Space/Prefabs/Level items/ServerBox.prefab
   - _gameObject: {fileID: 5064924557731951606}
-    _prefab: Assets/Space/Prefabs/Level items/ServerBox.prefab
+    _prefab: Assets/Prefabs/Space/Prefabs/Level items/ServerBox.prefab
   - _gameObject: {fileID: 5064924557731951605}
     _prefab: Assets/Team Members/Rory/Assets/Prefabs/Normal Size/Server Rack.prefab
   - _gameObject: {fileID: 5064924557731951604}
-    _prefab: Assets/Space/Prefabs/Level items/ServerBox.prefab
+    _prefab: Assets/Prefabs/Space/Prefabs/Level items/ServerBox.prefab
   - _gameObject: {fileID: 5064924557731951603}
-    _prefab: Assets/Space/Prefabs/Level items/ServerBox.prefab
+    _prefab: Assets/Prefabs/Space/Prefabs/Level items/ServerBox.prefab
   - _gameObject: {fileID: 5064924557731951602}
-    _prefab: Assets/Space/Prefabs/Level items/ServerBox.prefab
+    _prefab: Assets/Prefabs/Space/Prefabs/Level items/ServerBox.prefab
   - _gameObject: {fileID: 634587437}
     _prefab: Assets/Team Members/Rory/Assets/Prefabs/Normal Size/ServerBlock 1.prefab
   - _gameObject: {fileID: 634587445}
     _prefab: Assets/Team Members/Rory/Assets/Prefabs/Normal Size/Server Rack.prefab
   - _gameObject: {fileID: 634587444}
-    _prefab: Assets/Space/Prefabs/Level items/ServerBox.prefab
+    _prefab: Assets/Prefabs/Space/Prefabs/Level items/ServerBox.prefab
   - _gameObject: {fileID: 634587443}
-    _prefab: Assets/Space/Prefabs/Level items/ServerBox.prefab
+    _prefab: Assets/Prefabs/Space/Prefabs/Level items/ServerBox.prefab
   - _gameObject: {fileID: 634587442}
-    _prefab: Assets/Space/Prefabs/Level items/ServerBox.prefab
+    _prefab: Assets/Prefabs/Space/Prefabs/Level items/ServerBox.prefab
   - _gameObject: {fileID: 634587441}
     _prefab: Assets/Team Members/Rory/Assets/Prefabs/Normal Size/Server Rack.prefab
   - _gameObject: {fileID: 634587440}
-    _prefab: Assets/Space/Prefabs/Level items/ServerBox.prefab
+    _prefab: Assets/Prefabs/Space/Prefabs/Level items/ServerBox.prefab
   - _gameObject: {fileID: 634587439}
-    _prefab: Assets/Space/Prefabs/Level items/ServerBox.prefab
+    _prefab: Assets/Prefabs/Space/Prefabs/Level items/ServerBox.prefab
   - _gameObject: {fileID: 634587438}
-    _prefab: Assets/Space/Prefabs/Level items/ServerBox.prefab
+    _prefab: Assets/Prefabs/Space/Prefabs/Level items/ServerBox.prefab
   - _gameObject: {fileID: 1858710870}
     _prefab: Assets/Team Members/Rory/Assets/Prefabs/Normal Size/ServerBlock 1.prefab
   - _gameObject: {fileID: 1858710878}
     _prefab: Assets/Team Members/Rory/Assets/Prefabs/Normal Size/Server Rack.prefab
   - _gameObject: {fileID: 1858710877}
-    _prefab: Assets/Space/Prefabs/Level items/ServerBox.prefab
+    _prefab: Assets/Prefabs/Space/Prefabs/Level items/ServerBox.prefab
   - _gameObject: {fileID: 1858710876}
-    _prefab: Assets/Space/Prefabs/Level items/ServerBox.prefab
+    _prefab: Assets/Prefabs/Space/Prefabs/Level items/ServerBox.prefab
   - _gameObject: {fileID: 1858710875}
-    _prefab: Assets/Space/Prefabs/Level items/ServerBox.prefab
+    _prefab: Assets/Prefabs/Space/Prefabs/Level items/ServerBox.prefab
   - _gameObject: {fileID: 1858710874}
     _prefab: Assets/Team Members/Rory/Assets/Prefabs/Normal Size/Server Rack.prefab
   - _gameObject: {fileID: 1858710873}
-    _prefab: Assets/Space/Prefabs/Level items/ServerBox.prefab
+    _prefab: Assets/Prefabs/Space/Prefabs/Level items/ServerBox.prefab
   - _gameObject: {fileID: 1858710872}
-    _prefab: Assets/Space/Prefabs/Level items/ServerBox.prefab
+    _prefab: Assets/Prefabs/Space/Prefabs/Level items/ServerBox.prefab
   - _gameObject: {fileID: 1858710871}
-    _prefab: Assets/Space/Prefabs/Level items/ServerBox.prefab
+    _prefab: Assets/Prefabs/Space/Prefabs/Level items/ServerBox.prefab
   - _gameObject: {fileID: 966272928}
     _prefab: Assets/Team Members/Rory/Assets/Prefabs/Normal Size/ServerBlock 1.prefab
   - _gameObject: {fileID: 966272936}
     _prefab: Assets/Team Members/Rory/Assets/Prefabs/Normal Size/Server Rack.prefab
   - _gameObject: {fileID: 966272935}
-    _prefab: Assets/Space/Prefabs/Level items/ServerBox.prefab
+    _prefab: Assets/Prefabs/Space/Prefabs/Level items/ServerBox.prefab
   - _gameObject: {fileID: 966272934}
-    _prefab: Assets/Space/Prefabs/Level items/ServerBox.prefab
+    _prefab: Assets/Prefabs/Space/Prefabs/Level items/ServerBox.prefab
   - _gameObject: {fileID: 966272933}
-    _prefab: Assets/Space/Prefabs/Level items/ServerBox.prefab
+    _prefab: Assets/Prefabs/Space/Prefabs/Level items/ServerBox.prefab
   - _gameObject: {fileID: 966272932}
     _prefab: Assets/Team Members/Rory/Assets/Prefabs/Normal Size/Server Rack.prefab
   - _gameObject: {fileID: 966272931}
-    _prefab: Assets/Space/Prefabs/Level items/ServerBox.prefab
+    _prefab: Assets/Prefabs/Space/Prefabs/Level items/ServerBox.prefab
   - _gameObject: {fileID: 966272930}
-    _prefab: Assets/Space/Prefabs/Level items/ServerBox.prefab
+    _prefab: Assets/Prefabs/Space/Prefabs/Level items/ServerBox.prefab
   - _gameObject: {fileID: 966272929}
-    _prefab: Assets/Space/Prefabs/Level items/ServerBox.prefab
+    _prefab: Assets/Prefabs/Space/Prefabs/Level items/ServerBox.prefab
   - _gameObject: {fileID: 1106828801}
     _prefab: Assets/Team Members/Rory/Assets/Prefabs/Normal Size/ServerBlock 1.prefab
   - _gameObject: {fileID: 1106828809}
     _prefab: Assets/Team Members/Rory/Assets/Prefabs/Normal Size/Server Rack.prefab
   - _gameObject: {fileID: 1106828808}
-    _prefab: Assets/Space/Prefabs/Level items/ServerBox.prefab
+    _prefab: Assets/Prefabs/Space/Prefabs/Level items/ServerBox.prefab
   - _gameObject: {fileID: 1106828807}
-    _prefab: Assets/Space/Prefabs/Level items/ServerBox.prefab
+    _prefab: Assets/Prefabs/Space/Prefabs/Level items/ServerBox.prefab
   - _gameObject: {fileID: 1106828806}
-    _prefab: Assets/Space/Prefabs/Level items/ServerBox.prefab
+    _prefab: Assets/Prefabs/Space/Prefabs/Level items/ServerBox.prefab
   - _gameObject: {fileID: 1106828805}
     _prefab: Assets/Team Members/Rory/Assets/Prefabs/Normal Size/Server Rack.prefab
   - _gameObject: {fileID: 1106828804}
-    _prefab: Assets/Space/Prefabs/Level items/ServerBox.prefab
+    _prefab: Assets/Prefabs/Space/Prefabs/Level items/ServerBox.prefab
   - _gameObject: {fileID: 1106828803}
-    _prefab: Assets/Space/Prefabs/Level items/ServerBox.prefab
+    _prefab: Assets/Prefabs/Space/Prefabs/Level items/ServerBox.prefab
   - _gameObject: {fileID: 1106828802}
-    _prefab: Assets/Space/Prefabs/Level items/ServerBox.prefab
+    _prefab: Assets/Prefabs/Space/Prefabs/Level items/ServerBox.prefab
   - _gameObject: {fileID: 1903544613062155452}
     _prefab: Assets/Team Members/Rory/Assets/Prefabs/ABSOLUTE DONT TOUCH/SinglePrefabs/SingleCabinet.prefab
   - _gameObject: {fileID: 1903544613062155453}
@@ -7120,9 +7120,9 @@ MonoBehaviour:
   - _gameObject: {fileID: 382865164}
     _prefab: Assets/Team Members/Rory/Assets/Prefabs/ABSOLUTE DONT TOUCH/SinglePrefabs/WallWindow.prefab
   - _gameObject: {fileID: 1482447244294389983}
-    _prefab: Assets/Space/Prefabs/Ship's computer/Ship's computer.prefab
+    _prefab: Assets/Prefabs/Space/Prefabs/Ship's computer/Ship's computer.prefab
   - _gameObject: {fileID: 278701587}
-    _prefab: Assets/Space/Prefabs/Local Volumetric Fog.prefab
+    _prefab: Assets/Prefabs/Space/Prefabs/Local Volumetric Fog.prefab
   - _gameObject: {fileID: 1160333946}
     _prefab: Assets/Prefabs/Items/WireGenerator.prefab
   - _gameObject: {fileID: 16241153}
@@ -7135,6 +7135,8 @@ MonoBehaviour:
     _prefab: Assets/Prefabs/Player/Player.prefab
   - _gameObject: {fileID: 1374038344}
     _prefab: Assets/Prefabs/Player/Player.prefab
+  - _gameObject: {fileID: 670963113}
+    _prefab: Assets/Team Members/DylanL/MyGuy/myguy.prefab
 --- !u!4 &581867193
 Transform:
   m_ObjectHideFlags: 11
@@ -7837,6 +7839,68 @@ GameObject:
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7570635144322954276, guid: 7ff16eef04ff4154580ca07e76412f4b, type: 3}
   m_PrefabInstance: {fileID: 668743745}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &670963112
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2944285484769597737, guid: f703d23f10a2d8f44ad130d8d32bfa92, type: 3}
+      propertyPath: m_Name
+      value: myguy
+      objectReference: {fileID: 0}
+    - target: {fileID: 6190775254288727012, guid: f703d23f10a2d8f44ad130d8d32bfa92, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 32.29
+      objectReference: {fileID: 0}
+    - target: {fileID: 6190775254288727012, guid: f703d23f10a2d8f44ad130d8d32bfa92, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.000004053116
+      objectReference: {fileID: 0}
+    - target: {fileID: 6190775254288727012, guid: f703d23f10a2d8f44ad130d8d32bfa92, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 78.83
+      objectReference: {fileID: 0}
+    - target: {fileID: 6190775254288727012, guid: f703d23f10a2d8f44ad130d8d32bfa92, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: -0.99788356
+      objectReference: {fileID: 0}
+    - target: {fileID: 6190775254288727012, guid: f703d23f10a2d8f44ad130d8d32bfa92, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6190775254288727012, guid: f703d23f10a2d8f44ad130d8d32bfa92, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.06502617
+      objectReference: {fileID: 0}
+    - target: {fileID: 6190775254288727012, guid: f703d23f10a2d8f44ad130d8d32bfa92, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6190775254288727012, guid: f703d23f10a2d8f44ad130d8d32bfa92, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6190775254288727012, guid: f703d23f10a2d8f44ad130d8d32bfa92, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -352.543
+      objectReference: {fileID: 0}
+    - target: {fileID: 6190775254288727012, guid: f703d23f10a2d8f44ad130d8d32bfa92, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: f703d23f10a2d8f44ad130d8d32bfa92, type: 3}
+--- !u!1 &670963113 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2944285484769597737, guid: f703d23f10a2d8f44ad130d8d32bfa92, type: 3}
+  m_PrefabInstance: {fileID: 670963112}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &685639690
 PrefabInstance:
@@ -22889,3 +22953,4 @@ SceneRoots:
   - {fileID: 1374038343}
   - {fileID: 1797616378}
   - {fileID: 2136172984}
+  - {fileID: 670963112}
