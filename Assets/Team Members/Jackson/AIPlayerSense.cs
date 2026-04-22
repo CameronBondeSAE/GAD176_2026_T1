@@ -15,15 +15,12 @@ public class AIPlayerSense : MonoBehaviour, ISense
     public bool foundCollector = false;
     public bool boxDelivered = false;
     public int pointsEarned = 0;
-    [SerializeField] private TextMeshProUGUI pointsDisplay;
     public Transform boxTransform;
     public Transform boxCollectorTransform;
     public GameObject backpack;
     public AudioSource audioSource;
     public AudioClip boxCollectedClip;
     public AudioClip boxDeliveredClip;
-    public GameObject UIOverlay;
-    public GameObject winScreen;
     
     private void Awake()
     {
@@ -40,11 +37,6 @@ public class AIPlayerSense : MonoBehaviour, ISense
     private void OnDisable()
     {
         SoundReceiver.ScaredSoundEvent.RemoveListener(GotScared);
-    }
-
-    private void Update()
-    {
-        pointsDisplay.text = "Points: " + pointsEarned;
     }
     
     private void GotScared()

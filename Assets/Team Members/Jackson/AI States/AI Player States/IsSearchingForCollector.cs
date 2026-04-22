@@ -16,7 +16,7 @@ public class IsSearchingForCollector : AntAIState
 
     public override void Enter()
     {
-        _boxCollector= FindFirstObjectByType<BoxCollector>();
+        _boxCollector = FindFirstObjectByType<BoxCollector>();
         Finish();
     }
 

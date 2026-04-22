@@ -7,11 +7,10 @@ public class Avoid : AIBase
     [SerializeField] private float turnSpeed = 3f;
     [SerializeField] private AnimationCurve curve;
     [SerializeField] private float curveEval;
-    [SerializeField] private LayerMask enemiesAndObstaclesMask;
 
     private void FixedUpdate()
     {
-        bool didItHitAnything = Physics.Raycast(transform.position, transform.forward, out RaycastHit hitInfo, maxDistance, enemiesAndObstaclesMask);
+        bool didItHitAnything = Physics.Raycast(transform.position, transform.forward, out RaycastHit hitInfo, maxDistance);
 
         if (didItHitAnything)
         {

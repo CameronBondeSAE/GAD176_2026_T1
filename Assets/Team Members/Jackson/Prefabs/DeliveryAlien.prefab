@@ -127,9 +127,6 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   curveEval: 0
-  enemiesAndObstaclesMask:
-    serializedVersion: 2
-    m_Bits: 136
 --- !u!1 &3149513854060149856
 GameObject:
   m_ObjectHideFlags: 0
@@ -273,8 +270,8 @@ GameObject:
   - component: {fileID: 741931614605672861}
   - component: {fileID: 456993868257401930}
   - component: {fileID: 5221470906353265993}
+  - component: {fileID: 2865454814989997619}
   - component: {fileID: 7124204442733759517}
-  - component: {fileID: 9080556454960480599}
   - component: {fileID: 6872791333556789901}
   - component: {fileID: 3092293388084632666}
   - component: {fileID: 5657176260902685982}
@@ -431,19 +428,7 @@ MonoBehaviour:
   manualUpdate: 0
   thinkInterval: 0.1
   scenario: {fileID: 0}
---- !u!114 &7124204442733759517
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6097567866601207306}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6bcf0f786e637e14e824dfc8846f98a1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &9080556454960480599
+--- !u!114 &2865454814989997619
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -473,6 +458,18 @@ MonoBehaviour:
   boxDeliveredClip: {fileID: 0}
   UIOverlay: {fileID: 0}
   winScreen: {fileID: 0}
+--- !u!114 &7124204442733759517
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6097567866601207306}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6bcf0f786e637e14e824dfc8846f98a1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &6872791333556789901
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -800,9 +797,6 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   curveEval: 0
-  enemiesAndObstaclesMask:
-    serializedVersion: 2
-    m_Bits: 136
 --- !u!1 &8939394774868003634
 GameObject:
   m_ObjectHideFlags: 0
@@ -930,9 +924,6 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   curveEval: 0
-  enemiesAndObstaclesMask:
-    serializedVersion: 2
-    m_Bits: 128
 --- !u!1001 &3233108337013107684
 PrefabInstance:
   m_ObjectHideFlags: 0

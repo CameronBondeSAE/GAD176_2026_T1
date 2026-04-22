@@ -67,12 +67,6 @@ public class IsUnloadingBox : AntAIState
 
     public override void Exit()
     {
-        if (_aiPlayerSense.pointsEarned == 5)
-        {
-            _aiPlayerSense.UIOverlay.SetActive(false);
-            _aiPlayerSense.winScreen.SetActive(true);
-        }
-        
         _pathfinder.reachedEndEvent.RemoveListener(ReachedEnd);
         
         Finish();

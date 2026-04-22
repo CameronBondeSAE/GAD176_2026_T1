@@ -44,11 +44,7 @@ public class IsWandering : AntAIState
     public override void Exit()
     {
         _box.gameObject.SetActive(true);
-
-        if (_aiPlayerSense.pointsEarned < 5)
-        {
-            _aiPlayerSense.boxSpawned = true;
-        }
+        _aiPlayerSense.boxSpawned = true;
         
         Debug.Log("Box Has Spawned now moving on to Searching for the Box");
         Finish();
