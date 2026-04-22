@@ -1,0 +1,115 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &6770945547348500485
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6669930976086541130}
+  - component: {fileID: 1431594833932283327}
+  - component: {fileID: 9118226519456300580}
+  - component: {fileID: 5435639941573011653}
+  - component: {fileID: 9118053992995550434}
+  - component: {fileID: 7269453595972496375}
+  m_Layer: 0
+  m_Name: Alien Looking for Player (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6669930976086541130
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6770945547348500485}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1431594833932283327
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6770945547348500485}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f259499504344a478f77730135c24e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &9118226519456300580
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6770945547348500485}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6034df7d78d922f46be58dee206900e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rb: {fileID: 1488734765156426226, guid: b355c927863a39448a72f327cbc06017, type: 3}
+  amount: 100
+--- !u!114 &5435639941573011653
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6770945547348500485}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 81a6f9b62769a534aa06619840c86951, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  States: {fileID: 2282357899964809628, guid: b355c927863a39448a72f327cbc06017, type: 3}
+  forward: {fileID: 9118053992995550434}
+  wander: {fileID: 9118226519456300580}
+  alienView: {fileID: 7269453595972496375}
+--- !u!114 &9118053992995550434
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6770945547348500485}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b912612298a293448a075869da0bc237, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rb: {fileID: 1488734765156426226, guid: b355c927863a39448a72f327cbc06017, type: 3}
+  speed: 900
+--- !u!114 &7269453595972496375
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6770945547348500485}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a494844473c6ca34cbd06fab35a981c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxAngle: 50
+  rays: 5
+  thingsSeen:
+  - {fileID: 7962856511363394223, guid: 1152c9d201a4e4546bbf0cc58a5277a0, type: 3}
+  seesPlayer: 0
+  Player:
+    serializedVersion: 2
+    m_Bits: 512
+  states: {fileID: 2282357899964809628, guid: b355c927863a39448a72f327cbc06017, type: 3}
