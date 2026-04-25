@@ -1,8 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Divij;
 using UnityEngine;
 
-public class MovingGuy : MonoBehaviour
+public class MovingGuy : CharacterBase
 {
 	public float speed = 1f;
 
