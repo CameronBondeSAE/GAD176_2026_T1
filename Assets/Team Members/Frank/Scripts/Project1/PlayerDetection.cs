@@ -18,7 +18,12 @@ public class PlayerDetection : MonoBehaviour, IPowered
         isPowered = powered;
         
     }
-    
+
+    public bool GetPowered()
+    {
+	    return isPowered;
+    }
+
     private void Update()
     {
 
