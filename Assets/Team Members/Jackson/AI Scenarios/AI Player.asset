@@ -26,6 +26,8 @@ MonoBehaviour:
       name: Found Collector
     - id: 5
       name: Box Delivered
+    - id: 6
+      name: Is Lit
   actions:
   - name: Collect Box
     isDefault: 0
@@ -105,6 +107,8 @@ MonoBehaviour:
       value: 0
     post:
     - id: 0
+      value: 1
+    - id: 6
       value: 1
   goals:
   - name: Delivered Box

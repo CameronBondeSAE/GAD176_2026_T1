@@ -47,6 +47,8 @@ namespace Team_Members.Jackson.AI_States.AI_Player_States
 
         public override void Exit()
         {
+            _box.gameObject.SetActive(true);
+            
             _aiPlayerSense.boxSpawned = true;
         
             Debug.Log("Box Has Spawned now moving on to Searching for the Box");

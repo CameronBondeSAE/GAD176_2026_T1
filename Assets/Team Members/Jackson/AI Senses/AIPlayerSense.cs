@@ -10,6 +10,7 @@ namespace Team_Members.Jackson.AI_Senses
         private PlayerStorage _playerStorage;
         [SerializeField] private GameObject exclamationMark;
         [SerializeField] private EnemySense[] enemies;
+        public bool isLit = true;
         public bool boxSpawned = false;
         public bool foundBox = false;
         public bool playerWorking = false;
@@ -67,6 +68,7 @@ namespace Team_Members.Jackson.AI_Senses
         public void CollectConditions(AntAIAgent aAgent, AntAICondition aWorldState)
         {
             // Temporarily making it true before I setup the Box Spawning
+            aWorldState.Set(AIPlayer.IsLit, isLit);
             aWorldState.Set(AIPlayer.BoxSpawned, boxSpawned);
             aWorldState.Set(AIPlayer.PlayerWorking, playerWorking);
             aWorldState.Set(AIPlayer.FoundBox, foundBox);
