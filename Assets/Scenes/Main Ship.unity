@@ -817,11 +817,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 5607403325121091941, guid: 567f351c6027259429afe86d33a5d9ff, type: 3}
   m_PrefabInstance: {fileID: 1339047788}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &100765436 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3071542813545521559, guid: b355c927863a39448a72f327cbc06017, type: 3}
-  m_PrefabInstance: {fileID: 477337933}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &103013822
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3392,6 +3387,7 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6253073774604220240, guid: 2f5c51fb7a4fbbe4ab3833727c8bdb2f, type: 3}
   m_PrefabInstance: {fileID: 458857458}
   m_PrefabAsset: {fileID: 0}
+<<<<<<< HEAD
 --- !u!1001 &477337933
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3479,6 +3475,8 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b355c927863a39448a72f327cbc06017, type: 3}
+=======
+>>>>>>> parent of aa47f8e (updated Scene)
 --- !u!1 &482277867 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1710280365958799962, guid: 567f351c6027259429afe86d33a5d9ff, type: 3}
@@ -7227,9 +7225,6 @@ MonoBehaviour:
     _prefab: Assets/Prefabs/Player/Player.prefab
   - _gameObject: {fileID: 1374038344}
     _prefab: Assets/Prefabs/Player/Player.prefab
-  - _gameObject: {fileID: 100765436}
-    _prefab: Assets/Team Members/Emilio/project 2/Aggressive Alien AI/Aggresive Alien
-      AI.prefab
 --- !u!4 &581867193
 Transform:
   m_ObjectHideFlags: 11
@@ -13334,10 +13329,10 @@ Rigidbody:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1237788317}
-  serializedVersion: 5
+  serializedVersion: 4
   m_Mass: 1
-  m_LinearDamping: 0
-  m_AngularDamping: 0.05
+  m_Drag: 0
+  m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
   m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
@@ -18078,10 +18073,10 @@ Rigidbody:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1624239996}
-  serializedVersion: 5
+  serializedVersion: 4
   m_Mass: 1
-  m_LinearDamping: 0
-  m_AngularDamping: 0.05
+  m_Drag: 0
+  m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
   m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
@@ -22984,4 +22979,3 @@ SceneRoots:
   - {fileID: 1374038343}
   - {fileID: 1797616378}
   - {fileID: 2136172984}
-  - {fileID: 477337933}
