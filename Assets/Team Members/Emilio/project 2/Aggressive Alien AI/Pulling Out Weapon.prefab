@@ -210,6 +210,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Alien Shooting
       objectReference: {fileID: 0}
+    - target: {fileID: 3560789537438565352, guid: 022b769991e2d244d910c3be9a5123b9, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5904571186801783305, guid: 022b769991e2d244d910c3be9a5123b9, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.048
