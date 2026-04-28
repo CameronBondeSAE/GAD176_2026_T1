@@ -208,6 +208,7 @@ MonoBehaviour:
   customOffset: {x: 0, y: 0.5, z: 0.5}
   connectedlineRenderer: {fileID: 0}
   lineMaterial: {fileID: 0}
+  heldCableEnd: {fileID: 0}
 --- !u!1 &2206748623023957074
 GameObject:
   m_ObjectHideFlags: 0
@@ -238,7 +239,7 @@ Transform:
   m_GameObject: {fileID: 2206748623023957074}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -2.266419, y: -0.72927284, z: -0.98117733}
+  m_LocalPosition: {x: -0.52, y: -0.72927284, z: -0.98117733}
   m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
   m_ConstrainProportionsScale: 0
   m_Children: []

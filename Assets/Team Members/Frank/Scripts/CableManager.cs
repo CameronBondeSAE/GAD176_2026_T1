@@ -13,7 +13,12 @@ public class CableManager : MonoBehaviour
     public LineRenderer connectedlineRenderer;
     public Material lineMaterial;
     public GameObject heldCableEnd;
-    
+
+    public void Start()
+    {
+	    WireMaker();
+    }
+
     public void WireMaker()
     {
         connectedlineRenderer = gameObject.AddComponent<LineRenderer>();
@@ -28,7 +33,7 @@ public class CableManager : MonoBehaviour
         SetWirePosition();
         
     }
-    
+
     /// <summary>
     /// This function accepts two transforms.
     /// powerPointTransformRef is used to set EndA to the PowerPoints location.
@@ -39,10 +44,10 @@ public class CableManager : MonoBehaviour
         powerPointTransformRef = powerPointTransform; // variable is assigned the transform of a PowerPoint passed in by the player
         playerHandsTransformRef = playerHandsTransform; // variable is assigned a transform for the player's hands also passed in. 
         
-        WireMaker();
+        // WireMaker();
         CableSetup(); // uses the above stored references to set the positions of each cable end in space. 
     }
-    
+
     public void CableSetup()
     {
         CableEndARef.transform.position = (powerPointTransformRef.position + customOffset); // the position of endA is set to the power points position
@@ -51,7 +56,7 @@ public class CableManager : MonoBehaviour
         heldCableEnd = CableEndBRef; // makes the held cable end equal to EndB
         playerHandsTransformRef.GetComponent<Interact>().heldObject = heldCableEnd;
     }
-    
+
     /// <summary>
     /// Updates endPosition based on the current value of the transform representing the player's hands.
     /// Necessary to update the direction of the LineRenderer.
@@ -62,7 +67,7 @@ public class CableManager : MonoBehaviour
         CableEndBRef.transform.position = playerHandsTransformRef.position;
         
     }
-    
+
     /// <summary>
     /// Sets the start and end positions of the linerenderer based on startPosition and endPosition.
     /// Called every frame. Uses the current value of StartPosition and endPosition to draw the line.
@@ -75,17 +80,12 @@ public class CableManager : MonoBehaviour
         connectedlineRenderer.SetPosition(1, CableEndBRef.transform.position);
         
     }
-    
-    public void Start()
-    {
-        //WireMaker();
-    }
 
 
     // Update is called once per frame
     public void Update()
     {
-        TrackEndPosition();
+        // TrackEndPosition();
         SetWirePosition();
     }
 

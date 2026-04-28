@@ -40,6 +40,11 @@ namespace Frank
 							{
 								c.transform.GetComponentInParent<IHoldable>().Pickup(handsTransform);
 
+								if (c.GetComponent<Rigidbody>() != null)
+								{
+									c.GetComponent<Rigidbody>().isKinematic = true;
+								}
+								
 								// Snap to hands
 								c.transform.parent = handsTransform;
 								isHolding = true;
@@ -51,6 +56,11 @@ namespace Frank
 							c.transform.GetComponentInParent<IHoldable>().Drop();
 							c.transform.parent = null;
 							isHolding = false;
+							
+							if (c.GetComponent<Rigidbody>() != null)
+							{
+								c.GetComponent<Rigidbody>().isKinematic = false;
+							}
 						}
 					}
 				}
