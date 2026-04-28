@@ -43,10 +43,10 @@ public class Collectstates : MonoBehaviour , ISense
         aworldState.Set(AggresiveAlienAI.isPlayerDead, isIsPlayerDead);
         aworldState.Set(AggresiveAlienAI.CanSeeplayer, isCanSeeplayer);
         {
-            for (int i = 0; i < aAgent.currentPlan.Count; i++)
-            {
-                Debug.Log(aAgent.currentPlan[i]);
-            }
+            // for (int i = 0; i < aAgent.currentPlan.Count; i++)
+            // {
+            //     Debug.Log(aAgent.currentPlan[i]);
+            // }
 
         }
     }

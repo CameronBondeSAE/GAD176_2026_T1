@@ -13,7 +13,7 @@ public class bulletMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-     rb.AddRelativeForce(Vector3.forward * speed);    
+     rb.AddRelativeForce(-speed,0f,0f);    
     }
     
 }

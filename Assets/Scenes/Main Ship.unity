@@ -3440,12 +3440,42 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2282357899964809628, guid: b355c927863a39448a72f327cbc06017, type: 3}
+      propertyPath: isCanSeeplayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2282357899964809628, guid: b355c927863a39448a72f327cbc06017, type: 3}
+      propertyPath: isIsPlayerDead
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2282357899964809628, guid: b355c927863a39448a72f327cbc06017, type: 3}
+      propertyPath: isweapondDrawn
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2282357899964809628, guid: b355c927863a39448a72f327cbc06017, type: 3}
+      propertyPath: isLookingforplayer
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3071542813545521559, guid: b355c927863a39448a72f327cbc06017, type: 3}
       propertyPath: m_Name
       value: Aggresive Alien AI
       objectReference: {fileID: 0}
+    - target: {fileID: 3353581674595091141, guid: b355c927863a39448a72f327cbc06017, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3730565048318561202, guid: b355c927863a39448a72f327cbc06017, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5475598972820081224, guid: b355c927863a39448a72f327cbc06017, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 3730565048318561202, guid: b355c927863a39448a72f327cbc06017, type: 3}
+    - {fileID: 3985781018332002079, guid: b355c927863a39448a72f327cbc06017, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b355c927863a39448a72f327cbc06017, type: 3}

@@ -111,5 +111,5 @@ MonoBehaviour:
   seesPlayer: 0
   Player:
     serializedVersion: 2
-    m_Bits: 512
+    m_Bits: 8
   states: {fileID: 2282357899964809628, guid: b355c927863a39448a72f327cbc06017, type: 3}
