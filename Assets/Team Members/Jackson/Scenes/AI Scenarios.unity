@@ -20649,7 +20649,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4550239991258805863, guid: f5b6874fad2c2d6419d07c9dde23dfb0, type: 3}
       propertyPath: m_ExcludeLayers.m_Bits
-      value: 503
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4550239991258805863, guid: f5b6874fad2c2d6419d07c9dde23dfb0, type: 3}
+      propertyPath: m_IncludeLayers.m_Bits
+      value: 512
       objectReference: {fileID: 0}
     - target: {fileID: 5832847297405897558, guid: f5b6874fad2c2d6419d07c9dde23dfb0, type: 3}
       propertyPath: m_Version
