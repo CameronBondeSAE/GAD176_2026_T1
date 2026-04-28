@@ -2,7 +2,7 @@ using System;
 using Frank;
 using UnityEngine;
 
-public class CableEnd : MonoBehaviour, IInteractable
+public class CableEnd : MonoBehaviour, IInteractable, IHoldable
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
 
