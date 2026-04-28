@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using Divij;
 using Frank;
-using Unity.VisualScripting;
 using IInteractable = Divij.IInteractable;
 
 public class PoweredSwitch : MonoBehaviour, IInteractable, IPowered

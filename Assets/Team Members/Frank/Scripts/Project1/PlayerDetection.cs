@@ -1,7 +1,6 @@
 using System.Collections;
 using Divij;
 using Frank;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerDetection : MonoBehaviour, IPowered
