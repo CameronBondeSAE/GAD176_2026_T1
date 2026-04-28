@@ -6,5 +6,5 @@ AssetOrigin:
   productId: 239351
   packageName: Fast Script Reload
   packageVersion: 1.6.1
-  assetPath: Assets/FastScriptReload/Scripts/Editor/Compilation/CodeRewriting/ConstructorRewriter.cs
+  assetPath: Assets/Plugins/FastScriptReload/Scripts/Editor/Compilation/CodeRewriting/ConstructorRewriter.cs
   uploadId: 710802

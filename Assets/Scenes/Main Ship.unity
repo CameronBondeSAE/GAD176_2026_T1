@@ -2657,30 +2657,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 2863528079676618886, guid: 0baf0237d984f8048a3a8769944e4fb1, type: 3}
   m_PrefabInstance: {fileID: 355066083}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &355959843
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1273390475}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f2469ff65459b974283c2f688a6102a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &355959844
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1273390475}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: af4e61934214cde42ab2bbcc051e4241, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &357302641
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3730,6 +3706,11 @@ MonoBehaviour:
   m_LightUnit: 2
   m_LuxAtDistance: 1
   m_Intensity: 101311.78
+  m_Version: 13
+  m_ObsoleteShadowResolutionTier: 1
+  m_ObsoleteUseShadowQualitySettings: 0
+  m_ObsoleteCustomShadowResolution: 512
+  m_ObsoleteContactShadows: 0
   m_InnerSpotPercent: 0
   m_SpotIESCutoffPercent: 100
   m_LightDimmer: 1
@@ -3848,11 +3829,6 @@ MonoBehaviour:
   m_AreaLightEmissiveMeshShadowCastingMode: 0
   m_AreaLightEmissiveMeshMotionVectorGenerationMode: 0
   m_AreaLightEmissiveMeshLayer: -1
-  m_Version: 13
-  m_ObsoleteShadowResolutionTier: 1
-  m_ObsoleteUseShadowQualitySettings: 0
-  m_ObsoleteCustomShadowResolution: 512
-  m_ObsoleteContactShadows: 0
 --- !u!1 &529335904 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 9019138535875646060, guid: 608884baca813ce47a802deb91c002cb, type: 3}
@@ -4586,23 +4562,23 @@ MonoBehaviour:
   - _gameObject: {fileID: 1627943584}
     _prefab: Assets/Prefabs/Utilities/SpawnPoint.prefab
   - _gameObject: {fileID: 1403686773}
-    _prefab: Assets/Space/Prefabs/Spawn Points.prefab
+    _prefab: Assets/Prefabs/Space/Prefabs/Spawn Points.prefab
   - _gameObject: {fileID: 1068730606}
-    _prefab: Assets/Space/Prefabs/Spawn Points.prefab
+    _prefab: Assets/Prefabs/Space/Prefabs/Spawn Points.prefab
   - _gameObject: {fileID: 1142598394}
-    _prefab: Assets/Space/Prefabs/Spawn Points.prefab
+    _prefab: Assets/Prefabs/Space/Prefabs/Spawn Points.prefab
   - _gameObject: {fileID: 565555895}
-    _prefab: Assets/Space/Prefabs/Spawn Points.prefab
+    _prefab: Assets/Prefabs/Space/Prefabs/Spawn Points.prefab
   - _gameObject: {fileID: 89990408}
-    _prefab: Assets/Space/Prefabs/Spawn Points.prefab
+    _prefab: Assets/Prefabs/Space/Prefabs/Spawn Points.prefab
   - _gameObject: {fileID: 1398079727}
-    _prefab: Assets/Space/Prefabs/Spawn Points.prefab
+    _prefab: Assets/Prefabs/Space/Prefabs/Spawn Points.prefab
   - _gameObject: {fileID: 5299257}
-    _prefab: Assets/Space/Prefabs/Enemy Spawn Points.prefab
+    _prefab: Assets/Prefabs/Space/Prefabs/Enemy Spawn Points.prefab
   - _gameObject: {fileID: 2003252866}
-    _prefab: Assets/Space/Prefabs/Enemy Spawn Points.prefab
+    _prefab: Assets/Prefabs/Space/Prefabs/Enemy Spawn Points.prefab
   - _gameObject: {fileID: 1590570444}
-    _prefab: Assets/Space/Prefabs/Enemy Spawn Points.prefab
+    _prefab: Assets/Prefabs/Space/Prefabs/Enemy Spawn Points.prefab
   - _gameObject: {fileID: 2038071900}
     _prefab: Assets/Team Members/Rory/Assets/Prefabs/Normal Size/OpenFloor.prefab
   - _gameObject: {fileID: 2038071904}
@@ -4612,7 +4588,7 @@ MonoBehaviour:
   - _gameObject: {fileID: 2038071902}
     _prefab: Assets/Team Members/Rory/Assets/Prefabs/ABSOLUTE DONT TOUCH/SinglePrefabs/Roof.prefab
   - _gameObject: {fileID: 2038071901}
-    _prefab: Assets/Team Members/Rory/Assets/Prefabs/ABSOLUTE DONT TOUCH/SinglePrefabs/Light.prefab
+    _prefab: Assets/Prefabs/Light/Light.prefab
   - _gameObject: {fileID: 602940903}
     _prefab: Assets/Team Members/Rory/Assets/LightThing.fbx
   - _gameObject: {fileID: 76993056}
@@ -4624,7 +4600,7 @@ MonoBehaviour:
   - _gameObject: {fileID: 76993058}
     _prefab: Assets/Team Members/Rory/Assets/Prefabs/ABSOLUTE DONT TOUCH/SinglePrefabs/Roof.prefab
   - _gameObject: {fileID: 76993057}
-    _prefab: Assets/Team Members/Rory/Assets/Prefabs/ABSOLUTE DONT TOUCH/SinglePrefabs/Light.prefab
+    _prefab: Assets/Prefabs/Light/Light.prefab
   - _gameObject: {fileID: 1915302535}
     _prefab: Assets/Team Members/Rory/Assets/LightThing.fbx
   - _gameObject: {fileID: 1925901749}
@@ -4636,7 +4612,7 @@ MonoBehaviour:
   - _gameObject: {fileID: 1925901746}
     _prefab: Assets/Team Members/Rory/Assets/Prefabs/ABSOLUTE DONT TOUCH/SinglePrefabs/Roof.prefab
   - _gameObject: {fileID: 1925901745}
-    _prefab: Assets/Team Members/Rory/Assets/Prefabs/ABSOLUTE DONT TOUCH/SinglePrefabs/Light.prefab
+    _prefab: Assets/Prefabs/Light/Light.prefab
   - _gameObject: {fileID: 2123222816}
     _prefab: Assets/Team Members/Rory/Assets/LightThing.fbx
   - _gameObject: {fileID: 1153782048}
@@ -4648,7 +4624,7 @@ MonoBehaviour:
   - _gameObject: {fileID: 1153782045}
     _prefab: Assets/Team Members/Rory/Assets/Prefabs/ABSOLUTE DONT TOUCH/SinglePrefabs/Roof.prefab
   - _gameObject: {fileID: 1153782044}
-    _prefab: Assets/Team Members/Rory/Assets/Prefabs/ABSOLUTE DONT TOUCH/SinglePrefabs/Light.prefab
+    _prefab: Assets/Prefabs/Light/Light.prefab
   - _gameObject: {fileID: 228765816}
     _prefab: Assets/Team Members/Rory/Assets/LightThing.fbx
   - _gameObject: {fileID: 1569420099}
@@ -4660,7 +4636,7 @@ MonoBehaviour:
   - _gameObject: {fileID: 1569420096}
     _prefab: Assets/Team Members/Rory/Assets/Prefabs/ABSOLUTE DONT TOUCH/SinglePrefabs/Roof.prefab
   - _gameObject: {fileID: 1569420095}
-    _prefab: Assets/Team Members/Rory/Assets/Prefabs/ABSOLUTE DONT TOUCH/SinglePrefabs/Light.prefab
+    _prefab: Assets/Prefabs/Light/Light.prefab
   - _gameObject: {fileID: 2089132452}
     _prefab: Assets/Team Members/Rory/Assets/LightThing.fbx
   - _gameObject: {fileID: 1131282411}
@@ -4700,7 +4676,7 @@ MonoBehaviour:
   - _gameObject: {fileID: 908492579}
     _prefab: Assets/Team Members/Rory/Assets/Prefabs/ABSOLUTE DONT TOUCH/SinglePrefabs/WallVerticalPillar.prefab
   - _gameObject: {fileID: 1131282412}
-    _prefab: Assets/Team Members/Rory/Assets/Prefabs/ABSOLUTE DONT TOUCH/SinglePrefabs/Light.prefab
+    _prefab: Assets/Prefabs/Light/Light.prefab
   - _gameObject: {fileID: 1131282413}
     _prefab: Assets/Team Members/Rory/Assets/LightThing.fbx
   - _gameObject: {fileID: 159731067}
@@ -4740,7 +4716,7 @@ MonoBehaviour:
   - _gameObject: {fileID: 1220414725}
     _prefab: Assets/Team Members/Rory/Assets/Prefabs/ABSOLUTE DONT TOUCH/SinglePrefabs/WallVerticalPillar.prefab
   - _gameObject: {fileID: 159731068}
-    _prefab: Assets/Team Members/Rory/Assets/Prefabs/ABSOLUTE DONT TOUCH/SinglePrefabs/Light.prefab
+    _prefab: Assets/Prefabs/Light/Light.prefab
   - _gameObject: {fileID: 159731069}
     _prefab: Assets/Team Members/Rory/Assets/LightThing.fbx
   - _gameObject: {fileID: 316537241}
@@ -4774,7 +4750,7 @@ MonoBehaviour:
   - _gameObject: {fileID: 316537244}
     _prefab: Assets/Team Members/Rory/Assets/Prefabs/ABSOLUTE DONT TOUCH/ModuleBuild_SpaceShip_1.0.fbx
   - _gameObject: {fileID: 316537242}
-    _prefab: Assets/Team Members/Rory/Assets/Prefabs/ABSOLUTE DONT TOUCH/SinglePrefabs/Light.prefab
+    _prefab: Assets/Prefabs/Light/Light.prefab
   - _gameObject: {fileID: 316537243}
     _prefab: Assets/Team Members/Rory/Assets/LightThing.fbx
   - _gameObject: {fileID: 1672773893}
@@ -4800,7 +4776,7 @@ MonoBehaviour:
   - _gameObject: {fileID: 1907364274}
     _prefab: Assets/Team Members/Rory/Assets/Prefabs/ABSOLUTE DONT TOUCH/SinglePrefabs/WallVerticalPillar.prefab
   - _gameObject: {fileID: 1672773894}
-    _prefab: Assets/Team Members/Rory/Assets/Prefabs/ABSOLUTE DONT TOUCH/SinglePrefabs/Light.prefab
+    _prefab: Assets/Prefabs/Light/Light.prefab
   - _gameObject: {fileID: 1672773895}
     _prefab: Assets/Team Members/Rory/Assets/LightThing.fbx
   - _gameObject: {fileID: 913283507}
@@ -4826,7 +4802,7 @@ MonoBehaviour:
   - _gameObject: {fileID: 629894591}
     _prefab: Assets/Team Members/Rory/Assets/Prefabs/ABSOLUTE DONT TOUCH/SinglePrefabs/WallVerticalPillar.prefab
   - _gameObject: {fileID: 913283508}
-    _prefab: Assets/Team Members/Rory/Assets/Prefabs/ABSOLUTE DONT TOUCH/SinglePrefabs/Light.prefab
+    _prefab: Assets/Prefabs/Light/Light.prefab
   - _gameObject: {fileID: 913283509}
     _prefab: Assets/Team Members/Rory/Assets/LightThing.fbx
   - _gameObject: {fileID: 838339616}
@@ -4864,7 +4840,7 @@ MonoBehaviour:
   - _gameObject: {fileID: 1460876829}
     _prefab: Assets/Team Members/Rory/Assets/Prefabs/ABSOLUTE DONT TOUCH/SinglePrefabs/WallVerticalPillar.prefab
   - _gameObject: {fileID: 838339617}
-    _prefab: Assets/Team Members/Rory/Assets/Prefabs/ABSOLUTE DONT TOUCH/SinglePrefabs/Light.prefab
+    _prefab: Assets/Prefabs/Light/Light.prefab
   - _gameObject: {fileID: 838339618}
     _prefab: Assets/Team Members/Rory/Assets/LightThing.fbx
   - _gameObject: {fileID: 1045260401}
@@ -4904,7 +4880,7 @@ MonoBehaviour:
   - _gameObject: {fileID: 734764030}
     _prefab: Assets/Team Members/Rory/Assets/Prefabs/ABSOLUTE DONT TOUCH/SinglePrefabs/WallVerticalPillar.prefab
   - _gameObject: {fileID: 1045260402}
-    _prefab: Assets/Team Members/Rory/Assets/Prefabs/ABSOLUTE DONT TOUCH/SinglePrefabs/Light.prefab
+    _prefab: Assets/Prefabs/Light/Light.prefab
   - _gameObject: {fileID: 1045260403}
     _prefab: Assets/Team Members/Rory/Assets/LightThing.fbx
   - _gameObject: {fileID: 557171187}
@@ -4944,7 +4920,7 @@ MonoBehaviour:
   - _gameObject: {fileID: 1100136373}
     _prefab: Assets/Team Members/Rory/Assets/Prefabs/ABSOLUTE DONT TOUCH/SinglePrefabs/WallVerticalPillar.prefab
   - _gameObject: {fileID: 557171188}
-    _prefab: Assets/Team Members/Rory/Assets/Prefabs/ABSOLUTE DONT TOUCH/SinglePrefabs/Light.prefab
+    _prefab: Assets/Prefabs/Light/Light.prefab
   - _gameObject: {fileID: 557171189}
     _prefab: Assets/Team Members/Rory/Assets/LightThing.fbx
   - _gameObject: {fileID: 668743747}
@@ -4988,7 +4964,7 @@ MonoBehaviour:
   - _gameObject: {fileID: 668743748}
     _prefab: Assets/Team Members/Rory/Assets/Prefabs/ABSOLUTE DONT TOUCH/ModuleBuild_SpaceShip_1.0.fbx
   - _gameObject: {fileID: 1910802865}
-    _prefab: Assets/Team Members/Rory/Assets/Prefabs/ABSOLUTE DONT TOUCH/SinglePrefabs/Light.prefab
+    _prefab: Assets/Prefabs/Light/Light.prefab
   - _gameObject: {fileID: 1644018348}
     _prefab: Assets/Team Members/Rory/Assets/LightThing.fbx
   - _gameObject: {fileID: 395420329}
@@ -5028,7 +5004,7 @@ MonoBehaviour:
   - _gameObject: {fileID: 2109746310}
     _prefab: Assets/Team Members/Rory/Assets/Prefabs/ABSOLUTE DONT TOUCH/SinglePrefabs/WallVerticalPillar.prefab
   - _gameObject: {fileID: 395420330}
-    _prefab: Assets/Team Members/Rory/Assets/Prefabs/ABSOLUTE DONT TOUCH/SinglePrefabs/Light.prefab
+    _prefab: Assets/Prefabs/Light/Light.prefab
   - _gameObject: {fileID: 395420331}
     _prefab: Assets/Team Members/Rory/Assets/LightThing.fbx
   - _gameObject: {fileID: 824366129}
@@ -5068,7 +5044,7 @@ MonoBehaviour:
   - _gameObject: {fileID: 801685366}
     _prefab: Assets/Team Members/Rory/Assets/Prefabs/ABSOLUTE DONT TOUCH/SinglePrefabs/WallVerticalPillar.prefab
   - _gameObject: {fileID: 824366130}
-    _prefab: Assets/Team Members/Rory/Assets/Prefabs/ABSOLUTE DONT TOUCH/SinglePrefabs/Light.prefab
+    _prefab: Assets/Prefabs/Light/Light.prefab
   - _gameObject: {fileID: 824366131}
     _prefab: Assets/Team Members/Rory/Assets/LightThing.fbx
   - _gameObject: {fileID: 2118732610}
@@ -5108,7 +5084,7 @@ MonoBehaviour:
   - _gameObject: {fileID: 1759123515}
     _prefab: Assets/Team Members/Rory/Assets/Prefabs/ABSOLUTE DONT TOUCH/SinglePrefabs/WallVerticalPillar.prefab
   - _gameObject: {fileID: 2118732611}
-    _prefab: Assets/Team Members/Rory/Assets/Prefabs/ABSOLUTE DONT TOUCH/SinglePrefabs/Light.prefab
+    _prefab: Assets/Prefabs/Light/Light.prefab
   - _gameObject: {fileID: 2118732612}
     _prefab: Assets/Team Members/Rory/Assets/LightThing.fbx
   - _gameObject: {fileID: 577258591}
@@ -5152,7 +5128,7 @@ MonoBehaviour:
   - _gameObject: {fileID: 577258592}
     _prefab: Assets/Team Members/Rory/Assets/Prefabs/ABSOLUTE DONT TOUCH/ModuleBuild_SpaceShip_1.0.fbx
   - _gameObject: {fileID: 1126980203}
-    _prefab: Assets/Team Members/Rory/Assets/Prefabs/ABSOLUTE DONT TOUCH/SinglePrefabs/Light.prefab
+    _prefab: Assets/Prefabs/Light/Light.prefab
   - _gameObject: {fileID: 30294622}
     _prefab: Assets/Team Members/Rory/Assets/LightThing.fbx
   - _gameObject: {fileID: 1162411072}
@@ -5196,7 +5172,7 @@ MonoBehaviour:
   - _gameObject: {fileID: 1162411053}
     _prefab: Assets/Team Members/Rory/Assets/Prefabs/ABSOLUTE DONT TOUCH/ModuleBuild_SpaceShip_1.0.fbx
   - _gameObject: {fileID: 1584976176}
-    _prefab: Assets/Team Members/Rory/Assets/Prefabs/ABSOLUTE DONT TOUCH/SinglePrefabs/Light.prefab
+    _prefab: Assets/Prefabs/Light/Light.prefab
   - _gameObject: {fileID: 1720903812}
     _prefab: Assets/Team Members/Rory/Assets/LightThing.fbx
   - _gameObject: {fileID: 1329832439}
@@ -5240,7 +5216,7 @@ MonoBehaviour:
   - _gameObject: {fileID: 1329832440}
     _prefab: Assets/Team Members/Rory/Assets/Prefabs/ABSOLUTE DONT TOUCH/ModuleBuild_SpaceShip_1.0.fbx
   - _gameObject: {fileID: 1575048149}
-    _prefab: Assets/Team Members/Rory/Assets/Prefabs/ABSOLUTE DONT TOUCH/SinglePrefabs/Light.prefab
+    _prefab: Assets/Prefabs/Light/Light.prefab
   - _gameObject: {fileID: 666327621}
     _prefab: Assets/Team Members/Rory/Assets/LightThing.fbx
   - _gameObject: {fileID: 1149745163}
@@ -5284,7 +5260,7 @@ MonoBehaviour:
   - _gameObject: {fileID: 1149745144}
     _prefab: Assets/Team Members/Rory/Assets/Prefabs/ABSOLUTE DONT TOUCH/ModuleBuild_SpaceShip_1.0.fbx
   - _gameObject: {fileID: 611500302}
-    _prefab: Assets/Team Members/Rory/Assets/Prefabs/ABSOLUTE DONT TOUCH/SinglePrefabs/Light.prefab
+    _prefab: Assets/Prefabs/Light/Light.prefab
   - _gameObject: {fileID: 84720624}
     _prefab: Assets/Team Members/Rory/Assets/LightThing.fbx
   - _gameObject: {fileID: 1845765140}
@@ -5312,7 +5288,7 @@ MonoBehaviour:
   - _gameObject: {fileID: 1845765141}
     _prefab: Assets/Team Members/Rory/Assets/Prefabs/ABSOLUTE DONT TOUCH/ModuleBuild_SpaceShip_1.0.fbx
   - _gameObject: {fileID: 12824909}
-    _prefab: Assets/Team Members/Rory/Assets/Prefabs/ABSOLUTE DONT TOUCH/SinglePrefabs/Light.prefab
+    _prefab: Assets/Prefabs/Light/Light.prefab
   - _gameObject: {fileID: 2048111893}
     _prefab: Assets/Team Members/Rory/Assets/LightThing.fbx
   - _gameObject: {fileID: 1045186088}
@@ -5364,7 +5340,7 @@ MonoBehaviour:
   - _gameObject: {fileID: 1553786103}
     _prefab: Assets/Team Members/Rory/Assets/Prefabs/ABSOLUTE DONT TOUCH/SinglePrefabs/WallVerticalPillar.prefab
   - _gameObject: {fileID: 83940186}
-    _prefab: Assets/Team Members/Rory/Assets/Prefabs/ABSOLUTE DONT TOUCH/SinglePrefabs/Light.prefab
+    _prefab: Assets/Prefabs/Light/Light.prefab
   - _gameObject: {fileID: 2125982325}
     _prefab: Assets/Team Members/Rory/Assets/LightThing.fbx
   - _gameObject: {fileID: 1653734124}
@@ -5398,7 +5374,7 @@ MonoBehaviour:
   - _gameObject: {fileID: 1653734127}
     _prefab: Assets/Team Members/Rory/Assets/Prefabs/ABSOLUTE DONT TOUCH/ModuleBuild_SpaceShip_1.0.fbx
   - _gameObject: {fileID: 1653734125}
-    _prefab: Assets/Team Members/Rory/Assets/Prefabs/ABSOLUTE DONT TOUCH/SinglePrefabs/Light.prefab
+    _prefab: Assets/Prefabs/Light/Light.prefab
   - _gameObject: {fileID: 1653734126}
     _prefab: Assets/Team Members/Rory/Assets/LightThing.fbx
   - _gameObject: {fileID: 609265355}
@@ -5436,7 +5412,7 @@ MonoBehaviour:
   - _gameObject: {fileID: 1021409345}
     _prefab: Assets/Team Members/Rory/Assets/Prefabs/ABSOLUTE DONT TOUCH/SinglePrefabs/WallVerticalPillar.prefab
   - _gameObject: {fileID: 80721065}
-    _prefab: Assets/Team Members/Rory/Assets/Prefabs/ABSOLUTE DONT TOUCH/SinglePrefabs/Light.prefab
+    _prefab: Assets/Prefabs/Light/Light.prefab
   - _gameObject: {fileID: 1994033276}
     _prefab: Assets/Team Members/Rory/Assets/LightThing.fbx
   - _gameObject: {fileID: 1945402754}
@@ -5488,7 +5464,7 @@ MonoBehaviour:
   - _gameObject: {fileID: 578783935}
     _prefab: Assets/Team Members/Rory/Assets/Prefabs/ABSOLUTE DONT TOUCH/SinglePrefabs/WallVerticalPillar.prefab
   - _gameObject: {fileID: 1681397182}
-    _prefab: Assets/Team Members/Rory/Assets/Prefabs/ABSOLUTE DONT TOUCH/SinglePrefabs/Light.prefab
+    _prefab: Assets/Prefabs/Light/Light.prefab
   - _gameObject: {fileID: 694866246}
     _prefab: Assets/Team Members/Rory/Assets/LightThing.fbx
   - _gameObject: {fileID: 1522005642}
@@ -5540,7 +5516,7 @@ MonoBehaviour:
   - _gameObject: {fileID: 274676228}
     _prefab: Assets/Team Members/Rory/Assets/Prefabs/ABSOLUTE DONT TOUCH/SinglePrefabs/WallVerticalPillar.prefab
   - _gameObject: {fileID: 874920979}
-    _prefab: Assets/Team Members/Rory/Assets/Prefabs/ABSOLUTE DONT TOUCH/SinglePrefabs/Light.prefab
+    _prefab: Assets/Prefabs/Light/Light.prefab
   - _gameObject: {fileID: 312655942}
     _prefab: Assets/Team Members/Rory/Assets/LightThing.fbx
   - _gameObject: {fileID: 1246123774258010863}
@@ -5608,7 +5584,7 @@ MonoBehaviour:
   - _gameObject: {fileID: 1674686310}
     _prefab: Assets/Team Members/Rory/Assets/Prefabs/ABSOLUTE DONT TOUCH/SinglePrefabs/Roof.prefab
   - _gameObject: {fileID: 1674686309}
-    _prefab: Assets/Team Members/Rory/Assets/Prefabs/ABSOLUTE DONT TOUCH/SinglePrefabs/Light.prefab
+    _prefab: Assets/Prefabs/Light/Light.prefab
   - _gameObject: {fileID: 1995424075}
     _prefab: Assets/Team Members/Rory/Assets/LightThing.fbx
   - _gameObject: {fileID: 989854063}
@@ -5620,7 +5596,7 @@ MonoBehaviour:
   - _gameObject: {fileID: 989854065}
     _prefab: Assets/Team Members/Rory/Assets/Prefabs/ABSOLUTE DONT TOUCH/SinglePrefabs/Roof.prefab
   - _gameObject: {fileID: 989854064}
-    _prefab: Assets/Team Members/Rory/Assets/Prefabs/ABSOLUTE DONT TOUCH/SinglePrefabs/Light.prefab
+    _prefab: Assets/Prefabs/Light/Light.prefab
   - _gameObject: {fileID: 1341260724}
     _prefab: Assets/Team Members/Rory/Assets/LightThing.fbx
   - _gameObject: {fileID: 1027456949}
@@ -5632,7 +5608,7 @@ MonoBehaviour:
   - _gameObject: {fileID: 1027456958}
     _prefab: Assets/Team Members/Rory/Assets/Prefabs/ABSOLUTE DONT TOUCH/SinglePrefabs/Roof.prefab
   - _gameObject: {fileID: 1027456952}
-    _prefab: Assets/Team Members/Rory/Assets/Prefabs/ABSOLUTE DONT TOUCH/SinglePrefabs/Light.prefab
+    _prefab: Assets/Prefabs/Light/Light.prefab
   - _gameObject: {fileID: 1027456953}
     _prefab: Assets/Team Members/Rory/Assets/LightThing.fbx
   - _gameObject: {fileID: 1027456951}
@@ -5671,7 +5647,7 @@ MonoBehaviour:
   - _gameObject: {fileID: 2137586546}
     _prefab: Assets/Team Members/Rory/Assets/Prefabs/ABSOLUTE DONT TOUCH/SinglePrefabs/Roof.prefab
   - _gameObject: {fileID: 2137586540}
-    _prefab: Assets/Team Members/Rory/Assets/Prefabs/ABSOLUTE DONT TOUCH/SinglePrefabs/Light.prefab
+    _prefab: Assets/Prefabs/Light/Light.prefab
   - _gameObject: {fileID: 2137586541}
     _prefab: Assets/Team Members/Rory/Assets/LightThing.fbx
   - _gameObject: {fileID: 2137586539}
@@ -5710,7 +5686,7 @@ MonoBehaviour:
   - _gameObject: {fileID: 1505756926}
     _prefab: Assets/Team Members/Rory/Assets/Prefabs/ABSOLUTE DONT TOUCH/SinglePrefabs/Roof.prefab
   - _gameObject: {fileID: 1505756920}
-    _prefab: Assets/Team Members/Rory/Assets/Prefabs/ABSOLUTE DONT TOUCH/SinglePrefabs/Light.prefab
+    _prefab: Assets/Prefabs/Light/Light.prefab
   - _gameObject: {fileID: 1505756921}
     _prefab: Assets/Team Members/Rory/Assets/LightThing.fbx
   - _gameObject: {fileID: 1505756919}
@@ -5749,7 +5725,7 @@ MonoBehaviour:
   - _gameObject: {fileID: 900095091}
     _prefab: Assets/Team Members/Rory/Assets/Prefabs/ABSOLUTE DONT TOUCH/SinglePrefabs/Roof.prefab
   - _gameObject: {fileID: 900095085}
-    _prefab: Assets/Team Members/Rory/Assets/Prefabs/ABSOLUTE DONT TOUCH/SinglePrefabs/Light.prefab
+    _prefab: Assets/Prefabs/Light/Light.prefab
   - _gameObject: {fileID: 900095086}
     _prefab: Assets/Team Members/Rory/Assets/LightThing.fbx
   - _gameObject: {fileID: 900095084}
@@ -5784,91 +5760,91 @@ MonoBehaviour:
   - _gameObject: {fileID: 5064924557731951609}
     _prefab: Assets/Team Members/Rory/Assets/Prefabs/Normal Size/Server Rack.prefab
   - _gameObject: {fileID: 5064924557731951608}
-    _prefab: Assets/Space/Prefabs/Level items/ServerBox.prefab
+    _prefab: Assets/Prefabs/Space/Prefabs/Level items/ServerBox.prefab
   - _gameObject: {fileID: 5064924557731951607}
-    _prefab: Assets/Space/Prefabs/Level items/ServerBox.prefab
+    _prefab: Assets/Prefabs/Space/Prefabs/Level items/ServerBox.prefab
   - _gameObject: {fileID: 5064924557731951606}
-    _prefab: Assets/Space/Prefabs/Level items/ServerBox.prefab
+    _prefab: Assets/Prefabs/Space/Prefabs/Level items/ServerBox.prefab
   - _gameObject: {fileID: 5064924557731951605}
     _prefab: Assets/Team Members/Rory/Assets/Prefabs/Normal Size/Server Rack.prefab
   - _gameObject: {fileID: 5064924557731951604}
-    _prefab: Assets/Space/Prefabs/Level items/ServerBox.prefab
+    _prefab: Assets/Prefabs/Space/Prefabs/Level items/ServerBox.prefab
   - _gameObject: {fileID: 5064924557731951603}
-    _prefab: Assets/Space/Prefabs/Level items/ServerBox.prefab
+    _prefab: Assets/Prefabs/Space/Prefabs/Level items/ServerBox.prefab
   - _gameObject: {fileID: 5064924557731951602}
-    _prefab: Assets/Space/Prefabs/Level items/ServerBox.prefab
+    _prefab: Assets/Prefabs/Space/Prefabs/Level items/ServerBox.prefab
   - _gameObject: {fileID: 634587437}
     _prefab: Assets/Team Members/Rory/Assets/Prefabs/Normal Size/ServerBlock 1.prefab
   - _gameObject: {fileID: 634587445}
     _prefab: Assets/Team Members/Rory/Assets/Prefabs/Normal Size/Server Rack.prefab
   - _gameObject: {fileID: 634587444}
-    _prefab: Assets/Space/Prefabs/Level items/ServerBox.prefab
+    _prefab: Assets/Prefabs/Space/Prefabs/Level items/ServerBox.prefab
   - _gameObject: {fileID: 634587443}
-    _prefab: Assets/Space/Prefabs/Level items/ServerBox.prefab
+    _prefab: Assets/Prefabs/Space/Prefabs/Level items/ServerBox.prefab
   - _gameObject: {fileID: 634587442}
-    _prefab: Assets/Space/Prefabs/Level items/ServerBox.prefab
+    _prefab: Assets/Prefabs/Space/Prefabs/Level items/ServerBox.prefab
   - _gameObject: {fileID: 634587441}
     _prefab: Assets/Team Members/Rory/Assets/Prefabs/Normal Size/Server Rack.prefab
   - _gameObject: {fileID: 634587440}
-    _prefab: Assets/Space/Prefabs/Level items/ServerBox.prefab
+    _prefab: Assets/Prefabs/Space/Prefabs/Level items/ServerBox.prefab
   - _gameObject: {fileID: 634587439}
-    _prefab: Assets/Space/Prefabs/Level items/ServerBox.prefab
+    _prefab: Assets/Prefabs/Space/Prefabs/Level items/ServerBox.prefab
   - _gameObject: {fileID: 634587438}
-    _prefab: Assets/Space/Prefabs/Level items/ServerBox.prefab
+    _prefab: Assets/Prefabs/Space/Prefabs/Level items/ServerBox.prefab
   - _gameObject: {fileID: 1858710870}
     _prefab: Assets/Team Members/Rory/Assets/Prefabs/Normal Size/ServerBlock 1.prefab
   - _gameObject: {fileID: 1858710878}
     _prefab: Assets/Team Members/Rory/Assets/Prefabs/Normal Size/Server Rack.prefab
   - _gameObject: {fileID: 1858710877}
-    _prefab: Assets/Space/Prefabs/Level items/ServerBox.prefab
+    _prefab: Assets/Prefabs/Space/Prefabs/Level items/ServerBox.prefab
   - _gameObject: {fileID: 1858710876}
-    _prefab: Assets/Space/Prefabs/Level items/ServerBox.prefab
+    _prefab: Assets/Prefabs/Space/Prefabs/Level items/ServerBox.prefab
   - _gameObject: {fileID: 1858710875}
-    _prefab: Assets/Space/Prefabs/Level items/ServerBox.prefab
+    _prefab: Assets/Prefabs/Space/Prefabs/Level items/ServerBox.prefab
   - _gameObject: {fileID: 1858710874}
     _prefab: Assets/Team Members/Rory/Assets/Prefabs/Normal Size/Server Rack.prefab
   - _gameObject: {fileID: 1858710873}
-    _prefab: Assets/Space/Prefabs/Level items/ServerBox.prefab
+    _prefab: Assets/Prefabs/Space/Prefabs/Level items/ServerBox.prefab
   - _gameObject: {fileID: 1858710872}
-    _prefab: Assets/Space/Prefabs/Level items/ServerBox.prefab
+    _prefab: Assets/Prefabs/Space/Prefabs/Level items/ServerBox.prefab
   - _gameObject: {fileID: 1858710871}
-    _prefab: Assets/Space/Prefabs/Level items/ServerBox.prefab
+    _prefab: Assets/Prefabs/Space/Prefabs/Level items/ServerBox.prefab
   - _gameObject: {fileID: 966272928}
     _prefab: Assets/Team Members/Rory/Assets/Prefabs/Normal Size/ServerBlock 1.prefab
   - _gameObject: {fileID: 966272936}
     _prefab: Assets/Team Members/Rory/Assets/Prefabs/Normal Size/Server Rack.prefab
   - _gameObject: {fileID: 966272935}
-    _prefab: Assets/Space/Prefabs/Level items/ServerBox.prefab
+    _prefab: Assets/Prefabs/Space/Prefabs/Level items/ServerBox.prefab
   - _gameObject: {fileID: 966272934}
-    _prefab: Assets/Space/Prefabs/Level items/ServerBox.prefab
+    _prefab: Assets/Prefabs/Space/Prefabs/Level items/ServerBox.prefab
   - _gameObject: {fileID: 966272933}
-    _prefab: Assets/Space/Prefabs/Level items/ServerBox.prefab
+    _prefab: Assets/Prefabs/Space/Prefabs/Level items/ServerBox.prefab
   - _gameObject: {fileID: 966272932}
     _prefab: Assets/Team Members/Rory/Assets/Prefabs/Normal Size/Server Rack.prefab
   - _gameObject: {fileID: 966272931}
-    _prefab: Assets/Space/Prefabs/Level items/ServerBox.prefab
+    _prefab: Assets/Prefabs/Space/Prefabs/Level items/ServerBox.prefab
   - _gameObject: {fileID: 966272930}
-    _prefab: Assets/Space/Prefabs/Level items/ServerBox.prefab
+    _prefab: Assets/Prefabs/Space/Prefabs/Level items/ServerBox.prefab
   - _gameObject: {fileID: 966272929}
-    _prefab: Assets/Space/Prefabs/Level items/ServerBox.prefab
+    _prefab: Assets/Prefabs/Space/Prefabs/Level items/ServerBox.prefab
   - _gameObject: {fileID: 1106828801}
     _prefab: Assets/Team Members/Rory/Assets/Prefabs/Normal Size/ServerBlock 1.prefab
   - _gameObject: {fileID: 1106828809}
     _prefab: Assets/Team Members/Rory/Assets/Prefabs/Normal Size/Server Rack.prefab
   - _gameObject: {fileID: 1106828808}
-    _prefab: Assets/Space/Prefabs/Level items/ServerBox.prefab
+    _prefab: Assets/Prefabs/Space/Prefabs/Level items/ServerBox.prefab
   - _gameObject: {fileID: 1106828807}
-    _prefab: Assets/Space/Prefabs/Level items/ServerBox.prefab
+    _prefab: Assets/Prefabs/Space/Prefabs/Level items/ServerBox.prefab
   - _gameObject: {fileID: 1106828806}
-    _prefab: Assets/Space/Prefabs/Level items/ServerBox.prefab
+    _prefab: Assets/Prefabs/Space/Prefabs/Level items/ServerBox.prefab
   - _gameObject: {fileID: 1106828805}
     _prefab: Assets/Team Members/Rory/Assets/Prefabs/Normal Size/Server Rack.prefab
   - _gameObject: {fileID: 1106828804}
-    _prefab: Assets/Space/Prefabs/Level items/ServerBox.prefab
+    _prefab: Assets/Prefabs/Space/Prefabs/Level items/ServerBox.prefab
   - _gameObject: {fileID: 1106828803}
-    _prefab: Assets/Space/Prefabs/Level items/ServerBox.prefab
+    _prefab: Assets/Prefabs/Space/Prefabs/Level items/ServerBox.prefab
   - _gameObject: {fileID: 1106828802}
-    _prefab: Assets/Space/Prefabs/Level items/ServerBox.prefab
+    _prefab: Assets/Prefabs/Space/Prefabs/Level items/ServerBox.prefab
   - _gameObject: {fileID: 1903544613062155452}
     _prefab: Assets/Team Members/Rory/Assets/Prefabs/ABSOLUTE DONT TOUCH/SinglePrefabs/SingleCabinet.prefab
   - _gameObject: {fileID: 1903544613062155453}
@@ -5974,7 +5950,7 @@ MonoBehaviour:
   - _gameObject: {fileID: 1742978667}
     _prefab: Assets/Team Members/Rory/Assets/Prefabs/ABSOLUTE DONT TOUCH/SinglePrefabs/Roof.prefab
   - _gameObject: {fileID: 608477523}
-    _prefab: Assets/Team Members/Rory/Assets/Prefabs/ABSOLUTE DONT TOUCH/SinglePrefabs/Light.prefab
+    _prefab: Assets/Prefabs/Light/Light.prefab
   - _gameObject: {fileID: 762495028}
     _prefab: Assets/Team Members/Rory/Assets/LightThing.fbx
   - _gameObject: {fileID: 792656608633208928}
@@ -6013,7 +5989,7 @@ MonoBehaviour:
   - _gameObject: {fileID: 357786790}
     _prefab: Assets/Team Members/Rory/Assets/Prefabs/ABSOLUTE DONT TOUCH/SinglePrefabs/Roof.prefab
   - _gameObject: {fileID: 2000878266}
-    _prefab: Assets/Team Members/Rory/Assets/Prefabs/ABSOLUTE DONT TOUCH/SinglePrefabs/Light.prefab
+    _prefab: Assets/Prefabs/Light/Light.prefab
   - _gameObject: {fileID: 815433318}
     _prefab: Assets/Team Members/Rory/Assets/LightThing.fbx
   - _gameObject: {fileID: 871340338}
@@ -6052,7 +6028,7 @@ MonoBehaviour:
   - _gameObject: {fileID: 205085640}
     _prefab: Assets/Team Members/Rory/Assets/Prefabs/ABSOLUTE DONT TOUCH/SinglePrefabs/Roof.prefab
   - _gameObject: {fileID: 1438687688}
-    _prefab: Assets/Team Members/Rory/Assets/Prefabs/ABSOLUTE DONT TOUCH/SinglePrefabs/Light.prefab
+    _prefab: Assets/Prefabs/Light/Light.prefab
   - _gameObject: {fileID: 1633357822}
     _prefab: Assets/Team Members/Rory/Assets/LightThing.fbx
   - _gameObject: {fileID: 1465797163}
@@ -6105,7 +6081,7 @@ MonoBehaviour:
   - _gameObject: {fileID: 544943455}
     _prefab: Assets/Team Members/Rory/Assets/Prefabs/ABSOLUTE DONT TOUCH/SinglePrefabs/Roof.prefab
   - _gameObject: {fileID: 1877992371}
-    _prefab: Assets/Team Members/Rory/Assets/Prefabs/ABSOLUTE DONT TOUCH/SinglePrefabs/Light.prefab
+    _prefab: Assets/Prefabs/Light/Light.prefab
   - _gameObject: {fileID: 1439102090}
     _prefab: Assets/Team Members/Rory/Assets/LightThing.fbx
   - _gameObject: {fileID: 873638739}
@@ -6158,7 +6134,7 @@ MonoBehaviour:
   - _gameObject: {fileID: 2144445052}
     _prefab: Assets/Team Members/Rory/Assets/Prefabs/ABSOLUTE DONT TOUCH/SinglePrefabs/Roof.prefab
   - _gameObject: {fileID: 1603373185}
-    _prefab: Assets/Team Members/Rory/Assets/Prefabs/ABSOLUTE DONT TOUCH/SinglePrefabs/Light.prefab
+    _prefab: Assets/Prefabs/Light/Light.prefab
   - _gameObject: {fileID: 1297749492}
     _prefab: Assets/Team Members/Rory/Assets/LightThing.fbx
   - _gameObject: {fileID: 1565302947}
@@ -6211,7 +6187,7 @@ MonoBehaviour:
   - _gameObject: {fileID: 1226448189}
     _prefab: Assets/Team Members/Rory/Assets/Prefabs/ABSOLUTE DONT TOUCH/SinglePrefabs/Roof.prefab
   - _gameObject: {fileID: 1273837995}
-    _prefab: Assets/Team Members/Rory/Assets/Prefabs/ABSOLUTE DONT TOUCH/SinglePrefabs/Light.prefab
+    _prefab: Assets/Prefabs/Light/Light.prefab
   - _gameObject: {fileID: 414790966}
     _prefab: Assets/Team Members/Rory/Assets/LightThing.fbx
   - _gameObject: {fileID: 572969474}
@@ -6264,7 +6240,7 @@ MonoBehaviour:
   - _gameObject: {fileID: 1519307791}
     _prefab: Assets/Team Members/Rory/Assets/Prefabs/ABSOLUTE DONT TOUCH/SinglePrefabs/Roof.prefab
   - _gameObject: {fileID: 591604428}
-    _prefab: Assets/Team Members/Rory/Assets/Prefabs/ABSOLUTE DONT TOUCH/SinglePrefabs/Light.prefab
+    _prefab: Assets/Prefabs/Light/Light.prefab
   - _gameObject: {fileID: 1609394308}
     _prefab: Assets/Team Members/Rory/Assets/LightThing.fbx
   - _gameObject: {fileID: 1765558438}
@@ -6305,7 +6281,7 @@ MonoBehaviour:
   - _gameObject: {fileID: 1021080915}
     _prefab: Assets/Team Members/Rory/Assets/Prefabs/ABSOLUTE DONT TOUCH/SinglePrefabs/Roof.prefab
   - _gameObject: {fileID: 1581112950}
-    _prefab: Assets/Team Members/Rory/Assets/Prefabs/ABSOLUTE DONT TOUCH/SinglePrefabs/Light.prefab
+    _prefab: Assets/Prefabs/Light/Light.prefab
   - _gameObject: {fileID: 287388849}
     _prefab: Assets/Team Members/Rory/Assets/LightThing.fbx
   - _gameObject: {fileID: 553056521}
@@ -6317,7 +6293,7 @@ MonoBehaviour:
   - _gameObject: {fileID: 1021080911}
     _prefab: Assets/Team Members/Rory/Assets/Prefabs/ABSOLUTE DONT TOUCH/SinglePrefabs/Roof.prefab
   - _gameObject: {fileID: 1581112949}
-    _prefab: Assets/Team Members/Rory/Assets/Prefabs/ABSOLUTE DONT TOUCH/SinglePrefabs/Light.prefab
+    _prefab: Assets/Prefabs/Light/Light.prefab
   - _gameObject: {fileID: 287388848}
     _prefab: Assets/Team Members/Rory/Assets/LightThing.fbx
   - _gameObject: {fileID: 67173180}
@@ -6329,7 +6305,7 @@ MonoBehaviour:
   - _gameObject: {fileID: 1021080907}
     _prefab: Assets/Team Members/Rory/Assets/Prefabs/ABSOLUTE DONT TOUCH/SinglePrefabs/Roof.prefab
   - _gameObject: {fileID: 1581112948}
-    _prefab: Assets/Team Members/Rory/Assets/Prefabs/ABSOLUTE DONT TOUCH/SinglePrefabs/Light.prefab
+    _prefab: Assets/Prefabs/Light/Light.prefab
   - _gameObject: {fileID: 287388847}
     _prefab: Assets/Team Members/Rory/Assets/LightThing.fbx
   - _gameObject: {fileID: 546741286}
@@ -6341,7 +6317,7 @@ MonoBehaviour:
   - _gameObject: {fileID: 1021080903}
     _prefab: Assets/Team Members/Rory/Assets/Prefabs/ABSOLUTE DONT TOUCH/SinglePrefabs/Roof.prefab
   - _gameObject: {fileID: 1581112947}
-    _prefab: Assets/Team Members/Rory/Assets/Prefabs/ABSOLUTE DONT TOUCH/SinglePrefabs/Light.prefab
+    _prefab: Assets/Prefabs/Light/Light.prefab
   - _gameObject: {fileID: 287388846}
     _prefab: Assets/Team Members/Rory/Assets/LightThing.fbx
   - _gameObject: {fileID: 1716699568}
@@ -6369,7 +6345,7 @@ MonoBehaviour:
   - _gameObject: {fileID: 1021080899}
     _prefab: Assets/Team Members/Rory/Assets/Prefabs/ABSOLUTE DONT TOUCH/SinglePrefabs/Roof.prefab
   - _gameObject: {fileID: 1581112946}
-    _prefab: Assets/Team Members/Rory/Assets/Prefabs/ABSOLUTE DONT TOUCH/SinglePrefabs/Light.prefab
+    _prefab: Assets/Prefabs/Light/Light.prefab
   - _gameObject: {fileID: 287388845}
     _prefab: Assets/Team Members/Rory/Assets/LightThing.fbx
   - _gameObject: {fileID: 1059116083}
@@ -6397,7 +6373,7 @@ MonoBehaviour:
   - _gameObject: {fileID: 1021080895}
     _prefab: Assets/Team Members/Rory/Assets/Prefabs/ABSOLUTE DONT TOUCH/SinglePrefabs/Roof.prefab
   - _gameObject: {fileID: 1581112945}
-    _prefab: Assets/Team Members/Rory/Assets/Prefabs/ABSOLUTE DONT TOUCH/SinglePrefabs/Light.prefab
+    _prefab: Assets/Prefabs/Light/Light.prefab
   - _gameObject: {fileID: 287388844}
     _prefab: Assets/Team Members/Rory/Assets/LightThing.fbx
   - _gameObject: {fileID: 1196388508}
@@ -6423,7 +6399,7 @@ MonoBehaviour:
   - _gameObject: {fileID: 1021080891}
     _prefab: Assets/Team Members/Rory/Assets/Prefabs/ABSOLUTE DONT TOUCH/SinglePrefabs/Roof.prefab
   - _gameObject: {fileID: 1581112944}
-    _prefab: Assets/Team Members/Rory/Assets/Prefabs/ABSOLUTE DONT TOUCH/SinglePrefabs/Light.prefab
+    _prefab: Assets/Prefabs/Light/Light.prefab
   - _gameObject: {fileID: 287388843}
     _prefab: Assets/Team Members/Rory/Assets/LightThing.fbx
   - _gameObject: {fileID: 2040979955}
@@ -6451,7 +6427,7 @@ MonoBehaviour:
   - _gameObject: {fileID: 1021080887}
     _prefab: Assets/Team Members/Rory/Assets/Prefabs/ABSOLUTE DONT TOUCH/SinglePrefabs/Roof.prefab
   - _gameObject: {fileID: 1581112943}
-    _prefab: Assets/Team Members/Rory/Assets/Prefabs/ABSOLUTE DONT TOUCH/SinglePrefabs/Light.prefab
+    _prefab: Assets/Prefabs/Light/Light.prefab
   - _gameObject: {fileID: 287388842}
     _prefab: Assets/Team Members/Rory/Assets/LightThing.fbx
   - _gameObject: {fileID: 1004578130}
@@ -6463,7 +6439,7 @@ MonoBehaviour:
   - _gameObject: {fileID: 1021080883}
     _prefab: Assets/Team Members/Rory/Assets/Prefabs/ABSOLUTE DONT TOUCH/SinglePrefabs/Roof.prefab
   - _gameObject: {fileID: 1581112942}
-    _prefab: Assets/Team Members/Rory/Assets/Prefabs/ABSOLUTE DONT TOUCH/SinglePrefabs/Light.prefab
+    _prefab: Assets/Prefabs/Light/Light.prefab
   - _gameObject: {fileID: 287388841}
     _prefab: Assets/Team Members/Rory/Assets/LightThing.fbx
   - _gameObject: {fileID: 1302356558}
@@ -6802,19 +6778,19 @@ MonoBehaviour:
     _prefab: Assets/Team Members/Rory/Assets/Prefabs/Bigger Size/HangarHallEndCapSection
       Variant.prefab
   - _gameObject: {fileID: 1273390649}
-    _prefab: Assets/Team Members/Rory/Assets/Prefabs/ABSOLUTE DONT TOUCH/SinglePrefabs/Light.prefab
+    _prefab: Assets/Prefabs/Light/Light.prefab
   - _gameObject: {fileID: 362288579}
     _prefab: Assets/Team Members/Rory/Assets/LightThing.fbx
   - _gameObject: {fileID: 1273390648}
-    _prefab: Assets/Team Members/Rory/Assets/Prefabs/ABSOLUTE DONT TOUCH/SinglePrefabs/Light.prefab
+    _prefab: Assets/Prefabs/Light/Light.prefab
   - _gameObject: {fileID: 362288578}
     _prefab: Assets/Team Members/Rory/Assets/LightThing.fbx
   - _gameObject: {fileID: 1273390647}
-    _prefab: Assets/Team Members/Rory/Assets/Prefabs/ABSOLUTE DONT TOUCH/SinglePrefabs/Light.prefab
+    _prefab: Assets/Prefabs/Light/Light.prefab
   - _gameObject: {fileID: 362288577}
     _prefab: Assets/Team Members/Rory/Assets/LightThing.fbx
   - _gameObject: {fileID: 1273390646}
-    _prefab: Assets/Team Members/Rory/Assets/Prefabs/ABSOLUTE DONT TOUCH/SinglePrefabs/Light.prefab
+    _prefab: Assets/Prefabs/Light/Light.prefab
   - _gameObject: {fileID: 362288576}
     _prefab: Assets/Team Members/Rory/Assets/LightThing.fbx
   - _gameObject: {fileID: 1273390645}
@@ -7210,9 +7186,9 @@ MonoBehaviour:
   - _gameObject: {fileID: 382865164}
     _prefab: Assets/Team Members/Rory/Assets/Prefabs/ABSOLUTE DONT TOUCH/SinglePrefabs/WallWindow.prefab
   - _gameObject: {fileID: 1482447244294389983}
-    _prefab: Assets/Space/Prefabs/Ship's computer/Ship's computer.prefab
+    _prefab: Assets/Prefabs/Space/Prefabs/Ship's computer/Ship's computer.prefab
   - _gameObject: {fileID: 278701587}
-    _prefab: Assets/Space/Prefabs/Local Volumetric Fog.prefab
+    _prefab: Assets/Prefabs/Space/Prefabs/Local Volumetric Fog.prefab
   - _gameObject: {fileID: 1160333946}
     _prefab: Assets/Prefabs/Items/WireGenerator.prefab
   - _gameObject: {fileID: 16241153}
@@ -7225,6 +7201,12 @@ MonoBehaviour:
     _prefab: Assets/Prefabs/Player/Player.prefab
   - _gameObject: {fileID: 1374038344}
     _prefab: Assets/Prefabs/Player/Player.prefab
+  - _gameObject: {fileID: 680564128}
+    _prefab: Assets/Prefabs/Light/Light.prefab
+  - _gameObject: {fileID: 680564129}
+    _prefab: Assets/Team Members/Rory/Assets/LightThing.fbx
+  - _gameObject: {fileID: 1807851416}
+    _prefab: Assets/Prefabs/MovingGuy.prefab
 --- !u!4 &581867193
 Transform:
   m_ObjectHideFlags: 11
@@ -7927,6 +7909,73 @@ GameObject:
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7570635144322954276, guid: 7ff16eef04ff4154580ca07e76412f4b, type: 3}
   m_PrefabInstance: {fileID: 668743745}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &680564127
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3014885077939891208, guid: a2a71c8c68a71e54fa9385b858fb8f7a, type: 3}
+      propertyPath: m_Name
+      value: Light
+      objectReference: {fileID: 0}
+    - target: {fileID: 3164875696677526035, guid: a2a71c8c68a71e54fa9385b858fb8f7a, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 47.421623
+      objectReference: {fileID: 0}
+    - target: {fileID: 3164875696677526035, guid: a2a71c8c68a71e54fa9385b858fb8f7a, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.79
+      objectReference: {fileID: 0}
+    - target: {fileID: 3164875696677526035, guid: a2a71c8c68a71e54fa9385b858fb8f7a, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -23.066902
+      objectReference: {fileID: 0}
+    - target: {fileID: 3164875696677526035, guid: a2a71c8c68a71e54fa9385b858fb8f7a, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3164875696677526035, guid: a2a71c8c68a71e54fa9385b858fb8f7a, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3164875696677526035, guid: a2a71c8c68a71e54fa9385b858fb8f7a, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3164875696677526035, guid: a2a71c8c68a71e54fa9385b858fb8f7a, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3164875696677526035, guid: a2a71c8c68a71e54fa9385b858fb8f7a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3164875696677526035, guid: a2a71c8c68a71e54fa9385b858fb8f7a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3164875696677526035, guid: a2a71c8c68a71e54fa9385b858fb8f7a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: a2a71c8c68a71e54fa9385b858fb8f7a, type: 3}
+--- !u!1 &680564128 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3014885077939891208, guid: a2a71c8c68a71e54fa9385b858fb8f7a, type: 3}
+  m_PrefabInstance: {fileID: 680564127}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &680564129 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5975706373125067791, guid: a2a71c8c68a71e54fa9385b858fb8f7a, type: 3}
+  m_PrefabInstance: {fileID: 680564127}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &685639690
 PrefabInstance:
@@ -13029,6 +13078,53 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23c1ce4fb46143f46bc5cb5224c934f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_Version: 9
+  m_ObsoleteRenderingPath: 0
+  m_ObsoleteFrameSettings:
+    overrides: 0
+    enableShadow: 0
+    enableContactShadows: 0
+    enableShadowMask: 0
+    enableSSR: 0
+    enableSSAO: 0
+    enableSubsurfaceScattering: 0
+    enableTransmission: 0
+    enableAtmosphericScattering: 0
+    enableVolumetrics: 0
+    enableReprojectionForVolumetrics: 0
+    enableLightLayers: 0
+    enableExposureControl: 1
+    diffuseGlobalDimmer: 0
+    specularGlobalDimmer: 0
+    shaderLitMode: 0
+    enableDepthPrepassWithDeferredRendering: 0
+    enableTransparentPrepass: 0
+    enableMotionVectors: 0
+    enableObjectMotionVectors: 0
+    enableDecals: 0
+    enableRoughRefraction: 0
+    enableTransparentPostpass: 0
+    enableDistortion: 0
+    enablePostprocess: 0
+    enableOpaqueObjects: 0
+    enableTransparentObjects: 0
+    enableRealtimePlanarReflection: 0
+    enableMSAA: 0
+    enableAsyncCompute: 0
+    runLightListAsync: 0
+    runSSRAsync: 0
+    runSSAOAsync: 0
+    runContactShadowsAsync: 0
+    runVolumeVoxelizationAsync: 0
+    lightLoopSettings:
+      overrides: 0
+      enableDeferredTileAndCluster: 0
+      enableComputeLightEvaluation: 0
+      enableComputeLightVariants: 0
+      enableComputeMaterialVariants: 0
+      enableFptlForForwardOpaque: 0
+      enableBigTilePrepass: 0
+      isFptlEnabled: 0
   clearColorMode: 2
   backgroundColorHDR: {r: 0.025, g: 0.07, b: 0.19, a: 0}
   clearDepth: 1
@@ -13109,53 +13205,6 @@ MonoBehaviour:
       data1: 0
       data2: 0
   defaultFrameSettings: 0
-  m_Version: 9
-  m_ObsoleteRenderingPath: 0
-  m_ObsoleteFrameSettings:
-    overrides: 0
-    enableShadow: 0
-    enableContactShadows: 0
-    enableShadowMask: 0
-    enableSSR: 0
-    enableSSAO: 0
-    enableSubsurfaceScattering: 0
-    enableTransmission: 0
-    enableAtmosphericScattering: 0
-    enableVolumetrics: 0
-    enableReprojectionForVolumetrics: 0
-    enableLightLayers: 0
-    enableExposureControl: 1
-    diffuseGlobalDimmer: 0
-    specularGlobalDimmer: 0
-    shaderLitMode: 0
-    enableDepthPrepassWithDeferredRendering: 0
-    enableTransparentPrepass: 0
-    enableMotionVectors: 0
-    enableObjectMotionVectors: 0
-    enableDecals: 0
-    enableRoughRefraction: 0
-    enableTransparentPostpass: 0
-    enableDistortion: 0
-    enablePostprocess: 0
-    enableOpaqueObjects: 0
-    enableTransparentObjects: 0
-    enableRealtimePlanarReflection: 0
-    enableMSAA: 0
-    enableAsyncCompute: 0
-    runLightListAsync: 0
-    runSSRAsync: 0
-    runSSAOAsync: 0
-    runContactShadowsAsync: 0
-    runVolumeVoxelizationAsync: 0
-    lightLoopSettings:
-      overrides: 0
-      enableDeferredTileAndCluster: 0
-      enableComputeLightEvaluation: 0
-      enableComputeLightVariants: 0
-      enableComputeMaterialVariants: 0
-      enableFptlForForwardOpaque: 0
-      enableBigTilePrepass: 0
-      isFptlEnabled: 0
 --- !u!81 &1227837850
 AudioListener:
   m_ObjectHideFlags: 0
@@ -13860,13 +13909,7 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 4887490292477210463, guid: b0f24ceedcc05974dbf02cf4c4437dc2, type: 3}
       insertIndex: 1
       addedObject: {fileID: 349930581}
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 6861024372722328457, guid: b0f24ceedcc05974dbf02cf4c4437dc2, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 355959844}
-    - targetCorrespondingSourceObject: {fileID: 6861024372722328457, guid: b0f24ceedcc05974dbf02cf4c4437dc2, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 355959843}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b0f24ceedcc05974dbf02cf4c4437dc2, type: 3}
 --- !u!1 &1273390475 stripped
 GameObject:
@@ -15619,9 +15662,6 @@ PrefabInstance:
     - {fileID: 5604226367975554791, guid: 567f351c6027259429afe86d33a5d9ff, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 2301531561774969008, guid: 567f351c6027259429afe86d33a5d9ff, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 2141050391}
     - targetCorrespondingSourceObject: {fileID: 2243111706824297248, guid: 567f351c6027259429afe86d33a5d9ff, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1806881517}
@@ -19635,6 +19675,68 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   light: {fileID: 0}
   isPowered: 0
+--- !u!1001 &1807851415
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4079884246519738757, guid: 2c02c63acc07c2e4091ca75ad1966a5d, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 50.511166
+      objectReference: {fileID: 0}
+    - target: {fileID: 4079884246519738757, guid: 2c02c63acc07c2e4091ca75ad1966a5d, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -1.64
+      objectReference: {fileID: 0}
+    - target: {fileID: 4079884246519738757, guid: 2c02c63acc07c2e4091ca75ad1966a5d, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -5.798848
+      objectReference: {fileID: 0}
+    - target: {fileID: 4079884246519738757, guid: 2c02c63acc07c2e4091ca75ad1966a5d, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4079884246519738757, guid: 2c02c63acc07c2e4091ca75ad1966a5d, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4079884246519738757, guid: 2c02c63acc07c2e4091ca75ad1966a5d, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4079884246519738757, guid: 2c02c63acc07c2e4091ca75ad1966a5d, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4079884246519738757, guid: 2c02c63acc07c2e4091ca75ad1966a5d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4079884246519738757, guid: 2c02c63acc07c2e4091ca75ad1966a5d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4079884246519738757, guid: 2c02c63acc07c2e4091ca75ad1966a5d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4079884246519738810, guid: 2c02c63acc07c2e4091ca75ad1966a5d, type: 3}
+      propertyPath: m_Name
+      value: MovingGuy
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 2c02c63acc07c2e4091ca75ad1966a5d, type: 3}
+--- !u!1 &1807851416 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4079884246519738810, guid: 2c02c63acc07c2e4091ca75ad1966a5d, type: 3}
+  m_PrefabInstance: {fileID: 1807851415}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1809371907
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -21416,15 +21518,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5261461513713553239, guid: 8406649f1fd42354b9fb47b18e0512bd, type: 3}
       propertyPath: parameters.textureOffset.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 5261461513713553239, guid: 8406649f1fd42354b9fb47b18e0512bd, type: 3}
       propertyPath: parameters.textureOffset.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 5261461513713553239, guid: 8406649f1fd42354b9fb47b18e0512bd, type: 3}
       propertyPath: parameters.textureOffset.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 5261461513713553239, guid: 8406649f1fd42354b9fb47b18e0512bd, type: 3}
       propertyPath: parameters.m_EditorNegativeFade.x
@@ -21494,7 +21596,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1990241161448966529, guid: 8406649f1fd42354b9fb47b18e0512bd, type: 3}
+    - {fileID: 1831627147220335134, guid: 8406649f1fd42354b9fb47b18e0512bd, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -22227,18 +22331,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 2301531561774969008, guid: 567f351c6027259429afe86d33a5d9ff, type: 3}
   m_PrefabInstance: {fileID: 1339047788}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &2141050391
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2141050389}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: af4e61934214cde42ab2bbcc051e4241, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &2141050392 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1868570812642958719, guid: 567f351c6027259429afe86d33a5d9ff, type: 3}
@@ -22979,3 +23071,5 @@ SceneRoots:
   - {fileID: 1374038343}
   - {fileID: 1797616378}
   - {fileID: 2136172984}
+  - {fileID: 680564127}
+  - {fileID: 1807851415}

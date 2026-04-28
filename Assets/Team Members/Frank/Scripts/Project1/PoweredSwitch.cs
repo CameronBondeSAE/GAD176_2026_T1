@@ -33,6 +33,11 @@ public class PoweredSwitch : MonoBehaviour, IInteractable, IPowered
         findSwitchables();
     }
 
+    public bool GetPowered()
+    {
+	    return isPowered;
+    }
+
     public void findSwitchables()
     {
         

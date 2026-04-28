@@ -25,6 +25,11 @@ public class PowerSocket : MonoBehaviour, IPowered, IInteractable
         }
     }
 
+    public bool GetPowered()
+    {
+	    return isPowered;
+    }
+
     public void Interact()
     {
         Debug.Log("Socket Selected");

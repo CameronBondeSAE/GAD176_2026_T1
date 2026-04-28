@@ -13,7 +13,7 @@ public class Player_Model : MonoBehaviour
 	
 	public void Look(Vector2 lookDirection)
     {
-	    Debug.Log("Look direction = "+lookDirection);
+	    // Debug.Log("Look direction = "+lookDirection);
 
 	    Vector3 XZDirection = new Vector3(lookDirection.x,0,lookDirection.y);
 	    if(XZDirection.sqrMagnitude > 0.01f) // Avoid looking at ZERO
@@ -24,8 +24,8 @@ public class Player_Model : MonoBehaviour
     {
 	    Vector2 readValue = callbackContext.ReadValue<Vector2>();
 	    Vector3 XZDirection = new Vector3(readValue.x,0,readValue.y);
-	    Debug.Log("Move direction = "+readValue.ToString());
-	    Debug.Log("		- Phase = " + callbackContext.phase.ToString());
+	    // Debug.Log("Move direction = "+readValue.ToString());
+	    // Debug.Log("		- Phase = " + callbackContext.phase.ToString());
 	    
 	    moveDirection = XZDirection;
     }
