@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 using Frank;
-using Unity.VisualScripting;
 
 public class Generator : MonoBehaviour, IInteractable
 {

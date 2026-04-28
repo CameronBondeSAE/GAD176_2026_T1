@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using Divij;
 using Frank;
-using Unity.VisualScripting;
 using IInteractable = Divij.IInteractable;
 
 public class PoweredSwitch : MonoBehaviour, IInteractable, IPowered
@@ -31,6 +30,11 @@ public class PoweredSwitch : MonoBehaviour, IInteractable, IPowered
     {
         isPowered = powered;
         findSwitchables();
+    }
+
+    public bool GetPowered()
+    {
+	    return isPowered;
     }
 
     public void findSwitchables()

@@ -20,6 +20,11 @@ public class PowerPoint : MonoBehaviour, IPowered, IInteractable
         ReceivePower(powered);
     }
 
+    public bool GetPowered()
+    {
+	    return isPowered;
+    }
+
     public void ReceivePower(bool powered)
     {
         if (connectedCable != null)

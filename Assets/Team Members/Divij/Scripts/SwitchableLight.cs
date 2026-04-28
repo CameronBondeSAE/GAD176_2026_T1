@@ -38,6 +38,11 @@ namespace Divij
                 light.enabled = false;
             }
         }
+
+        public bool GetPowered()
+        {
+	        return isPowered;
+        }
     }
 }
 
