@@ -1,25 +1,30 @@
 using System;
 using Team_Members.Jackson.AI_Senses;
+using  Divij;
 using UnityEngine;
 
 public class LightSensor : MonoBehaviour
 {
-    private Divij.SwitchableLight _switchableLight;
     private AIPlayerSense _aiPlayerSense;
+    private Divij.SwitchableLight _switchableLight;
 
     void Awake()
     {
-        _switchableLight = GetComponentInParent<Divij.SwitchableLight>();
+        _aiPlayerSense = FindFirstObjectByType<AIPlayerSense>();
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        _aiPlayerSense = other.GetComponent<AIPlayerSense>();
-        
-        if (!_switchableLight.isPowered)
+        _switchableLight = other.GetComponent<Divij.SwitchableLight>();
+
+        if (_switchableLight != null && !_switchableLight.GetPowered())
         {
-            Debug.Log("Not lit");
             _aiPlayerSense.isLit = false;
+            _aiPlayerSense.playerWorking = false;
+            _aiPlayerSense.foundBox = false;
+            _aiPlayerSense.playerHasBox = false;
+            _aiPlayerSense.foundCollector = false;
+            _aiPlayerSense.boxDelivered = false;
         }
     }
 }
