@@ -9,10 +9,8 @@ namespace Frank
 		[SerializeField]
 		private Vector3 Hands = new Vector3(0, 0, 0);
 
-		public bool isHolding = false;
 		public Transform handsTransform;
-		public GameObject heldObject;
-		public GameObject heldItem;
+		public GameObject heldGameObject;
 		public GameObject cableRef;
 		public GameObject powerCableRef;
 
@@ -30,15 +28,17 @@ namespace Frank
 				{
 					Debug.Log("What I hit : " + c.transform.gameObject.name);
 
-					if (c.transform.GetComponentInParent<IHoldable>() != null)
+					IHoldable holdable = c.transform.GetComponentInParent<IHoldable>();
+
+					if (holdable != null)
 					{
 						Debug.Log("What I hit : " + c.transform.gameObject.name);
-						if (isHolding == false)
+						if (heldGameObject == null)
 						{
-							if (c.transform.GetComponentInParent<IHoldable>() !=
+							if (holdable !=
 							    null) // if so then get the gameobject and if it has an IHoldable component, then do the following
 							{
-								c.transform.GetComponentInParent<IHoldable>().Pickup(handsTransform);
+								holdable.Pickup(handsTransform);
 
 								if (c.GetComponent<Rigidbody>() != null)
 								{
@@ -48,24 +48,29 @@ namespace Frank
 								// Snap to hands
 								c.transform.parent = handsTransform;
 								c.transform.position = handsTransform.position;
-								isHolding = true;
-								heldItem = c.transform.gameObject;
+								heldGameObject = c.transform.gameObject;
 							}
 						}
-						else if (c.transform != null && isHolding)
+						else if (c.transform != null && heldGameObject != null)
 						{
-							c.transform.GetComponentInParent<IHoldable>().Drop();
-							c.transform.parent = null;
-							isHolding = false;
-							
-							if (c.GetComponent<Rigidbody>() != null)
-							{
-								c.GetComponent<Rigidbody>().isKinematic = false;
-							}
+							Drop();
 						}
 					}
 				}
 			}
+		}
+
+		private void Drop()
+		{
+			heldGameObject.GetComponentInParent<IHoldable>().Drop();
+			heldGameObject.transform.parent = null;
+			
+			if (heldGameObject.GetComponent<Rigidbody>() != null)
+			{
+				heldGameObject.GetComponent<Rigidbody>().isKinematic = false;
+			}
+
+			heldGameObject = null;
 		}
 
 		public void InteractWith()
@@ -82,34 +87,47 @@ namespace Frank
 					Debug.Log("What I hit : " + c.transform.gameObject.name);
 
 
-					if (c.transform.GetComponentInParent<IInteractable>() != null)
+					IInteractable interactable = c.transform.GetComponentInParent<IInteractable>();
+					
+					if (interactable != null)
 					{
-						if (c.transform.GetComponent<PowerPoint>() != null)
+						if (heldGameObject != null)
 						{
-							powerCableRef = Instantiate(cableRef, handsTransform.position, Quaternion.identity);
-							powerCableRef.GetComponent<CableManager>()
-								.SetReferences(c.transform, handsTransform);
-							isHolding = true;
-							Debug.Log(isHolding);
-
-							// finds the CableManager component on the instantiated power cable.
-							// It passes in a transform for the PowerPoint and one for the player's hands.
-						}
-						else
-						{
-							c.transform.GetComponentInParent<Divij.IInteractable>().Interact();
-						}
-					}
-
-					else if (c.transform.GetComponent<Divij.IPowered>() != null)
-					{
-						if (c.transform.GetComponent<Socket>() != null)
-						{
-							if (isHolding == true)
+							// Tell the object what we just interacted with
+							// Check if it wants to be dropped
+							if (heldGameObject.GetComponent<IHoldable>().YoureBeingHeldButThePlayerJustInteractedWithoutSomethingElse(
+								    interactable))
 							{
-								heldObject.GetComponent<CableEnd>().PlugIn(c.transform.gameObject);
+								// Item said it's dealing with it, so drop it
+								Drop();
+							}
+							else
+							{
+								interactable.Interact();
 							}
 						}
+						else
+							interactable.Interact();
+
+						
+						// if (c.transform.GetComponent<PowerSocket>() != null)
+						// {
+						// 	if (isHolding == true)
+						// 	{
+						// 		heldObject.GetComponent<CableEnd>().PlugIn(c.transform.gameObject);
+						// 	}
+						// }
+						// else if (c.transform.GetComponent<PowerPoint>() != null)
+						// {
+						// 	powerCableRef = Instantiate(cableRef, handsTransform.position, Quaternion.identity);
+						// 	powerCableRef.GetComponent<CableManager>()
+						// 		.SetReferences(c.transform, handsTransform);
+						// 	isHolding = true;
+						// 	Debug.Log(isHolding);
+						//
+						// 	// finds the CableManager component on the instantiated power cable.
+						// 	// It passes in a transform for the PowerPoint and one for the player's hands.
+						// }
 					}
 				}
 			}

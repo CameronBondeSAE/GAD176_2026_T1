@@ -8,10 +8,15 @@ public class SwitchableLight_Editor : Editor
 	{
 		base.OnInspectorGUI();
 
+		Divij.SwitchableLight switchableLight = target as Divij.SwitchableLight;
+
 		if (GUILayout.Button("Toggle"))
 		{
-			Divij.SwitchableLight switchableLight = target as Divij.SwitchableLight;
-			if (switchableLight != null) switchableLight.ToggleSwitch();
+			switchableLight?.ToggleSwitch();
+		}
+		if (GUILayout.Button("Force Power On"))
+		{
+			switchableLight?.SetPowered(true);
 		}
 	}
 }

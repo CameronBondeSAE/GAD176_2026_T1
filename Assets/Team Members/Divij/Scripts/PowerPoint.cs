@@ -33,6 +33,7 @@ public class PowerPoint : MonoBehaviour, IPowered, IInteractable
         }
     }
 
+    // TODO: Swap to accept an IPowered. Called from sometihng like the power cable
     public void ConnectCable(PowerCable cable)
     {
         connectedCable = cable;

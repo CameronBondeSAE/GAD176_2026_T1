@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 namespace Divij
@@ -9,6 +10,11 @@ namespace Divij
         public bool isPowered;
 
         public bool isSwitchedOn = false;
+
+        private void Start()
+        {
+	        CheckPower();
+        }
 
         // This is the interface entry point
         public void Interact()

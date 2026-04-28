@@ -50,11 +50,11 @@ public class CableManager : MonoBehaviour
 
     public void CableSetup()
     {
-        CableEndARef.transform.position = (powerPointTransformRef.position + customOffset); // the position of endA is set to the power points position
-        CableEndBRef.transform.position = playerHandsTransformRef.position; // position of endB is set to the player's hand position
-
-        heldCableEnd = CableEndBRef; // makes the held cable end equal to EndB
-        playerHandsTransformRef.GetComponent<Interact>().heldObject = heldCableEnd;
+        // CableEndARef.transform.position = (powerPointTransformRef.position + customOffset); // the position of endA is set to the power points position
+        // CableEndBRef.transform.position = playerHandsTransformRef.position; // position of endB is set to the player's hand position
+        //
+        // heldCableEnd = CableEndBRef; // makes the held cable end equal to EndB
+        // playerHandsTransformRef.GetComponent<Interact>().heldObject = heldCableEnd;
     }
 
     /// <summary>
