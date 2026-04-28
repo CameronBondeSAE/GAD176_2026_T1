@@ -20,8 +20,8 @@ namespace Frank
 		public void Pickup()
 		{
 			Collider[] colliders =
-				Physics.OverlapBox(transform.position + transform.TransformDirection(Vector3.forward) * 1.5f,
-					new Vector3(0.2f, 1f, 1f), transform.rotation);
+				Physics.OverlapBox(transform.position + transform.TransformDirection(Vector3.forward) * 1f,
+					new Vector3(0.2f, 1f, 0.75f), transform.rotation);
 
 			foreach (Collider c in colliders)
 			{
@@ -47,6 +47,7 @@ namespace Frank
 								
 								// Snap to hands
 								c.transform.parent = handsTransform;
+								c.transform.position = handsTransform.position;
 								isHolding = true;
 								heldItem = c.transform.gameObject;
 							}

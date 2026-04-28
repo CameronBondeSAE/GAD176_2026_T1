@@ -11,7 +11,7 @@ public class SwitchableLight_Editor : Editor
 		if (GUILayout.Button("Toggle"))
 		{
 			Divij.SwitchableLight switchableLight = target as Divij.SwitchableLight;
-			switchableLight.SetPowered(!switchableLight.isPowered);
+			if (switchableLight != null) switchableLight.ToggleSwitch();
 		}
 	}
 }

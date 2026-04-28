@@ -8,24 +8,28 @@ namespace Divij
         
         public bool isPowered;
 
+        public bool isSwitchedOn = false;
 
         // This is the interface entry point
         public void Interact()
         {
-            if (!isPowered)
-            {
-                Debug.Log("No power");
-                return;
-            }
-            
-            Toggle();
+            ToggleSwitch();
         }
 
-
-        public void Toggle()
+        public void ToggleSwitch()
         {
-            Debug.Log("SwitchableLight: Toggle");
-            light.enabled = !light.enabled;
+	        isSwitchedOn = !isSwitchedOn;
+	        Debug.Log("CLICK: SwitchableLight: Toggled = "+isSwitchedOn);
+
+	        CheckPower();
+        }
+
+        public void CheckPower()
+        {
+	        if (isPowered && isSwitchedOn)
+		        light.enabled = true;
+	        else
+		        light.enabled = false;
         }
 
 
@@ -33,10 +37,7 @@ namespace Divij
         {
             isPowered = powered;
 
-            if (!isPowered && light.enabled)
-            {
-                light.enabled = false;
-            }
+            CheckPower();
         }
 
         public bool GetPowered()
