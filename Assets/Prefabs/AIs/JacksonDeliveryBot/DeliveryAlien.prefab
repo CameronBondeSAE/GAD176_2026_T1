@@ -519,8 +519,8 @@ MonoBehaviour:
   pointsEarned: 0
   boxTransform: {fileID: 0}
   boxCollectorTransform: {fileID: 0}
-  backpack: {fileID: 0}
-  audioSource: {fileID: 0}
+  backpack: {fileID: 2770105060155926456}
+  audioSource: {fileID: 4346132303003592091}
   boxCollectedClip: {fileID: 0}
   boxDeliveredClip: {fileID: 0}
 --- !u!114 &7124204442733759517
@@ -1059,6 +1059,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0898a230bf28e9a44b9f108412b82e08, type: 3}
+--- !u!1 &2770105060155926456 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 769883570349935708, guid: 0898a230bf28e9a44b9f108412b82e08, type: 3}
+  m_PrefabInstance: {fileID: 3233108337013107684}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &3259114422570548482 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 136512802355304166, guid: 0898a230bf28e9a44b9f108412b82e08, type: 3}
