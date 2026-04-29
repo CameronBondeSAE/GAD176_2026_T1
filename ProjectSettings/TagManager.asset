@@ -5,19 +5,17 @@ TagManager:
   serializedVersion: 3
   tags:
   - CinemachineTarget
-  - Ai
-  - Enemy
-  - Gun
+  - cargo
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - Player
+  - 
   - Water
   - UI
   - Light
   - Powerables
-  - 
+  - Ignore Navmesh
   - 
   - 
   - 
