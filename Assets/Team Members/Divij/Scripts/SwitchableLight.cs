@@ -32,6 +32,12 @@ namespace Divij
 
         public void CheckPower()
         {
+	        if (light == null)
+	        {
+		        Debug.LogWarning("Light needs to be assigned");
+		        return;
+	        }
+	        
 	        if (isPowered && isSwitchedOn)
 		        light.enabled = true;
 	        else

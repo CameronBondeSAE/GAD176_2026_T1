@@ -7583,7 +7583,7 @@ MonoBehaviour:
   m_OverrideVoxelSize: 0
   m_VoxelSize: 0.16666667
   m_MinRegionArea: 2
-  m_NavMeshData: {fileID: 23800000, guid: 61a0aabfb186cf24ca55ae707a3992ba, type: 2}
+  m_NavMeshData: {fileID: 23800000, guid: f912fbaa40e8add49bc711eaa7a94e85, type: 2}
   m_BuildHeightMesh: 0
 --- !u!4 &609551014
 Transform:
@@ -21939,6 +21939,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2112603516}
   - component: {fileID: 2112603517}
+  - component: {fileID: 2112603518}
   m_Layer: 0
   m_Name: Input Manager
   m_TagString: Untagged
@@ -22005,6 +22006,18 @@ MonoBehaviour:
     y: 0
     width: 1
     height: 1
+--- !u!114 &2112603518
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2112603515}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d9177b100979bd549b1bb1148afc0121, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &2118732608
 PrefabInstance:
   m_ObjectHideFlags: 0
