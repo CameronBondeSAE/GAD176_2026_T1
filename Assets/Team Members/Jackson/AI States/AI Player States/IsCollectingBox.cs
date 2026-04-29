@@ -13,7 +13,6 @@ namespace Team_Members.Jackson.AI_States.AI_Player_States
         private Avoid[] _avoidBehaviours;
         private Pathfinder _pathfinder;
         private Box _box;
-        private GameObject _mainGameObject;
     
         public override void Create(GameObject aGameObject)
         {
@@ -22,7 +21,6 @@ namespace Team_Members.Jackson.AI_States.AI_Player_States
             _wanderBehaviour = aGameObject.GetComponent<Wander>();
             _avoidBehaviours = aGameObject.GetComponentsInChildren<Avoid>();
             _pathfinder = aGameObject.GetComponent<Pathfinder>();
-            _mainGameObject = aGameObject;
         }
 
         public override void Enter()
