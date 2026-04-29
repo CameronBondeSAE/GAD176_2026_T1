@@ -13,6 +13,7 @@ namespace MyGuy.scripts
         [SerializeField] private float waypointReachedDistance = 0.25f;
         [SerializeField] private float destinationReachedDistance = 0.4f;
         [SerializeField] private int maxAttempts = 10;
+        [SerializeField] private float modelRadius = 0.5f; // Minimum path width required
 
         public NavMeshPath path;
 
@@ -34,6 +35,7 @@ namespace MyGuy.scripts
         {
             PickNewDestination();
         }
+        
 
         public void SetFollowTarget(Transform target)
         {
@@ -126,9 +128,33 @@ namespace MyGuy.scripts
                 return false;
             }
 
+            // Check if the path is wide enough for the model
+            if (!IsPathWideEnough(newPath))
+            {
+                return false;
+            }
+
             path = newPath;
             _currentDestination = destination;
             _currentCornerIndex = newPath.corners.Length > 1 ? 1 : 0;
+            return true;
+        }
+
+        private bool IsPathWideEnough(NavMeshPath checkPath)
+        {
+            // Check each corner of the path to ensure there's enough clearance
+            foreach (Vector3 corner in checkPath.corners)
+            {
+                Vector3 checkPos = corner;
+                checkPos.y += 0.5f; // Check at body height
+
+                // Use overlap sphere to check if there's enough space for the model
+                if (Physics.OverlapSphere(checkPos, modelRadius).Length > 0)
+                {
+                    return false;
+                }
+            }
+
             return true;
         }
 

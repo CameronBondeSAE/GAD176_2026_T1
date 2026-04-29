@@ -52,7 +52,7 @@ namespace MyGuy.scripts
             Debug.DrawRay(transform.position, alignmentDirection.normalized * 10f, Color.blue);
 
             // Where I'm facing right now
-            Debug.DrawRay(transform.position, transform.forward * 10f, Color.deepPink);
+            Debug.DrawRay(transform.position, transform.forward * 10f, Color.magenta);
             return alignmentDirection;
         }
     }

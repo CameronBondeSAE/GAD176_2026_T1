@@ -1,0 +1,12 @@
+﻿<Solution>
+  <Project Path="Assembly-CSharp.csproj" />
+  <Project Path="FastScriptReload.Editor.csproj" />
+  <Project Path="ShapesRuntime.csproj" />
+  <Project Path="Assembly-CSharp-firstpass.csproj" />
+  <Project Path="Assembly-CSharp-Editor.csproj" />
+  <Project Path="ShapesEditor.csproj" />
+  <Project Path="ShapesSamples.csproj" />
+  <Project Path="FastScriptReload.Runtime.csproj" />
+  <Project Path="UnityPlayModeSaverEditor.csproj" />
+  <Project Path="UnityPlayModeSaver.csproj" />
+</Solution>
