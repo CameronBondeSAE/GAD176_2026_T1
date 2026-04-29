@@ -67,6 +67,6 @@
         "*.sln": "*.csproj",
         "*.slnx": "*.csproj"
     },
-    "dotnet.defaultSolution": "GAD176_2026_T1.slnx",
+    "dotnet.defaultSolution": "Project 3 repo.slnx",
     "dotnet.enableWorkspaceBasedDevelopment": false
 }

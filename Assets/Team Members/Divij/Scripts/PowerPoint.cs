@@ -20,6 +20,11 @@ public class PowerPoint : MonoBehaviour, IPowered, IInteractable
         ReceivePower(powered);
     }
 
+    public bool GetPowered()
+    {
+	    return isPowered;
+    }
+
     public void ReceivePower(bool powered)
     {
         if (connectedCable != null)
@@ -28,6 +33,7 @@ public class PowerPoint : MonoBehaviour, IPowered, IInteractable
         }
     }
 
+    // TODO: Swap to accept an IPowered. Called from sometihng like the power cable
     public void ConnectCable(PowerCable cable)
     {
         connectedCable = cable;

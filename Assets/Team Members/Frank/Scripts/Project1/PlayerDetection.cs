@@ -1,7 +1,6 @@
 using System.Collections;
 using Divij;
 using Frank;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerDetection : MonoBehaviour, IPowered
@@ -18,7 +17,12 @@ public class PlayerDetection : MonoBehaviour, IPowered
         isPowered = powered;
         
     }
-    
+
+    public bool GetPowered()
+    {
+	    return isPowered;
+    }
+
     private void Update()
     {
 

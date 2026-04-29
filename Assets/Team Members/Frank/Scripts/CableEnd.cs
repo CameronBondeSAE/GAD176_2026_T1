@@ -2,7 +2,8 @@ using System;
 using Frank;
 using UnityEngine;
 
-public class CableEnd : MonoBehaviour, IInteractable
+// TODO: Implement IPowered
+public class CableEnd : MonoBehaviour, IInteractable, IHoldable
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
 
@@ -20,6 +21,7 @@ public class CableEnd : MonoBehaviour, IInteractable
 
     public void PlugIn(GameObject target)
     {
+	    // TODO: make this transform.parent = the target's transform and just set the position to zero
         gameObject.transform.position = target.transform.position + plugOffset;
     }
 }

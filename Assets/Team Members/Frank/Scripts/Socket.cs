@@ -19,4 +19,9 @@ public class Socket : MonoBehaviour, IPowered
     {
         
     }
+
+    public bool GetPowered()
+    {
+	    return false;
+    }
 }

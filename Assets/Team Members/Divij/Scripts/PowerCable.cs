@@ -19,6 +19,11 @@ public class PowerCable : MonoBehaviour, IPowered
         }
     }
 
+    public bool GetPowered()
+    {
+	    return isPowered;
+    }
+
     public void ConnectStart(PowerPoint p)
     {
         connectedPoint = p;

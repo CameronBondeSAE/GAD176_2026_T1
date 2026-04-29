@@ -2,7 +2,7 @@ using UnityEngine;
 using Anthill.AI;
 using Anthill.Utils;
 
-public partial class UnitSense : MonoBehaviour, ISense
+public class UnitSense : MonoBehaviour, ISense
 {
 	private UnitControl _control;
 	private Transform _t;

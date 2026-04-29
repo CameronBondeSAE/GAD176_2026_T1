@@ -18,4 +18,9 @@ public class PoweredLight : MonoBehaviour, IPowered
             poweredLightRef.enabled = false;
         }
     }
+
+    public bool GetPowered()
+    {
+	    return  poweredLightRef.enabled;
+    }
 }
