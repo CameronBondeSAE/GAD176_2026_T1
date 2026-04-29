@@ -19,6 +19,8 @@ public class pullingWeaponStates : AntAIState
 
     public override void Create(GameObject aGameObject)
     {
-        States.isShootingplayer = true;
+        // States.isShootingplayer = true;
+        // States.isCanSeeplayer = true;
+        // States.isweapondDrawn = true;
     }
 }
