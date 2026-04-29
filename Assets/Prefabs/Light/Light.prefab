@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1100007062412061409}
   - component: {fileID: 3014742958061627317}
   - component: {fileID: 5701620783923132419}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Icosphere
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -97,7 +97,7 @@ GameObject:
   - component: {fileID: 3164875696677526035}
   - component: {fileID: 2422354995356818212}
   - component: {fileID: 8241044062138633676}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -171,7 +171,7 @@ GameObject:
   - component: {fileID: 4975591391370556856}
   - component: {fileID: 6568780024288268015}
   - component: {fileID: 3467026568859432453}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Spot Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -300,6 +300,11 @@ MonoBehaviour:
   m_LightUnit: 0
   m_LuxAtDistance: 1
   m_Intensity: 2239.3794
+  m_Version: 13
+  m_ObsoleteShadowResolutionTier: 1
+  m_ObsoleteUseShadowQualitySettings: 0
+  m_ObsoleteCustomShadowResolution: 512
+  m_ObsoleteContactShadows: 0
   m_InnerSpotPercent: 26.5
   m_SpotIESCutoffPercent: 100
   m_LightDimmer: 1
@@ -418,11 +423,6 @@ MonoBehaviour:
   m_AreaLightEmissiveMeshShadowCastingMode: 0
   m_AreaLightEmissiveMeshMotionVectorGenerationMode: 0
   m_AreaLightEmissiveMeshLayer: -1
-  m_Version: 13
-  m_ObsoleteShadowResolutionTier: 1
-  m_ObsoleteUseShadowQualitySettings: 0
-  m_ObsoleteCustomShadowResolution: 512
-  m_ObsoleteContactShadows: 0
 --- !u!1 &5858947771144941456
 GameObject:
   m_ObjectHideFlags: 0
@@ -435,7 +435,7 @@ GameObject:
   - component: {fileID: 6116804825726267703}
   - component: {fileID: 1772343834350060919}
   - component: {fileID: 8424858636919623016}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Fill light for roof
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -564,6 +564,11 @@ MonoBehaviour:
   m_LightUnit: 0
   m_LuxAtDistance: 1
   m_Intensity: 196.56079
+  m_Version: 11
+  m_ObsoleteShadowResolutionTier: 1
+  m_ObsoleteUseShadowQualitySettings: 0
+  m_ObsoleteCustomShadowResolution: 512
+  m_ObsoleteContactShadows: 0
   m_InnerSpotPercent: 26.5
   m_SpotIESCutoffPercent: 100
   m_LightDimmer: 1
@@ -682,11 +687,6 @@ MonoBehaviour:
   m_AreaLightEmissiveMeshShadowCastingMode: 0
   m_AreaLightEmissiveMeshMotionVectorGenerationMode: 0
   m_AreaLightEmissiveMeshLayer: -1
-  m_Version: 11
-  m_ObsoleteShadowResolutionTier: 1
-  m_ObsoleteUseShadowQualitySettings: 0
-  m_ObsoleteCustomShadowResolution: 512
-  m_ObsoleteContactShadows: 0
 --- !u!1001 &6785957724273600862
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -754,6 +754,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 4ba625417e16acc40a5d9ddc70035e3a, type: 3}
       propertyPath: m_Name
       value: LightThing
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 4ba625417e16acc40a5d9ddc70035e3a, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

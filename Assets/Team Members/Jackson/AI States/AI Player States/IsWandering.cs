@@ -22,7 +22,6 @@ namespace Team_Members.Jackson.AI_States.AI_Player_States
             _avoidBehaviours = aGameObject.GetComponentsInChildren<Avoid>();
             _separationBehaviour = aGameObject.GetComponent<Separation>();
             _aiPlayerSense = aGameObject.GetComponent<AIPlayerSense>();
-            _box = FindFirstObjectByType<Box>(FindObjectsInactive.Include);
         }
 
         public override void Enter()

@@ -5,5 +5,6 @@ public enum AIPlayer
     FoundBox = 2,
     PlayerHasBox = 3,
     FoundCollector = 4,
-    BoxDelivered = 5
+    BoxDelivered = 5,
+    IsLit = 6
 }
