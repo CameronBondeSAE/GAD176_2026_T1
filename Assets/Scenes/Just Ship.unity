@@ -7263,8 +7263,7 @@ MonoBehaviour:
   - _gameObject: {fileID: 278701587}
     _prefab: Assets/Prefabs/Space/Prefabs/Local Volumetric Fog.prefab
   - _gameObject: {fileID: 804232512}
-    _prefab: Assets/Prefabs/AIs/Emilio Ureta project 2/Aggressive Alien AI/Aggresive
-      Alien AI.prefab
+    _prefab: Assets/Prefabs/AIs/Emilio Ureta project 2/Aggresive Alien AI.prefab
 --- !u!4 &581867193
 Transform:
   m_ObjectHideFlags: 11
@@ -9718,7 +9717,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2282357899964809628, guid: b355c927863a39448a72f327cbc06017, type: 3}
       propertyPath: isCanSeeplayer
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2282357899964809628, guid: b355c927863a39448a72f327cbc06017, type: 3}
       propertyPath: isIsPlayerDead

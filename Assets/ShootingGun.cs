@@ -35,9 +35,13 @@ public class ShootingGun : MonoBehaviour
                 StartCoroutine(turnOn());
             }
 
-            if (isEnemyDead = true)
+            if (isEnemyDead == true)
             {
-             States.isIsPlayerDead = true;   
+             GetComponentInParent<Collectstates>().isIsPlayerDead = true;
+             GetComponentInParent<Collectstates>().isCanSeeplayer = false;
+             GetComponentInParent<Collectstates>().isIsPlayerDead = false;
+             GetComponentInParent<Collectstates>().isweapondDrawn = false;
+             GetComponentInParent<Collectstates>().isLookingforplayer = true;
             }
         }
     }
