@@ -1,0 +1,80 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &3560789537438565352
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5904571186801783305}
+  - component: {fileID: 2598057966934026206}
+  - component: {fileID: 7509570458973574925}
+  - component: {fileID: 6230011560854143695}
+  m_Layer: 0
+  m_Name: Alien Shooting
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5904571186801783305
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3560789537438565352}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2598057966934026206
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3560789537438565352}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f259499504344a478f77730135c24e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &7509570458973574925
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3560789537438565352}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 88fd043d9623c8840b2e899c907d2c45, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  States: {fileID: 2282357899964809628, guid: b355c927863a39448a72f327cbc06017, type: 3}
+  isEnemyDead: 0
+  gunTransform: {fileID: 7441302594292867446, guid: 55e9d06918c4a174aa4afd47f8de1e33, type: 3}
+  bulletPrefab: {fileID: 85067841637770124, guid: 553f66b5d627a844f93519106242b8c6, type: 3}
+  canShoot: 1
+  bulletAmount: 1
+--- !u!114 &6230011560854143695
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3560789537438565352}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c1d73cc0ecae6e941bdf86c1bac9f386, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ShootingGun: {fileID: 7509570458973574925}
+  states: {fileID: 2282357899964809628, guid: b355c927863a39448a72f327cbc06017, type: 3}

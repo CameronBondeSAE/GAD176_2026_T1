@@ -3379,6 +3379,96 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6253073774604220240, guid: 2f5c51fb7a4fbbe4ab3833727c8bdb2f, type: 3}
   m_PrefabInstance: {fileID: 458857458}
   m_PrefabAsset: {fileID: 0}
+<<<<<<< HEAD
+--- !u!1001 &477337933
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2185803056316268337, guid: b355c927863a39448a72f327cbc06017, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 23.605888
+      objectReference: {fileID: 0}
+    - target: {fileID: 2185803056316268337, guid: b355c927863a39448a72f327cbc06017, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -3.2881176
+      objectReference: {fileID: 0}
+    - target: {fileID: 2185803056316268337, guid: b355c927863a39448a72f327cbc06017, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -3.4682412
+      objectReference: {fileID: 0}
+    - target: {fileID: 2185803056316268337, guid: b355c927863a39448a72f327cbc06017, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2185803056316268337, guid: b355c927863a39448a72f327cbc06017, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2185803056316268337, guid: b355c927863a39448a72f327cbc06017, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2185803056316268337, guid: b355c927863a39448a72f327cbc06017, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2185803056316268337, guid: b355c927863a39448a72f327cbc06017, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2185803056316268337, guid: b355c927863a39448a72f327cbc06017, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2185803056316268337, guid: b355c927863a39448a72f327cbc06017, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2282357899964809628, guid: b355c927863a39448a72f327cbc06017, type: 3}
+      propertyPath: isCanSeeplayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2282357899964809628, guid: b355c927863a39448a72f327cbc06017, type: 3}
+      propertyPath: isIsPlayerDead
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2282357899964809628, guid: b355c927863a39448a72f327cbc06017, type: 3}
+      propertyPath: isweapondDrawn
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2282357899964809628, guid: b355c927863a39448a72f327cbc06017, type: 3}
+      propertyPath: isLookingforplayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3071542813545521559, guid: b355c927863a39448a72f327cbc06017, type: 3}
+      propertyPath: m_Name
+      value: Aggresive Alien AI
+      objectReference: {fileID: 0}
+    - target: {fileID: 3353581674595091141, guid: b355c927863a39448a72f327cbc06017, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3730565048318561202, guid: b355c927863a39448a72f327cbc06017, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5475598972820081224, guid: b355c927863a39448a72f327cbc06017, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects:
+    - {fileID: 3730565048318561202, guid: b355c927863a39448a72f327cbc06017, type: 3}
+    - {fileID: 3985781018332002079, guid: b355c927863a39448a72f327cbc06017, type: 3}
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: b355c927863a39448a72f327cbc06017, type: 3}
+=======
+>>>>>>> parent of aa47f8e (updated Scene)
 --- !u!1 &482277867 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1710280365958799962, guid: 567f351c6027259429afe86d33a5d9ff, type: 3}
