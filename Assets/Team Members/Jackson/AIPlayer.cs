@@ -1,10 +1,9 @@
 public enum AIPlayer
 {
-    BoxSpawned = 0,
-    PlayerWorking = 1,
-    FoundBox = 2,
-    PlayerHasBox = 3,
-    FoundCollector = 4,
-    BoxDelivered = 5,
-    IsLit = 6
+    PlayerWorking = 0,
+    FoundDispenser = 1,
+    PlayerHasPowerUp = 2,
+    FoundInactivePowerUp = 3,
+    PowerUpDelivered = 4,
+    MissingPowerUp = 5
 }

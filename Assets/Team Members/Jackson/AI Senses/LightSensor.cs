@@ -13,18 +13,18 @@ public class LightSensor : MonoBehaviour
         _aiPlayerSense = FindFirstObjectByType<AIPlayerSense>();
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerStay(Collider other)
     {
         _switchableLight = other.GetComponent<Divij.SwitchableLight>();
 
-        if (_switchableLight != null && !_switchableLight.GetPowered())
+        if (_switchableLight != null)
         {
-            _aiPlayerSense.isLit = false;
+            //_aiPlayerSense.isLit = _switchableLight.GetPowered();
             _aiPlayerSense.playerWorking = false;
-            _aiPlayerSense.foundBox = false;
-            _aiPlayerSense.playerHasBox = false;
-            _aiPlayerSense.foundCollector = false;
-            _aiPlayerSense.boxDelivered = false;
+            _aiPlayerSense.foundDispenser = false;
+            _aiPlayerSense.playerHasPowerUp = false;
+            _aiPlayerSense.foundInactivePowerUp = false;
+            _aiPlayerSense.powerUpDelivered = false;
         }
     }
 }
