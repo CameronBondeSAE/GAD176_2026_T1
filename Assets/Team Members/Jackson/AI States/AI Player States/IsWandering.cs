@@ -22,6 +22,7 @@ namespace Team_Members.Jackson.AI_States.AI_Player_States
             _avoidBehaviours = aGameObject.GetComponentsInChildren<Avoid>();
             _separationBehaviour = aGameObject.GetComponent<Separation>();
             _aiPlayerSense = aGameObject.GetComponent<AIPlayerSense>();
+            _box = FindFirstObjectByType<Box>(FindObjectsInactive.Include);
         }
 
         public override void Enter()
@@ -46,6 +47,7 @@ namespace Team_Members.Jackson.AI_States.AI_Player_States
 
         public override void Exit()
         {
+            _box.gameObject.SetActive(true);
             _aiPlayerSense.boxSpawned = true;
         
             Debug.Log("Box Has Spawned now moving on to Searching for the Box");

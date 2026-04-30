@@ -19,9 +19,7 @@ namespace Team_Members.Jackson.AI_States.AI_Player_States
 
         public override void Enter()
         {
-            _box = FindFirstObjectByType<Box>(FindObjectsInactive.Include);
-            _box.gameObject.SetActive(true);
-            
+            _box = FindFirstObjectByType<Box>();
             Finish();
         }
 
