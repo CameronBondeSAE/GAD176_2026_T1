@@ -13,7 +13,7 @@ public class BoxCollector : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Player") && _playerSense.playerHasBox)
+        if (other.gameObject.CompareTag("Player") && _playerSense.playerHasPowerUp)
         {
             _playerSense.pointsEarned++;
         }
