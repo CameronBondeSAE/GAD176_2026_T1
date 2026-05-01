@@ -21,17 +21,17 @@ MonoBehaviour:
     - id: 2
       name: Player Has PowerUp
     - id: 3
-      name: Found Collector
+      name: Found Inactive PowerUp
     - id: 4
-      name: Box Delivered
+      name: PowerUp Delivered
     - id: 5
       name: Missing PowerUp
   actions:
-  - name: Collect Box
+  - name: Collecting PowerUp
     isDefault: 0
     state: {fileID: 4624344499701069078, guid: 2d7192e707b9d844da74bb8cb46bff09, type: 3}
     cost: 0
-    position: {x: 769, y: 38.666664}
+    position: {x: 734, y: 37.666664}
     pre:
     - id: 0
       value: 1
@@ -42,11 +42,11 @@ MonoBehaviour:
     post:
     - id: 2
       value: 1
-  - name: Search Collector
+  - name: Search Inactive PowerUp
     isDefault: 0
     state: {fileID: 2443305070991959351, guid: dd8e8dee7ca8bd24eac40e7d2bf37e2b, type: 3}
     cost: 0
-    position: {x: 988, y: 39.33333}
+    position: {x: 954, y: 26.333328}
     pre:
     - id: 2
       value: 1
@@ -72,11 +72,11 @@ MonoBehaviour:
       value: 1
     - id: 0
       value: 1
-  - name: Unloading Box
+  - name: Unloading PowerUp
     isDefault: 0
     state: {fileID: 162754810762758423, guid: b34011e659681af4a9dcb046ffc077f4, type: 3}
     cost: 0
-    position: {x: 1198.3334, y: 45.66667}
+    position: {x: 1177.3334, y: 30.666672}
     pre:
     - id: 3
       value: 1
@@ -103,13 +103,13 @@ MonoBehaviour:
   goals:
   - name: Delivered Box
     isDefault: 1
-    position: {x: 1405.3334, y: 45.66667}
+    position: {x: 1381.3334, y: 32.66667}
     conditions:
     - id: 4
       value: 1
   - name: Find Box
     isDefault: 0
-    position: {x: 985, y: 250.66666}
+    position: {x: 955, y: 242.66666}
     conditions:
     - id: 2
       value: 1
