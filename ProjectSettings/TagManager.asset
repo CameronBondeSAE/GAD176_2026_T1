@@ -6,11 +6,14 @@ TagManager:
   tags:
   - CinemachineTarget
   - cargo
+  - Enemy
+  - Ai
+  - Gun
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Player
   - Water
   - UI
   - Light
