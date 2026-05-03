@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using Anthill.AI;
 using Team_Members.Jackson.AI_Senses.Hearing;
 using UnityEngine;
@@ -10,16 +11,16 @@ namespace Team_Members.Jackson.AI_Senses
         private PlayerStorage _playerStorage;
         [SerializeField] private GameObject exclamationMark;
         [SerializeField] private EnemySense[] enemies;
-        public bool isLit = true;
-        public bool boxSpawned = false;
-        public bool foundBox = false;
+        public List<GameObject> inactivePowerUps;
+        public bool foundDispenser = false;
         public bool playerWorking = false;
-        public bool playerHasBox = false;
-        public bool foundCollector = false;
-        public bool boxDelivered = false;
+        public bool missingPowerUp = false;
+        public bool playerHasPowerUp = false;
+        public bool foundInactivePowerUp = false;
+        public bool powerUpDelivered = false;
         public int pointsEarned = 0;
-        public Transform boxTransform;
-        public Transform boxCollectorTransform;
+        public Transform dispenserTransform;
+        public Transform inactivePowerUpTransform;
         public GameObject backpack;
         public AudioSource audioSource;
         public AudioClip boxCollectedClip;
@@ -67,14 +68,12 @@ namespace Team_Members.Jackson.AI_Senses
 
         public void CollectConditions(AntAIAgent aAgent, AntAICondition aWorldState)
         {
-            // Temporarily making it true before I setup the Box Spawning
-            aWorldState.Set(AIPlayer.IsLit, isLit);
-            aWorldState.Set(AIPlayer.BoxSpawned, boxSpawned);
             aWorldState.Set(AIPlayer.PlayerWorking, playerWorking);
-            aWorldState.Set(AIPlayer.FoundBox, foundBox);
-            aWorldState.Set(AIPlayer.PlayerHasBox, playerHasBox);
-            aWorldState.Set(AIPlayer.FoundCollector, foundCollector);
-            aWorldState.Set(AIPlayer.BoxDelivered, boxDelivered);
+            aWorldState.Set(AIPlayer.MissingPowerUp, missingPowerUp);
+            aWorldState.Set(AIPlayer.FoundDispenser, foundDispenser);
+            aWorldState.Set(AIPlayer.PlayerHasPowerUp, playerHasPowerUp);
+            aWorldState.Set(AIPlayer.FoundInactivePowerUp, foundInactivePowerUp);
+            aWorldState.Set(AIPlayer.PowerUpDelivered, powerUpDelivered);
         }
     }
 }

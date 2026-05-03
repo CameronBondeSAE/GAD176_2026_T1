@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace Divij
 {
@@ -11,9 +12,20 @@ namespace Divij
 
         public bool isSwitchedOn = false;
 
+        public bool debugRandomSwitching = false;
+
         private void Start()
         {
 	        CheckPower();
+        }
+
+        private void FixedUpdate()
+        {
+	        if (debugRandomSwitching && Random.value < 0.003f)
+	        {
+		        SetPowered(true);
+		        ToggleSwitch();
+	        }
         }
 
         // This is the interface entry point
@@ -25,7 +37,7 @@ namespace Divij
         public void ToggleSwitch()
         {
 	        isSwitchedOn = !isSwitchedOn;
-	        Debug.Log("CLICK: SwitchableLight: Toggled = "+isSwitchedOn);
+	        // Debug.Log("CLICK: SwitchableLight: Toggled = "+isSwitchedOn);
 
 	        CheckPower();
         }

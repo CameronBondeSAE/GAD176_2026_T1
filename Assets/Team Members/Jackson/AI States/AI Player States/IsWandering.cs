@@ -7,7 +7,7 @@ namespace Team_Members.Jackson.AI_States.AI_Player_States
 {
     public class IsWandering : AntAIState
     {
-        private Box _box;
+        private PowerUp _powerUp;
         private MoveForward _moveForwardBehaviour;
         private Wander _wanderBehaviour;
         private Avoid[] _avoidBehaviours;
@@ -20,13 +20,12 @@ namespace Team_Members.Jackson.AI_States.AI_Player_States
             _moveForwardBehaviour = aGameObject.GetComponent<MoveForward>();
             _wanderBehaviour = aGameObject.GetComponent<Wander>();
             _avoidBehaviours = aGameObject.GetComponentsInChildren<Avoid>();
-            _separationBehaviour = aGameObject.GetComponent<Separation>();
             _aiPlayerSense = aGameObject.GetComponent<AIPlayerSense>();
-            _box = FindFirstObjectByType<Box>(FindObjectsInactive.Include);
         }
 
         public override void Enter()
         {
+            _aiPlayerSense.inactivePowerUps.Clear();
             _moveForwardBehaviour.enabled = true;
             _wanderBehaviour.enabled = true;
 
@@ -34,23 +33,37 @@ namespace Team_Members.Jackson.AI_States.AI_Player_States
             {
                 avoid.enabled = true;
             }
-        
-            _separationBehaviour.enabled = true;
+            
+            foreach (PowerUp powerUp in FindObjectsByType<PowerUp>(FindObjectsInactive.Include, FindObjectsSortMode.None))
+            {
+                if (!powerUp.gameObject.activeInHierarchy)
+                {
+                    _aiPlayerSense.inactivePowerUps.Add(powerUp.gameObject);
+                }
+                else
+                {
+                    continue;
+                }
+            }
+            
             Finish();
         }
 
         public override void Execute(float aDeltaTime, float aTimeScale)
         {
-            Debug.Log("Wandering until a box has spawned");
+            Debug.Log("Wandering until an Energy PowerUp has been picked up");
             Finish();
         }
 
         public override void Exit()
         {
-            _box.gameObject.SetActive(true);
-            _aiPlayerSense.boxSpawned = true;
+            Debug.Log(_aiPlayerSense.inactivePowerUps.Count);
+            if (_aiPlayerSense.inactivePowerUps.Count > 0)
+            {
+                _aiPlayerSense.missingPowerUp = true;
+            }
         
-            Debug.Log("Box Has Spawned now moving on to Searching for the Box");
+            Debug.Log("Found Inactive PowerUp moving on to searching for the dispenser");
             Finish();
         }
     }
