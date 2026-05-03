@@ -18,7 +18,7 @@ public class aggresiveAlienSight : MonoBehaviour
 
     private void Awake()
     {
-        Player = LayerMask.GetMask("players");
+        Player = LayerMask.GetMask("Player");
     }
 
     private void FixedUpdate()

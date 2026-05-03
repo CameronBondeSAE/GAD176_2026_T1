@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3153419146011429803}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Hands
   m_TagString: Untagged
   m_Icon: {fileID: 2974397684917235467, guid: 0000000000000000d000000000000000, type: 0}
@@ -42,7 +42,7 @@ GameObject:
   - component: {fileID: 7313568232634554606}
   - component: {fileID: 8954740891691302476}
   - component: {fileID: 1273103890878380776}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -128,7 +128,7 @@ GameObject:
   - component: {fileID: 3079980601641898304}
   - component: {fileID: 8016638602813370984}
   - component: {fileID: 5842151784199666893}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Controller
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -208,7 +208,7 @@ GameObject:
   - component: {fileID: 5293750501021228910}
   - component: {fileID: 5061798495692313585}
   - component: {fileID: 2161581326658352084}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Model
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -260,10 +260,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Hands: {x: 0, y: 0, z: 0}
-  isHolding: 0
   handsTransform: {fileID: 3153419146011429803}
-  heldObject: {fileID: 0}
-  heldItem: {fileID: 0}
+  heldGameObject: {fileID: 0}
   cableRef: {fileID: 0}
   powerCableRef: {fileID: 0}
 --- !u!1 &7343999748368717727
@@ -277,7 +275,7 @@ GameObject:
   - component: {fileID: 3272652955669383675}
   - component: {fileID: 2530854897662976845}
   - component: {fileID: 3078081836788456995}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Glasses
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -364,7 +362,7 @@ GameObject:
   - component: {fileID: 4687960398138382971}
   - component: {fileID: 2489592778084454767}
   - component: {fileID: 4862483743333366245}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: View
   m_TagString: Untagged
   m_Icon: {fileID: 0}
