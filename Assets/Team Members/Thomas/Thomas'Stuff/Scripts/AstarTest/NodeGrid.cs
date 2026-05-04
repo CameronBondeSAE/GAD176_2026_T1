@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.AI;
 using System.Collections.Generic;
 
 public class NodeGrid : MonoBehaviour
@@ -7,6 +8,10 @@ public class NodeGrid : MonoBehaviour
     [SerializeField] private Vector2 gridWorldSize = new Vector2(10, 10);
     [SerializeField] private float nodeRadius = 0.5f;
     [SerializeField] private LayerMask wallMask;
+    
+    [Header("NavMesh Settings")]
+    [SerializeField] private float navMeshSampleDistance = 0.5f; //how far to search for nearest NavMesh point
+    [SerializeField] private bool useNavMeshOnly = true; // if true, only use NavMesh. If false, combine with wallMask
     
     [Header("Visualization")]
     [SerializeField] private bool displayGridGizmos = true;
@@ -42,8 +47,13 @@ public class NodeGrid : MonoBehaviour
             {
                 Vector3 worldPoint = worldBottomLeft + Vector3.right * (x * nodeDiameter + nodeRadius) + Vector3.forward * (y * nodeDiameter + nodeRadius);
                 
-                //trying checksphere to see if the point is blocked
-                bool walkable = !Physics.CheckSphere(worldPoint, nodeRadius, wallMask);
+                bool walkable = IsPointOnNavMesh(worldPoint);
+                
+                //optionally combine NavMesh check with wall check
+                if (!useNavMeshOnly && walkable)
+                {
+                    walkable = !Physics.CheckSphere(worldPoint, nodeRadius, wallMask);
+                }
                 
                 grid[x, y] = new ThomasNode(walkable, worldPoint, x, y);
 
@@ -59,7 +69,21 @@ public class NodeGrid : MonoBehaviour
             }
         }
 
-        Debug.Log("2d world grid created");
+        Debug.Log("2d world grid created with NavMesh integration");
+    }
+
+    private bool IsPointOnNavMesh(Vector3 point)
+    {
+        NavMeshHit hit;
+        // Sample the NavMesh at this position
+        if (NavMesh.SamplePosition(point, out hit, navMeshSampleDistance, NavMesh.AllAreas))
+        {
+            // Check if the sampled point is close enough to the original point
+            float distance = Vector3.Distance(point, hit.position);
+            return distance <= nodeRadius;
+        }
+        
+        return false;
     }
 
     public ThomasNode NodeFromWorldPoint(Vector3 worldPosition) //set the size and position of the grid
