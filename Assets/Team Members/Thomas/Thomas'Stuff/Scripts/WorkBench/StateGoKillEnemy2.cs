@@ -28,7 +28,7 @@ public class StateGoKillEnemy2 : AntAIState
         
         foreach (GameObject obj in allObjects)
         {
-            if (obj.name.Contains("Human"))
+            if (obj.name.Contains("Player"))
             {
                 float distance = Vector3.Distance(steeringManager.transform.position, obj.transform.position);
                 

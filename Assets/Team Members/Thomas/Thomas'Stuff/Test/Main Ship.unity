@@ -1325,6 +1325,63 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 2863528079676618886, guid: 0baf0237d984f8048a3a8769944e4fb1, type: 3}
   m_PrefabInstance: {fileID: 165803945}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &197147332
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 7137636627333086778, guid: bdd50bfbcd071ab4ca3da1191d7bc895, type: 3}
+      propertyPath: m_Name
+      value: NPCAlienAI
+      objectReference: {fileID: 0}
+    - target: {fileID: 7172503902422497680, guid: bdd50bfbcd071ab4ca3da1191d7bc895, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.28
+      objectReference: {fileID: 0}
+    - target: {fileID: 7172503902422497680, guid: bdd50bfbcd071ab4ca3da1191d7bc895, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -3.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 7172503902422497680, guid: bdd50bfbcd071ab4ca3da1191d7bc895, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -7.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 7172503902422497680, guid: bdd50bfbcd071ab4ca3da1191d7bc895, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.9745228
+      objectReference: {fileID: 0}
+    - target: {fileID: 7172503902422497680, guid: bdd50bfbcd071ab4ca3da1191d7bc895, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7172503902422497680, guid: bdd50bfbcd071ab4ca3da1191d7bc895, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.22428843
+      objectReference: {fileID: 0}
+    - target: {fileID: 7172503902422497680, guid: bdd50bfbcd071ab4ca3da1191d7bc895, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7172503902422497680, guid: bdd50bfbcd071ab4ca3da1191d7bc895, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7172503902422497680, guid: bdd50bfbcd071ab4ca3da1191d7bc895, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -25.922
+      objectReference: {fileID: 0}
+    - target: {fileID: 7172503902422497680, guid: bdd50bfbcd071ab4ca3da1191d7bc895, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: bdd50bfbcd071ab4ca3da1191d7bc895, type: 3}
 --- !u!1001 &202171919
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3697,11 +3754,6 @@ MonoBehaviour:
   m_LightUnit: 2
   m_LuxAtDistance: 1
   m_Intensity: 101311.78
-  m_Version: 13
-  m_ObsoleteShadowResolutionTier: 1
-  m_ObsoleteUseShadowQualitySettings: 0
-  m_ObsoleteCustomShadowResolution: 512
-  m_ObsoleteContactShadows: 0
   m_InnerSpotPercent: 0
   m_SpotIESCutoffPercent: 100
   m_LightDimmer: 1
@@ -3820,6 +3872,11 @@ MonoBehaviour:
   m_AreaLightEmissiveMeshShadowCastingMode: 0
   m_AreaLightEmissiveMeshMotionVectorGenerationMode: 0
   m_AreaLightEmissiveMeshLayer: -1
+  m_Version: 13
+  m_ObsoleteShadowResolutionTier: 1
+  m_ObsoleteUseShadowQualitySettings: 0
+  m_ObsoleteCustomShadowResolution: 512
+  m_ObsoleteContactShadows: 0
 --- !u!1001 &520856494
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4004,6 +4061,60 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 624860272451348790, guid: 567f351c6027259429afe86d33a5d9ff, type: 3}
   m_PrefabInstance: {fileID: 1339047788}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &544134787
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 544134788}
+  - component: {fileID: 544134789}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &544134788
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 544134787}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -28, y: -7.5, z: -415.87}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1447785040}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &544134789
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 544134787}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 47b340bf64f1aeb41a11b273e6a28bf1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gridWorldSize: {x: 113.9, y: 27.3}
+  nodeRadius: 0.3
+  wallMask:
+    serializedVersion: 2
+    m_Bits: 0
+  navMeshSampleDistance: 0.5
+  useNavMeshOnly: 1
+  displayGridGizmos: 0
+  openList: []
+  closedList: []
 --- !u!1 &544943455 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1673204478831555727, guid: dbdba0a6bfb99d34db8e7b8dae93de6b, type: 3}
@@ -7364,14 +7475,15 @@ MonoBehaviour:
   - _gameObject: {fileID: 25400266}
     _prefab: Assets/Prefabs/Items/Pickup Tester/Cam's pickup test.prefab
   - _gameObject: {fileID: 524024748}
-    _prefab: Assets/Prefabs/AIs/Emilio Ureta project 2/Aggressive Alien AI/Aggresive
-      Alien AI.prefab
+    _prefab: Assets/Prefabs/AIs/Emilio Ureta project 2/Aggresive Alien AI.prefab
   - _gameObject: {fileID: 1227710095}
-    _prefab: Assets/Prefabs/AIs/Emilio Ureta project 2/Aggressive Alien AI/Aggresive
-      Alien AI.prefab
+    _prefab: Assets/Prefabs/AIs/Emilio Ureta project 2/Aggresive Alien AI.prefab
   - _gameObject: {fileID: 323158034}
-    _prefab: Assets/Prefabs/AIs/Emilio Ureta project 2/Aggressive Alien AI/Aggresive
-      Alien AI.prefab
+    _prefab: Assets/Prefabs/AIs/Emilio Ureta project 2/Aggresive Alien AI.prefab
+  - _gameObject: {fileID: 1885929986}
+    _prefab: Assets/Team Members/Thomas/Project3Prefab/NPCAlienAI.prefab
+  - _gameObject: {fileID: 2020058884}
+    _prefab: Assets/Team Members/Thomas/ImportedModels/Stylized Cute Alien Character/Alien/Model.fbx
 --- !u!4 &581867193
 Transform:
   m_ObjectHideFlags: 11
@@ -13427,53 +13539,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23c1ce4fb46143f46bc5cb5224c934f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Version: 9
-  m_ObsoleteRenderingPath: 0
-  m_ObsoleteFrameSettings:
-    overrides: 0
-    enableShadow: 0
-    enableContactShadows: 0
-    enableShadowMask: 0
-    enableSSR: 0
-    enableSSAO: 0
-    enableSubsurfaceScattering: 0
-    enableTransmission: 0
-    enableAtmosphericScattering: 0
-    enableVolumetrics: 0
-    enableReprojectionForVolumetrics: 0
-    enableLightLayers: 0
-    enableExposureControl: 1
-    diffuseGlobalDimmer: 0
-    specularGlobalDimmer: 0
-    shaderLitMode: 0
-    enableDepthPrepassWithDeferredRendering: 0
-    enableTransparentPrepass: 0
-    enableMotionVectors: 0
-    enableObjectMotionVectors: 0
-    enableDecals: 0
-    enableRoughRefraction: 0
-    enableTransparentPostpass: 0
-    enableDistortion: 0
-    enablePostprocess: 0
-    enableOpaqueObjects: 0
-    enableTransparentObjects: 0
-    enableRealtimePlanarReflection: 0
-    enableMSAA: 0
-    enableAsyncCompute: 0
-    runLightListAsync: 0
-    runSSRAsync: 0
-    runSSAOAsync: 0
-    runContactShadowsAsync: 0
-    runVolumeVoxelizationAsync: 0
-    lightLoopSettings:
-      overrides: 0
-      enableDeferredTileAndCluster: 0
-      enableComputeLightEvaluation: 0
-      enableComputeLightVariants: 0
-      enableComputeMaterialVariants: 0
-      enableFptlForForwardOpaque: 0
-      enableBigTilePrepass: 0
-      isFptlEnabled: 0
   clearColorMode: 2
   backgroundColorHDR: {r: 0.025, g: 0.07, b: 0.19, a: 0}
   clearDepth: 1
@@ -13554,6 +13619,53 @@ MonoBehaviour:
       data1: 0
       data2: 0
   defaultFrameSettings: 0
+  m_Version: 9
+  m_ObsoleteRenderingPath: 0
+  m_ObsoleteFrameSettings:
+    overrides: 0
+    enableShadow: 0
+    enableContactShadows: 0
+    enableShadowMask: 0
+    enableSSR: 0
+    enableSSAO: 0
+    enableSubsurfaceScattering: 0
+    enableTransmission: 0
+    enableAtmosphericScattering: 0
+    enableVolumetrics: 0
+    enableReprojectionForVolumetrics: 0
+    enableLightLayers: 0
+    enableExposureControl: 1
+    diffuseGlobalDimmer: 0
+    specularGlobalDimmer: 0
+    shaderLitMode: 0
+    enableDepthPrepassWithDeferredRendering: 0
+    enableTransparentPrepass: 0
+    enableMotionVectors: 0
+    enableObjectMotionVectors: 0
+    enableDecals: 0
+    enableRoughRefraction: 0
+    enableTransparentPostpass: 0
+    enableDistortion: 0
+    enablePostprocess: 0
+    enableOpaqueObjects: 0
+    enableTransparentObjects: 0
+    enableRealtimePlanarReflection: 0
+    enableMSAA: 0
+    enableAsyncCompute: 0
+    runLightListAsync: 0
+    runSSRAsync: 0
+    runSSAOAsync: 0
+    runContactShadowsAsync: 0
+    runVolumeVoxelizationAsync: 0
+    lightLoopSettings:
+      overrides: 0
+      enableDeferredTileAndCluster: 0
+      enableComputeLightEvaluation: 0
+      enableComputeLightVariants: 0
+      enableComputeMaterialVariants: 0
+      enableFptlForForwardOpaque: 0
+      enableBigTilePrepass: 0
+      isFptlEnabled: 0
 --- !u!81 &1227837850
 AudioListener:
   m_ObjectHideFlags: 0
@@ -16619,7 +16731,8 @@ Transform:
   m_LocalPosition: {x: 30.6, y: 3.7726746, z: 413}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 544134788}
   m_Father: {fileID: 896834755}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1448274089 stripped
@@ -20594,6 +20707,11 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 2863528079676618886, guid: 0baf0237d984f8048a3a8769944e4fb1, type: 3}
   m_PrefabInstance: {fileID: 1883775618}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1885929986 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7137636627333086778, guid: bdd50bfbcd071ab4ca3da1191d7bc895, type: 3}
+  m_PrefabInstance: {fileID: 197147332}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1891387667 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2263209537989973125, guid: 567f351c6027259429afe86d33a5d9ff, type: 3}
@@ -21350,6 +21468,11 @@ GameObject:
 Transform:
   m_CorrespondingSourceObject: {fileID: 5438012366088579241, guid: 0a0b65a77733896498ec9a0354343bdc, type: 3}
   m_PrefabInstance: {fileID: 2003252865}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &2020058884 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7265490505136612764, guid: bdd50bfbcd071ab4ca3da1191d7bc895, type: 3}
+  m_PrefabInstance: {fileID: 197147332}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2027098929
 PrefabInstance:
@@ -23566,3 +23689,4 @@ SceneRoots:
   - {fileID: 524024747}
   - {fileID: 1227710094}
   - {fileID: 323158033}
+  - {fileID: 197147332}

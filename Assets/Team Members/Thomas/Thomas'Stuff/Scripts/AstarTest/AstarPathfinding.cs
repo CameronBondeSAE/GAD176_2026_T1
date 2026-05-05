@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using System.Collections.Generic;
 
@@ -5,6 +6,7 @@ public class AstarPathfinding : MonoBehaviour
 {
     [Header("References")]
     [SerializeField] private NodeGrid nodeGrid;
+    [SerializeField] private float nodeGridSearchDelay = 0.5f; //delay before searching for NodeGrid
     
     [Header("Debug")]
     [SerializeField] private bool showPathGizmos = true;
@@ -16,8 +18,16 @@ public class AstarPathfinding : MonoBehaviour
     {
         if (nodeGrid == null)
         {
-            nodeGrid = FindObjectOfType<NodeGrid>();
+            StartCoroutine(FindNodeGridDelayed());
         }
+    }
+
+    private IEnumerator FindNodeGridDelayed()
+    {
+        yield return new WaitForSeconds(nodeGridSearchDelay);
+        
+        nodeGrid = FindObjectOfType<NodeGrid>();
+
     }
 
     public List<ThomasNode> FindPath(Vector3 startPos, Vector3 targetPos)

@@ -19,7 +19,7 @@ public class Detector : MonoBehaviour
     {
         NPCLayer = LayerMask.NameToLayer("NPC");
         
-        humanLayer = LayerMask.NameToLayer("Human");
+        humanLayer = LayerMask.NameToLayer("Player");
     }
 
     private void OnTriggerEnter(Collider other)

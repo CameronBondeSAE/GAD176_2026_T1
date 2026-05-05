@@ -14,7 +14,7 @@ public class NodeGrid : MonoBehaviour
     [SerializeField] private bool useNavMeshOnly = true; // if true, only use NavMesh. If false, combine with wallMask
     
     [Header("Visualization")]
-    [SerializeField] private bool displayGridGizmos = true;
+    [SerializeField] private bool displayGridGizmos = false;
     
     private ThomasNode[,] grid;
     private float nodeDiameter;
@@ -69,7 +69,7 @@ public class NodeGrid : MonoBehaviour
             }
         }
 
-        Debug.Log("2d world grid created with NavMesh integration");
+        //Debug.Log("2d world grid created with NavMesh integration");
     }
 
     private bool IsPointOnNavMesh(Vector3 point)

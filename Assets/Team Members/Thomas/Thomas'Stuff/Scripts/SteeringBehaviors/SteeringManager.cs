@@ -15,11 +15,14 @@ public class SteeringManager : MonoBehaviour
     private Align align;
     private Cohesion cohesion;
     private Separation separation;
+    
+    private CharacterBase characterBase;
 
     [Header("Pathfinding")]
     [SerializeField] private NodeGrid nodeGrid;
     [SerializeField] private AstarPathfinding pathfinding;
     [SerializeField] private TurnTowards turnTowards;
+    [SerializeField] private GameObject pathFindingAidPrefab; 
     
     [SerializeField] private bool autoPathfind = false; //when the npc reaches the end of the path it will find a new one
     
@@ -50,7 +53,16 @@ public class SteeringManager : MonoBehaviour
     private float maxNeighbourDistance = 10f; 
     void Start()
     {
+        //check if PathFindingAid exists in scene, if not spawn it
+        GameObject existingPathFindingAid = GameObject.Find("PathFindingAid");
+        if (existingPathFindingAid == null && pathFindingAidPrefab != null)
+        {
+            Instantiate(pathFindingAidPrefab);
+        }
+        
         detector = GetComponentInChildren<Detector>();
+        
+        characterBase = GetComponent<CharacterBase>();
         
         SphereCollider sphereCollider = detector.GetComponent<SphereCollider>();
         if (sphereCollider != null)
@@ -505,12 +517,23 @@ public class SteeringManager : MonoBehaviour
         {
             HasFood = true;
         }
-*/
-        if (collision.gameObject.name.Contains("Human"))
+        */
+        
+        // Check if the collided object is another AI
+        if (collision.gameObject.CompareTag("Ai") && !collision.gameObject.name.Contains("NPCAlienAI"))
+        {
+            if (characterBase != null)
+            {
+                characterBase.Damage(1);
+            }
+        }
+
+        if (collision.gameObject.name.Contains("Player"))
         {
             CanSeeEnemy = false;
             WantToKillEnemy = false;
-            Destroy(collision.gameObject);
+            //Destroy(collision.gameObject);
+            
         }
     }
 
@@ -527,7 +550,7 @@ public class SteeringManager : MonoBehaviour
             }
         }
 
-        if (other.gameObject.name.Contains("Human"))
+        if (other.gameObject.name.Contains("Player"))
         {
             CanSeeEnemy = true;
             IsScared = true;
