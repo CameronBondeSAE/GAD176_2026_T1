@@ -5,7 +5,7 @@ namespace Sabre.AI
 {
 public class Pathfind : MonoBehaviour
 {
-    [SerializeField] private NavMeshPath path;
+    [SerializeField] private UnityEngine.AI.NavMeshPath path;
     public bool preTarget = true;
     public Transform targetTransform;
     public Vector3[] pathArray;

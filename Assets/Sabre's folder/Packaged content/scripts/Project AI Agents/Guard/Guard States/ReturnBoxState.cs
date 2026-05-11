@@ -38,7 +38,7 @@ public class ReturnBoxState : AntAIState
         turnTowards.TrackAngle();
 
         float DistanceToStation = Vector3.Distance(Station.position, this.gameObject.transform.position);
-        Debug.Log("Current distance to station is: " + DistanceToStation);
+        //Debug.Log("Current distance to station is: " + DistanceToStation);
         if( DistanceToStation <= 4)
         {
             ReturnBox();

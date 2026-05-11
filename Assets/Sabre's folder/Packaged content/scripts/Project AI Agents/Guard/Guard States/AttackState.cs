@@ -6,7 +6,7 @@ namespace Sabre.AI
 {
 public class AttackState : AntAIState
 {
-    protected Health TargetHealth;
+    protected CharacterBase TargetHealth;
     private GuardSense Senses;
     protected bool AttackCooldown;
     [SerializeField] private int baseAttack = 10;
@@ -17,7 +17,7 @@ public class AttackState : AntAIState
 
     public override void Enter()
     {
-        TargetHealth = Senses.CurrentTarget.GetComponent<Health>();
+        TargetHealth = Senses.CurrentTarget.GetComponent<CharacterBase>();
         AttackCooldown = false;
     }
 
@@ -39,7 +39,7 @@ public class AttackState : AntAIState
             attackVal += 7;
         }
 
-        TargetHealth.HealthGetSet -= attackVal;
+        TargetHealth.Damage(attackVal);
 
         float randVariable = Random.Range(0, 2);
         yield return new WaitForSeconds(3f + randVariable);

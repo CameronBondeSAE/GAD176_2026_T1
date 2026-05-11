@@ -15,7 +15,7 @@ public class BoxOBJReference : MonoBehaviour
     public void CheckBoxSafety()
     {
         float currentdist = Vector3.Distance(boxRef.transform.position, this.gameObject.transform.position);
-        Debug.Log("Current distance box is from station is: " + currentdist);
+        //Debug.Log("Current distance box is from station is: " + currentdist);
         if( currentdist <= distanceSensitivity)
         {
             BoxSafe = true;

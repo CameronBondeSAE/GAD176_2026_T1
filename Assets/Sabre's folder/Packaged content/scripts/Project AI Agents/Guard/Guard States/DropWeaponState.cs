@@ -33,9 +33,12 @@ public class DropWeaponState : AntAIState
 
     private void ReturnBox()
     {
-        GameObject heldCollectable = Senses.inventory.heldCollectable.gameObject;
-        Senses.inventory.DropObject();
-        //Finish();
+        if(Senses.inventory.heldCollectable != null)
+        {
+            GameObject heldCollectable = Senses.inventory.heldCollectable.gameObject;
+            Senses.inventory.DropObject();
+            //Finish();
+        }
     }
 }
 }

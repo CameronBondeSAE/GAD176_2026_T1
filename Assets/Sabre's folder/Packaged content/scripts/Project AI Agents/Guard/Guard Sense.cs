@@ -24,7 +24,7 @@ public class GuardSense : MonoBehaviour, ISense
     [SerializeField] private Neighbors localNeighbors;
     public Inventory inventory;
     public GameObject pathfind;
-    public Health health;
+    public SabreHealth health;
 
 
     public void CollectConditions(AntAIAgent aAgent, AntAICondition aWorldState)
@@ -48,7 +48,7 @@ public class GuardSense : MonoBehaviour, ISense
         aWorldState.Set(GuardScenarioEnums.ThiefDefeated, ThiefDefeated);
         
         aWorldState.Set(GuardScenarioEnums.BoxInOpen, boxStation.BoxInOpen);
-        aWorldState.Set(GuardScenarioEnums.Dead, health.DeadBool);
+        aWorldState.Set(GuardScenarioEnums.Dead, health.isAlive);
         
     }
 
@@ -58,6 +58,11 @@ public class GuardSense : MonoBehaviour, ISense
         BoxHeld = false;
         WeaponHeld = false;
         NearWeapon = false;
+
+        if(inventory.heldCollectable != null && inventory.heldCollectable.Owner == null)
+        {
+            inventory.DropObject();   
+        }
 
         switch(inventory.heldType)
         {
@@ -100,11 +105,11 @@ public class GuardSense : MonoBehaviour, ISense
         CurrentTarget = null;
         foreach(Transform player in localNeighbors.neighborsList)
         {
-            Health playHealth = player.gameObject.GetComponent<Health>();
+            CharacterBase playHealth = player.gameObject.GetComponent<CharacterBase>();
 
             if(playHealth != null)
             {
-                if(playHealth.type == AIType.Thief && playHealth.DeadBool == false)
+                if(playHealth !as SabreHealth)
                 {
                     CurrentTarget = player.gameObject;
                     return false;
@@ -113,8 +118,6 @@ public class GuardSense : MonoBehaviour, ISense
         }
         return true;
     }
-
-
 }
 
 }
