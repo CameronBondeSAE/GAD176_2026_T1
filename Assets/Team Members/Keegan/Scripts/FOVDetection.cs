@@ -13,6 +13,8 @@ namespace Keegan.FOV
         [SerializeField, Tooltip("The layers to detect FOV on")]
         private LayerMask _detectionMask;
 
+        private List<IFovDetectable> _enemiesSeenLastFrame = new List<IFovDetectable>();
+
         
         #if UNITY_EDITOR
         [SerializeField]
@@ -26,18 +28,36 @@ namespace Keegan.FOV
 
         private void DetectEnemiesInView()
         {
+            // Define a list of enemies that are detected this frame
+            List<IFovDetectable> detectedThisFrame = new List<IFovDetectable>();
+
+            // Loop through each of the target direction
             foreach(var direction in _detectionCastDirections)
             {
+                // Perform the raycast for detection
                 RaycastHit hit;
                 if(Physics.Raycast(transform.position, transform.forward + transform.TransformDirection(direction), out hit, 10f, _detectionMask))
                 {
                     IFovDetectable detectable = hit.collider.GetComponent<IFovDetectable>();
                     if(detectable != null)
                     {
-                        Debug.Log("Player sees enemy");
+                        if(!_enemiesSeenLastFrame.Contains(detectable))
+                        {
+                            detectedThisFrame.Add(detectable);
+                        }
                     }
                 }
             }
+
+            foreach(var lastFrameDetectable in _enemiesSeenLastFrame)
+            {
+                if(!detectedThisFrame.Contains(lastFrameDetectable))
+                {
+                    lastFrameDetectable.SetDetected(false);
+                }
+            }
+
+            _enemiesSeenLastFrame = detectedThisFrame;
         }
 
     #if UNITY_EDITOR
