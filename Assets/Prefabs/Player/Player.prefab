@@ -42,6 +42,7 @@ GameObject:
   - component: {fileID: 7313568232634554606}
   - component: {fileID: 8954740891691302476}
   - component: {fileID: 1273103890878380776}
+  - component: {fileID: 7964183096001529372}
   m_Layer: 3
   m_Name: Player
   m_TagString: Player
@@ -117,6 +118,38 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 80
   m_CollisionDetection: 0
+--- !u!114 &7964183096001529372
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4630921107042037647}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f366b6cd1722de47b632fd5ffcfd97c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _detectionCastDirections:
+  - {x: 0, y: 0, z: 10}
+  - {x: 1, y: 0, z: 10}
+  - {x: 2, y: 0, z: 10}
+  - {x: 3, y: 0, z: 10}
+  - {x: 4, y: 0, z: 10}
+  - {x: 5, y: 0, z: 10}
+  - {x: 6, y: 0, z: 10}
+  - {x: 7, y: 0, z: 10}
+  - {x: -1, y: 0, z: 10}
+  - {x: -2, y: 0, z: 10}
+  - {x: -3, y: 0, z: 10}
+  - {x: -4, y: 0, z: 10}
+  - {x: -5, y: 0, z: 10}
+  - {x: -6, y: 0, z: 10}
+  - {x: -7, y: 0, z: 10}
+  _detectionMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  _drawDebug: 1
 --- !u!1 &5641126889031950429
 GameObject:
   m_ObjectHideFlags: 0
