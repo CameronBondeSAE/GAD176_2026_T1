@@ -31,7 +31,11 @@ namespace Keegan.FOV
                 RaycastHit hit;
                 if(Physics.Raycast(transform.position, transform.forward + transform.TransformDirection(direction), out hit, 10f, _detectionMask))
                 {
-                    
+                    IFovDetectable detectable = hit.collider.GetComponent<IFovDetectable>();
+                    if(detectable != null)
+                    {
+                        Debug.Log("Player sees enemy");
+                    }
                 }
             }
         }
