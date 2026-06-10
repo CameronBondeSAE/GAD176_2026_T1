@@ -7,12 +7,17 @@ public class FOVDetection : MonoBehaviour
 {
     [SerializeField, Tooltip("The directions the raycast will perform in")]
     private List<Vector3> _detectionCastDirections = new List<Vector3>();
-    [SerializeField,]
-    private Transform _directionTransform;
+
+    
     #if UNITY_EDITOR
     [SerializeField]
     private bool _drawDebug = true;
     #endif
+
+    private void Update()
+    {
+           
+    }
 
 #if UNITY_EDITOR
 
