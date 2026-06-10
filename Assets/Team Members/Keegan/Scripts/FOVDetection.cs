@@ -1,11 +1,14 @@
 using System.Collections.Generic;
 using Anthill.AI;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class FOVDetection : MonoBehaviour
 {
-    [SerializeField]
+    [SerializeField, Tooltip("The directions the raycast will perform in")]
     private List<Vector3> _detectionCastDirections = new List<Vector3>();
+    [SerializeField,]
+    private Transform _directionTransform;
     #if UNITY_EDITOR
     [SerializeField]
     private bool _drawDebug = true;
@@ -16,11 +19,13 @@ public class FOVDetection : MonoBehaviour
 
     private void OnDrawGizmosSelected()
     {
-        Gizmos.color = Color.yellow;
-        
-        foreach(Vector3 direction in _detectionCastDirections)
+        if(_drawDebug)
         {
-            Gizmos.DrawLine(transform.position, transform.position + direction);
+            Gizmos.color = Color.yellow;
+            foreach(var direction in _detectionCastDirections)
+            {
+                Gizmos.DrawLine(transform.position, transform.position + transform.TransformDirection(direction));
+            }
         }
     }
 
