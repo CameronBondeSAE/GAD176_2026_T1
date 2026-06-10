@@ -7,6 +7,8 @@ public class FOVDetection : MonoBehaviour
 {
     [SerializeField, Tooltip("The directions the raycast will perform in")]
     private List<Vector3> _detectionCastDirections = new List<Vector3>();
+    [SerializeField, Tooltip("The layers to detect FOV on")]
+    private LayerMask _detectionMask;
 
     
     #if UNITY_EDITOR
@@ -16,7 +18,19 @@ public class FOVDetection : MonoBehaviour
 
     private void Update()
     {
-           
+        DetectEnemiesInView();
+    }
+
+    private void DetectEnemiesInView()
+    {
+        foreach(var direction in _detectionCastDirections)
+        {
+            RaycastHit hit;
+            if(Physics.Raycast(transform.position, transform.forward + transform.TransformDirection(direction), out hit, 10f, _detectionMask))
+            {
+                Debug.Log(hit.collider.gameObject.name);
+            }
+        }
     }
 
 #if UNITY_EDITOR
