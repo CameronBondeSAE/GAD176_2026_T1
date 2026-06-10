@@ -1,52 +1,56 @@
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using Anthill.AI;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class FOVDetection : MonoBehaviour
+namespace Keegan.FOV
 {
-    [SerializeField, Tooltip("The directions the raycast will perform in")]
-    private List<Vector3> _detectionCastDirections = new List<Vector3>();
-    [SerializeField, Tooltip("The layers to detect FOV on")]
-    private LayerMask _detectionMask;
-
-    
-    #if UNITY_EDITOR
-    [SerializeField]
-    private bool _drawDebug = true;
-    #endif
-
-    private void Update()
+    public class FOVDetection : MonoBehaviour
     {
-        DetectEnemiesInView();
-    }
+        [SerializeField, Tooltip("The directions the raycast will perform in")]
+        private List<Vector3> _detectionCastDirections = new List<Vector3>();
+        [SerializeField, Tooltip("The layers to detect FOV on")]
+        private LayerMask _detectionMask;
 
-    private void DetectEnemiesInView()
-    {
-        foreach(var direction in _detectionCastDirections)
+        
+        #if UNITY_EDITOR
+        [SerializeField]
+        private bool _drawDebug = true;
+        #endif
+
+        private void Update()
         {
-            RaycastHit hit;
-            if(Physics.Raycast(transform.position, transform.forward + transform.TransformDirection(direction), out hit, 10f, _detectionMask))
-            {
-                Debug.Log(hit.collider.gameObject.name);
-            }
+            DetectEnemiesInView();
         }
-    }
 
-#if UNITY_EDITOR
-
-
-    private void OnDrawGizmosSelected()
-    {
-        if(_drawDebug)
+        private void DetectEnemiesInView()
         {
-            Gizmos.color = Color.yellow;
             foreach(var direction in _detectionCastDirections)
             {
-                Gizmos.DrawLine(transform.position, transform.position + transform.TransformDirection(direction));
+                RaycastHit hit;
+                if(Physics.Raycast(transform.position, transform.forward + transform.TransformDirection(direction), out hit, 10f, _detectionMask))
+                {
+                    
+                }
             }
         }
-    }
 
-#endif
+    #if UNITY_EDITOR
+
+
+        private void OnDrawGizmosSelected()
+        {
+            if(_drawDebug)
+            {
+                Gizmos.color = Color.yellow;
+                foreach(var direction in _detectionCastDirections)
+                {
+                    Gizmos.DrawLine(transform.position, transform.position + transform.TransformDirection(direction));
+                }
+            }
+        }
+
+    #endif
+    }
 }
