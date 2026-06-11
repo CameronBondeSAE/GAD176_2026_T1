@@ -1,19 +1,22 @@
 using UnityEngine;
 
-public class bulletMovement : MonoBehaviour
+public class CamableTest : MonoBehaviour, IIsCamable
 {
-    public float speed = 6f;
-    [SerializeField] private Rigidbody rb;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        Destroy(gameObject, 5f);
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-     rb.AddRelativeForce(-speed,0f,0f);    
+        
     }
-    
+
+    public bool TestIsCamable()
+    {
+	    Debug.Log("TestIsCamable");
+	    return true;
+    }
 }
