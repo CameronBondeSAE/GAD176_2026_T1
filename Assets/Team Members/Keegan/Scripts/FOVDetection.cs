@@ -4,6 +4,7 @@ using Anthill.AI;
 using UnityEngine;
 using UnityEngine.AI;
 using Shapes;
+using System;
 
 namespace Keegan.FOV
 {
@@ -29,6 +30,11 @@ namespace Keegan.FOV
         
         // List of all the enemies seen last frame
         private List<IFovDetectable> _enemiesSeenLastFrame = new List<IFovDetectable>();
+
+        // Triggered when the enemy has been seen
+        public event Action<IFovDetectable> seenEnemy;
+        // Triggered when this has lost sight of the enemy
+        public event Action<IFovDetectable> lostEnemy;
 
         
         #if UNITY_EDITOR
@@ -65,6 +71,7 @@ namespace Keegan.FOV
                         detectedThisFrame.Add(detectable);
                         // Update the detected flag on the enemy spotted
                         detectable.SetDetected(true);
+                        seenEnemy?.Invoke(detectable);
                         
                     }
                 }
@@ -75,6 +82,7 @@ namespace Keegan.FOV
                 if (!detectedThisFrame.Contains(lastFrameDetectable))
                 {
                     lastFrameDetectable.SetDetected(false);
+                    lostEnemy?.Invoke(lastFrameDetectable);
                 }
             }
 
@@ -114,6 +122,7 @@ namespace Keegan.FOV
             Vector2 pathPointB = new Vector3(arcDirectionLeft.x, arcDirectionLeft.z, arcDirectionLeft.z);
             Vector2 pathPointC = new Vector3(arcDirectionRight.x, arcDirectionRight.z, arcDirectionLeft.z);
 
+            // Add Points & draw polygon
             using (var p = new PolygonPath())
             {
                 p.AddPoints(pathPointA, pathPointB, pathPointC);
