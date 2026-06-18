@@ -90,21 +90,26 @@ namespace Keegan.FOV
 
             using(Draw.Command(cam))
             {
-                DrawFovPolygon();
+                // Check that we want to to render the visual
+                if (_visualType == VisualFOV.Polygon)
+                    DrawFovPolygon();
             }
         }
 
         private void DrawFovPolygon()
         {
+            // Define the polygon base information
             Draw.LineGeometry = LineGeometry.Volumetric3D;
             Draw.Matrix = transform.localToWorldMatrix;
             Draw.UseGradientFill = true;
             Draw.GradientFill = GradientFill.Linear(Vector3.zero, Vector3.one * 10f, Color.green, Color.blue, FillSpace.World);
             Draw.Rotation = Quaternion.Euler(90f, 0f, 0f);
 
+            // Get the last to directions
             Vector3 arcDirectionLeft = GetFurthestLeft();
             Vector3 arcDirectionRight = GetFurtherestRight();
 
+            // Get the path points
             Vector2 pathPointA = Vector3.zero;
             Vector2 pathPointB = new Vector3(arcDirectionLeft.x, arcDirectionLeft.z, arcDirectionLeft.z);
             Vector2 pathPointC = new Vector3(arcDirectionRight.x, arcDirectionRight.z, arcDirectionLeft.z);
