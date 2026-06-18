@@ -112,7 +112,7 @@ namespace Keegan.FOV
             Draw.Matrix = transform.localToWorldMatrix;
             Draw.UseGradientFill = true;
             Draw.GradientFill = GradientFill.Linear(Vector3.zero, Vector3.one * 10f, Color.green, Color.blue, FillSpace.World);
-            Draw.Rotation = Quaternion.Euler(90f, 0f, 0f);
+            Draw.Rotation = Quaternion.Euler(90f, transform.eulerAngles.y, 0f);
 
             // Get the last to directions
             Vector3 arcDirectionLeft = GetFurthestLeft();
