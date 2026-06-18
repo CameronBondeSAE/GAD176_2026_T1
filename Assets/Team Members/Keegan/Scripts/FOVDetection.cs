@@ -26,6 +26,9 @@ namespace Keegan.FOV
             DetectEnemiesInView();
         }
 
+        /// <summary>
+        /// Performs detection for any detectable objects that are within each of the raycast
+        /// </summary>
         private void DetectEnemiesInView()
         {
             // Define a list of enemies that are detected this frame
@@ -38,25 +41,34 @@ namespace Keegan.FOV
                 RaycastHit hit;
                 if(Physics.Raycast(transform.position, transform.forward + transform.TransformDirection(direction), out hit, 10f, _detectionMask))
                 {
+                    // Check if the hit collider has the IFovDetectable interface
                     IFovDetectable detectable = hit.collider.GetComponent<IFovDetectable>();
                     if(detectable != null)
                     {
+                        // Add the enemy if it doesn't already exist
                         if(!_enemiesSeenLastFrame.Contains(detectable))
                         {
+                            // Add to the detect list
                             detectedThisFrame.Add(detectable);
+                            // Update the detected flag on the enemy spotted
+                            detectable.SetDetected(true);
                         }
                     }
                 }
             }
 
+            // Loop through each of the enemies that were detected last frame
             foreach(var lastFrameDetectable in _enemiesSeenLastFrame)
             {
+                // If the new derection list doesn't current detectable
+                // then update the detected state on the detectable
                 if(!detectedThisFrame.Contains(lastFrameDetectable))
                 {
                     lastFrameDetectable.SetDetected(false);
                 }
             }
 
+            // Assign detected this frame
             _enemiesSeenLastFrame = detectedThisFrame;
         }
 
