@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.AI;
 using Shapes;
 using System;
+using UnityEngine.Events;
 
 namespace Keegan.FOV
 {
@@ -32,9 +33,9 @@ namespace Keegan.FOV
         private List<IFovDetectable> _enemiesSeenLastFrame = new List<IFovDetectable>();
 
         // Triggered when the enemy has been seen
-        public event Action<IFovDetectable> seenEnemy;
+        public UnityEvent<IFovDetectable> seenEnemy;
         // Triggered when this has lost sight of the enemy
-        public event Action<IFovDetectable> lostEnemy;
+        public UnityEvent<IFovDetectable> lostEnemy;
 
         
         #if UNITY_EDITOR
