@@ -3,10 +3,12 @@ using System.Runtime.CompilerServices;
 using Anthill.AI;
 using UnityEngine;
 using UnityEngine.AI;
+using Shapes;
 
 namespace Keegan.FOV
 {
-    public class FOVDetection : MonoBehaviour
+    [ExecuteAlways]
+    public class FOVDetection : ImmediateModeShapeDrawer
     {
         // The directions the raycast will perform in
         [SerializeField, Tooltip("The directions the raycast will perform in")]
@@ -72,6 +74,18 @@ namespace Keegan.FOV
             _enemiesSeenLastFrame = detectedThisFrame;
         }
 
+        public override void DrawShapes(Camera cam)
+        {
+            base.DrawShapes(cam);
+
+            using(Draw.Command(cam))
+            {
+                Draw.LineGeometry = LineGeometry.Volumetric3D;
+                Draw.Matrix = transform.localToWorldMatrix;
+
+
+            }
+        }
     #if UNITY_EDITOR
 
 
