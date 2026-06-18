@@ -10,12 +10,22 @@ namespace Keegan.FOV
     [ExecuteAlways]
     public class FOVDetection : ImmediateModeShapeDrawer
     {
+        public enum VisualFOV
+        {
+            Polyline,
+            Polygon,
+            None,
+        }
+
+
         // The directions the raycast will perform in
         [SerializeField, Tooltip("The directions the raycast will perform in")]
         private List<Vector3> _detectionCastDirections = new List<Vector3>();
         // The layer to detect FOV objects on
         [SerializeField, Tooltip("The layers to detect FOV on")]
         private LayerMask _detectionMask;
+        [SerializeField, Tooltip("The visual type of the FOV")]
+        private VisualFOV _visualType;
         
         // List of all the enemies seen last frame
         private List<IFovDetectable> _enemiesSeenLastFrame = new List<IFovDetectable>();
@@ -80,13 +90,31 @@ namespace Keegan.FOV
 
             using(Draw.Command(cam))
             {
-                Draw.LineGeometry = LineGeometry.Volumetric3D;
-                Draw.Matrix = transform.localToWorldMatrix;
-
-
+                DrawFovPolygon();
             }
         }
 
+        private void DrawFovPolygon()
+        {
+            Draw.LineGeometry = LineGeometry.Volumetric3D;
+            Draw.Matrix = transform.localToWorldMatrix;
+            Draw.UseGradientFill = true;
+            Draw.GradientFill = GradientFill.Linear(Vector3.zero, Vector3.one * 10f, Color.green, Color.blue, FillSpace.World);
+            Draw.Rotation = Quaternion.Euler(90f, 0f, 0f);
+
+            Vector3 arcDirectionLeft = GetFurthestLeft();
+            Vector3 arcDirectionRight = GetFurtherestRight();
+
+            Vector2 pathPointA = Vector3.zero;
+            Vector2 pathPointB = new Vector3(arcDirectionLeft.x, arcDirectionLeft.z, arcDirectionLeft.z);
+            Vector2 pathPointC = new Vector3(arcDirectionRight.x, arcDirectionRight.z, arcDirectionLeft.z);
+
+            using (var p = new PolygonPath())
+            {
+                p.AddPoints(pathPointA, pathPointB, pathPointC);
+                Draw.Polygon(p, Color.yellow);
+            }
+        }
 
         /// <summary>
         /// Gets the end line trace on the left
@@ -108,7 +136,7 @@ namespace Keegan.FOV
                 return furthest;
             }
 
-            return Vector3.zero;
+            return Vector2.zero;
         }
 
 
