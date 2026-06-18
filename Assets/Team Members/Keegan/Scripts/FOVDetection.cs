@@ -8,11 +8,14 @@ namespace Keegan.FOV
 {
     public class FOVDetection : MonoBehaviour
     {
+        // The directions the raycast will perform in
         [SerializeField, Tooltip("The directions the raycast will perform in")]
         private List<Vector3> _detectionCastDirections = new List<Vector3>();
+        // The layer to detect FOV objects on
         [SerializeField, Tooltip("The layers to detect FOV on")]
         private LayerMask _detectionMask;
-
+        
+        // List of all the enemies seen last frame
         private List<IFovDetectable> _enemiesSeenLastFrame = new List<IFovDetectable>();
 
         
@@ -45,30 +48,27 @@ namespace Keegan.FOV
                     IFovDetectable detectable = hit.collider.GetComponent<IFovDetectable>();
                     if(detectable != null)
                     {
-                        // Add the enemy if it doesn't already exist
-                        if(!_enemiesSeenLastFrame.Contains(detectable))
-                        {
-                            // Add to the detect list
-                            detectedThisFrame.Add(detectable);
-                            // Update the detected flag on the enemy spotted
-                            detectable.SetDetected(true);
-                        }
+
+                        // Add to the detect list
+                        detectedThisFrame.Add(detectable);
+                        // Update the detected flag on the enemy spotted
+                        detectable.SetDetected(true);
+                        
                     }
                 }
             }
 
-            // Loop through each of the enemies that were detected last frame
             foreach(var lastFrameDetectable in _enemiesSeenLastFrame)
             {
-                // If the new derection list doesn't current detectable
-                // then update the detected state on the detectable
-                if(!detectedThisFrame.Contains(lastFrameDetectable))
+                if (!detectedThisFrame.Contains(lastFrameDetectable))
                 {
                     lastFrameDetectable.SetDetected(false);
                 }
             }
 
-            // Assign detected this frame
+            // Clear the list for safety
+            _enemiesSeenLastFrame.Clear();
+            // Assign the new list
             _enemiesSeenLastFrame = detectedThisFrame;
         }
 

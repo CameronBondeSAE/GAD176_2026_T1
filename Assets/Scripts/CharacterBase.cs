@@ -64,6 +64,6 @@ public class CharacterBase : MonoBehaviour, IFovDetectable
 
     public void SetDetected(bool detected)
     {
-        throw new System.NotImplementedException();
+        
     }
 }
