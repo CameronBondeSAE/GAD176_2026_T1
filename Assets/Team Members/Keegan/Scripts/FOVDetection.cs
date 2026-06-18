@@ -86,6 +86,53 @@ namespace Keegan.FOV
 
             }
         }
+
+
+        /// <summary>
+        /// Gets the end line trace on the left
+        /// </summary>
+        /// <returns>The direction (Vector3) of the raycast that is further left</returns>
+        public Vector3 GetFurthestLeft()
+        {
+            if(_detectionCastDirections != null && _detectionCastDirections.Count > 0)
+            {
+                Vector3 furthest = _detectionCastDirections[0];
+                foreach(var direction in _detectionCastDirections)
+                {
+                    if(direction.x > furthest.x)
+                    {
+                        furthest = direction;
+                    }
+                }
+
+                return furthest;
+            }
+
+            return Vector3.zero;
+        }
+
+
+        /// <summary>
+        /// Gets the end raycast on the right
+        /// </summary>
+        /// <returns>The direction (Vector3) of the raycast that is further right</returns>
+        public Vector3 GetFurtherestRight()
+        {
+            if (_detectionCastDirections != null && _detectionCastDirections.Count > 0)
+            {
+                Vector3 furthest = _detectionCastDirections[0];
+                foreach(var direction in _detectionCastDirections)
+                {
+                    if (direction.x < furthest.x)
+                        furthest = direction;
+                }
+
+                return furthest;
+            }
+
+            return Vector3.zero;
+        }
+
     #if UNITY_EDITOR
 
 
