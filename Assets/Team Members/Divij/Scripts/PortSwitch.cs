@@ -1,7 +1,7 @@
 using Divij;
 using UnityEngine;
 
-public class NewMonoBehaviourScript : MonoBehaviour, IInteractable
+public class PortSwitch : MonoBehaviour, IInteractable
 {
     /*
     public PowerPort port;
