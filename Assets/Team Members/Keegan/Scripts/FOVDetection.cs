@@ -9,7 +9,7 @@ using UnityEngine.Events;
 
 namespace Keegan.FOV
 {
-    [ExecuteAlways]
+    
     public class FOVDetection : ImmediateModeShapeDrawer
     {
         public enum VisualFOV

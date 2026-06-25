@@ -61,7 +61,7 @@ public class CharacterBase : MonoBehaviour, IFovDetectable
 		currentEnergy = startingEnergy;
 		isAlive = true;
 	}
-
+	
     public void SetDetected(bool detected)
     {
 	    if (detected)
