@@ -7,6 +7,7 @@ public class StaminaSys : MonoBehaviour, IDepletableBars
     public int staminaMax;
     public int staminaCurrent;
     public int staminaMin;
+    public int staminaNegative;
     public Slider staminaDisplay;
     public Rigidbody attachedEntity;
 
@@ -19,12 +20,12 @@ public class StaminaSys : MonoBehaviour, IDepletableBars
 
     private void OnEnable()
     {
-        //OnDepletion.AddListener();
+        //OnDepletion.AddListener(e.g Player.sprint() );
     }
 
     private void OnDisable()
     {
-        
+        //OnDepletion.RemoveListener(e.g Player.sprint() );
     }
 
     public void UiDisplayUpdate()
@@ -45,6 +46,23 @@ public class StaminaSys : MonoBehaviour, IDepletableBars
     public int CurrentValue()
     {
         return staminaCurrent;
+    }
+
+    private void OnUse()
+    {
+        if(staminaCurrent == staminaMax)
+        {
+            staminaCurrent = staminaMax;
+            staminaCurrent = staminaCurrent - staminaNegative;
+        }
+        else
+        {
+            staminaCurrent = staminaCurrent - staminaNegative;
+            if (staminaCurrent <= staminaMin)
+            {
+                OnDepletion.Invoke();
+            }
+        };
     }
     
     // Update is called once per frame

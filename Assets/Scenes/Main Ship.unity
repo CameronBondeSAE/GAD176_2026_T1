@@ -3126,7 +3126,7 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 720191144722262764, guid: 5cdd240bc68478642b9efc8dea45850f, type: 3}
-      propertyPath: connectedDevices.Array.data[0]
+      propertyPath: 'connectedDevices.Array.data[0]'
       value: 
       objectReference: {fileID: 439464887}
     - target: {fileID: 6681137893633405280, guid: 5cdd240bc68478642b9efc8dea45850f, type: 3}
@@ -4466,6 +4466,7 @@ MonoBehaviour:
   staminaMax: 0
   staminaCurrent: 0
   staminaMin: 0
+  staminaNegative: 0
   attachedEntity: {fileID: 0}
   OnDepletion:
     m_PersistentCalls:
@@ -7916,12 +7917,6 @@ MonoBehaviour:
     _prefab: Assets/Prefabs/AIs/Emilio Ureta project 2/Aggresive Alien AI.prefab
   - _gameObject: {fileID: 323158034}
     _prefab: Assets/Prefabs/AIs/Emilio Ureta project 2/Aggresive Alien AI.prefab
-  - _gameObject: {fileID: 524024748}
-    _prefab: Assets/Prefabs/AIs/Emilio Ureta project 2/Aggresive Alien AI.prefab
-  - _gameObject: {fileID: 1227710095}
-    _prefab: Assets/Prefabs/AIs/Emilio Ureta project 2/Aggresive Alien AI.prefab
-  - _gameObject: {fileID: 323158034}
-    _prefab: Assets/Prefabs/AIs/Emilio Ureta project 2/Aggresive Alien AI.prefab
 --- !u!4 &581867193
 Transform:
   m_ObjectHideFlags: 11
@@ -8029,6 +8024,7 @@ MonoBehaviour:
   staminaMax: 0
   staminaCurrent: 0
   staminaMin: 0
+  staminaNegative: 0
   attachedEntity: {fileID: 0}
   OnDepletion:
     m_PersistentCalls:
@@ -8408,11 +8404,11 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2562647758439459723, guid: 0dd71246fb6f61b4398960fb2cd058d7, type: 3}
-      propertyPath: m_Materials.Array.data[0]
+      propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: d6842569d6335794e98c1e1f99602bba, type: 2}
     - target: {fileID: 7685015664291882667, guid: 0dd71246fb6f61b4398960fb2cd058d7, type: 3}
-      propertyPath: m_Materials.Array.data[0]
+      propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: d6842569d6335794e98c1e1f99602bba, type: 2}
     - target: {fileID: 9014336513655778086, guid: 0dd71246fb6f61b4398960fb2cd058d7, type: 3}
@@ -11898,6 +11894,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cdf957eb0c1ec7b42b0f1126dcded11c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  statSlider: {fileID: 1009363121}
+  staminaSys: {fileID: 0}
+  healthSys: {fileID: 0}
 --- !u!114 &1009363121
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14661,7 +14660,8 @@ Transform:
   m_LocalPosition: {x: -4.427396e-15, y: 50.3, z: -26.600002}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: [{fileID: 1840126661}]
+  m_Children:
+  - {fileID: 1840126661}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 68.1, y: 0, z: 0}
 --- !u!114 &1227837853
@@ -21561,6 +21561,7 @@ GameObject:
   - component: {fileID: 1840126664}
   - component: {fileID: 1840126663}
   - component: {fileID: 1840126662}
+  - component: {fileID: 1840126665}
   m_Layer: 0
   m_Name: Canvas
   m_TagString: Untagged
@@ -21651,6 +21652,28 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!114 &1840126665
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1840126660}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e42c14129a239d4e9e7a8a7202400b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healthMax: 0
+  healthCurrent: 0
+  healthMin: 0
+  healthNegative: 0
+  canvas: {fileID: 1840126664}
+  healthDisplay: {fileID: 0}
+  attachedEntity: {fileID: 0}
+  OnDepletion:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1001 &1845765138
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -24850,7 +24873,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: [{targetCorrespondingSourceObject: {fileID: 4630921107042037647, guid: 52f322377ca081143bd4f68b9be1aba4, type: 3}, insertIndex: -1, addedObject: {fileID: 593315127}}]
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4630921107042037647, guid: 52f322377ca081143bd4f68b9be1aba4, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 593315127}
   m_SourcePrefab: {fileID: 100100000, guid: 52f322377ca081143bd4f68b9be1aba4, type: 3}
 --- !u!1001 &1903544613062155451
 PrefabInstance:

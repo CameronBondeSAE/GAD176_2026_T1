@@ -4,12 +4,18 @@ using UnityEngine.UI;
 public class DepleteUI : MonoBehaviour
 {
     public Slider statSlider;
+    public StaminaSys staminaSys;
+    public HealthSys healthSys;
+    
+    
+    
+    
     
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        statSlider = GetComponent<Slider>();
+        
     }
 
     // Update is called once per frame
@@ -17,4 +23,15 @@ public class DepleteUI : MonoBehaviour
     {
         
     }
+
+    public void DisplayInitialise()
+    {
+        //statSlider.maxValue = 
+    }
+
+    public void DisplayValue()
+    {
+        //statSlider.
+    }
+
 }
