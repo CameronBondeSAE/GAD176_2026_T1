@@ -99,6 +99,13 @@ public class Player_Controller : MonoBehaviour, IFovDetectable
 
     public void SetDetected(bool detected)
     {
-		Debug.Log("Has Seen Player");
+	    if (detected)
+	    {
+		    Debug.Log("Player has been seen by enemy");
+	    }
+	    else
+	    {
+		    Debug.Log("Lost sight of the player");
+	    }
     }
 }
