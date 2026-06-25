@@ -4392,9 +4392,25 @@ PrefabInstance:
       propertyPath: m_Name
       value: Aggresive Alien AI
       objectReference: {fileID: 0}
+    - target: {fileID: 4278957334103665526, guid: b355c927863a39448a72f327cbc06017, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.402
+      objectReference: {fileID: 0}
     - target: {fileID: 6736829774007280680, guid: b355c927863a39448a72f327cbc06017, type: 3}
       propertyPath: m_Enabled
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6802227208563706353, guid: b355c927863a39448a72f327cbc06017, type: 3}
+      propertyPath: seenEnemy.m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6802227208563706353, guid: b355c927863a39448a72f327cbc06017, type: 3}
+      propertyPath: seenEnemy.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6802227208563706353, guid: b355c927863a39448a72f327cbc06017, type: 3}
+      propertyPath: seenEnemy.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
