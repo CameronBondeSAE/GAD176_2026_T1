@@ -85,7 +85,7 @@ namespace Keegan.FOV
                 if(Physics.Raycast(transform.position, transform.forward + transform.TransformDirection(direction), out hit, 10f, _detectionMask))
                 {
                     // Check if the hit collider has the IFovDetectable interface
-                    IFovDetectable detectable = hit.collider.GetComponent<IFovDetectable>();
+                    IFovDetectable detectable = hit.collider.GetComponentInChildren<IFovDetectable>();
                     if(detectable != null)
                     {
 
