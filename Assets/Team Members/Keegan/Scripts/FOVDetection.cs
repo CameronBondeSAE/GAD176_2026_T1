@@ -21,8 +21,12 @@ namespace Keegan.FOV
 
 
         // The directions the raycast will perform in
-        [SerializeField, Tooltip("The directions the raycast will perform in")]
+        [Tooltip("The directions the raycast will perform in")]
         private List<Vector3> _detectionCastDirections = new List<Vector3>();
+        [SerializeField, Tooltip("The Amount of cast from left to right")]
+        private int _detectionCastCount = 7;
+        [SerializeField, Tooltip("How far the agent can see")]
+        private float _sightCastDistance;
         // The layer to detect FOV objects on
         [SerializeField, Tooltip("The layers to detect FOV on")]
         private LayerMask _detectionMask;
@@ -41,7 +45,24 @@ namespace Keegan.FOV
         #if UNITY_EDITOR
         [SerializeField]
         private bool _drawDebug = true;
-        #endif
+#endif
+
+        private void Start()
+        {
+            if (_detectionCastDirections == null)
+                _detectionCastDirections = new List<Vector3>();
+
+
+            _detectionCastDirections.Add(new Vector3(0f, 0f, _sightCastDistance));
+            for(var i = 1; i < _detectionCastCount; ++i)
+            {
+                Vector3 directionLeft = new Vector3(i, 0f, _sightCastDistance);
+                Vector3 directionRight = new Vector3(-i, 0f, _sightCastDistance);
+
+                _detectionCastDirections.Add(directionLeft);
+                _detectionCastDirections.Add(directionRight);
+            }
+        }
 
         private void Update()
         {
@@ -184,9 +205,17 @@ namespace Keegan.FOV
             if(_drawDebug)
             {
                 Gizmos.color = Color.yellow;
-                foreach(var direction in _detectionCastDirections)
+                if(_detectionCastCount > 0 && _sightCastDistance > 0.0f)
                 {
-                    Gizmos.DrawLine(transform.position, transform.position + transform.TransformDirection(direction));
+                    Gizmos.DrawLine(transform.position, transform.position + transform.TransformDirection(new Vector3(0f, 0f, _sightCastDistance)));
+                    for(var i = 1; i < _detectionCastCount; ++i)
+                    {
+                        Vector3 targetLeft = new Vector3(i, 0f, _sightCastDistance);
+                        Vector3 targetRight = new Vector3(-i, 0f, _sightCastDistance);
+
+                        Gizmos.DrawLine(transform.position, transform.position + transform.TransformDirection(targetLeft));
+                        Gizmos.DrawLine(transform.position, transform.position + transform.TransformDirection(targetRight));
+                    }
                 }
             }
         }
