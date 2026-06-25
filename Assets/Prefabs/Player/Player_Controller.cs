@@ -99,6 +99,6 @@ public class Player_Controller : MonoBehaviour, IFovDetectable
 
     public void SetDetected(bool detected)
     {
-		Debug.Log("PLAYER HAS BEEN DETECTED !!!!!");
+		Debug.Log("Has Seen Player");
     }
 }
