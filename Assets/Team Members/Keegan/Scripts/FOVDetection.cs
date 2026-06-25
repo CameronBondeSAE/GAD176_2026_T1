@@ -163,7 +163,7 @@ namespace Keegan.FOV
             Vector2 pathPointA = Vector3.zero;
             using(var p = new PolylinePath())
             {
-                p.AddPoints(Vector3.zero, arcDirectionLeft, arcDirectionRight);
+                p.AddPoints(Vector3.zero, arcDirectionLeft, arcDirectionRight, Vector3.zero);
                 Draw.Polyline(p, Color.yellow);
             }
         }
