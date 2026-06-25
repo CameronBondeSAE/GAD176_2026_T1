@@ -40,6 +40,7 @@ namespace Keegan.FOV
         // Triggered when this has lost sight of the enemy
         public UnityEvent<IFovDetectable> lostEnemy;
 
+        List<IFovDetectable> _detectedThisFrame = new List<IFovDetectable>();
         
         #if UNITY_EDITOR
         [SerializeField]
@@ -73,8 +74,8 @@ namespace Keegan.FOV
         /// </summary>
         private void DetectEnemiesInView()
         {
-            // Define a list of enemies that are detected this frame
-            List<IFovDetectable> detectedThisFrame = new List<IFovDetectable>();
+            // Removed all the detected enemies
+            _detectedThisFrame.Clear();
 
             // Loop through each of the target direction
             foreach(var direction in _detectionCastDirections)
@@ -87,20 +88,21 @@ namespace Keegan.FOV
                     IFovDetectable detectable = hit.collider.GetComponentInChildren<IFovDetectable>();
                     if(detectable != null)
                     {
-
-                        // Add to the detect list
-                        detectedThisFrame.Add(detectable);
-                        // Update the detected flag on the enemy spotted
-                        detectable.SetDetected(true);
-                        seenEnemy?.Invoke(detectable);
-                        
+                        if (!_detectedThisFrame.Contains(detectable))
+                        {
+                            // Add to the detect list
+                            _detectedThisFrame.Add(detectable);
+                            // Update the detected flag on the enemy spotted
+                            detectable.SetDetected(true);
+                            seenEnemy?.Invoke(detectable);
+                        }
                     }
                 }
             }
 
             foreach(var lastFrameDetectable in _enemiesSeenLastFrame)
             {
-                if (!detectedThisFrame.Contains(lastFrameDetectable))
+                if (!_detectedThisFrame.Contains(lastFrameDetectable))
                 {
                     lastFrameDetectable.SetDetected(false);
                     lostEnemy?.Invoke(lastFrameDetectable);
@@ -110,7 +112,7 @@ namespace Keegan.FOV
             // Clear the list for safety
             _enemiesSeenLastFrame.Clear();
             // Assign the new list
-            _enemiesSeenLastFrame = detectedThisFrame;
+            _enemiesSeenLastFrame = _detectedThisFrame;
         }
 
         public override void DrawShapes(Camera cam)
