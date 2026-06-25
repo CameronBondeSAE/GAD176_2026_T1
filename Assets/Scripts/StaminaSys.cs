@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UIElements;
 
 public class StaminaSys : MonoBehaviour, IDepletableBars
@@ -7,7 +8,24 @@ public class StaminaSys : MonoBehaviour, IDepletableBars
     public int staminaCurrent;
     public int staminaMin;
     public Slider staminaDisplay;
-    
+    public Rigidbody attachedEntity;
+
+    public void Start()
+    {
+        attachedEntity = GetComponent<Rigidbody>();
+    }
+
+    public UnityEvent OnDepletion = new UnityEvent();
+
+    private void OnEnable()
+    {
+        //OnDepletion.AddListener();
+    }
+
+    private void OnDisable()
+    {
+        
+    }
 
     public void UiDisplayUpdate()
     {
@@ -21,7 +39,7 @@ public class StaminaSys : MonoBehaviour, IDepletableBars
 
     public int MinValue()
     {
-        return staminaMin;
+        return staminaMax - staminaMax;
     }
 
     public int CurrentValue()
