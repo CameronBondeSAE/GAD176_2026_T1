@@ -1,8 +1,9 @@
+using Keegan.FOV;
 using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class Player_Controller : MonoBehaviour
+public class Player_Controller : MonoBehaviour, IFovDetectable
 {
 	// InputSystem_Actions inputSystemActions;
 
@@ -95,4 +96,9 @@ public class Player_Controller : MonoBehaviour
 			return Vector2.zero;
 		}
 	}
+
+    public void SetDetected(bool detected)
+    {
+		Debug.Log("PLAYER HAS BEEN DETECTED !!!!!");
+    }
 }
