@@ -21,7 +21,6 @@ namespace Keegan.FOV
 
 
         // The directions the raycast will perform in
-        [Tooltip("The directions the raycast will perform in")]
         private List<Vector3> _detectionCastDirections = new List<Vector3>();
         [SerializeField, Tooltip("The Amount of cast from left to right")]
         private int _detectionCastCount = 7;
