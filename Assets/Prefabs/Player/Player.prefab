@@ -501,7 +501,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5954679891297067472, guid: 53142fedf1d6b8a459defe19e02eaf0e, type: 3}
       propertyPath: _visualType
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5954679891297067472, guid: 53142fedf1d6b8a459defe19e02eaf0e, type: 3}
       propertyPath: _sightCastDistance

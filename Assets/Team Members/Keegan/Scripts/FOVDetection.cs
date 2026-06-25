@@ -136,10 +136,13 @@ namespace Keegan.FOV
         private void DrawFovPolygon()
         {
             // Enable gradient and fix rotation with the agent/player
-            Draw.UseGradientFill = true;
-            Draw.GradientFill = GradientFill.Linear(Vector3.zero, Vector3.one * 10f, Color.green, Color.blue, FillSpace.World);
-            Draw.Rotation = Quaternion.Euler(90f, transform.eulerAngles.y, 0f);
+            //Draw.UseGradientFill = true;
+            //Draw.GradientFill = GradientFill.Linear(Vector3.zero, Vector3.one * 10f, Color.green, Color.blue, FillSpace.World);
+            //Draw.Rotation = Quaternion.Euler(90f, transform.eulerAngles.y, 0f);
 
+            Draw.Color = new Color(0f, 1f, 1f, 0.3f);
+            Draw.BlendMode = ShapesBlendMode.Additive;
+            
             // Get the last to directions
             Vector3 arcDirectionLeft = GetFurthestLeft();
             Vector3 arcDirectionRight = GetFurtherestRight();
