@@ -120,17 +120,20 @@ namespace Keegan.FOV
 
             using(Draw.Command(cam))
             {
+                // Define the polygon base information
+                Draw.LineGeometry = LineGeometry.Volumetric3D;
+                Draw.Matrix = transform.localToWorldMatrix;
+
                 // Check that we want to to render the visual
                 if (_visualType == VisualFOV.Polygon)
                     DrawFovPolygon();
+                else if (_visualType == VisualFOV.Polyline)
+                    DrawFOVPolyline();
             }
         }
 
         private void DrawFovPolygon()
         {
-            // Define the polygon base information
-            Draw.LineGeometry = LineGeometry.Volumetric3D;
-            Draw.Matrix = transform.localToWorldMatrix;
             Draw.UseGradientFill = true;
             Draw.GradientFill = GradientFill.Linear(Vector3.zero, Vector3.one * 10f, Color.green, Color.blue, FillSpace.World);
             Draw.Rotation = Quaternion.Euler(90f, transform.eulerAngles.y, 0f);
@@ -149,6 +152,19 @@ namespace Keegan.FOV
             {
                 p.AddPoints(pathPointA, pathPointB, pathPointC);
                 Draw.Polygon(p, Color.yellow);
+            }
+        }
+
+        private void DrawFOVPolyline()
+        {
+            Vector3 arcDirectionLeft = GetFurthestLeft();
+            Vector3 arcDirectionRight = GetFurtherestRight();
+
+            Vector2 pathPointA = Vector3.zero;
+            using(var p = new PolylinePath())
+            {
+                p.AddPoints(Vector3.zero, arcDirectionLeft, arcDirectionRight);
+                Draw.Polyline(p, Color.yellow);
             }
         }
 
