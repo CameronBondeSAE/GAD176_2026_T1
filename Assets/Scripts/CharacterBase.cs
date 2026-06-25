@@ -1,3 +1,4 @@
+using Keegan.FOV;
 using UnityEngine;
 
 // PROBLEM: AI's have no idea if another object is a character or not
@@ -10,7 +11,7 @@ using UnityEngine;
 // Use an interface
 // Use a component
 
-public class CharacterBase : MonoBehaviour
+public class CharacterBase : MonoBehaviour, IFovDetectable
 {
 	public int startingHealth;
 	public int maxHealth;
@@ -60,4 +61,9 @@ public class CharacterBase : MonoBehaviour
 		currentEnergy = startingEnergy;
 		isAlive = true;
 	}
+
+    public void SetDetected(bool detected)
+    {
+        
+    }
 }
