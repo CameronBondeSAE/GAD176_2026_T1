@@ -41,6 +41,8 @@ namespace Keegan.FOV
         public UnityEvent<IFovDetectable> lostEnemy;
 
         List<IFovDetectable> _detectedThisFrame = new List<IFovDetectable>();
+        private RaycastHit[] _castHitResults = new RaycastHit[1];
+        private List<Vector3> _castPolygonHitPoints = new List<Vector3>();
         
         
         #if UNITY_EDITOR
@@ -77,16 +79,17 @@ namespace Keegan.FOV
         {
             // Removed all the detected enemies
             _detectedThisFrame.Clear();
+            _castPolygonHitPoints.Clear();
 
             // Loop through each of the target direction
             foreach(var direction in _detectionCastDirections)
             {
                 // Perform the raycast for detection
-                RaycastHit hit;
-                if (Physics.Raycast(transform.position, transform.forward + transform.TransformDirection(direction), out hit, 10f, _detectionMask))
+                int hitCount = Physics.RaycastNonAlloc(transform.position, transform.forward + transform.TransformDirection(direction), _castHitResults, _sightCastDistance, _detectionMask);
+                if (hitCount > 0 && _castHitResults[0].collider != null)
                 {
                     // Check if the hit collider has the IFovDetectable interface
-                    IFovDetectable detectable = hit.collider.GetComponentInChildren<IFovDetectable>();
+                    IFovDetectable detectable = _castHitResults[0].collider.GetComponentInChildren<IFovDetectable>();
                     if (detectable != null)
                     {
                         if (!_detectedThisFrame.Contains(detectable))
