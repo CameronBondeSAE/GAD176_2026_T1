@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.AI;
 using Shapes;
 using System;
+using System.Linq;
 using UnityEngine.Events;
 
 namespace Keegan.FOV
@@ -111,8 +112,9 @@ namespace Keegan.FOV
 
             // Clear the list for safety
             _enemiesSeenLastFrame.Clear();
-            // Assign the new list
-            _enemiesSeenLastFrame = _detectedThisFrame;
+            // Assign the new list by creating a duplicate
+            // (To list ensures that it's a new list and reference)
+            _enemiesSeenLastFrame = _detectedThisFrame.ToList();
         }
 
         public override void DrawShapes(Camera cam)
