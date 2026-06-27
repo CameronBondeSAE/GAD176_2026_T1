@@ -45,6 +45,8 @@ namespace Keegan.FOV
         List<IFovDetectable> _detectedThisFrame = new List<IFovDetectable>();
         private RaycastHit[] _castHitResults = new RaycastHit[1];
         private RaycastHit[] _castPolygonHitPoints = new RaycastHit[1];
+        // How far the last polygon has to be away to add it to the polygons
+        private float _polygonTollerence = 0.3f;
         
         
         #if UNITY_EDITOR
@@ -148,11 +150,12 @@ namespace Keegan.FOV
 
             Draw.Color = _fovShapeColor;
             //Draw.BlendMode = ShapesBlendMode.Screen;
-
+            //_polygonDrawPoints.Clear();
             
             
             using (var p = new PolygonPath())
             {
+                
                 p.AddPoint(Vector3.zero);
                 foreach(var dir in _detectionCastDirections)
                 {
@@ -167,12 +170,13 @@ namespace Keegan.FOV
                     {
                         finalHitPoint = dir;
                     }
-                    
-                    p.AddPoint(new Vector2(finalHitPoint.x, finalHitPoint.z));
+
+                    if (Vector2.Distance(new Vector2(finalHitPoint.x, finalHitPoint.z), p.LastPoint) > 0.05f)
+                        p.AddPoint(finalHitPoint.x, finalHitPoint.z);
                 }
                 
-                
-                Draw.Polygon(p);
+                if(p.Count >= 3)
+                    Draw.Polygon(p);
             }
         }
 
