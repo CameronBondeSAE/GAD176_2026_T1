@@ -6,9 +6,11 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UIElements;
 using Random = UnityEngine.Random;
+using Divij;
 
 public class SunController : MonoBehaviour
 {
+    
     public Transform Sun;
     public int DayNumber = 1;
     public bool IsDay;
@@ -30,6 +32,7 @@ public class SunController : MonoBehaviour
     // 3. A public method to retrieve all Vector3 positions at any given moment
     public void GetObjectPositions()
     {
+        positions.Clear();
         foreach (GameObject obj in targetObjects)
         {
             if (obj != null) // Avoid null reference errors if a slot is left empty
@@ -42,10 +45,9 @@ public class SunController : MonoBehaviour
 
     private void AlienKiller()
     {
-        foreach (GameObject Prefab in GameObject.FindGameObjectsWithTag("Ai"))
+        foreach (GameObject alien in GameObject.FindGameObjectsWithTag("Ai"))
         {
-            GameObject Alien = GameObject.FindGameObjectWithTag("Ai");
-            Destroy(Alien);   
+            Destroy(alien);   
         }
         
     }
@@ -83,6 +85,54 @@ public class SunController : MonoBehaviour
         { 4, 1.75f },
         { 5, 2f },
     };
+    
+    private List<GameObject> switchableLightObjects = new List<GameObject>();
+    private bool lightsAreOn = true;
+
+    private void FindAllSwitchableLights()
+    {
+        switchableLightObjects.Clear();
+
+        MonoBehaviour[] allBehaviours = Resources.FindObjectsOfTypeAll<MonoBehaviour>();
+
+        foreach (MonoBehaviour behaviour in allBehaviours)
+        {
+            if (behaviour == null)
+                continue;
+
+            GameObject obj = behaviour.gameObject;
+
+            if (!obj.scene.IsValid() || !obj.scene.isLoaded)
+                continue;
+
+            if (behaviour.GetType().Name == "SwitchableLight")
+            {
+                switchableLightObjects.Add(obj);
+                Debug.Log("Found SwitchableLight object: " + obj.name);
+            }
+        }
+
+        Debug.Log("Total SwitchableLight objects found: " + switchableLightObjects.Count);
+    }
+
+    private void UpdateLights()
+    {
+        bool shouldLightsBeOn = !(sunAngle > 10f && sunAngle < 170f);
+
+        if (shouldLightsBeOn == lightsAreOn)
+            return;
+
+        lightsAreOn = shouldLightsBeOn;
+
+        foreach (GameObject lightObj in switchableLightObjects)
+        {
+            if (lightObj != null)
+            {
+                lightObj.SetActive(shouldLightsBeOn);
+            }
+        }
+    }
+
 
     void endeternal()
     {
@@ -105,6 +155,7 @@ public class SunController : MonoBehaviour
         sunAngle = Sun.eulerAngles.x;
         IsDay = true;
         GetObjectPositions();
+        FindAllSwitchableLights();
     }
 
     // Update is called once per frame
@@ -155,5 +206,7 @@ public class SunController : MonoBehaviour
             AlienMom();
             AliensRun = true;
         }
+        
+        UpdateLights();
     }
 }
