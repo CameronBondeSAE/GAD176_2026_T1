@@ -144,7 +144,7 @@ namespace Keegan.FOV
             // Enable gradient and fix rotation with the agent/player
             //Draw.UseGradientFill = true;
             //Draw.GradientFill = GradientFill.Linear(Vector3.zero, Vector3.one * 10f, Color.green, Color.blue, FillSpace.World);
-            //Draw.Rotation = Quaternion.Euler(90f, transform.eulerAngles.y, 0f);
+            Draw.Rotation = Quaternion.Euler(90f, transform.eulerAngles.y, 0f);
 
             Draw.Color = new Color(0.4f, 0.4f, 0f, 1f);
             //Draw.BlendMode = ShapesBlendMode.Additive;
