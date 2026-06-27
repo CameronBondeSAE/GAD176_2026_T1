@@ -143,13 +143,11 @@ namespace Keegan.FOV
 
         private void DrawFovPolygon()
         {
-            // Enable gradient and fix rotation with the agent/player
-            //Draw.UseGradientFill = true;
-            //Draw.GradientFill = GradientFill.Linear(Vector3.zero, Vector3.one * 10f, Color.green, Color.blue, FillSpace.World);
+
             Draw.Rotation = Quaternion.Euler(90f, transform.eulerAngles.y, 0f);
 
             Draw.Color = _fovShapeColor;
-            //Draw.BlendMode = ShapesBlendMode.Additive;
+            //Draw.BlendMode = ShapesBlendMode.Screen;
 
             
             
@@ -176,23 +174,6 @@ namespace Keegan.FOV
                 
                 Draw.Polygon(p);
             }
-            
-            /*
-            
-            // Get the last to directions
-            Vector3 arcDirectionLeft = GetFurthestLeft();
-            Vector3 arcDirectionRight = GetFurtherestRight();
-
-            // Get the path points
-            Vector2 pathPointA = Vector3.zero;
-            Vector2 pathPointB = new Vector3(arcDirectionLeft.x, arcDirectionLeft.z, arcDirectionLeft.z);
-            Vector2 pathPointC = new Vector3(arcDirectionRight.x, arcDirectionRight.z, arcDirectionLeft.z);
-            
-
-            // Add Points & draw polygon
-            
-            
-            */
         }
 
         private void DrawFOVPolyline()
