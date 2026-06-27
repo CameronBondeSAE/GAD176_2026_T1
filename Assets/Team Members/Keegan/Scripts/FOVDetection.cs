@@ -20,12 +20,28 @@ namespace Keegan.FOV
             None,
         }
 
+        public enum CastType
+        {
+            Line,
+            Radial
+        }
+        
+        [Header("Line Raycast Settings")]
         // The directions the raycast will perform in
         private List<Vector3> _detectionCastDirections = new List<Vector3>();
         [SerializeField, Tooltip("The Amount of cast from left to right")]
         private int _detectionCastCount = 7;
+
+        [Header("Radial Cast Settings")]
+        [SerializeField]
+        private float _totalFovAngle = 90f;
+        
+        [Header("Base Cast Settings")]
         [SerializeField, Tooltip("How far the agent can see")]
         private float _sightCastDistance;
+        [SerializeField, Tooltip("The method to use for casting")]
+        private CastType _castType = CastType.Radial;
+        
         // The layer to detect FOV objects on
         [SerializeField, Tooltip("The layers to detect FOV on")]
         private LayerMask _detectionMask;
@@ -45,8 +61,6 @@ namespace Keegan.FOV
         List<IFovDetectable> _detectedThisFrame = new List<IFovDetectable>();
         private RaycastHit[] _castHitResults = new RaycastHit[1];
         private RaycastHit[] _castPolygonHitPoints = new RaycastHit[1];
-        // How far the last polygon has to be away to add it to the polygons
-        private float _polygonTollerence = 0.3f;
         
         
         #if UNITY_EDITOR
@@ -55,6 +69,18 @@ namespace Keegan.FOV
         #endif
 
         private void Start()
+        {
+            if (_castType == CastType.Line)
+            {
+                GenerateCastDirectionsFromLine();
+            }
+            else if(_castType == CastType.Radial)
+            {
+                GenerateCastFromRadial();
+            }
+        }
+
+        private void GenerateCastDirectionsFromLine()
         {
             if (_detectionCastDirections == null)
                 _detectionCastDirections = new List<Vector3>();
@@ -73,6 +99,27 @@ namespace Keegan.FOV
             _detectionCastDirections = OrderCastDirections(_detectionCastDirections);
         }
 
+        private void GenerateCastFromRadial()
+        {
+            if (_detectionCastDirections == null)
+                _detectionCastDirections = new List<Vector3>();
+
+            float halfAngle = _totalFovAngle / 2f;
+            for (var i = 0; i < _detectionCastCount; ++i)
+            {
+                // Smoothly from left to right
+                float targetLerp = (float)i / (_detectionCastCount - 1);
+                float currentAngle = Mathf.Lerp(-halfAngle, halfAngle, targetLerp);
+                
+                // Turn the angle into radians for a true angle
+                float rad = currentAngle * Mathf.Deg2Rad;
+                Vector3 direction = new Vector3(Mathf.Sin(rad), 0f, Mathf.Cos(rad));
+                
+                // Add the direction after applying the sight distance
+                _detectionCastDirections.Add(direction * _sightCastDistance);
+            }
+        }
+        
         private void Update()
         {
             DetectEnemiesInView();
@@ -128,7 +175,7 @@ namespace Keegan.FOV
         public override void DrawShapes(Camera cam)
         {
             base.DrawShapes(cam);
-
+            
             using(Draw.Command(cam))
             {
                 // Define the polygon base information
@@ -219,6 +266,7 @@ namespace Keegan.FOV
 
         /// <summary>
         /// Gets the end raycast on the right
+        /// TODO: Rename correctly
         /// </summary>
         /// <returns>The direction (Vector3) of the raycast that is further right</returns>
         public Vector3 GetFurtherestRight()
@@ -265,16 +313,33 @@ namespace Keegan.FOV
             if(_drawDebug)
             {
                 Gizmos.color = Color.yellow;
-                if(_detectionCastCount > 0 && _sightCastDistance > 0.0f)
+                if (_castType == CastType.Line)
                 {
-                    Gizmos.DrawLine(transform.position, transform.position + transform.TransformDirection(new Vector3(0f, 0f, _sightCastDistance)));
-                    for(var i = 1; i < _detectionCastCount; ++i)
+                    if(_detectionCastCount > 0 && _sightCastDistance > 0.0f)
                     {
-                        Vector3 targetLeft = new Vector3(i, 0f, _sightCastDistance);
-                        Vector3 targetRight = new Vector3(-i, 0f, _sightCastDistance);
+                        Gizmos.DrawLine(transform.position, transform.position + transform.TransformDirection(new Vector3(0f, 0f, _sightCastDistance)));
+                        for(var i = 1; i < _detectionCastCount; ++i)
+                        {
+                            Vector3 targetLeft = new Vector3(i, 0f, _sightCastDistance);
+                            Vector3 targetRight = new Vector3(-i, 0f, _sightCastDistance);
 
-                        Gizmos.DrawLine(transform.position, transform.position + transform.TransformDirection(targetLeft));
-                        Gizmos.DrawLine(transform.position, transform.position + transform.TransformDirection(targetRight));
+                            Gizmos.DrawLine(transform.position, transform.position + transform.TransformDirection(targetLeft));
+                            Gizmos.DrawLine(transform.position, transform.position + transform.TransformDirection(targetRight));
+                        }
+                    }
+                } else if (_castType == CastType.Radial)
+                {
+                    float halfAngle = _totalFovAngle / 2f;
+                    for (var i = 0; i < _detectionCastCount; ++i)
+                    {
+                        // Smoothly from left to right
+                        float targetLerp = (float)i / (_detectionCastCount - 1);
+                        float currentAngle = Mathf.Lerp(-halfAngle, halfAngle, targetLerp);
+                
+                        // Turn the angle into radians for a true angle
+                        float rad = currentAngle * Mathf.Deg2Rad;
+                        Vector3 direction = new Vector3(Mathf.Sin(rad), 0f, Mathf.Cos(rad));
+                        Gizmos.DrawLine(transform.position, transform.position + transform.TransformDirection(direction * _sightCastDistance));
                     }
                 }
             }
