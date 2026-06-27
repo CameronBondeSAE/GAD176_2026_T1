@@ -42,7 +42,7 @@ namespace Keegan.FOV
 
         List<IFovDetectable> _detectedThisFrame = new List<IFovDetectable>();
         private RaycastHit[] _castHitResults = new RaycastHit[1];
-        private List<Vector3> _castPolygonHitPoints = new List<Vector3>();
+        private RaycastHit[] _castPolygonHitPoints = new RaycastHit[1];
         
         
         #if UNITY_EDITOR
@@ -65,6 +65,8 @@ namespace Keegan.FOV
                 _detectionCastDirections.Add(directionLeft);
                 _detectionCastDirections.Add(directionRight);
             }
+
+            _detectionCastDirections = OrderCastDirections(_detectionCastDirections);
         }
 
         private void Update()
@@ -79,7 +81,6 @@ namespace Keegan.FOV
         {
             // Removed all the detected enemies
             _detectedThisFrame.Clear();
-            _castPolygonHitPoints.Clear();
 
             // Loop through each of the target direction
             foreach(var direction in _detectionCastDirections)
@@ -145,13 +146,32 @@ namespace Keegan.FOV
             //Draw.GradientFill = GradientFill.Linear(Vector3.zero, Vector3.one * 10f, Color.green, Color.blue, FillSpace.World);
             //Draw.Rotation = Quaternion.Euler(90f, transform.eulerAngles.y, 0f);
 
-            Draw.Color = new Color(0f, 1f, 1f, 0.3f);
-            Draw.BlendMode = ShapesBlendMode.Additive;
+            Draw.Color = new Color(0.4f, 0.4f, 0f, 1f);
+            //Draw.BlendMode = ShapesBlendMode.Additive;
 
             
             
             using (var p = new PolygonPath())
             {
+                p.AddPoint(Vector3.zero);
+                foreach(var dir in _detectionCastDirections)
+                {
+                    Vector3 castPoint = transform.forward + transform.TransformDirection(dir);
+                    int hitCount = Physics.RaycastNonAlloc(transform.position, castPoint, _castPolygonHitPoints, _sightCastDistance, _detectionMask);
+                    Vector3 finalHitPoint;
+                    if (hitCount > 0)
+                    {
+                        finalHitPoint = transform.InverseTransformPoint(_castPolygonHitPoints[0].point);
+                    }
+                    else
+                    {
+                        finalHitPoint = dir;
+                    }
+                    
+                    p.AddPoint(new Vector2(finalHitPoint.x, finalHitPoint.z));
+                }
+                
+                
                 Draw.Polygon(p);
             }
             
@@ -229,6 +249,25 @@ namespace Keegan.FOV
             }
 
             return Vector3.zero;
+        }
+
+        public List<Vector3> OrderCastDirections(List<Vector3> directions)
+        {
+            List<Vector3> sortedDirections = new List<Vector3>();
+            while (directions.Count > 0)
+            {
+                Vector3 lowestDirection = new Vector3(_detectionCastCount * 3, 0, 0);
+                foreach(var direction in directions)
+                {
+                    if (direction.x < lowestDirection.x)
+                        lowestDirection = direction;
+                }
+                
+                sortedDirections.Add(lowestDirection);
+                directions.Remove(lowestDirection);
+            }
+
+            return sortedDirections;
         }
 
     #if UNITY_EDITOR
