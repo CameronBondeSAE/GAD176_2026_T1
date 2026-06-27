@@ -13,6 +13,9 @@ namespace Keegan.FOV
     
     public class FOVDetection : ImmediateModeShapeDrawer
     {
+        // Min distance between each polygon point for drawing
+        // (There may be a collider missing or something, that could make this redundant)
+        private static readonly float POLYGON_MIN_DISTANCE_BETWEEN = 5.0f;
         public enum VisualFOV
         {
             Polyline,
@@ -61,6 +64,7 @@ namespace Keegan.FOV
         List<IFovDetectable> _detectedThisFrame = new List<IFovDetectable>();
         private RaycastHit[] _castHitResults = new RaycastHit[1];
         private RaycastHit[] _castPolygonHitPoints = new RaycastHit[1];
+        
         
         
         #if UNITY_EDITOR
@@ -206,7 +210,8 @@ namespace Keegan.FOV
                 p.AddPoint(Vector3.zero);
                 foreach(var dir in _detectionCastDirections)
                 {
-                    Vector3 castPoint = transform.forward + transform.TransformDirection(dir);
+                    Vector3 castPoint =  transform.TransformDirection(dir);
+                    //Vector3 worldDirection = Vector3.Normalize((transform.TransformDirection(dir) - transform.position));
                     int hitCount = Physics.RaycastNonAlloc(transform.position, castPoint, _castPolygonHitPoints, _sightCastDistance, _detectionMask);
                     Vector3 finalHitPoint;
                     if (hitCount > 0)
@@ -218,7 +223,7 @@ namespace Keegan.FOV
                         finalHitPoint = dir;
                     }
 
-                    if (Vector2.Distance(new Vector2(finalHitPoint.x, finalHitPoint.z), p.LastPoint) > 0.05f)
+                    if (Vector2.Distance(new Vector2(finalHitPoint.x, finalHitPoint.z), p.LastPoint) > POLYGON_MIN_DISTANCE_BETWEEN)
                         p.AddPoint(finalHitPoint.x, finalHitPoint.z);
                 }
                 
