@@ -31,6 +31,8 @@ namespace Keegan.FOV
         private LayerMask _detectionMask;
         [SerializeField, Tooltip("The visual type of the FOV")]
         private VisualFOV _visualType;
+        [SerializeField]
+        private Color _fovShapeColor = new Color(1f, 0.5f, 0.5f, 0.5f);
         
         // List of all the enemies seen last frame
         private List<IFovDetectable> _enemiesSeenLastFrame = new List<IFovDetectable>();
@@ -146,7 +148,7 @@ namespace Keegan.FOV
             //Draw.GradientFill = GradientFill.Linear(Vector3.zero, Vector3.one * 10f, Color.green, Color.blue, FillSpace.World);
             Draw.Rotation = Quaternion.Euler(90f, transform.eulerAngles.y, 0f);
 
-            Draw.Color = new Color(0.4f, 0.4f, 0f, 1f);
+            Draw.Color = _fovShapeColor;
             //Draw.BlendMode = ShapesBlendMode.Additive;
 
             
@@ -197,7 +199,7 @@ namespace Keegan.FOV
         {
             Vector3 arcDirectionLeft = GetFurthestLeft();
             Vector3 arcDirectionRight = GetFurtherestRight();
-
+            Draw.Color = _fovShapeColor;
 
             using(var p = new PolylinePath())
             {
