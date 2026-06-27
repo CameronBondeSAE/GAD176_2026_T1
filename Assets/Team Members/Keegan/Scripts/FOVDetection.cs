@@ -19,7 +19,6 @@ namespace Keegan.FOV
             None,
         }
 
-
         // The directions the raycast will perform in
         private List<Vector3> _detectionCastDirections = new List<Vector3>();
         [SerializeField, Tooltip("The Amount of cast from left to right")]
@@ -42,17 +41,18 @@ namespace Keegan.FOV
 
         List<IFovDetectable> _detectedThisFrame = new List<IFovDetectable>();
         
+        
         #if UNITY_EDITOR
         [SerializeField]
         private bool _drawDebug = true;
-#endif
+        #endif
 
         private void Start()
         {
             if (_detectionCastDirections == null)
                 _detectionCastDirections = new List<Vector3>();
 
-
+            
             _detectionCastDirections.Add(new Vector3(0f, 0f, _sightCastDistance));
             for(var i = 1; i < _detectionCastCount; ++i)
             {
@@ -82,11 +82,11 @@ namespace Keegan.FOV
             {
                 // Perform the raycast for detection
                 RaycastHit hit;
-                if(Physics.Raycast(transform.position, transform.forward + transform.TransformDirection(direction), out hit, 10f, _detectionMask))
+                if (Physics.Raycast(transform.position, transform.forward + transform.TransformDirection(direction), out hit, 10f, _detectionMask))
                 {
                     // Check if the hit collider has the IFovDetectable interface
                     IFovDetectable detectable = hit.collider.GetComponentInChildren<IFovDetectable>();
-                    if(detectable != null)
+                    if (detectable != null)
                     {
                         if (!_detectedThisFrame.Contains(detectable))
                         {
@@ -142,6 +142,15 @@ namespace Keegan.FOV
 
             Draw.Color = new Color(0f, 1f, 1f, 0.3f);
             Draw.BlendMode = ShapesBlendMode.Additive;
+
+            
+            
+            using (var p = new PolygonPath())
+            {
+                Draw.Polygon(p);
+            }
+            
+            /*
             
             // Get the last to directions
             Vector3 arcDirectionLeft = GetFurthestLeft();
@@ -151,13 +160,12 @@ namespace Keegan.FOV
             Vector2 pathPointA = Vector3.zero;
             Vector2 pathPointB = new Vector3(arcDirectionLeft.x, arcDirectionLeft.z, arcDirectionLeft.z);
             Vector2 pathPointC = new Vector3(arcDirectionRight.x, arcDirectionRight.z, arcDirectionLeft.z);
+            
 
             // Add Points & draw polygon
-            using (var p = new PolygonPath())
-            {
-                p.AddPoints(pathPointA, pathPointB, pathPointC);
-                Draw.Polygon(p, Color.yellow);
-            }
+            
+            
+            */
         }
 
         private void DrawFOVPolyline()
