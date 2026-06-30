@@ -16,7 +16,7 @@ public class StaminaSys : MonoBehaviour, IDepletableBars
         attachedEntity = GetComponent<Rigidbody>();
     }
 
-    public UnityEvent OnDepletion = new UnityEvent();
+    public UnityEvent OnStaminaDepletion = new UnityEvent();
 
     private void OnEnable()
     {
@@ -60,7 +60,7 @@ public class StaminaSys : MonoBehaviour, IDepletableBars
             staminaCurrent = staminaCurrent - staminaNegative;
             if (staminaCurrent <= staminaMin)
             {
-                OnDepletion.Invoke();
+                OnStaminaDepletion.Invoke();
             }
         };
     }
