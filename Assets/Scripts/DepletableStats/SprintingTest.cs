@@ -1,15 +1,21 @@
+using Unity.Cinemachine;
 using UnityEngine;
 using UnityEngine.InputSystem;
 public class SprintingTest : MonoBehaviour
 {
     public Rigidbody playerBody;
+    private Vector3 velocity;
     
- 
-    void Update()
+// Try ClampMagnitude
+   
+    void FixedUpdate()
     {
-        if (Keyboard.current.shiftKey.wasPressedThisFrame)
+        if (Keyboard.current.shiftKey.isPressed)
         {
-            playerBody.AddForce(Vector3.Magnitude() * 10000f);
+            velocity = playerBody.linearVelocity;
+            velocity += velocity;
+            playerBody.linearVelocity = velocity;
+            Debug.Log("im working");
         }
     }
 }
