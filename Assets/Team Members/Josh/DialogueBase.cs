@@ -1,18 +1,16 @@
 using System.Collections;
+using System.Collections.Generic;
 using TMPro;
 using UnityEditor.Rendering;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class DialougeBase : MonoBehaviour
+public class DialougeBase : MonoBehaviour 
 {
     public CompanionCubeTrigger dialougeTrigger;
     public TextMeshProUGUI dialougeText;
-    public enum Npcs
-    {
-        companionCube,
-
-    }
+    public int waitForSeconds = 3;
+    
 
 
 
@@ -42,7 +40,7 @@ public class DialougeBase : MonoBehaviour
     public IEnumerator Yield()
     {
 
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(waitForSeconds);
 
         dialougeText.enabled = false;
     }

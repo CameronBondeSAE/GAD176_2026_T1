@@ -1,4 +1,5 @@
 using NUnit.Framework;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEditor.Rendering;
 using UnityEngine;
@@ -17,9 +18,20 @@ public class DialougeManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        StartCoroutine(CoroutineDialougeBase());
+      
+    }
+
+    public IEnumerator CoroutineDialougeBase()
+    {
+
+        
         foreach (DialougeBase obj in objects)
         {
             obj.Dialouge();
+
         }
+        yield return new WaitForSeconds(1);
+
     }
 }
