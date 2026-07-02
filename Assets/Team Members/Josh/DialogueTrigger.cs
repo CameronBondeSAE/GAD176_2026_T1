@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class CompanionCubeTrigger : MonoBehaviour
+public class DialogueTrigger : MonoBehaviour
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     public bool canInteract = false;

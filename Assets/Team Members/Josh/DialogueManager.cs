@@ -6,12 +6,12 @@ using UnityEngine;
 
 public class DialougeManager : MonoBehaviour
 {
-    public DialougeBase dialougeText;
-    public List<DialougeBase> objects;
+    public DialogueBase dialougeText;
+    public List<DialogueBase> objects;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        dialougeText.dialougeText.enabled = false;
+        dialougeText.dialogueText.enabled = false;
 
     }
 
@@ -26,9 +26,9 @@ public class DialougeManager : MonoBehaviour
     {
 
         
-        foreach (DialougeBase obj in objects)
+        foreach (DialogueBase obj in objects)
         {
-            obj.Dialouge();
+            obj.Dialogue();
 
         }
         yield return new WaitForSeconds(1);

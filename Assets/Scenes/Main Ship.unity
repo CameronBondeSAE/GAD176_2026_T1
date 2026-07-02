@@ -10819,8 +10819,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -765, y: -487}
-  m_SizeDelta: {x: 325.4601, y: 61.1588}
+  m_AnchoredPosition: {x: -366, y: -171}
+  m_SizeDelta: {x: 325.4601, y: 63.9911}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &906409385
 MonoBehaviour:
@@ -10908,7 +10908,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: -2.0148697, z: -37.940063, w: 0}
+  m_margin: {x: 0, y: -2.0148392, z: -37.940063, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -19319,9 +19319,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e688045300cb82f42b6c570049acf96b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialougeTrigger: {fileID: 1531196955}
-  dialougeText: {fileID: 906409385}
+  dialogueTrigger: {fileID: 1531196955}
+  dialogueText: {fileID: 906409385}
   waitForSeconds: 3
+  dialogueList: []
 --- !u!114 &1531196958
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19334,10 +19335,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60dc89a7ab47aaa41b224442ba8c9101, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialougeTrigger: {fileID: 1531196955}
-  dialougeText: {fileID: 906409385}
+  dialogueTrigger: {fileID: 1531196955}
+  dialogueText: {fileID: 906409385}
   waitForSeconds: 3
-  companionCubeTrigger: {fileID: 1531196955}
+  dialogueList: []
 --- !u!23 &1531196960
 MeshRenderer:
   m_ObjectHideFlags: 0

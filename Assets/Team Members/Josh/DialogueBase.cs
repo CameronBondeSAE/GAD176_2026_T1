@@ -1,3 +1,4 @@
+using CameronBonde;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -5,11 +6,13 @@ using UnityEditor.Rendering;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class DialougeBase : MonoBehaviour 
+public class DialogueBase : MonoBehaviour, IInteractable
 {
-    public CompanionCubeTrigger dialougeTrigger;
-    public TextMeshProUGUI dialougeText;
-    public int waitForSeconds = 3;
+    public DialogueTrigger dialogueTrigger;
+    public TextMeshProUGUI dialogueText;
+    public int waitForSeconds;
+    public int dialogueStart = 0; // Makes sure the dialogue only triggers one time
+
     
 
 
@@ -26,23 +29,25 @@ public class DialougeBase : MonoBehaviour
      * Click onto object so it appears in the inspector
     */
 
-    public virtual void Dialouge()
+    public virtual void Dialogue()
     {
-
-        if ((Keyboard.current.tKey.wasPressedThisFrame) && (dialougeTrigger.canInteract == true))
+        if (Keyboard.current.tKey.wasPressedThisFrame)
         {
-            dialougeText.enabled = true;
-
-            StartCoroutine(Yield());
+            dialogueStart = 0;
+            dialogueText.enabled = true;
+            dialogueStart =+ 1;
+            
         }
+        /*
+        if (dialogueStart == false)
+        {
+            dialogueText.enabled = false;
+        }
+        */
     }
 
-    public IEnumerator Yield()
+    public void Interact()
     {
-
-        yield return new WaitForSeconds(waitForSeconds);
-
-        dialougeText.enabled = false;
+        throw new System.NotImplementedException();
     }
-
 }
