@@ -4030,7 +4030,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 967585570361892113, guid: b355c927863a39448a72f327cbc06017, type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2185803056316268337, guid: b355c927863a39448a72f327cbc06017, type: 3}
       propertyPath: m_LocalPosition.x
@@ -4165,6 +4165,11 @@ GameObject:
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4673450451707142059, guid: 567f351c6027259429afe86d33a5d9ff, type: 3}
   m_PrefabInstance: {fileID: 1339047788}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &551233293 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5818197354264904191, guid: 52f322377ca081143bd4f68b9be1aba4, type: 3}
+  m_PrefabInstance: {fileID: 1584156554527722514}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &553056521 stripped
 GameObject:
@@ -7475,8 +7480,12 @@ MonoBehaviour:
     _prefab: Assets/Team Members/Frank/Prefabs/CablePrefabs/PowerCable.prefab
   - _gameObject: {fileID: 593315126}
     _prefab: Assets/Prefabs/Player/Player.prefab
+  - _gameObject: {fileID: 551233293}
+    _prefab: Assets/Prefabs/FOVDetection.prefab
   - _gameObject: {fileID: 1374038344}
     _prefab: Assets/Prefabs/Player/Player.prefab
+  - _gameObject: {fileID: 1363436784}
+    _prefab: Assets/Prefabs/FOVDetection.prefab
   - _gameObject: {fileID: 680564128}
     _prefab: Assets/Prefabs/Light/Light.prefab
   - _gameObject: {fileID: 680564129}
@@ -16255,6 +16264,11 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 301290728784240562, guid: 567f351c6027259429afe86d33a5d9ff, type: 3}
   m_PrefabInstance: {fileID: 1339047788}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1363436784 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5818197354264904191, guid: 52f322377ca081143bd4f68b9be1aba4, type: 3}
+  m_PrefabInstance: {fileID: 1374038343}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1366868122
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -22479,6 +22493,8 @@ MonoBehaviour:
   currentEnergy: 0
   lowEnergyThreshold: 0
   isAlive: 0
+  hiddenGameObjects: []
+  _isDetected: 0
 --- !u!1001 &2118732608
 PrefabInstance:
   m_ObjectHideFlags: 0

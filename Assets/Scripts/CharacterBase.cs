@@ -1,5 +1,6 @@
 using Keegan.FOV;
 using UnityEngine;
+using System.Collections.Generic;
 
 // PROBLEM: AI's have no idea if another object is a character or not
 // eg if an attacks other characters, it has no idea
@@ -24,6 +25,17 @@ public class CharacterBase : MonoBehaviour, IFovDetectable
 
 	public bool isAlive;
 
+	[Tooltip("List of all the game objects")]
+	public List<GameObject> hiddenGameObjects = new List<GameObject>();
+
+	[HideInInspector] public bool _isDetected = false;
+
+	public void Start()
+	{
+		// Called to initialize detected state
+		//SetDetected(_isDetected);
+	}
+	
 	public void UseEnergy(int amount)
 	{
 		currentEnergy -= amount;
@@ -64,13 +76,22 @@ public class CharacterBase : MonoBehaviour, IFovDetectable
 	
     public void SetDetected(bool detected)
     {
+	    _isDetected = detected;
 	    if (detected)
 	    {
-		    Debug.Log("Character has been detected");
+		    foreach (var go in hiddenGameObjects)
+		    { 
+			    if(go)
+				    go.SetActive(true);
+		    }
 	    }
 	    else
 	    {
-		    Debug.Log("Character is now hidden");
+		    foreach (var go in hiddenGameObjects)
+		    {
+			    if (go)
+				    go.SetActive(false);
+		    }
 	    }
     }
 }

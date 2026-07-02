@@ -6,6 +6,7 @@ using UnityEngine.AI;
 using Shapes;
 using System;
 using System.Linq;
+using UnityEditor;
 using UnityEngine.Events;
 
 namespace Keegan.FOV
@@ -15,7 +16,7 @@ namespace Keegan.FOV
     {
         // Min distance between each polygon point for drawing
         // (There may be a collider missing or something, that could make this redundant)
-        private static readonly float POLYGON_MIN_DISTANCE_BETWEEN = 5.0f;
+        private static readonly float POLYGON_MIN_DISTANCE_BETWEEN = 3.0f;
         public enum VisualFOV
         {
             Polyline,
