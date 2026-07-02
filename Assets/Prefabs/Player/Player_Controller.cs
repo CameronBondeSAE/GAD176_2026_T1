@@ -18,7 +18,7 @@ public class Player_Controller : MonoBehaviour, IFovDetectable
 	public Frank.Interact interact;
 
 	// Start is called once before the first execution of Update after the MonoBehaviour is created
-	void Start()
+	void OnEnable()
 	{
 		var actions = playerInput.actions;
 		actions.Enable();
@@ -31,6 +31,22 @@ public class Player_Controller : MonoBehaviour, IFovDetectable
 		actions["Mouse Position"].performed += UpdateMousePosition;
 		actions["Mouse Position"].canceled += UpdateMousePosition;
 	}
+
+	private void OnDisable()
+	{
+		var actions = playerInput.actions;
+
+		actions.Disable();
+		actions["Move"].performed -= player_Model.Move;
+		actions["Move"].canceled -= player_Model.Move;
+		actions["Look"].performed -= Look;
+		actions["Look"].canceled -= Look;
+		actions["Interact"].performed -= InteractWith;
+		actions["Pickup"].performed -= Pickup;
+		actions["Mouse Position"].performed -= UpdateMousePosition;
+		actions["Mouse Position"].canceled -= UpdateMousePosition;
+	}
+
 
 	// Just pass along to the real function, without input stuff
 	private void Pickup(InputAction.CallbackContext obj)
