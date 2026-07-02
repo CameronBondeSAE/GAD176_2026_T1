@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 
@@ -21,21 +22,21 @@ using UnityEngine.UI;
 
         }
         
-        public UnityEvent Damaged =  new UnityEvent();
+        [FormerlySerializedAs("Damaged")] public UnityEvent OnDamagedEvent =  new UnityEvent();
 
-        public UnityEvent OnHealthDepletion = new UnityEvent();
+        [FormerlySerializedAs("OnHealthDepletion")] public UnityEvent OnDeathEvent = new UnityEvent();
 
         private void OnEnable()
         {
-            OnHealthDepletion.AddListener(depleteUI.DisplayDeathMessage);
-            Damaged.AddListener(depleteUI.DisplayHealthValue);
+            OnDeathEvent.AddListener(depleteUI.DisplayDeathMessage);
+            OnDamagedEvent.AddListener(depleteUI.DisplayHealthValue);
             
         }
 
         private void OnDisable()
         {
-            OnHealthDepletion.RemoveListener(depleteUI.DisplayDeathMessage);
-            Damaged.RemoveListener(depleteUI.DisplayHealthValue);
+            OnDeathEvent.RemoveListener(depleteUI.DisplayDeathMessage);
+            OnDamagedEvent.RemoveListener(depleteUI.DisplayHealthValue);
         }
         
         public int MaxValue()
@@ -61,20 +62,20 @@ using UnityEngine.UI;
             {
                 healthCurrent = healthMax;
                 healthCurrent = healthCurrent - healthNegative;
-                Damaged.Invoke();
+                OnDamagedEvent.Invoke();
                 if (healthCurrent <= healthMin)
                 {
-                    OnHealthDepletion.Invoke();
+                    OnDeathEvent.Invoke();
                     Debug.Log("You Dead!");
                 }
             }
             else
             {
                 healthCurrent = healthCurrent - healthNegative;
-                Damaged.Invoke();
+                OnDamagedEvent.Invoke();
                 if (healthCurrent <= healthMin)
                 {
-                    OnHealthDepletion.Invoke();
+                    OnDeathEvent.Invoke();
                     Debug.Log("You Dead!");
                 }
             }

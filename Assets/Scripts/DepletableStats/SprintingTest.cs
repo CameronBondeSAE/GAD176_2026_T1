@@ -5,17 +5,17 @@ public class SprintingTest : MonoBehaviour
 {
     public Rigidbody playerBody;
     private Vector3 velocity;
+    public float maxSpeed = 1f;
+    private bool maxVelocitySet = false;
+    private Vector3 velocityMax;
     
-// Try ClampMagnitude
-   
     void FixedUpdate()
     {
-        if (Keyboard.current.shiftKey.isPressed)
-        {
-            velocity = playerBody.linearVelocity;
-            velocity += velocity;
-            playerBody.linearVelocity = velocity;
-            Debug.Log("im working");
-        }
+            if (Keyboard.current.shiftKey.isPressed)
+            {
+                    
+            }
     }
+
+    
 }
