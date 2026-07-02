@@ -10,16 +10,12 @@ using UnityEngine.UI;
         public int healthMax = 100;
         public int healthCurrent;
         public int healthMin = 0;
-        public int healthNegative;
         public Rigidbody attachedEntity;
         public DepleteUI depleteUI;
 
         public void Start()
         {
-            healthCurrent = healthMax;
             depleteUI.DisplayInitialise();
-            attachedEntity = GetComponent<Rigidbody>();
-
         }
         
         [FormerlySerializedAs("Damaged")] public UnityEvent OnDamagedEvent =  new UnityEvent();
@@ -80,7 +76,7 @@ using UnityEngine.UI;
                 }
             }
 
-            ;
+            
         }
 
     }

@@ -20,6 +20,7 @@ public class Test : MonoBehaviour
         }
         
     }
+    //Quick and dirty Damage area thing. Not ideal to use tags or whatever but it works. 
 
     // Update is called once per frame
     void Update()

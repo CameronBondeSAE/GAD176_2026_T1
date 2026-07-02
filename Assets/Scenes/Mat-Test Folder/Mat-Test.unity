@@ -1025,8 +1025,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hud: {fileID: 213702948}
-  staminaSys: {fileID: 326342438}
-  healthSys: {fileID: 1441393498}
+  staminaSys: {fileID: 0}
+  healthSys: {fileID: 0}
   healthSlider: {fileID: 15048592}
   staminaSlider: {fileID: 1628983760}
   deathMessage: {fileID: 0}
@@ -1130,58 +1130,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 286484025}
   m_CullTransparentMesh: 1
---- !u!1 &326342437
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 326342439}
-  - component: {fileID: 326342438}
-  m_Layer: 0
-  m_Name: StaminaSys
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &326342438
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 326342437}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 108f6431de809bb49bff6c8be10273be, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  staminaMax: 0
-  staminaCurrent: 0
-  staminaMin: 0
-  staminaNegative: 0
-  attachedEntity: {fileID: 0}
-  StaminaDepletedEvent:
-    m_PersistentCalls:
-      m_Calls: []
---- !u!4 &326342439
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 326342437}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 265.78604, y: 399.47437, z: -201.39696}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &394334075
 GameObject:
   m_ObjectHideFlags: 0
@@ -2154,62 +2102,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1441393497
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1441393499}
-  - component: {fileID: 1441393498}
-  m_Layer: 0
-  m_Name: Healthsys
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1441393498
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1441393497}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3e42c14129a239d4e9e7a8a7202400b9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  healthMax: 100
-  healthCurrent: 0
-  healthMin: 0
-  healthNegative: 0
-  attachedEntity: {fileID: 1457074383}
-  depleteUI: {fileID: 0}
-  OnDamagedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  OnDeathEvent:
-    m_PersistentCalls:
-      m_Calls: []
---- !u!4 &1441393499
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1441393497}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 265.78604, y: 399.47437, z: -201.39696}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1457074379
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2226,6 +2118,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5374164235821342035, guid: 52f322377ca081143bd4f68b9be1aba4, type: 3}
+      propertyPath: depleteUI
+      value: 
+      objectReference: {fileID: 213702945}
     - target: {fileID: 5374164235821342035, guid: 52f322377ca081143bd4f68b9be1aba4, type: 3}
       propertyPath: attachedEntity
       value: 
@@ -2344,7 +2240,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerBody: {fileID: 1457074383}
-  maxSpeed: 1
+  newSpeedMultiplier: 10
+  staminaSys: {fileID: 1457074382}
 --- !u!1 &1628983757
 GameObject:
   m_ObjectHideFlags: 0
@@ -2397,8 +2294,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hud: {fileID: 213702948}
-  staminaSys: {fileID: 326342438}
-  healthSys: {fileID: 1441393498}
+  staminaSys: {fileID: 0}
+  healthSys: {fileID: 0}
   healthSlider: {fileID: 15048592}
   staminaSlider: {fileID: 1628983760}
   deathMessage: {fileID: 0}
@@ -2447,9 +2344,9 @@ MonoBehaviour:
   m_HandleRect: {fileID: 0}
   m_Direction: 0
   m_MinValue: 0
-  m_MaxValue: 1
-  m_WholeNumbers: 0
-  m_Value: 0
+  m_MaxValue: 100
+  m_WholeNumbers: 1
+  m_Value: 100
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -2613,6 +2510,4 @@ SceneRoots:
   - {fileID: 165584548}
   - {fileID: 213702949}
   - {fileID: 539572553}
-  - {fileID: 1441393499}
-  - {fileID: 326342439}
   - {fileID: 1261399383}
