@@ -20,19 +20,7 @@ using UnityEngine.UI;
         [FormerlySerializedAs("Damaged")] public UnityEvent OnDamagedEvent =  new UnityEvent();
 
         [FormerlySerializedAs("OnHealthDepletion")] public UnityEvent OnDeathEvent = new UnityEvent();
-
-        private void OnEnable()
-        {
-            OnDeathEvent.AddListener(depleteUI.DisplayDeathMessage);
-            OnDamagedEvent.AddListener(depleteUI.DisplayHealthValue);
-            
-        }
-
-        private void OnDisable()
-        {
-            OnDeathEvent.RemoveListener(depleteUI.DisplayDeathMessage);
-            OnDamagedEvent.RemoveListener(depleteUI.DisplayHealthValue);
-        }
+        
         
         public int MaxValue()
         {
