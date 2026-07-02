@@ -4,7 +4,6 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 public class SprintingTest : MonoBehaviour
 {
-    public Rigidbody playerBody;
     private Vector3 velocity;
     public float newSpeedMultiplier = 10f;
     private float baseSpeedMultiplier;

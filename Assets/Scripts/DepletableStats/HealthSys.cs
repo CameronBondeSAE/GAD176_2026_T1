@@ -10,7 +10,6 @@ using UnityEngine.UI;
         public int healthMax = 100;
         public int healthCurrent;
         public int healthMin = 0;
-        public Rigidbody attachedEntity;
         public DepleteUI depleteUI;
 
         public void Start()

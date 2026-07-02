@@ -10,9 +10,6 @@ public class StaminaSys : MonoBehaviour, IDepletableBars
     public int staminaCurrent;
     public int staminaMin = 0;
     public int staminaUsage;
-    public Slider staminaDisplay;
-    public Rigidbody attachedEntity;
-    public float speedMultiplier;
     public DepleteUI depleteUI;
 
     public void Start()
