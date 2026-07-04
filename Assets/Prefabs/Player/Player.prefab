@@ -244,8 +244,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 1273103890878380776}
-  defaultSpeed: 0
-  speedMultiplier: 0
+  defaultSpeed: 50
+  speedMultiplier: 1
   turnSpeed: 10
   moveDirection: {x: 0, y: 0, z: 0}
   meshRenderer: {fileID: 0}
