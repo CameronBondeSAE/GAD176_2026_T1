@@ -26,6 +26,9 @@ namespace Keegan.FOV
 
         private SerializedProperty _drawDebug;
 
+        private SerializedProperty _seenEnemyProp;
+        private SerializedProperty _lostEnemyProp;
+
 
         private void OnEnable()
         {
@@ -37,6 +40,8 @@ namespace Keegan.FOV
             _visualTypeProp = serializedObject.FindProperty("_visualType");
             _shapeColorProp = serializedObject.FindProperty("_fovShapeColor");
             _drawDebug = serializedObject.FindProperty("_drawDebug");
+            _seenEnemyProp = serializedObject.FindProperty("seenEnemy");
+            _lostEnemyProp = serializedObject.FindProperty("lostEnemy");
         }
 
 
@@ -64,6 +69,11 @@ namespace Keegan.FOV
             }
             
             //== EVENTS ==//
+            EditorGUILayout.LabelField("", GUI.skin.horizontalSlider);
+            EditorGUILayout.LabelField("Events",  EditorStyles.boldLabel);
+            EditorGUILayout.PropertyField(_seenEnemyProp);
+            EditorGUILayout.PropertyField(_lostEnemyProp);
+            
             
             //= DEBUG ==//
             EditorGUILayout.LabelField("", GUI.skin.horizontalSlider);
