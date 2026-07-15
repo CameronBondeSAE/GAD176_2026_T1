@@ -47,22 +47,26 @@ namespace Keegan.FOV
 
         public override void OnInspectorGUI()
         {
+            if (Application.isPlaying)
+            {
+                if (GUILayout.Button("Regenerate Casts"))
+                {
+                    if(serializedObject.targetObject is FOVDetection instance)
+                        instance.RegenerateCast();
+                }
+            }
             EditorGUILayout.LabelField("FOV Detection", EditorStyles.boldLabel);
             EditorGUILayout.PropertyField(_sightCastDistProp);
             EditorGUILayout.PropertyField(_detectionMaskProp);
             EditorGUILayout.PropertyField(_visualTypeProp);
             EditorGUILayout.PropertyField(_shapeColorProp);
+            EditorGUILayout.PropertyField(_detectionCastCountProp);
             
             //== CAST TYPE PROPERTIES ==//
             EditorGUILayout.PropertyField(_castType);
             EditorGUILayout.LabelField("", GUI.skin.horizontalSlider);
             FOVDetection.CastType castType = (FOVDetection.CastType)_castType.enumValueIndex;
-            if (castType == FOVDetection.CastType.Line)
-            {
-                EditorGUILayout.LabelField("Line Cast Settings", EditorStyles.boldLabel);
-                EditorGUILayout.PropertyField(_detectionCastCountProp);
-            }
-            else if (castType == FOVDetection.CastType.Radial)
+            if (castType == FOVDetection.CastType.Radial)
             {
                 EditorGUILayout.LabelField("Radial Cast Settings",  EditorStyles.boldLabel);
                 EditorGUILayout.PropertyField(_totalFovAngleProp);

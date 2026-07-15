@@ -310,9 +310,20 @@ namespace Keegan.FOV
 
             return sortedDirections;
         }
+        
 
     #if UNITY_EDITOR
 
+        [ContextMenu("Regenerate Cast")]
+        public void RegenerateCast()
+        {
+            _detectionCastDirections.Clear();
+            if (_castType == CastType.Line)
+                GenerateCastDirectionsFromLine();
+            else if(_castType == CastType.Radial)
+                GenerateCastFromRadial();
+        }
+        
 
         private void OnDrawGizmosSelected()
         {
