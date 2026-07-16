@@ -4,10 +4,12 @@ using Anthill.AI;
 using UnityEngine;
 using UnityEngine.AI;
 using Shapes;
+using System;
+using UnityEngine.Events;
 
 namespace Keegan.FOV
 {
-    [ExecuteAlways]
+    
     public class FOVDetection : ImmediateModeShapeDrawer
     {
         public enum VisualFOV
@@ -19,8 +21,11 @@ namespace Keegan.FOV
 
 
         // The directions the raycast will perform in
-        [SerializeField, Tooltip("The directions the raycast will perform in")]
         private List<Vector3> _detectionCastDirections = new List<Vector3>();
+        [SerializeField, Tooltip("The Amount of cast from left to right")]
+        private int _detectionCastCount = 7;
+        [SerializeField, Tooltip("How far the agent can see")]
+        private float _sightCastDistance;
         // The layer to detect FOV objects on
         [SerializeField, Tooltip("The layers to detect FOV on")]
         private LayerMask _detectionMask;
@@ -30,11 +35,33 @@ namespace Keegan.FOV
         // List of all the enemies seen last frame
         private List<IFovDetectable> _enemiesSeenLastFrame = new List<IFovDetectable>();
 
+        // Triggered when the enemy has been seen
+        public UnityEvent<IFovDetectable> seenEnemy;
+        // Triggered when this has lost sight of the enemy
+        public UnityEvent<IFovDetectable> lostEnemy;
+
         
         #if UNITY_EDITOR
         [SerializeField]
         private bool _drawDebug = true;
-        #endif
+#endif
+
+        private void Start()
+        {
+            if (_detectionCastDirections == null)
+                _detectionCastDirections = new List<Vector3>();
+
+
+            _detectionCastDirections.Add(new Vector3(0f, 0f, _sightCastDistance));
+            for(var i = 1; i < _detectionCastCount; ++i)
+            {
+                Vector3 directionLeft = new Vector3(i, 0f, _sightCastDistance);
+                Vector3 directionRight = new Vector3(-i, 0f, _sightCastDistance);
+
+                _detectionCastDirections.Add(directionLeft);
+                _detectionCastDirections.Add(directionRight);
+            }
+        }
 
         private void Update()
         {
@@ -57,7 +84,7 @@ namespace Keegan.FOV
                 if(Physics.Raycast(transform.position, transform.forward + transform.TransformDirection(direction), out hit, 10f, _detectionMask))
                 {
                     // Check if the hit collider has the IFovDetectable interface
-                    IFovDetectable detectable = hit.collider.GetComponent<IFovDetectable>();
+                    IFovDetectable detectable = hit.collider.GetComponentInChildren<IFovDetectable>();
                     if(detectable != null)
                     {
 
@@ -65,6 +92,7 @@ namespace Keegan.FOV
                         detectedThisFrame.Add(detectable);
                         // Update the detected flag on the enemy spotted
                         detectable.SetDetected(true);
+                        seenEnemy?.Invoke(detectable);
                         
                     }
                 }
@@ -75,6 +103,7 @@ namespace Keegan.FOV
                 if (!detectedThisFrame.Contains(lastFrameDetectable))
                 {
                     lastFrameDetectable.SetDetected(false);
+                    lostEnemy?.Invoke(lastFrameDetectable);
                 }
             }
 
@@ -90,20 +119,24 @@ namespace Keegan.FOV
 
             using(Draw.Command(cam))
             {
+                // Define the polygon base information
+                Draw.LineGeometry = LineGeometry.Volumetric3D;
+                Draw.Matrix = transform.localToWorldMatrix;
+
                 // Check that we want to to render the visual
                 if (_visualType == VisualFOV.Polygon)
                     DrawFovPolygon();
+                else if (_visualType == VisualFOV.Polyline)
+                    DrawFOVPolyline();
             }
         }
 
         private void DrawFovPolygon()
         {
-            // Define the polygon base information
-            Draw.LineGeometry = LineGeometry.Volumetric3D;
-            Draw.Matrix = transform.localToWorldMatrix;
+            // Enable gradient and fix rotation with the agent/player
             Draw.UseGradientFill = true;
             Draw.GradientFill = GradientFill.Linear(Vector3.zero, Vector3.one * 10f, Color.green, Color.blue, FillSpace.World);
-            Draw.Rotation = Quaternion.Euler(90f, 0f, 0f);
+            Draw.Rotation = Quaternion.Euler(90f, transform.eulerAngles.y, 0f);
 
             // Get the last to directions
             Vector3 arcDirectionLeft = GetFurthestLeft();
@@ -114,10 +147,24 @@ namespace Keegan.FOV
             Vector2 pathPointB = new Vector3(arcDirectionLeft.x, arcDirectionLeft.z, arcDirectionLeft.z);
             Vector2 pathPointC = new Vector3(arcDirectionRight.x, arcDirectionRight.z, arcDirectionLeft.z);
 
+            // Add Points & draw polygon
             using (var p = new PolygonPath())
             {
                 p.AddPoints(pathPointA, pathPointB, pathPointC);
                 Draw.Polygon(p, Color.yellow);
+            }
+        }
+
+        private void DrawFOVPolyline()
+        {
+            Vector3 arcDirectionLeft = GetFurthestLeft();
+            Vector3 arcDirectionRight = GetFurtherestRight();
+
+
+            using(var p = new PolylinePath())
+            {
+                p.AddPoints(Vector3.zero, arcDirectionLeft, arcDirectionRight, Vector3.zero);
+                Draw.Polyline(p, Color.yellow);
             }
         }
 
@@ -174,9 +221,17 @@ namespace Keegan.FOV
             if(_drawDebug)
             {
                 Gizmos.color = Color.yellow;
-                foreach(var direction in _detectionCastDirections)
+                if(_detectionCastCount > 0 && _sightCastDistance > 0.0f)
                 {
-                    Gizmos.DrawLine(transform.position, transform.position + transform.TransformDirection(direction));
+                    Gizmos.DrawLine(transform.position, transform.position + transform.TransformDirection(new Vector3(0f, 0f, _sightCastDistance)));
+                    for(var i = 1; i < _detectionCastCount; ++i)
+                    {
+                        Vector3 targetLeft = new Vector3(i, 0f, _sightCastDistance);
+                        Vector3 targetRight = new Vector3(-i, 0f, _sightCastDistance);
+
+                        Gizmos.DrawLine(transform.position, transform.position + transform.TransformDirection(targetLeft));
+                        Gizmos.DrawLine(transform.position, transform.position + transform.TransformDirection(targetRight));
+                    }
                 }
             }
         }

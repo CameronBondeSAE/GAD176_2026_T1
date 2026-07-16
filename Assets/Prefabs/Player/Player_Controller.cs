@@ -1,8 +1,9 @@
+using Keegan.FOV;
 using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class Player_Controller : MonoBehaviour
+public class Player_Controller : MonoBehaviour, IFovDetectable
 {
 	// InputSystem_Actions inputSystemActions;
 
@@ -17,7 +18,7 @@ public class Player_Controller : MonoBehaviour
 	public Frank.Interact interact;
 
 	// Start is called once before the first execution of Update after the MonoBehaviour is created
-	void Start()
+	void OnEnable()
 	{
 		var actions = playerInput.actions;
 		actions.Enable();
@@ -30,6 +31,22 @@ public class Player_Controller : MonoBehaviour
 		actions["Mouse Position"].performed += UpdateMousePosition;
 		actions["Mouse Position"].canceled += UpdateMousePosition;
 	}
+
+	private void OnDisable()
+	{
+		var actions = playerInput.actions;
+
+		actions.Disable();
+		actions["Move"].performed -= player_Model.Move;
+		actions["Move"].canceled -= player_Model.Move;
+		actions["Look"].performed -= Look;
+		actions["Look"].canceled -= Look;
+		actions["Interact"].performed -= InteractWith;
+		actions["Pickup"].performed -= Pickup;
+		actions["Mouse Position"].performed -= UpdateMousePosition;
+		actions["Mouse Position"].canceled -= UpdateMousePosition;
+	}
+
 
 	// Just pass along to the real function, without input stuff
 	private void Pickup(InputAction.CallbackContext obj)
@@ -95,4 +112,16 @@ public class Player_Controller : MonoBehaviour
 			return Vector2.zero;
 		}
 	}
+
+    public void SetDetected(bool detected)
+    {
+	    if (detected)
+	    {
+		    Debug.Log("Player has been seen by enemy");
+	    }
+	    else
+	    {
+		    Debug.Log("Lost sight of the player");
+	    }
+    }
 }

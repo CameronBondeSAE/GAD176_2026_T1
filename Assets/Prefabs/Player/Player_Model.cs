@@ -5,12 +5,52 @@ using UnityEngine.InputSystem;
 public class Player_Model : MonoBehaviour
 {
 	public Rigidbody rb;
-	public float     speed;
+	public float     defaultSpeed;
+	public float     speedMultiplier  = 1f;
 	public float     turnSpeed = 10f;
 
 	public Vector3 moveDirection;
 	Quaternion     LookXZRotation;
+
+	// public HealthSys healthSys;
 	
+	public MeshRenderer meshRenderer;
+		
+	
+	// private void OnEnable()
+	// {
+	// 	healthSys.OnHealthDepletion.AddListener(Death);
+	// 	healthSys.Damaged.AddListener(Damaged);
+	// }
+	//
+	// private void OnDisable()
+	// {
+	// 	healthSys.OnHealthDepletion.RemoveListener(Death);
+	// 	healthSys.Damaged.RemoveListener(Damaged);
+	// }
+
+	private void Damaged()
+	{
+		if (meshRenderer != null)
+		{
+			meshRenderer.material.color = Color.red;
+		}
+	}
+
+	public void ResetDamageFX()
+	{
+		if (meshRenderer != null)
+		{
+			meshRenderer.material.color = Color.white;
+		}
+	}
+
+	private void Death()
+	{
+		// HACK: TODO
+		Destroy(gameObject);
+	}
+
 	public void Look(Vector2 lookDirection)
     {
 	    // Debug.Log("Look direction = "+lookDirection);
@@ -36,7 +76,7 @@ public class Player_Model : MonoBehaviour
 	    if(rbRotation != Quaternion.identity) // HACK checking for zero but this is bad
 	    {
 		    rb.rotation = rbRotation.normalized;
-		    rb.AddForce(moveDirection * speed * Time.deltaTime, ForceMode.VelocityChange);
+		    rb.AddForce(moveDirection * defaultSpeed * speedMultiplier * Time.deltaTime, ForceMode.VelocityChange);
 	    }
     }
 }

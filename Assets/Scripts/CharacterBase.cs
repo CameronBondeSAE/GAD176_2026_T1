@@ -61,9 +61,16 @@ public class CharacterBase : MonoBehaviour, IFovDetectable
 		currentEnergy = startingEnergy;
 		isAlive = true;
 	}
-
+	
     public void SetDetected(bool detected)
     {
-        
+	    if (detected)
+	    {
+		    Debug.Log("Character has been detected");
+	    }
+	    else
+	    {
+		    Debug.Log("Character is now hidden");
+	    }
     }
 }
