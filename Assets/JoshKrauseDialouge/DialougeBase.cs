@@ -8,11 +8,8 @@ public class DialougeBase : MonoBehaviour
 {
     public CompanionCubeTrigger dialougeTrigger;
     public TextMeshProUGUI dialougeText;
-    public enum Npcs
-    {
-        companionCube,
-
-    }
+    public int waitTime = 3;
+   
 
 
 
