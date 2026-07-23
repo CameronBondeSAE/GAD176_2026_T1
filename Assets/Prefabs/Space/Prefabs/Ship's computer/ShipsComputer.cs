@@ -17,13 +17,22 @@ public class ShipsComputer : MonoBehaviour
     
     private float[] audioData = new float[512]; // Change the array size to suit your needs
 
-    public bool poweredState = false;
 
     public Transform view;
 
     public Color colour;// = new Color(0, average, average);
-
     
+    
+    [SerializeField]
+    private bool _poweredState = false;
+
+    public bool PoweredState
+    {
+	    get => _poweredState;
+	    set => _poweredState = value;
+    }
+
+
     void Update()
     {
         audioSourceVoice.GetOutputData(audioData, 0); // Get the audio data for the current frame
@@ -63,7 +72,7 @@ public class ShipsComputer : MonoBehaviour
 
     public void TurnOff()
     {
-        poweredState = false;
+        PoweredState = false;
         foreach (AudioSource a in audioSourceSFX)
         {
             a.Stop();    
@@ -74,9 +83,9 @@ public class ShipsComputer : MonoBehaviour
     {
         //Debug.Log("Computer got power : "+power + " : BUT I WANTED = "+powerRequired);
 
-        if (poweredState == false && power >= powerRequired-0.01f)
+        if (PoweredState == false && power >= powerRequired-0.01f)
         {
-            poweredState = true;
+            PoweredState = true;
 
             StartSequence();
         }

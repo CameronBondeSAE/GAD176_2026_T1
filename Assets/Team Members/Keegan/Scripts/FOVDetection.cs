@@ -9,7 +9,9 @@ using UnityEngine.Events;
 
 namespace Keegan.FOV
 {
-    
+    /// <summary>
+    /// Cam woz ere
+    /// </summary>
     public class FOVDetection : ImmediateModeShapeDrawer
     {
         public enum VisualFOV
