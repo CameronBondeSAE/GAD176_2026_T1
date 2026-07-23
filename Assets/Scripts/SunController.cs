@@ -10,7 +10,6 @@ using Divij;
 
 public class SunController : MonoBehaviour
 {
-    
     public Transform Sun;
     public int DayNumber = 1;
     public bool IsDay;
@@ -32,7 +31,6 @@ public class SunController : MonoBehaviour
     // 3. A public method to retrieve all Vector3 positions at any given moment
     public void GetObjectPositions()
     {
-        positions.Clear();
         foreach (GameObject obj in targetObjects)
         {
             if (obj != null) // Avoid null reference errors if a slot is left empty
@@ -45,9 +43,10 @@ public class SunController : MonoBehaviour
 
     private void AlienKiller()
     {
-        foreach (GameObject alien in GameObject.FindGameObjectsWithTag("Ai"))
+        foreach (GameObject Prefab in GameObject.FindGameObjectsWithTag("Ai"))
         {
-            Destroy(alien);   
+            GameObject Alien = GameObject.FindGameObjectWithTag("Ai");
+            Destroy(Alien);   
         }
         
     }
@@ -154,7 +153,6 @@ public class SunController : MonoBehaviour
     {
         sunAngle = Sun.eulerAngles.x;
         IsDay = true;
-        GetObjectPositions();
         FindAllSwitchableLights();
     }
 
@@ -195,18 +193,6 @@ public class SunController : MonoBehaviour
         {
             DayNumber++;
         }
-
-        if (IsDay == true)
-        {
-            AlienKiller();
-            AliensRun = false;
-        }
-        else if (IsDay == false && AliensRun == false)
-        {
-            AlienMom();
-            AliensRun = true;
-        }
-        
         UpdateLights();
     }
 }

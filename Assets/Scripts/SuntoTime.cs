@@ -13,8 +13,6 @@ public class SuntoTime : MonoBehaviour // Start is called once before the first 
     public bool AMPM;
     public string AMPMString;
 
-    public bool endprinted = false;
-
 
     public Dictionary<bool, string> AMPMMap = new Dictionary<bool, string>()
     {
@@ -23,6 +21,16 @@ public class SuntoTime : MonoBehaviour // Start is called once before the first 
     };
     
     public SunController SunManager;
+
+    private void OnEnable()
+    {
+        SunManager.EndGame.AddListener(endeternal);
+    }
+
+    private void OnDisable()
+    {
+        SunManager.EndGame.RemoveListener(endeternal);
+    }
 
     void endeternal()
     {
@@ -67,14 +75,6 @@ public class SuntoTime : MonoBehaviour // Start is called once before the first 
             {
                 Debug.Log($"Current Sun Time: {modhours:D2}:{minutes:D2} {AMPMString}");
                 done = 1;
-            }
-        }
-        else if (SunManager.DayNumber == 5 && SunManager.sunAngle > 180)
-        {
-            if (!endprinted)
-            {
-                endeternal();
-                endprinted = true;
             }
         }
     }

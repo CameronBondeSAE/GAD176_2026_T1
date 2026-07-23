@@ -3088,7 +3088,7 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 720191144722262764, guid: 5cdd240bc68478642b9efc8dea45850f, type: 3}
-      propertyPath: connectedDevices.Array.data[0]
+      propertyPath: 'connectedDevices.Array.data[0]'
       value: 
       objectReference: {fileID: 439464887}
     - target: {fileID: 6681137893633405280, guid: 5cdd240bc68478642b9efc8dea45850f, type: 3}
@@ -8413,11 +8413,11 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2562647758439459723, guid: 0dd71246fb6f61b4398960fb2cd058d7, type: 3}
-      propertyPath: m_Materials.Array.data[0]
+      propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: d6842569d6335794e98c1e1f99602bba, type: 2}
     - target: {fileID: 7685015664291882667, guid: 0dd71246fb6f61b4398960fb2cd058d7, type: 3}
-      propertyPath: m_Materials.Array.data[0]
+      propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: d6842569d6335794e98c1e1f99602bba, type: 2}
     - target: {fileID: 9014336513655778086, guid: 0dd71246fb6f61b4398960fb2cd058d7, type: 3}
@@ -23977,6 +23977,7 @@ GameObject:
   - component: {fileID: 2136172983}
   - component: {fileID: 2136172985}
   - component: {fileID: 2136172986}
+  - component: {fileID: 2136172987}
   m_Layer: 0
   m_Name: Game Manager
   m_TagString: Untagged
@@ -24052,6 +24053,19 @@ MonoBehaviour:
   EndGame:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &2136172987
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2136172982}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a6043b7544b7054f96c4fb70900dbdd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Sc: {fileID: 2136172986}
   AliensRun: 0
   AlienPrefab: {fileID: 3071542813545521559, guid: b355c927863a39448a72f327cbc06017, type: 3}
   targetObjects:
