@@ -19,55 +19,6 @@ public class SunController : MonoBehaviour
     public bool endgame = false;
     public UnityEvent EndGame;
     
-    public bool AliensRun = false;
-    public GameObject AlienPrefab;
-    
-    // 1. Expose the GameObject list to the Unity Inspector
-    public List<GameObject> targetObjects = new List<GameObject>();
-    
-    // 2. Make the positions list
-    public List<Vector3> positions = new List<Vector3>();
-
-    // 3. A public method to retrieve all Vector3 positions at any given moment
-    public void GetObjectPositions()
-    {
-        foreach (GameObject obj in targetObjects)
-        {
-            if (obj != null) // Avoid null reference errors if a slot is left empty
-            {
-                // Extract the Vector3 world position
-                positions.Add(obj.transform.position); 
-            }
-        }
-    }
-
-    private void AlienKiller()
-    {
-        foreach (GameObject Prefab in GameObject.FindGameObjectsWithTag("Ai"))
-        {
-            GameObject Alien = GameObject.FindGameObjectWithTag("Ai");
-            Destroy(Alien);   
-        }
-        
-    }
-    
-    private void AlienMom()
-    {
-        for (int i = 0; i < AlienMomMap[DayNumber]; i++)
-        {
-            Instantiate(AlienPrefab, positions[Random.Range(0, positions.Count)], Quaternion.identity);
-        }
-    }
-
-    public Dictionary<int, int> AlienMomMap = new Dictionary<int, int>()
-    {
-        { 1, 3 },
-        { 2, 3 },
-        { 3, 4 },
-        { 4, 4 },
-        { 5, 5 },
-    };   
-    
     public Dictionary<int, float> DayNOtoNightLength = new Dictionary<int, float>()
     {
         { 1, 1f },
@@ -85,52 +36,7 @@ public class SunController : MonoBehaviour
         { 5, 2f },
     };
     
-    private List<GameObject> switchableLightObjects = new List<GameObject>();
-    private bool lightsAreOn = true;
-
-    private void FindAllSwitchableLights()
-    {
-        switchableLightObjects.Clear();
-
-        MonoBehaviour[] allBehaviours = Resources.FindObjectsOfTypeAll<MonoBehaviour>();
-
-        foreach (MonoBehaviour behaviour in allBehaviours)
-        {
-            if (behaviour == null)
-                continue;
-
-            GameObject obj = behaviour.gameObject;
-
-            if (!obj.scene.IsValid() || !obj.scene.isLoaded)
-                continue;
-
-            if (behaviour.GetType().Name == "SwitchableLight")
-            {
-                switchableLightObjects.Add(obj);
-                Debug.Log("Found SwitchableLight object: " + obj.name);
-            }
-        }
-
-        Debug.Log("Total SwitchableLight objects found: " + switchableLightObjects.Count);
-    }
-
-    private void UpdateLights()
-    {
-        bool shouldLightsBeOn = !(sunAngle > 10f && sunAngle < 170f);
-
-        if (shouldLightsBeOn == lightsAreOn)
-            return;
-
-        lightsAreOn = shouldLightsBeOn;
-
-        foreach (GameObject lightObj in switchableLightObjects)
-        {
-            if (lightObj != null)
-            {
-                lightObj.SetActive(shouldLightsBeOn);
-            }
-        }
-    }
+    
 
 
     void endeternal()
@@ -153,7 +59,6 @@ public class SunController : MonoBehaviour
     {
         sunAngle = Sun.eulerAngles.x;
         IsDay = true;
-        FindAllSwitchableLights();
     }
 
     // Update is called once per frame
@@ -193,6 +98,6 @@ public class SunController : MonoBehaviour
         {
             DayNumber++;
         }
-        UpdateLights();
+
     }
 }
