@@ -65,6 +65,9 @@ namespace Keegan.ShardSpawn
                 GameObject instance = GameObject.Instantiate(shardPrefab, spawnOnTransform);
                 instance.transform.position = spawnOnTransform.position;
             }
+
+            if (loopSpawn)
+                TriggerShardSpawn();
         }
     }
 }
