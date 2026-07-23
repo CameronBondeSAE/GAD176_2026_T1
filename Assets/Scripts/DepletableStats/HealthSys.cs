@@ -24,7 +24,7 @@ using UnityEngine.UI;
 
         private void OnTriggerEnter(Collider other)
         {
-	        other.GetComponent<Alien>().itLit = true;
+	        //other.GetComponent<Alien>().itLit = true;
         }
 
         public int MaxValue()
