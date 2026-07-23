@@ -22,10 +22,7 @@ using UnityEngine.UI;
 
         [FormerlySerializedAs("OnHealthDepletion")] public UnityEvent OnDeathEvent = new UnityEvent();
 
-        private void OnTriggerEnter(Collider other)
-        {
-	        other.GetComponent<Alien>().itLit = true;
-        }
+
 
         public int MaxValue()
         {
