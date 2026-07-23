@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace Frank
 {
-	public interface IHoldable
+	public interface IPickup
     {
         public void Pickup(Transform parent)
         {

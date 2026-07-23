@@ -6,7 +6,7 @@ public class Player_Model : MonoBehaviour
 {
 	public Rigidbody rb;
 	public float     defaultSpeed;
-	public float     speedMultiplier;
+	public float     speedMultiplier  = 1f;
 	public float     turnSpeed = 10f;
 
 	public Vector3 moveDirection;
