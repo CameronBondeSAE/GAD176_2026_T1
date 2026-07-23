@@ -168,6 +168,7 @@ MonoBehaviour:
   maxSpawnTime: 8
   loopSpawn: 1
   spawnOnTransform: {fileID: 802836445}
+  spawnBoxBounds: {x: 0, y: 0, z: 0}
 --- !u!1 &42307894
 GameObject:
   m_ObjectHideFlags: 0
@@ -720,6 +721,7 @@ MonoBehaviour:
   maxSpawnTime: 8
   loopSpawn: 1
   spawnOnTransform: {fileID: 889070903}
+  spawnBoxBounds: {x: 0, y: 0, z: 0}
 --- !u!1 &496372870
 GameObject:
   m_ObjectHideFlags: 0
@@ -898,6 +900,7 @@ MonoBehaviour:
   maxSpawnTime: 8
   loopSpawn: 1
   spawnOnTransform: {fileID: 496372871}
+  spawnBoxBounds: {x: 0, y: 0, z: 0}
 --- !u!1 &830574170
 GameObject:
   m_ObjectHideFlags: 0
@@ -1211,6 +1214,7 @@ MonoBehaviour:
   maxSpawnTime: 8
   loopSpawn: 1
   spawnOnTransform: {fileID: 1638206607}
+  spawnBoxBounds: {x: 0, y: 0, z: 0}
 --- !u!1 &1415312382
 GameObject:
   m_ObjectHideFlags: 0
@@ -1390,6 +1394,7 @@ MonoBehaviour:
   maxSpawnTime: 8
   loopSpawn: 1
   spawnOnTransform: {fileID: 687724778}
+  spawnBoxBounds: {x: 0, y: 0, z: 0}
 --- !u!1001 &3555231616416860062
 PrefabInstance:
   m_ObjectHideFlags: 0
