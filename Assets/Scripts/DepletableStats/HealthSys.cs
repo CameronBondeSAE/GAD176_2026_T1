@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.Serialization;
@@ -20,8 +21,12 @@ using UnityEngine.UI;
         [FormerlySerializedAs("Damaged")] public UnityEvent OnDamagedEvent =  new UnityEvent();
 
         [FormerlySerializedAs("OnHealthDepletion")] public UnityEvent OnDeathEvent = new UnityEvent();
-        
-        
+
+        private void OnTriggerEnter(Collider other)
+        {
+	        other.GetComponent<Alien>().itLit = true;
+        }
+
         public int MaxValue()
         {
             return healthMax;
