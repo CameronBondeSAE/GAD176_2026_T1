@@ -9,8 +9,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7318463056794333161}
-  - component: {fileID: 3287121123503369871}
-  - component: {fileID: 1320746610236304719}
   - component: {fileID: 86802179089930528}
   - component: {fileID: 677033096620576693}
   m_Layer: 0
@@ -35,46 +33,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3287121123503369871
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7064920907142051348}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b4a5ae7735ed1424aa92ba54c43918b5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  angle: 0
-  modhours: 0
-  minutes: 0
-  AMPM: 0
-  AMPMString: 
-  DebugOn: 0
-  SunManager: {fileID: 1320746610236304719}
---- !u!114 &1320746610236304719
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7064920907142051348}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ec333a188cbae5441aa8ed66ad369b60, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Sun: {fileID: 0}
-  DayNumber: 1
-  IsDay: 0
-  sunAngle: 0
-  rotationAmount: 0
-  endgame: 0
-  EndGame:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!114 &86802179089930528
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -87,7 +45,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a6043b7544b7054f96c4fb70900dbdd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Sc: {fileID: 1320746610236304719}
+  Sc: {fileID: 0}
   AliensRun: 0
   AlienPrefab: {fileID: 3071542813545521559, guid: b355c927863a39448a72f327cbc06017, type: 3}
   targetObjects:
@@ -109,4 +67,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b86e79adc16fc94ab742a2f75343abf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Sc: {fileID: 1320746610236304719}
+  Sc: {fileID: 0}
