@@ -13,6 +13,8 @@ public class SuntoTime : MonoBehaviour // Start is called once before the first 
     public bool AMPM;
     public string AMPMString;
 
+    public bool DebugOn;
+
 
     public Dictionary<bool, string> AMPMMap = new Dictionary<bool, string>()
     {
@@ -73,8 +75,11 @@ public class SuntoTime : MonoBehaviour // Start is called once before the first 
             int done = 0;
             if (done == 0)
             {
-                Debug.Log($"Current Sun Time: {modhours:D2}:{minutes:D2} {AMPMString}");
-                done = 1;
+                if (DebugOn)
+                {
+                    Debug.Log($"Current Sun Time: {modhours:D2}:{minutes:D2} {AMPMString}");
+                    done = 1;
+                }
             }
         }
     }

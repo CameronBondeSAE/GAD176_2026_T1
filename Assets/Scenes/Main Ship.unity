@@ -31953,6 +31953,8 @@ GameObject:
   - component: {fileID: 2136172983}
   - component: {fileID: 2136172985}
   - component: {fileID: 2136172986}
+  - component: {fileID: 2136172987}
+  - component: {fileID: 2136172988}
   m_Layer: 0
   m_Name: Game Manager
   m_TagString: Untagged
@@ -32006,6 +32008,7 @@ MonoBehaviour:
   minutes: 0
   AMPM: 0
   AMPMString: 
+  DebugOn: 0
   SunManager: {fileID: 2136172986}
 --- !u!114 &2136172986
 MonoBehaviour:
@@ -32028,6 +32031,19 @@ MonoBehaviour:
   EndGame:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &2136172987
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2136172982}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a6043b7544b7054f96c4fb70900dbdd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Sc: {fileID: 2136172986}
   AliensRun: 0
   AlienPrefab: {fileID: 3071542813545521559, guid: b355c927863a39448a72f327cbc06017, type: 3}
   targetObjects:
@@ -32037,6 +32053,19 @@ MonoBehaviour:
   - {fileID: 1510121186}
   - {fileID: 663046159}
   positions: []
+--- !u!114 &2136172988
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2136172982}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b86e79adc16fc94ab742a2f75343abf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Sc: {fileID: 2136172986}
 --- !u!1001 &2137586536
 PrefabInstance:
   m_ObjectHideFlags: 0
