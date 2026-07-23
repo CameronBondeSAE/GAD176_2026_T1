@@ -23,7 +23,6 @@ using UnityEngine.UI;
         [FormerlySerializedAs("OnHealthDepletion")] public UnityEvent OnDeathEvent = new UnityEvent();
 
 
-
         public int MaxValue()
         {
             return healthMax;
