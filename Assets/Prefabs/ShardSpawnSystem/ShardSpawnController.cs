@@ -1,6 +1,8 @@
+using System;
 using System.Collections.Generic;
 using System.Collections;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace Keegan.ShardSpawn
 {
@@ -21,6 +23,9 @@ namespace Keegan.ShardSpawn
         
         [SerializeField, Tooltip("Reference to the transform that the shard will spawn on")]
         private Transform spawnOnTransform;
+
+        [SerializeField, Tooltip("Bounds for the range to spawn a shard in")]
+        private Vector3 spawnBoxBounds = Vector3.one;
         
 
         private void Start()
@@ -69,5 +74,16 @@ namespace Keegan.ShardSpawn
             if (loopSpawn)
                 TriggerShardSpawn();
         }
+        
+        #if UNITY_EDITOR
+        public void OnDrawGizmosSelected()
+        {
+            if (spawnBoxBounds == Vector3.zero)
+                return;
+
+            Gizmos.color = Color.yellow;
+            Gizmos.DrawWireCube(transform.position, spawnBoxBounds);
+        }
+#endif
     }
 }

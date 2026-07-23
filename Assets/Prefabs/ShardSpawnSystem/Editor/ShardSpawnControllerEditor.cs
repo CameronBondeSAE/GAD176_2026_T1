@@ -13,6 +13,7 @@ namespace Keegan.ShardSpawn
         private SerializedProperty maxSpawnTimeProp;
         private SerializedProperty loopSpawnProp;
         private SerializedProperty spawnOnTransformProp;
+        private SerializedProperty spawnBoxBoundsProp;
 
         private void OnEnable()
         {
@@ -21,6 +22,7 @@ namespace Keegan.ShardSpawn
             maxSpawnTimeProp = serializedObject.FindProperty("maxSpawnTime");
             loopSpawnProp = serializedObject.FindProperty("loopSpawn");
             spawnOnTransformProp = serializedObject.FindProperty("spawnOnTransform");
+            spawnBoxBoundsProp = serializedObject.FindProperty("spawnBoxBounds");
         }
 
         public override void OnInspectorGUI()
@@ -30,6 +32,9 @@ namespace Keegan.ShardSpawn
             EditorGUILayout.PropertyField(maxSpawnTimeProp);
             EditorGUILayout.PropertyField(loopSpawnProp);
             EditorGUILayout.PropertyField(spawnOnTransformProp);
+            EditorGUILayout.PropertyField(spawnBoxBoundsProp);
+
+            serializedObject.ApplyModifiedProperties();
 
         }
     }
