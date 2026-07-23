@@ -4,6 +4,8 @@ namespace Frank
 {
 	public interface IPickup
     {
+	    
+	    
         public void Pickup(Transform parent)
         {
             

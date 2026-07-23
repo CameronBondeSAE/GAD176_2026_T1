@@ -77,18 +77,21 @@ public class SunController : MonoBehaviour
         else // It is Nighttime
         {
             rotationAmount = (DayNOtoNightLength[DayNumber] * Time.deltaTime);
-            Sun.transform.Rotate(Vector3.right * rotationAmount);
-            sunAngle += rotationAmount;
-
-            if (DayNOtoNightLength[DayNumber] == 0)
+            if (Sun != null)
             {
-                sunAngle = 270;
-                Sun.transform.rotation = Quaternion.Euler(sunAngle, 0, 0);
-                if (endgame == false)
-                {
-                    EndGame.Invoke();
-                    endgame = true;
-                }
+	            Sun.transform.Rotate(Vector3.right * rotationAmount);
+	            sunAngle += rotationAmount;
+
+	            if (DayNOtoNightLength[DayNumber] == 0)
+	            {
+		            sunAngle = 270;
+		            Sun.transform.rotation = Quaternion.Euler(sunAngle, 0, 0);
+		            if (endgame == false)
+		            {
+			            EndGame.Invoke();
+			            endgame = true;
+		            }
+	            }
             }
         }
 
