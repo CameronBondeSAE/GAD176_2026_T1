@@ -261,6 +261,9 @@ MonoBehaviour:
   currentEnergy: 0
   lowEnergyThreshold: 0
   isAlive: 0
+  hiddenGameObjects:
+  - {fileID: 2210802242271204550}
+  _isDetected: 0
 --- !u!1 &3983190310603272234
 GameObject:
   m_ObjectHideFlags: 0
@@ -307,11 +310,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   useCullingMasks: 0
   _detectionCastCount: 7
+  _totalFovAngle: 90
   _sightCastDistance: 10
+  _castType: 1
   _detectionMask:
     serializedVersion: 2
     m_Bits: 4294967295
   _visualType: 0
+  _fovShapeColor: {r: 1, g: 0.5, b: 0.5, a: 0.5}
   seenEnemy:
     m_PersistentCalls:
       m_Calls: []
