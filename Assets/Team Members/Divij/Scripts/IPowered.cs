@@ -1,4 +1,4 @@
-using UnityEngine;
+using Divij;using UnityEngine;
 
 
 namespace Divij
@@ -7,5 +7,6 @@ namespace Divij
     {
         void SetPowered(bool powered);
         bool GetPowered();
+        // int UseEnergy();
     }
 }

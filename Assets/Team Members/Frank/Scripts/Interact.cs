@@ -28,17 +28,17 @@ namespace Frank
 				{
 					Debug.Log("What I hit : " + c.transform.gameObject.name);
 
-					IHoldable holdable = c.transform.GetComponentInParent<IHoldable>();
+					IPickup pickup = c.transform.GetComponentInParent<IPickup>();
 
-					if (holdable != null)
+					if (pickup != null)
 					{
 						Debug.Log("What I hit : " + c.transform.gameObject.name);
 						if (heldGameObject == null)
 						{
-							if (holdable !=
+							if (pickup !=
 							    null) // if so then get the gameobject and if it has an IHoldable component, then do the following
 							{
-								holdable.Pickup(handsTransform);
+								pickup.Pickup(handsTransform);
 
 								if (c.GetComponent<Rigidbody>() != null)
 								{
@@ -62,7 +62,7 @@ namespace Frank
 
 		private void Drop()
 		{
-			heldGameObject.GetComponentInParent<IHoldable>().Drop();
+			heldGameObject.GetComponentInParent<IPickup>().Drop();
 			heldGameObject.transform.parent = null;
 			
 			if (heldGameObject.GetComponent<Rigidbody>() != null)
@@ -95,7 +95,7 @@ namespace Frank
 						{
 							// Tell the object what we just interacted with
 							// Check if it wants to be dropped
-							if (heldGameObject.GetComponent<IHoldable>().YoureBeingHeldButThePlayerJustInteractedWithoutSomethingElse(
+							if (heldGameObject.GetComponent<IPickup>().YoureBeingHeldButThePlayerJustInteractedWithoutSomethingElse(
 								    interactable))
 							{
 								// Item said it's dealing with it, so drop it

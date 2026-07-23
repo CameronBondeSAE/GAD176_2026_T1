@@ -1,6 +1,6 @@
 using Frank;
 using UnityEngine;
 
-public class CamsPickupTest : MonoBehaviour, IHoldable
+public class CamsPickupTest : MonoBehaviour, IPickup
 {
 }

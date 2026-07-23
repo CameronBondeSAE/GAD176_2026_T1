@@ -3,7 +3,7 @@ using Frank;
 using UnityEngine;
 
 // TODO: Implement IPowered
-public class CableEnd : MonoBehaviour, IInteractable, IHoldable
+public class CableEnd : MonoBehaviour, IInteractable, IPickup
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
 
