@@ -126,7 +126,6 @@ namespace Keegan.ShardSpawn
             return Vector3.zero;
         }
 
-            return targetPosition;
         public bool ShardAtSpawnPosition(Vector3 position)
         {
             return false;
