@@ -2,12 +2,21 @@ using System;
 using System.Collections.Generic;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Events;
 using Random = UnityEngine.Random;
 
 namespace Keegan.ShardSpawn
 {
     public class ShardSpawnController : MonoBehaviour
     {
+        public enum RespawnType
+        {
+            None,
+            Loop,
+            Collect
+        }
+        
+        
         [SerializeField, Tooltip("The prefab for the shard that will spawn")]
         private GameObject shardPrefab;
 
@@ -26,6 +35,11 @@ namespace Keegan.ShardSpawn
 
         [SerializeField, Tooltip("Bounds for the range to spawn a shard in")]
         private Vector3 spawnBoxBounds = Vector3.one;
+
+        [SerializeField, Tooltip("How the respawn is generated")]
+        private RespawnType respawnType = RespawnType.Collect;
+        
+        public UnityEvent shardCollected;
         
 
         private void Start()
