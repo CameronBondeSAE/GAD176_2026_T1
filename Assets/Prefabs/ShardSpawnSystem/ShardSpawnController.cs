@@ -126,6 +126,9 @@ namespace Keegan.ShardSpawn
         }
 
             return targetPosition;
+        public bool ShardAtSpawnPosition(Vector3 position)
+        {
+            return false;
         }
         
         #if UNITY_EDITOR
