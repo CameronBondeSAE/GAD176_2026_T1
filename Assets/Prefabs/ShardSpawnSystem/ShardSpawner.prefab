@@ -75,12 +75,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47a7e4f82a02540438dd37517758910d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shardPrefab: {fileID: 1085706563978516578, guid: 1dbcf5641c444ad46b527060bfa9ba95, type: 3}
+  shardPrefab: {fileID: 3230885978483988731, guid: 1dbcf5641c444ad46b527060bfa9ba95, type: 3}
   minSpawnTime: 3
   maxSpawnTime: 8
   spawnOnTransform: {fileID: 6014471455472299362}
   spawnBoxBounds: {x: 25, y: 1, z: 25}
   respawnType: 1
+  groundLayerMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  obstacleLayerMask:
+    serializedVersion: 2
+    m_Bits: 1024
 --- !u!1 &6307024101737522769
 GameObject:
   m_ObjectHideFlags: 0
