@@ -39,6 +39,8 @@ namespace Keegan.ShardSpawn
         [SerializeField, Tooltip("Reference to the ground layer mask to spawn the shard on")]
         private LayerMask groundLayerMask;
         
+        
+        
 
         private void Start()
         {
@@ -80,10 +82,10 @@ namespace Keegan.ShardSpawn
             if (spawnOnTransform != null)
             {
                 GameObject instance = GameObject.Instantiate(shardPrefab, spawnOnTransform);
-                Vector3 targetPosition = GetRandomSpawnPoint();
+                Vector3 targetPosition = GetRandomSpawnPoint(instance.GetComponentInChildren<Collider>().bounds.extents);
                 if (targetPosition != Vector3.zero)
                 {
-                    instance.transform.position = GetRandomSpawnPoint();
+                    instance.transform.position = targetPosition;
                 }
                 else
                 {
@@ -98,8 +100,9 @@ namespace Keegan.ShardSpawn
         /// <summary>
         /// Gets random point inside the bounds to spawn the object
         /// </summary>
+        /// <param name="shardBoundsExtent">The collision bounds of the shard</param>
         /// <returns>The position to spawn the shard at</returns>
-        private Vector3 GetRandomSpawnPoint()
+        private Vector3 GetRandomSpawnPoint(Vector3 shardBoundsExtent)
         {
             int maxLoop = 30;
             for (var i = 0; i < maxLoop; ++i)
@@ -116,7 +119,7 @@ namespace Keegan.ShardSpawn
                     targetPosition = hit.point;
                 }
 
-                if (!ShardAtSpawnPosition(targetPosition))
+                if (!ShardAtSpawnPosition(targetPosition, shardBoundsExtent))
                     return targetPosition;
             }
             
@@ -126,9 +129,9 @@ namespace Keegan.ShardSpawn
             return Vector3.zero;
         }
 
-        public bool ShardAtSpawnPosition(Vector3 position)
+        public bool ShardAtSpawnPosition(Vector3 position, Vector3 boundsExtent)
         {
-            return false;
+            return Physics.CheckBox(position, boundsExtent);
         }
         
         #if UNITY_EDITOR
