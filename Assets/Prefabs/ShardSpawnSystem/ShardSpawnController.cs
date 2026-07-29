@@ -104,14 +104,6 @@ namespace Keegan.ShardSpawn
             int maxLoop = 30;
             for (var i = 0; i < maxLoop; ++i)
             {
-                x = transform.position.x + (Random.Range(-spawnBoxBounds.x / 2, spawnBoxBounds.x / 2)),
-                y = 20f,
-                z = transform.position.z + (Random.Range(-(spawnBoxBounds.z / 2), (spawnBoxBounds.z / 2)))
-            };
-
-            if (Physics.Raycast(targetPosition, Vector3.down, out RaycastHit hit, 30f, groundLayerMask))
-            {
-                targetPosition = hit.point;
                 Vector3 targetPosition =  new Vector3
                 {
                     x = transform.position.x + (Random.Range(-spawnBoxBounds.x / 2, spawnBoxBounds.x / 2)),
