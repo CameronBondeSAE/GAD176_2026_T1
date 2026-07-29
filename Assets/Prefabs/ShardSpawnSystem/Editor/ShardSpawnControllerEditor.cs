@@ -16,6 +16,7 @@ namespace Keegan.ShardSpawn
         private SerializedProperty spawnOnTransformProp;
         private SerializedProperty spawnBoxBoundsProp;
         private SerializedProperty respawnTypeProp;
+        private SerializedProperty groundLayerMaskProp;
 
         private void OnEnable()
         {
@@ -25,6 +26,7 @@ namespace Keegan.ShardSpawn
             spawnOnTransformProp = serializedObject.FindProperty("spawnOnTransform");
             spawnBoxBoundsProp = serializedObject.FindProperty("spawnBoxBounds");
             respawnTypeProp = serializedObject.FindProperty("respawnType");
+            groundLayerMaskProp = serializedObject.FindProperty("groundLayerMask");
         }
 
         public override void OnInspectorGUI()
@@ -34,6 +36,7 @@ namespace Keegan.ShardSpawn
             EditorGUILayout.PropertyField(maxSpawnTimeProp);
             EditorGUILayout.PropertyField(spawnOnTransformProp);
             EditorGUILayout.PropertyField(spawnBoxBoundsProp);
+            EditorGUILayout.PropertyField(groundLayerMaskProp);
             EditorGUILayout.PropertyField(respawnTypeProp);
 
             serializedObject.ApplyModifiedProperties();

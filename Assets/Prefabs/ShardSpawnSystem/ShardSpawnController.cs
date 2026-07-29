@@ -35,6 +35,9 @@ namespace Keegan.ShardSpawn
 
         [SerializeField, Tooltip("How the respawn is generated")]
         private RespawnType respawnType = RespawnType.Collect;
+
+        [SerializeField, Tooltip("Reference to the ground layer mask to spawn the shard on")]
+        private LayerMask groundLayerMask;
         
 
         private void Start()
@@ -90,12 +93,19 @@ namespace Keegan.ShardSpawn
         /// <returns>The position to spawn the shard at</returns>
         private Vector3 GetRandomSpawnPoint()
         {
-            return new Vector3
+            Vector3 targetPosition =  new Vector3
             {
                 x = transform.position.x + (Random.Range(-spawnBoxBounds.x / 2, spawnBoxBounds.x / 2)),
-                y = transform.position.y,
+                y = 20f,
                 z = transform.position.z + (Random.Range(-(spawnBoxBounds.z / 2), (spawnBoxBounds.z / 2)))
             };
+
+            if (Physics.Raycast(targetPosition, Vector3.down, out RaycastHit hit, 30f, groundLayerMask))
+            {
+                targetPosition = hit.point;
+            }
+
+            return targetPosition;
         }
         
         #if UNITY_EDITOR

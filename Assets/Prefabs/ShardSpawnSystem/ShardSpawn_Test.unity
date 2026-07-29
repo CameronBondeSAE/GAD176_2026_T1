@@ -441,7 +441,7 @@ GameObject:
   - component: {fileID: 424644448}
   - component: {fileID: 424644447}
   - component: {fileID: 424644446}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Terrain
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -854,17 +854,9 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3424173018776249042, guid: 9e3621f5a3249914981ee0387be74d89, type: 3}
-      propertyPath: respawnType
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3424173018776249042, guid: 9e3621f5a3249914981ee0387be74d89, type: 3}
-      propertyPath: spawnBoxBounds.x
-      value: 25
-      objectReference: {fileID: 0}
-    - target: {fileID: 3424173018776249042, guid: 9e3621f5a3249914981ee0387be74d89, type: 3}
-      propertyPath: spawnBoxBounds.z
-      value: 25
-      objectReference: {fileID: 0}
+      propertyPath: shardPrefab
+      value: 
+      objectReference: {fileID: 3230885978483988731, guid: 1dbcf5641c444ad46b527060bfa9ba95, type: 3}
     - target: {fileID: 6307024101737522769, guid: 9e3621f5a3249914981ee0387be74d89, type: 3}
       propertyPath: m_Name
       value: ShardSpawner
