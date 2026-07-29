@@ -38,6 +38,8 @@ namespace Keegan.ShardSpawn
 
         [SerializeField, Tooltip("Reference to the ground layer mask to spawn the shard on")]
         private LayerMask groundLayerMask;
+        [SerializeField, Tooltip("The layer mask for detecting othershard or objects to not spawn on")]
+        private LayerMask obstacleLayerMask;
         
         
         
@@ -104,7 +106,7 @@ namespace Keegan.ShardSpawn
         /// <returns>The position to spawn the shard at</returns>
         private Vector3 GetRandomSpawnPoint(Vector3 shardBoundsExtent)
         {
-            int maxLoop = 30;
+            int maxLoop = 100;
             for (var i = 0; i < maxLoop; ++i)
             {
                 Vector3 targetPosition =  new Vector3
@@ -119,7 +121,9 @@ namespace Keegan.ShardSpawn
                     targetPosition = hit.point;
                 }
 
-                if (!ShardAtSpawnPosition(new Vector3(targetPosition.x, (targetPosition.y - shardBoundsExtent.y), targetPosition.z), shardBoundsExtent))
+                Vector3 checkSpawnPos = new Vector3(targetPosition.x, targetPosition.y - shardBoundsExtent.y, targetPosition.z);
+                
+                if (!ShardAtSpawnPosition(checkSpawnPos, shardBoundsExtent))
                     return targetPosition;
             }
             
@@ -131,7 +135,8 @@ namespace Keegan.ShardSpawn
 
         public bool ShardAtSpawnPosition(Vector3 position, Vector3 boundsExtent)
         {
-            return !(Physics.CheckBox(position, boundsExtent));
+            bool isAtSpawnPoint = Physics.CheckBox(position, boundsExtent, Quaternion.identity, obstacleLayerMask);
+            return isAtSpawnPoint;
         }
         
         #if UNITY_EDITOR
