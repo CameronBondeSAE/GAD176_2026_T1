@@ -79,6 +79,9 @@ namespace Keegan.ShardSpawn
                 GameObject instance = GameObject.Instantiate(shardPrefab, spawnOnTransform);
                 instance.transform.position = GetRandomSpawnPoint();
             }
+
+            if (respawnType == RespawnType.Loop)
+                TriggerShardSpawn();
         }
 
         /// <summary>
@@ -89,9 +92,9 @@ namespace Keegan.ShardSpawn
         {
             return new Vector3
             {
-                x = transform.position.x + (Random.Range(-spawnBoxBounds.x, spawnBoxBounds.x)),
+                x = transform.position.x + (Random.Range(-spawnBoxBounds.x / 2, spawnBoxBounds.x / 2)),
                 y = transform.position.y,
-                z = transform.position.z + (Random.Range(-spawnBoxBounds.z, spawnBoxBounds.z))
+                z = transform.position.z + (Random.Range(-(spawnBoxBounds.z / 2), (spawnBoxBounds.z / 2)))
             };
         }
         
