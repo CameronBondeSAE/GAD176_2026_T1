@@ -80,7 +80,6 @@ namespace Keegan.ShardSpawn
             if (spawnOnTransform != null)
             {
                 GameObject instance = GameObject.Instantiate(shardPrefab, spawnOnTransform);
-                instance.transform.position = GetRandomSpawnPoint();
             }
 
             if (respawnType == RespawnType.Loop)
@@ -93,7 +92,8 @@ namespace Keegan.ShardSpawn
         /// <returns>The position to spawn the shard at</returns>
         private Vector3 GetRandomSpawnPoint()
         {
-            Vector3 targetPosition =  new Vector3
+            int maxLoop = 30;
+            for (var i = 0; i < maxLoop; ++i)
             {
                 x = transform.position.x + (Random.Range(-spawnBoxBounds.x / 2, spawnBoxBounds.x / 2)),
                 y = 20f,
@@ -103,7 +103,27 @@ namespace Keegan.ShardSpawn
             if (Physics.Raycast(targetPosition, Vector3.down, out RaycastHit hit, 30f, groundLayerMask))
             {
                 targetPosition = hit.point;
+                Vector3 targetPosition =  new Vector3
+                {
+                    x = transform.position.x + (Random.Range(-spawnBoxBounds.x / 2, spawnBoxBounds.x / 2)),
+                    y = 20f,
+                    z = transform.position.z + (Random.Range(-(spawnBoxBounds.z / 2), (spawnBoxBounds.z / 2)))
+                };
+
+                if (Physics.Raycast(targetPosition, Vector3.down, out RaycastHit hit, 30f, groundLayerMask))
+                {
+                    targetPosition = hit.point;
+                }
+
+                if (!ShardAtSpawnPosition(targetPosition))
+                    return targetPosition;
             }
+            
+            #if UNITY_EDITOR
+            Debug.LogWarning("Couldn't find a empty place to spawn shard after 30 loops, skipping spawn position");
+            #endif
+            return Vector3.zero;
+        }
 
             return targetPosition;
         }
