@@ -80,6 +80,15 @@ namespace Keegan.ShardSpawn
             if (spawnOnTransform != null)
             {
                 GameObject instance = GameObject.Instantiate(shardPrefab, spawnOnTransform);
+                Vector3 targetPosition = GetRandomSpawnPoint();
+                if (targetPosition != Vector3.zero)
+                {
+                    instance.transform.position = GetRandomSpawnPoint();
+                }
+                else
+                {
+                    Destroy(instance);
+                }
             }
 
             if (respawnType == RespawnType.Loop)
