@@ -119,7 +119,6 @@ namespace Keegan.ShardSpawn
                     targetPosition = hit.point;
                 }
 
-                if (!ShardAtSpawnPosition(targetPosition, shardBoundsExtent))
                     return targetPosition;
             }
             
@@ -131,7 +130,7 @@ namespace Keegan.ShardSpawn
 
         public bool ShardAtSpawnPosition(Vector3 position, Vector3 boundsExtent)
         {
-            return Physics.CheckBox(position, boundsExtent);
+            return !(Physics.CheckBox(position, boundsExtent));
         }
         
         #if UNITY_EDITOR
