@@ -119,6 +119,7 @@ namespace Keegan.ShardSpawn
                     targetPosition = hit.point;
                 }
 
+                if (!ShardAtSpawnPosition(new Vector3(targetPosition.x, (targetPosition.y - shardBoundsExtent.y), targetPosition.z), shardBoundsExtent))
                     return targetPosition;
             }
             
