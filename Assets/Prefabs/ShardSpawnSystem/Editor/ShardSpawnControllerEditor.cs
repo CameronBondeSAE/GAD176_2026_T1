@@ -13,7 +13,6 @@ namespace Keegan.ShardSpawn
         private SerializedProperty shardPrefabProp;
         private SerializedProperty minSpawnTimeProp;
         private SerializedProperty maxSpawnTimeProp;
-        private SerializedProperty loopSpawnProp;
         private SerializedProperty spawnOnTransformProp;
         private SerializedProperty spawnBoxBoundsProp;
         private SerializedProperty respawnTypeProp;
@@ -23,7 +22,6 @@ namespace Keegan.ShardSpawn
             shardPrefabProp = serializedObject.FindProperty("shardPrefab");
             minSpawnTimeProp = serializedObject.FindProperty("minSpawnTime");
             maxSpawnTimeProp = serializedObject.FindProperty("maxSpawnTime");
-            loopSpawnProp = serializedObject.FindProperty("loopSpawn");
             spawnOnTransformProp = serializedObject.FindProperty("spawnOnTransform");
             spawnBoxBoundsProp = serializedObject.FindProperty("spawnBoxBounds");
             respawnTypeProp = serializedObject.FindProperty("respawnType");
@@ -34,7 +32,6 @@ namespace Keegan.ShardSpawn
             EditorGUILayout.PropertyField(shardPrefabProp);
             EditorGUILayout.PropertyField(minSpawnTimeProp);
             EditorGUILayout.PropertyField(maxSpawnTimeProp);
-            EditorGUILayout.PropertyField(loopSpawnProp);
             EditorGUILayout.PropertyField(spawnOnTransformProp);
             EditorGUILayout.PropertyField(spawnBoxBoundsProp);
             EditorGUILayout.PropertyField(respawnTypeProp);

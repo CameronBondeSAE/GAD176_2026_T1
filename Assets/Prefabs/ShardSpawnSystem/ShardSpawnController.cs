@@ -26,9 +26,6 @@ namespace Keegan.ShardSpawn
 
         [SerializeField, Tooltip("The max amount of time before a shard will spawn (again")]
         private float maxSpawnTime = 100f;
-
-        [SerializeField, Tooltip("True if the shards will spawn on a loop")]
-        private bool loopSpawn = true;
         
         [SerializeField, Tooltip("Reference to the transform that the shard will spawn on")]
         private Transform spawnOnTransform;
@@ -82,9 +79,6 @@ namespace Keegan.ShardSpawn
                 GameObject instance = GameObject.Instantiate(shardPrefab, spawnOnTransform);
                 instance.transform.position = GetRandomSpawnPoint();
             }
-
-            if (loopSpawn)
-                TriggerShardSpawn();
         }
 
         /// <summary>
