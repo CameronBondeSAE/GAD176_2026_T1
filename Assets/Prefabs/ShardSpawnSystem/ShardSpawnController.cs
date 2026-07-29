@@ -68,11 +68,25 @@ namespace Keegan.ShardSpawn
             if (spawnOnTransform != null)
             {
                 GameObject instance = GameObject.Instantiate(shardPrefab, spawnOnTransform);
-                instance.transform.position = spawnOnTransform.position;
+                instance.transform.position = GetRandomSpawnPoint();
             }
 
             if (loopSpawn)
                 TriggerShardSpawn();
+        }
+
+        /// <summary>
+        /// Gets random point inside the bounds to spawn the object
+        /// </summary>
+        /// <returns>The position to spawn the shard at</returns>
+        private Vector3 GetRandomSpawnPoint()
+        {
+            return new Vector3
+            {
+                x = transform.position.x + (Random.Range(-spawnBoxBounds.x, spawnBoxBounds.x)),
+                y = transform.position.y,
+                z = transform.position.z + (Random.Range(-spawnBoxBounds.z, spawnBoxBounds.z))
+            };
         }
         
         #if UNITY_EDITOR
