@@ -39,8 +39,6 @@ namespace Keegan.ShardSpawn
         [SerializeField, Tooltip("How the respawn is generated")]
         private RespawnType respawnType = RespawnType.Collect;
         
-        public UnityEvent shardCollected;
-        
 
         private void Start()
         {
