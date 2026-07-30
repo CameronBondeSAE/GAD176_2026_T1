@@ -52,6 +52,10 @@ namespace Keegan.ShardSpawn
         [SerializeField, Tooltip("The method used to respawn shards once spawned")]
         private RespawnType respawnType;
 
+        // TODO: Replace GameObject with ShardController
+        // Reference to all the spawned shards in this spawner
+        private List<GameObject> spawnedShards = new List<GameObject>();
+
         private void Start()
         {
             TriggerShardSpawn();
