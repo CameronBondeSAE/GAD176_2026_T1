@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &7064920907142051348
+--- !u!1 &501395049798785640
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,23 +8,23 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 7318463056794333161}
-  - component: {fileID: 696640654035460292}
-  - component: {fileID: 6917431146861080106}
+  - component: {fileID: 1277155289815678409}
+  - component: {fileID: 9425091009368164}
+  - component: {fileID: 6492813194672448140}
   m_Layer: 0
-  m_Name: SunController
+  m_Name: SunAffected(ProllyChange)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &7318463056794333161
+--- !u!4 &1277155289815678409
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7064920907142051348}
+  m_GameObject: {fileID: 501395049798785640}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
@@ -33,46 +33,38 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &696640654035460292
+--- !u!114 &9425091009368164
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7064920907142051348}
+  m_GameObject: {fileID: 501395049798785640}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 017721bd7bf0962419df54fe5c6697e1, type: 3}
+  m_Script: {fileID: 11500000, guid: 6a6043b7544b7054f96c4fb70900dbdd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Sun: {fileID: 0}
-  DayNumber: 1
-  IsDay: 0
-  sunAngle: 0
-  rotationAmount: 0
-  endgame: 0
-  EndGame:
-    m_PersistentCalls:
-      m_Calls: []
---- !u!114 &6917431146861080106
+  Sc: {fileID: 0}
+  AliensRun: 0
+  AlienPrefab: {fileID: 3071542813545521559, guid: b355c927863a39448a72f327cbc06017, type: 3}
+  targetObjects:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  positions: []
+--- !u!114 &6492813194672448140
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7064920907142051348}
+  m_GameObject: {fileID: 501395049798785640}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f079f5788f02f1f489ae2cb1cdc00ea3, type: 3}
+  m_Script: {fileID: 11500000, guid: 2b86e79adc16fc94ab742a2f75343abf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  angle: 0
-  modhours: 0
-  minutes: 0
-  AMPM: 0
-  AMPMString: 
-  DebugOn: 0
-  OnHourChange:
-    m_PersistentCalls:
-      m_Calls: []
-  SunManager: {fileID: 0}
+  Sc: {fileID: 0}

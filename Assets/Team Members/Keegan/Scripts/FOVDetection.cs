@@ -11,7 +11,9 @@ using UnityEngine.Events;
 
 namespace Keegan.FOV
 {
-    
+    /// <summary>
+    /// Cam woz ere
+    /// </summary>
     public class FOVDetection : ImmediateModeShapeDrawer
     {
         // Min distance between each polygon point for drawing

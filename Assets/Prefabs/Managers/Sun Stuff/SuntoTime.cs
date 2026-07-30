@@ -14,7 +14,8 @@ public class SuntoTime : MonoBehaviour // Start is called once before the first 
     public string AMPMString;
 
     public bool DebugOn;
-
+    
+    public UnityEvent OnHourChange;
 
     public Dictionary<bool, string> AMPMMap = new Dictionary<bool, string>()
     {
@@ -79,6 +80,11 @@ public class SuntoTime : MonoBehaviour // Start is called once before the first 
                 {
                     Debug.Log($"Current Sun Time: {modhours:D2}:{minutes:D2} {AMPMString}");
                     done = 1;
+                }
+
+                if (minutes == 0)
+                {
+                    OnHourChange.Invoke();
                 }
             }
         }

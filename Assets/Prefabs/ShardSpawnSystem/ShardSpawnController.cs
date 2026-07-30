@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Collections;
 using UnityEngine;
 using Random = UnityEngine.Random;
-
 namespace Keegan.ShardSpawn
 {
     public class ShardSpawnController : MonoBehaviour
@@ -31,10 +30,10 @@ namespace Keegan.ShardSpawn
         [SerializeField, Tooltip("True if the spawner only functions at specific times")]
         private bool spawnDuringTimeRange;
 
-        [SerializeField, Tooltip("The hour that the shards will spawn")]
+        [SerializeField, Tooltip("The hour that the shards will spawn"), Range(0, 24)]
         private int shardSpawnFrom;
 
-        [SerializeField, Tooltip("The hour that the shards stop spawning")]
+        [SerializeField, Tooltip("The hour that the shards stop spawning"), Range(0, 24)]
         private int shardSpawnTo;
         
         [SerializeField, Tooltip("Reference to the transform that the shard will spawn on")]
@@ -54,7 +53,9 @@ namespace Keegan.ShardSpawn
 
         // TODO: Replace GameObject with ShardController
         // Reference to all the spawned shards in this spawner
-        private List<GameObject> spawnedShards = new List<GameObject>();
+        private List<TestShard> spawnedShards = new List<TestShard>();
+
+        private SuntoTime sunTime;
 
         private void Start()
         {
@@ -63,12 +64,19 @@ namespace Keegan.ShardSpawn
 
         private void OnEnable()
         {
-            // TODO: Add listener to the sun controllers hour event
+            if (sunTime == null)
+                sunTime = GameObject.FindFirstObjectByType<SuntoTime>();
+
+            if (sunTime != null)
+            {
+                sunTime.OnHourChange.AddListener(OnHourChange);
+            }
         }
 
         private void OnDisable()
         {
-            // TODO: Remove listener from the sun controller hour event
+            if(sunTime != null)
+                sunTime.OnHourChange.RemoveListener(OnHourChange);
         }
 
         /// <summary>
@@ -107,12 +115,25 @@ namespace Keegan.ShardSpawn
             if (spawnOnTransform != null)
             {
                 GameObject instance = GameObject.Instantiate(shardPrefab, spawnOnTransform);
-                instance.transform.position = spawnOnTransform.position;
-                // TODO: Get the shard controller 
-                // TODO: Subscribe to the health system
-                
-                // TODO: Replace with shard controller
-                spawnedShards.Add(instance);
+                Vector3 targetPosition = GetRandomSpawnPoint(instance.GetComponentInChildren<Collider>().bounds.extents);
+                if (targetPosition != Vector3.zero)
+                {
+                    instance.transform.position = targetPosition;
+                    TestShard shard = instance.GetComponentInChildren<TestShard>();
+                    if (shard != null)
+                    {
+                        spawnedShards.Add(shard);
+                        shard.OnShardCollected.AddListener(OnShardCollected);
+                    }
+                    else
+                    {
+                        Destroy(instance);
+                    }
+                }
+                else
+                {
+                    Destroy(instance);
+                }
             }
 
             if (respawnType == RespawnType.Loop)
@@ -120,16 +141,54 @@ namespace Keegan.ShardSpawn
         }
 
         /// <summary>
+        /// Gets random point inside the bounds to spawn the object
+        /// </summary>
+        /// <param name="shardBoundsExtent">The collision bounds of the shard</param>
+        /// <returns>The position to spawn the shard at</returns>
+        private Vector3 GetRandomSpawnPoint(Vector3 shardBoundsExtent)
+        {
+            int maxLoop = 30;
+            for (var i = 0; i < maxLoop; ++i)
+            {
+                Vector3 targetPosition =  new Vector3
+                {
+                    x = transform.position.x + (Random.Range(-spawnBoxBounds.x / 2, spawnBoxBounds.x / 2)),
+                    y = 6f,
+                    z = transform.position.z + (Random.Range(-(spawnBoxBounds.z / 2), (spawnBoxBounds.z / 2)))
+                };
+
+                if (Physics.Raycast(targetPosition, Vector3.down, out RaycastHit hit, 30f, groundLayerMask))
+                {
+                    targetPosition = hit.point;
+                }
+
+                if (!ShardAtSpawnPosition(new Vector3(targetPosition.x, (targetPosition.y - shardBoundsExtent.y), targetPosition.z), shardBoundsExtent))
+                    return targetPosition;
+            }
+            
+            #if UNITY_EDITOR
+            Debug.LogWarning("Couldn't find a empty place to spawn shard after 30 loops, skipping spawn position");
+            #endif
+            return Vector3.zero;
+        }
+
+        public bool ShardAtSpawnPosition(Vector3 position, Vector3 boundsExtent)
+        {
+            return Physics.CheckBox(position, boundsExtent, Quaternion.identity, obstacleLayerMask);
+        }
+
+        /// <summary>
         /// Invoked when a shard has been collected
         /// TODO: Replace GameObject with the ShardController
         /// </summary>
         /// <param name="collected">Reference to the shard that was collected</param>
-        public void OnShardCollected(GameObject collected)
+        public void OnShardCollected(TestShard collected)
         {
             if (spawnedShards.Contains(collected))
             {
+                collected.OnShardCollected.RemoveListener(OnShardCollected);
                 spawnedShards.Remove(collected);
-                // TODO: Remove event from the shard
+                
                 if (respawnType == RespawnType.Collected)
                 {
                     TriggerShardSpawn();
@@ -141,12 +200,27 @@ namespace Keegan.ShardSpawn
         /// Checks when the hour changes if the shard spawn should be enabled
         /// </summary>
         /// <param name="hour">The current hour emitted</param>
-        public void OnHourChange(int hour)
+        public void OnHourChange()
         {
-            if (hour >= shardSpawnFrom && hour <= shardSpawnTo)
-                canSpawnShard = true;
+            if (sunTime == null)
+                return;
+
+            // Get the 24 hour time
+            int currentHour = sunTime.modhours + (sunTime.AMPM ? 0 : 12);
+
+            if (currentHour >= shardSpawnFrom && currentHour <= shardSpawnTo)
+            {
+                if (!canSpawnShard)
+                {
+                    canSpawnShard = true;
+                    TriggerShardSpawn();
+                }
+            }
             else
-                canSpawnShard = false;
+            {
+                if(canSpawnShard)
+                    canSpawnShard = false;
+            }
         }
         
         
