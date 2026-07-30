@@ -118,6 +118,25 @@ namespace Keegan.ShardSpawn
             if (respawnType == RespawnType.Loop)
                 TriggerShardSpawn();
         }
+
+        /// <summary>
+        /// Invoked when a shard has been collected
+        /// TODO: Replace GameObject with the ShardController
+        /// </summary>
+        /// <param name="collected">Reference to the shard that was collected</param>
+        public void OnShardCollected(GameObject collected)
+        {
+            if (spawnedShards.Contains(collected))
+            {
+                spawnedShards.Remove(collected);
+                // TODO: Remove event from the shard
+                if (respawnType == RespawnType.Collected)
+                {
+                    TriggerShardSpawn();
+                }
+            }
+        }
+
         
         #if UNITY_EDITOR
         public void OnDrawGizmosSelected()
