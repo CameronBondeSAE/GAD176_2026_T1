@@ -119,6 +119,16 @@ namespace Keegan.ShardSpawn
                 if (targetPosition != Vector3.zero)
                 {
                     instance.transform.position = targetPosition;
+                    TestShard shard = instance.GetComponentInChildren<TestShard>();
+                    if (shard != null)
+                    {
+                        spawnedShards.Add(shard);
+                        shard.OnShardCollected.AddListener(OnShardCollected);
+                    }
+                    else
+                    {
+                        Destroy(instance);
+                    }
                 }
                 else
                 {
