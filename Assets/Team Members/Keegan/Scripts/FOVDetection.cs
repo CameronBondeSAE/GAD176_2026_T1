@@ -62,7 +62,7 @@ namespace Keegan.FOV
         // Triggered when this has lost sight of the enemy
         public UnityEvent<IFovDetectable> lostEnemy;
 
-        List<IFovDetectable> _detectedThisFrame = new List<IFovDetectable>();
+        protected List<IFovDetectable> _detectedThisFrame = new List<IFovDetectable>();
         private RaycastHit[] _castHitResults = new RaycastHit[1];
         private RaycastHit[] _castPolygonHitPoints = new RaycastHit[1];
         
