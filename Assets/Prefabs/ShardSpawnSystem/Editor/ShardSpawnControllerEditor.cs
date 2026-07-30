@@ -23,6 +23,8 @@ namespace Keegan.ShardSpawn
         private SerializedProperty shardSpawnFromProp;
         private SerializedProperty shardSpawnToProp;
 
+        private SerializedProperty shardSpawnEnabledProp;
+
         private void OnEnable()
         {
             shardPrefabProp = serializedObject.FindProperty("shardPrefab");
@@ -38,6 +40,8 @@ namespace Keegan.ShardSpawn
             respawnTypeProp = serializedObject.FindProperty("respawnType");
             groundLayerMaskProp = serializedObject.FindProperty("groundLayerMask");
             obstacleLayerMaskProp = serializedObject.FindProperty("obstacleLayerMask");
+            
+            shardSpawnEnabledProp = serializedObject.FindProperty("canSpawnShard");
         }
 
         public override void OnInspectorGUI()
@@ -66,6 +70,12 @@ namespace Keegan.ShardSpawn
             EditorGUILayout.PropertyField(groundLayerMaskProp);
             EditorGUILayout.PropertyField(respawnTypeProp);
             EditorGUILayout.PropertyField(obstacleLayerMaskProp);
+
+            if (Application.isPlaying)
+            {
+                string spawnEnabledStr = shardSpawnEnabledProp.boolValue ? "ON" : "OFF";
+                EditorGUILayout.LabelField($"Is Enabled: {spawnEnabledStr}");
+            }
 
             serializedObject.ApplyModifiedProperties();
 
