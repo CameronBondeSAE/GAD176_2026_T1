@@ -53,7 +53,7 @@ namespace Keegan.ShardSpawn
 
         // TODO: Replace GameObject with ShardController
         // Reference to all the spawned shards in this spawner
-        private List<GameObject> spawnedShards = new List<GameObject>();
+        private List<TestShard> spawnedShards = new List<GameObject>();
 
         private SuntoTime sunTime;
 
@@ -71,7 +71,6 @@ namespace Keegan.ShardSpawn
             {
                 sunTime.OnHourChange.AddListener(OnHourChange);
             }
-            // TODO: Add listener to the sun controllers hour event
         }
 
         private void OnDisable()
@@ -117,11 +116,13 @@ namespace Keegan.ShardSpawn
             {
                 GameObject instance = GameObject.Instantiate(shardPrefab, spawnOnTransform);
                 instance.transform.position = spawnOnTransform.position;
-                // TODO: Get the shard controller 
-                // TODO: Subscribe to the health system
-                
-                // TODO: Replace with shard controller
-                spawnedShards.Add(instance);
+                TestShard shardCtrl = instance.GetComponentInChildren<TestShard>();
+                if (shardCtrl != null)
+                {
+                    // TODO: Replace with shard controller
+                    spawnedShards.Add(shardCtrl);
+                    shardCtrl.OnShardCollected.AddListener(OnShardCollected);
+                }
             }
 
             if (respawnType == RespawnType.Loop)
@@ -133,12 +134,13 @@ namespace Keegan.ShardSpawn
         /// TODO: Replace GameObject with the ShardController
         /// </summary>
         /// <param name="collected">Reference to the shard that was collected</param>
-        public void OnShardCollected(GameObject collected)
+        public void OnShardCollected(TestShard collected)
         {
             if (spawnedShards.Contains(collected))
             {
+                collected.OnShardCollected.RemoveListener(OnShardCollected);
                 spawnedShards.Remove(collected);
-                // TODO: Remove event from the shard
+                
                 if (respawnType == RespawnType.Collected)
                 {
                     TriggerShardSpawn();
