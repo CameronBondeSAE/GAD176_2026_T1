@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Collections;
 using UnityEngine;
 using Random = UnityEngine.Random;
-
 namespace Keegan.ShardSpawn
 {
     public class ShardSpawnController : MonoBehaviour
@@ -31,10 +30,10 @@ namespace Keegan.ShardSpawn
         [SerializeField, Tooltip("True if the spawner only functions at specific times")]
         private bool spawnDuringTimeRange;
 
-        [SerializeField, Tooltip("The hour that the shards will spawn")]
+        [SerializeField, Tooltip("The hour that the shards will spawn"), Range(0, 24)]
         private int shardSpawnFrom;
 
-        [SerializeField, Tooltip("The hour that the shards stop spawning")]
+        [SerializeField, Tooltip("The hour that the shards stop spawning"), Range(0, 24)]
         private int shardSpawnTo;
         
         [SerializeField, Tooltip("Reference to the transform that the shard will spawn on")]
@@ -56,6 +55,8 @@ namespace Keegan.ShardSpawn
         // Reference to all the spawned shards in this spawner
         private List<GameObject> spawnedShards = new List<GameObject>();
 
+        private SuntoTime sunTime;
+
         private void Start()
         {
             TriggerShardSpawn();
@@ -63,12 +64,20 @@ namespace Keegan.ShardSpawn
 
         private void OnEnable()
         {
+            if (sunTime == null)
+                sunTime = GameObject.FindFirstObjectByType<SuntoTime>();
+
+            if (sunTime != null)
+            {
+                sunTime.OnHourChange.AddListener(OnHourChange);
+            }
             // TODO: Add listener to the sun controllers hour event
         }
 
         private void OnDisable()
         {
-            // TODO: Remove listener from the sun controller hour event
+            if(sunTime != null)
+                sunTime.OnHourChange.RemoveListener(OnHourChange);
         }
 
         /// <summary>
@@ -141,9 +150,15 @@ namespace Keegan.ShardSpawn
         /// Checks when the hour changes if the shard spawn should be enabled
         /// </summary>
         /// <param name="hour">The current hour emitted</param>
-        public void OnHourChange(int hour)
+        public void OnHourChange()
         {
-            if (hour >= shardSpawnFrom && hour <= shardSpawnTo)
+            if (sunTime == null)
+                return;
+
+            // Get the 24 hour time
+            int currentHour = sunTime.modhours + (sunTime.AMPM ? 0 : 12);
+            
+            if (currentHour >= shardSpawnFrom && currentHour <= shardSpawnTo)
                 canSpawnShard = true;
             else
                 canSpawnShard = false;
