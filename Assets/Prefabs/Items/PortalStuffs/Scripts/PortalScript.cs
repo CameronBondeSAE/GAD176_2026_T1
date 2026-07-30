@@ -9,6 +9,12 @@ public class PortalScript : MonoBehaviour, IPowerable
     public GameObject lightning4;
     public GameObject lightning5;
     public GameObject lightning6;
+    public GameObject lightning7;
+
+    void Start()
+    {
+        
+    }
     
     
 }
