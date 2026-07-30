@@ -32,30 +32,30 @@ namespace Keegan.FOV
         
         [Header("Line Raycast Settings")]
         // The directions the raycast will perform in
-        private List<Vector3> _detectionCastDirections = new List<Vector3>();
+        protected List<Vector3> _detectionCastDirections = new List<Vector3>();
         [SerializeField, Tooltip("The Amount of cast from left to right")]
-        private int _detectionCastCount = 7;
+        protected int _detectionCastCount = 7;
 
         [Header("Radial Cast Settings")]
         [SerializeField]
-        private float _totalFovAngle = 90f;
+        protected float _totalFovAngle = 90f;
         
         [Header("Base Cast Settings")]
         [SerializeField, Tooltip("How far the agent can see")]
-        private float _sightCastDistance;
+        protected float _sightCastDistance;
         [SerializeField, Tooltip("The method to use for casting")]
-        private CastType _castType = CastType.Radial;
+        protected CastType _castType = CastType.Radial;
         
         // The layer to detect FOV objects on
         [SerializeField, Tooltip("The layers to detect FOV on")]
-        private LayerMask _detectionMask;
+        protected LayerMask _detectionMask;
         [SerializeField, Tooltip("The visual type of the FOV")]
-        private VisualFOV _visualType;
+        protected VisualFOV _visualType;
         [SerializeField]
-        private Color _fovShapeColor = new Color(1f, 0.5f, 0.5f, 0.5f);
+        protected Color _fovShapeColor = new Color(1f, 0.5f, 0.5f, 0.5f);
         
         // List of all the enemies seen last frame
-        private List<IFovDetectable> _enemiesSeenLastFrame = new List<IFovDetectable>();
+        protected List<IFovDetectable> _enemiesSeenLastFrame = new List<IFovDetectable>();
 
         // Triggered when the enemy has been seen
         public UnityEvent<IFovDetectable> seenEnemy;
@@ -70,7 +70,7 @@ namespace Keegan.FOV
         
         #if UNITY_EDITOR
         [SerializeField]
-        private bool _drawDebug = true;
+        protected bool _drawDebug = true;
         #endif
 
         private void Start()
