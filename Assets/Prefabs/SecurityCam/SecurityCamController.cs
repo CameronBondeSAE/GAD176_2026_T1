@@ -16,8 +16,20 @@ namespace Keegan
 
             if (tracingDetectable == null)
             {
-                _detect
+                if (_detectedThisFrame.Count > 0)
+                    tracingDetectable = _detectedThisFrame[0];
             }
+            else
+            {
+                if (!_detectedThisFrame.Contains(tracingDetectable))
+                    tracingDetectable = null;
+            }
+        }
+
+
+        private void FollowTarget()
+        {
+            
         }
     }
 }
