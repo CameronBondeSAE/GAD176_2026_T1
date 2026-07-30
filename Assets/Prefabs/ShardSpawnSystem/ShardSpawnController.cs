@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using System.Collections;
 using UnityEngine;
-using UnityEngine.Events;
 using Random = UnityEngine.Random;
 
 namespace Keegan.ShardSpawn
@@ -12,11 +11,9 @@ namespace Keegan.ShardSpawn
         public enum RespawnType
         {
             None,
-            Loop,
-            Collect
+            Collected,
+            Loop
         }
-        
-        
         [SerializeField, Tooltip("The prefab for the shard that will spawn")]
         private GameObject shardPrefab;
 
@@ -26,6 +23,15 @@ namespace Keegan.ShardSpawn
 
         [SerializeField, Tooltip("The max amount of time before a shard will spawn (again")]
         private float maxSpawnTime = 100f;
+
+        [SerializeField, Tooltip("True if the spawner only functions at specific times")]
+        private bool spawnDuringTimeRange;
+
+        [SerializeField, Tooltip("The hour that the shards will spawn")]
+        private float shardSpawnFrom;
+
+        [SerializeField, Tooltip("The hour that the shards stop spawning")]
+        private float shardSpawnTo;
         
         [SerializeField, Tooltip("Reference to the transform that the shard will spawn on")]
         private Transform spawnOnTransform;
@@ -33,16 +39,14 @@ namespace Keegan.ShardSpawn
         [SerializeField, Tooltip("Bounds for the range to spawn a shard in")]
         private Vector3 spawnBoxBounds = Vector3.one;
 
-        [SerializeField, Tooltip("How the respawn is generated")]
-        private RespawnType respawnType = RespawnType.Collect;
-
-        [SerializeField, Tooltip("Reference to the ground layer mask to spawn the shard on")]
+        [SerializeField, Tooltip("The layer to check when locating the ground")]
         private LayerMask groundLayerMask;
-        [SerializeField, Tooltip("The layer mask for detecting othershard or objects to not spawn on")]
+
+        [SerializeField, Tooltip("The layer to check for shards on to prevent spawning on top")]
         private LayerMask obstacleLayerMask;
-        
-        
-        
+
+        [SerializeField, Tooltip("The method used to respawn shards once spawned")]
+        private RespawnType respawnType;
 
         private void Start()
         {
@@ -84,59 +88,11 @@ namespace Keegan.ShardSpawn
             if (spawnOnTransform != null)
             {
                 GameObject instance = GameObject.Instantiate(shardPrefab, spawnOnTransform);
-                Vector3 targetPosition = GetRandomSpawnPoint(instance.GetComponentInChildren<Collider>().bounds.extents);
-                if (targetPosition != Vector3.zero)
-                {
-                    instance.transform.position = targetPosition;
-                }
-                else
-                {
-                    Destroy(instance);
-                }
+                instance.transform.position = spawnOnTransform.position;
             }
 
             if (respawnType == RespawnType.Loop)
                 TriggerShardSpawn();
-        }
-
-        /// <summary>
-        /// Gets random point inside the bounds to spawn the object
-        /// </summary>
-        /// <param name="shardBoundsExtent">The collision bounds of the shard</param>
-        /// <returns>The position to spawn the shard at</returns>
-        private Vector3 GetRandomSpawnPoint(Vector3 shardBoundsExtent)
-        {
-            int maxLoop = 100;
-            for (var i = 0; i < maxLoop; ++i)
-            {
-                Vector3 targetPosition =  new Vector3
-                {
-                    x = transform.position.x + (Random.Range(-spawnBoxBounds.x / 2, spawnBoxBounds.x / 2)),
-                    y = 20f,
-                    z = transform.position.z + (Random.Range(-(spawnBoxBounds.z / 2), (spawnBoxBounds.z / 2)))
-                };
-
-                if (Physics.Raycast(targetPosition, Vector3.down, out RaycastHit hit, 30f, groundLayerMask))
-                {
-                    targetPosition = hit.point;
-                }
-
-                Vector3 checkSpawnPos = new Vector3(targetPosition.x, targetPosition.y - shardBoundsExtent.y, targetPosition.z);
-                
-                if (!ShardAtSpawnPosition(checkSpawnPos, shardBoundsExtent))
-                    return targetPosition;
-            }
-            
-            #if UNITY_EDITOR
-            Debug.LogWarning("Couldn't find a empty place to spawn shard after 30 loops, skipping spawn position");
-            #endif
-            return Vector3.zero;
-        }
-
-        public bool ShardAtSpawnPosition(Vector3 position, Vector3 boundsExtent)
-        {
-            bool isAtSpawnPoint = Physics.CheckBox(position, boundsExtent, Quaternion.identity, obstacleLayerMask);
-            return isAtSpawnPoint;
         }
         
         #if UNITY_EDITOR
