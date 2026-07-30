@@ -14,8 +14,12 @@ namespace Keegan.ShardSpawn
             Collected,
             Loop
         }
+        
         [SerializeField, Tooltip("The prefab for the shard that will spawn")]
         private GameObject shardPrefab;
+
+        [SerializeField, Tooltip("True if the shard can be used as it's inside the time range")]
+        private bool canSpawnShard = false;
 
         [Header("Spawn Time Settings")]
         [SerializeField, Tooltip("The min amount of time before a shard will spawn (again)")]
