@@ -53,7 +53,7 @@ namespace Keegan.ShardSpawn
 
         // TODO: Replace GameObject with ShardController
         // Reference to all the spawned shards in this spawner
-        private List<TestShard> spawnedShards = new List<GameObject>();
+        private List<TestShard> spawnedShards = new List<TestShard>();
 
         private SuntoTime sunTime;
 
