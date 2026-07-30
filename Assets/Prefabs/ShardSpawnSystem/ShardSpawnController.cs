@@ -57,6 +57,16 @@ namespace Keegan.ShardSpawn
             TriggerShardSpawn();
         }
 
+        private void OnEnable()
+        {
+            // TODO: Add listener to the sun controllers hour event
+        }
+
+        private void OnDisable()
+        {
+            // TODO: Remove listener from the sun controller hour event
+        }
+
         /// <summary>
         /// Begins the co routine for spawn shards
         /// </summary>
