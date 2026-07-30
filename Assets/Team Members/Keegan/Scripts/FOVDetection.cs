@@ -73,7 +73,7 @@ namespace Keegan.FOV
         protected bool _drawDebug = true;
         #endif
 
-        private void Start()
+        protected virtual void Start()
         {
             if (_castType == CastType.Line)
             {
@@ -125,7 +125,7 @@ namespace Keegan.FOV
             }
         }
         
-        private void Update()
+        protected virtual void Update()
         {
             DetectEnemiesInView();
         }
