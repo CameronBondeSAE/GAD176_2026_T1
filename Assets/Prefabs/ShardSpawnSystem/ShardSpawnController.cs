@@ -110,6 +110,9 @@ namespace Keegan.ShardSpawn
                 instance.transform.position = spawnOnTransform.position;
                 // TODO: Get the shard controller 
                 // TODO: Subscribe to the health system
+                
+                // TODO: Replace with shard controller
+                spawnedShards.Add(instance);
             }
 
             if (respawnType == RespawnType.Loop)
