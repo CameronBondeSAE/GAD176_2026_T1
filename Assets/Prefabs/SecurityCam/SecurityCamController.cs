@@ -4,8 +4,11 @@ using UnityEngine;
 
 namespace Keegan
 {
-    public class SecurityCamController : MonoBehaviour
+    public class SecurityCamController : FOVDetection
     {
+        [SerializeField, Tooltip("Reference to the current object being detected and traced")]
+        protected IFovDetectable tracingDetectable;
+        
         
     }
 }
