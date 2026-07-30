@@ -8,7 +8,16 @@ namespace Keegan
     {
         [SerializeField, Tooltip("Reference to the current object being detected and traced")]
         protected IFovDetectable tracingDetectable;
-        
-        
+
+        protected override void Update()
+        {
+            base.Update();
+
+
+            if (tracingDetectable == null)
+            {
+                _detect
+            }
+        }
     }
 }
