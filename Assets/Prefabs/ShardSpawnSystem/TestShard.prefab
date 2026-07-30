@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1699641141923100050}
   - component: {fileID: 8057401078476132162}
   - component: {fileID: 985525937804862402}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: TestShard
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -49,7 +49,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -81,7 +81,7 @@ GameObject:
   - component: {fileID: 2032238292920109050}
   - component: {fileID: 2611447197204719445}
   - component: {fileID: 5227693590973840803}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
