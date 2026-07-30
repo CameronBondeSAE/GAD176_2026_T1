@@ -76,7 +76,8 @@ namespace Keegan.ShardSpawn
         /// </summary>
         public void TriggerShardSpawn()
         {
-            StartCoroutine(SpawnShardRoutine(Random.Range(minSpawnTime, maxSpawnTime)));
+            if(canSpawnShard)
+                StartCoroutine(SpawnShardRoutine(Random.Range(minSpawnTime, maxSpawnTime)));
         }
 
         
