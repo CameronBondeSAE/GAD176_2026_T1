@@ -32,10 +32,10 @@ namespace Keegan.ShardSpawn
         private bool spawnDuringTimeRange;
 
         [SerializeField, Tooltip("The hour that the shards will spawn")]
-        private float shardSpawnFrom;
+        private int shardSpawnFrom;
 
         [SerializeField, Tooltip("The hour that the shards stop spawning")]
-        private float shardSpawnTo;
+        private int shardSpawnTo;
         
         [SerializeField, Tooltip("Reference to the transform that the shard will spawn on")]
         private Transform spawnOnTransform;
