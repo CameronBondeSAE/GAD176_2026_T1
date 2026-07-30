@@ -9,8 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7318463056794333161}
-  - component: {fileID: 3287121123503369871}
-  - component: {fileID: 1320746610236304719}
+  - component: {fileID: 696640654035460292}
+  - component: {fileID: 6917431146861080106}
   m_Layer: 0
   m_Name: SunController
   m_TagString: Untagged
@@ -33,7 +33,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3287121123503369871
+--- !u!114 &696640654035460292
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -42,26 +42,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 7064920907142051348}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b4a5ae7735ed1424aa92ba54c43918b5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  angle: 0
-  modhours: 0
-  minutes: 0
-  AMPM: 0
-  AMPMString: 
-  DebugOn: 0
-  SunManager: {fileID: 1320746610236304719}
---- !u!114 &1320746610236304719
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7064920907142051348}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ec333a188cbae5441aa8ed66ad369b60, type: 3}
+  m_Script: {fileID: 11500000, guid: 017721bd7bf0962419df54fe5c6697e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   Sun: {fileID: 0}
@@ -73,3 +54,25 @@ MonoBehaviour:
   EndGame:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &6917431146861080106
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7064920907142051348}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f079f5788f02f1f489ae2cb1cdc00ea3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  angle: 0
+  modhours: 0
+  minutes: 0
+  AMPM: 0
+  AMPMString: 
+  DebugOn: 0
+  OnHourChange:
+    m_PersistentCalls:
+      m_Calls: []
+  SunManager: {fileID: 0}
