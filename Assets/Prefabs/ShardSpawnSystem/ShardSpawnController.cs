@@ -115,18 +115,56 @@ namespace Keegan.ShardSpawn
             if (spawnOnTransform != null)
             {
                 GameObject instance = GameObject.Instantiate(shardPrefab, spawnOnTransform);
-                instance.transform.position = spawnOnTransform.position;
-                TestShard shardCtrl = instance.GetComponentInChildren<TestShard>();
-                if (shardCtrl != null)
+                Vector3 targetPosition = GetRandomSpawnPoint(instance.GetComponentInChildren<Collider>().bounds.extents);
+                if (targetPosition != Vector3.zero)
                 {
-                    // TODO: Replace with shard controller
-                    spawnedShards.Add(shardCtrl);
-                    shardCtrl.OnShardCollected.AddListener(OnShardCollected);
+                    instance.transform.position = targetPosition;
+                }
+                else
+                {
+                    Destroy(instance);
                 }
             }
 
             if (respawnType == RespawnType.Loop)
                 TriggerShardSpawn();
+        }
+
+        /// <summary>
+        /// Gets random point inside the bounds to spawn the object
+        /// </summary>
+        /// <param name="shardBoundsExtent">The collision bounds of the shard</param>
+        /// <returns>The position to spawn the shard at</returns>
+        private Vector3 GetRandomSpawnPoint(Vector3 shardBoundsExtent)
+        {
+            int maxLoop = 30;
+            for (var i = 0; i < maxLoop; ++i)
+            {
+                Vector3 targetPosition =  new Vector3
+                {
+                    x = transform.position.x + (Random.Range(-spawnBoxBounds.x / 2, spawnBoxBounds.x / 2)),
+                    y = 6f,
+                    z = transform.position.z + (Random.Range(-(spawnBoxBounds.z / 2), (spawnBoxBounds.z / 2)))
+                };
+
+                if (Physics.Raycast(targetPosition, Vector3.down, out RaycastHit hit, 30f, groundLayerMask))
+                {
+                    targetPosition = hit.point;
+                }
+
+                if (!ShardAtSpawnPosition(new Vector3(targetPosition.x, (targetPosition.y - shardBoundsExtent.y), targetPosition.z), shardBoundsExtent))
+                    return targetPosition;
+            }
+            
+            #if UNITY_EDITOR
+            Debug.LogWarning("Couldn't find a empty place to spawn shard after 30 loops, skipping spawn position");
+            #endif
+            return Vector3.zero;
+        }
+
+        public bool ShardAtSpawnPosition(Vector3 position, Vector3 boundsExtent)
+        {
+            return Physics.CheckBox(position, boundsExtent, Quaternion.identity, obstacleLayerMask);
         }
 
         /// <summary>
@@ -159,11 +197,20 @@ namespace Keegan.ShardSpawn
 
             // Get the 24 hour time
             int currentHour = sunTime.modhours + (sunTime.AMPM ? 0 : 12);
-            
+
             if (currentHour >= shardSpawnFrom && currentHour <= shardSpawnTo)
-                canSpawnShard = true;
+            {
+                if (!canSpawnShard)
+                {
+                    canSpawnShard = true;
+                    TriggerShardSpawn();
+                }
+            }
             else
-                canSpawnShard = false;
+            {
+                if(canSpawnShard)
+                    canSpawnShard = false;
+            }
         }
         
         
