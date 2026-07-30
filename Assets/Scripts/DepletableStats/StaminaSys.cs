@@ -14,8 +14,8 @@ public class StaminaSys : MonoBehaviour, IDepletableBars
 
     public void Start()
     {
-        staminaCurrent = staminaMax;
-        depleteUI.DisplayInitialise();
+	    staminaCurrent = staminaMax;
+	    if (depleteUI != null) depleteUI.DisplayInitialise();
     }
     //This would be the job of a game manager I think, I purely have it here so that the ui works.
     //TLDR: Remove 'DisplayInitialise' later

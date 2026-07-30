@@ -133,8 +133,15 @@ MonoBehaviour:
   staminaMax: 0
   staminaCurrent: 0
   staminaMin: 0
-  attachedEntity: {fileID: 0}
-  OnDepletion:
+  staminaUsage: 0
+  depleteUI: {fileID: 0}
+  StaminaDepletedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  OnStaminaFullEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  OnStaminaUsageEvent:
     m_PersistentCalls:
       m_Calls: []
 --- !u!1 &5641126889031950429
@@ -264,8 +271,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 1273103890878380776}
-  defaultSpeed: 50
-  speedMultiplier: 1
+  defaultSpeed: 1
+  speedMultiplier: 100
   turnSpeed: 10
   moveDirection: {x: 0, y: 0, z: 0}
   meshRenderer: {fileID: 0}
@@ -522,28 +529,12 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5954679891297067472, guid: 53142fedf1d6b8a459defe19e02eaf0e, type: 3}
-      propertyPath: _castType
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5954679891297067472, guid: 53142fedf1d6b8a459defe19e02eaf0e, type: 3}
-      propertyPath: _drawDebug
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5954679891297067472, guid: 53142fedf1d6b8a459defe19e02eaf0e, type: 3}
       propertyPath: _visualType
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5954679891297067472, guid: 53142fedf1d6b8a459defe19e02eaf0e, type: 3}
-      propertyPath: _totalFovAngle
-      value: 90
-      objectReference: {fileID: 0}
-    - target: {fileID: 5954679891297067472, guid: 53142fedf1d6b8a459defe19e02eaf0e, type: 3}
       propertyPath: _sightCastDistance
-      value: 25
-      objectReference: {fileID: 0}
-    - target: {fileID: 5954679891297067472, guid: 53142fedf1d6b8a459defe19e02eaf0e, type: 3}
-      propertyPath: _detectionCastCount
-      value: 100
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 8525179777723026157, guid: 53142fedf1d6b8a459defe19e02eaf0e, type: 3}
       propertyPath: m_Name

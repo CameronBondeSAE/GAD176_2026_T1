@@ -40,9 +40,12 @@ public class SuntoAlienLife : MonoBehaviour
     
     private void AlienMom()
     {
-        for (int i = 0; i < AlienMomMap[Sc.DayNumber]; i++)
+        if (positions.Count > 0)
         {
-            Instantiate(AlienPrefab, positions[Random.Range(0, positions.Count)], Quaternion.identity);
+            for (int i = 0; i < AlienMomMap[Sc.DayNumber]; i++)
+            {
+                Instantiate(AlienPrefab, positions[Random.Range(0, positions.Count)], Quaternion.identity);
+            }   
         }
     }
 
