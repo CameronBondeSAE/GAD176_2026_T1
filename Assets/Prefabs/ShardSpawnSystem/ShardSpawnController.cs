@@ -137,6 +137,18 @@ namespace Keegan.ShardSpawn
             }
         }
 
+        /// <summary>
+        /// Checks when the hour changes if the shard spawn should be enabled
+        /// </summary>
+        /// <param name="hour">The current hour emitted</param>
+        public void OnHourChange(int hour)
+        {
+            if (hour >= shardSpawnFrom && hour <= shardSpawnTo)
+                canSpawnShard = true;
+            else
+                canSpawnShard = false;
+        }
+        
         
         #if UNITY_EDITOR
         public void OnDrawGizmosSelected()
