@@ -62,7 +62,7 @@ namespace Keegan.ShardSpawn
             TriggerShardSpawn();
             BoxCollider groundCollider = GetComponentInChildren<BoxCollider>();
             if (groundCollider != null)
-                groundCollider.extents = spawnBoxBounds;
+                groundCollider.size = spawnBoxBounds;
         }
 
         private void OnEnable()
