@@ -1,127 +1,137 @@
 using Keegan.FOV;
 using System;
+using Unity.Netcode;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class Player_Controller : MonoBehaviour, IFovDetectable
+public class Player_Controller : NetworkBehaviour, IFovDetectable
 {
-	// InputSystem_Actions inputSystemActions;
+    // InputSystem_Actions inputSystemActions;
 
-	public Player_Model player_Model;
+    public Player_Model player_Model;
 
-	public PlayerInput playerInput;
+    public PlayerInput playerInput;
 
-	public Vector2 mousePosition;
+    public Vector2 mousePosition;
 
-	public bool usingMouse = false;
-	
-	public Frank.Interact interact;
+    public bool usingMouse = false;
 
-	// Start is called once before the first execution of Update after the MonoBehaviour is created
-	void OnEnable()
-	{
-		var actions = playerInput.actions;
-		actions.Enable();
-		actions["Move"].performed += player_Model.Move;
-		actions["Move"].canceled += player_Model.Move;
-		actions["Look"].performed += Look;
-		actions["Look"].canceled += Look;
-		actions["Interact"].performed += InteractWith;
-		actions["Pickup"].performed += Pickup;
-		actions["Mouse Position"].performed += UpdateMousePosition;
-		actions["Mouse Position"].canceled += UpdateMousePosition;
-	}
+    public Frank.Interact interact;
 
-	private void OnDisable()
-	{
-		var actions = playerInput.actions;
+    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    public override void OnNetworkSpawn()
+    {
+        if (!IsLocalPlayer) return;
+        
+        var actions = playerInput.actions;
+        actions.Enable();
+        actions["Move"].performed += player_Model.Move;
+        actions["Move"].canceled += player_Model.Move;
+        actions["Look"].performed += Look;
+        actions["Look"].canceled += Look;
+        actions["Interact"].performed += InteractWith;
+        actions["Pickup"].performed += Pickup;
+        actions["Mouse Position"].performed += UpdateMousePosition;
+        actions["Mouse Position"].canceled += UpdateMousePosition;
+    }
 
-		actions.Disable();
-		actions["Move"].performed -= player_Model.Move;
-		actions["Move"].canceled -= player_Model.Move;
-		actions["Look"].performed -= Look;
-		actions["Look"].canceled -= Look;
-		actions["Interact"].performed -= InteractWith;
-		actions["Pickup"].performed -= Pickup;
-		actions["Mouse Position"].performed -= UpdateMousePosition;
-		actions["Mouse Position"].canceled -= UpdateMousePosition;
-	}
+    public override void OnNetworkDespawn()
+    {
+        var actions = playerInput.actions;
+
+        actions.Disable();
+        actions["Move"].performed -= player_Model.Move;
+        actions["Move"].canceled -= player_Model.Move;
+        actions["Look"].performed -= Look;
+        actions["Look"].canceled -= Look;
+        actions["Interact"].performed -= InteractWith;
+        actions["Pickup"].performed -= Pickup;
+        actions["Mouse Position"].performed -= UpdateMousePosition;
+        actions["Mouse Position"].canceled -= UpdateMousePosition;
+    }
 
 
-	// Just pass along to the real function, without input stuff
-	private void Pickup(InputAction.CallbackContext obj)
-	{
-		interact.Pickup();
-	}
+    // Just pass along to the real function, without input stuff
+    private void Pickup(InputAction.CallbackContext obj)
+    {
+        PickupToServer_Rpc();
+    }
 
-	// Just pass along to the real function, without input stuff
-	private void InteractWith(InputAction.CallbackContext obj)
-	{
-		interact.InteractWith();
-	}
+    [Rpc(SendTo.Server, Delivery = RpcDelivery.Reliable)]
+    private void PickupToServer_Rpc()
+    {
+        interact.TryPickup();
+    }
 
-	private void Look(InputAction.CallbackContext obj)
-	{
-		usingMouse = false;
-		ResolveLookDirection(obj);
-	}
 
-	private void UpdateMousePosition(InputAction.CallbackContext obj)
-	{
-		usingMouse = true;
-		mousePosition = obj.ReadValue<Vector2>();
-		// Debug.Log("Mouse Position: " + mousePosition);
-		ResolveLookDirection(obj);
-	}
+    // Just pass along to the real function, without input stuff
+    private void InteractWith(InputAction.CallbackContext obj)
+    {
+        interact.InteractWith();
+    }
 
-	private void ResolveLookDirection(InputAction.CallbackContext callbackContext)
-	{
-		// Gamepad bound to Look action takes priority when there's actual input
-		if (!usingMouse)
-		{
-			var stickInput = callbackContext.ReadValue<Vector2>();
-			if (stickInput.sqrMagnitude > 0.01f)
-				player_Model.Look(stickInput.normalized);
-		}
-		else
-		{
-			player_Model.Look(GetMouseLookDirection());
-		}
-	}
+    private void Look(InputAction.CallbackContext obj)
+    {
+        usingMouse = false;
+        ResolveLookDirection(obj);
+    }
 
-	private Vector2 GetMouseLookDirection()
-	{
-		if (Camera.main != null)
-		{
-			var ray = Camera.main.ScreenPointToRay(mousePosition);
+    private void UpdateMousePosition(InputAction.CallbackContext obj)
+    {
+        usingMouse = true;
+        mousePosition = obj.ReadValue<Vector2>();
+        // Debug.Log("Mouse Position: " + mousePosition);
+        ResolveLookDirection(obj);
+    }
 
-			var groundPlane = new Plane(Vector3.up, transform.position);
-			if (!groundPlane.Raycast(ray, out float distance))
-				return Vector2.zero;
+    private void ResolveLookDirection(InputAction.CallbackContext callbackContext)
+    {
+        // Gamepad bound to Look action takes priority when there's actual input
+        if (!usingMouse)
+        {
+            var stickInput = callbackContext.ReadValue<Vector2>();
+            if (stickInput.sqrMagnitude > 0.01f)
+                player_Model.Look(stickInput.normalized);
+        }
+        else
+        {
+            player_Model.Look(GetMouseLookDirection());
+        }
+    }
 
-			var worldPoint = ray.GetPoint(distance);
-			var offset = worldPoint - transform.position;
+    private Vector2 GetMouseLookDirection()
+    {
+        if (Camera.main != null)
+        {
+            var ray = Camera.main.ScreenPointToRay(mousePosition);
 
-			// Flatten to XZ and normalize → Vector2(x, z)
-			var dir = new Vector2(offset.x, offset.z);
-			return dir.sqrMagnitude > 0.01f ? dir.normalized : Vector2.zero;
-		}
-		else
-		{
-			Debug.LogWarning("No Camera");
-			return Vector2.zero;
-		}
-	}
+            var groundPlane = new Plane(Vector3.up, transform.position);
+            if (!groundPlane.Raycast(ray, out float distance))
+                return Vector2.zero;
+
+            var worldPoint = ray.GetPoint(distance);
+            var offset = worldPoint - transform.position;
+
+            // Flatten to XZ and normalize → Vector2(x, z)
+            var dir = new Vector2(offset.x, offset.z);
+            return dir.sqrMagnitude > 0.01f ? dir.normalized : Vector2.zero;
+        }
+        else
+        {
+            Debug.LogWarning("No Camera");
+            return Vector2.zero;
+        }
+    }
 
     public void SetDetected(bool detected)
     {
-	    if (detected)
-	    {
-		    Debug.Log("Player has been seen by enemy");
-	    }
-	    else
-	    {
-		    Debug.Log("Lost sight of the player");
-	    }
+        if (detected)
+        {
+            Debug.Log("Player has been seen by enemy");
+        }
+        else
+        {
+            Debug.Log("Lost sight of the player");
+        }
     }
 }
