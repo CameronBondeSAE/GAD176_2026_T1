@@ -45,24 +45,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   useCullingMasks: 0
-  _detectionCastDirections:
-  - {x: 0, y: 0, z: 10}
-  - {x: 1, y: 0, z: 10}
-  - {x: 2, y: 0, z: 10}
-  - {x: 3, y: 0, z: 10}
-  - {x: 4, y: 0, z: 10}
-  - {x: 5, y: 0, z: 10}
-  - {x: 6, y: 0, z: 10}
-  - {x: 7, y: 0, z: 10}
-  - {x: -1, y: 0, z: 10}
-  - {x: -2, y: 0, z: 10}
-  - {x: -3, y: 0, z: 10}
-  - {x: -4, y: 0, z: 10}
-  - {x: -5, y: 0, z: 10}
-  - {x: -6, y: 0, z: 10}
-  - {x: -7, y: 0, z: 10}
+  _detectionCastCount: 7
+  _totalFovAngle: 90
+  _sightCastDistance: 50
+  _castType: 1
   _detectionMask:
     serializedVersion: 2
     m_Bits: 4294967295
   _visualType: 1
+  _fovShapeColor: {r: 1, g: 0.5, b: 0.5, a: 0.5}
+  seenEnemy:
+    m_PersistentCalls:
+      m_Calls: []
+  lostEnemy:
+    m_PersistentCalls:
+      m_Calls: []
   _drawDebug: 1

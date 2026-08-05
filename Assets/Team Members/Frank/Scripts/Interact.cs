@@ -17,10 +17,12 @@ namespace Frank
 
 		public void Pickup()
 		{
+			// Check whatever is in front
 			Collider[] colliders =
 				Physics.OverlapBox(transform.position + transform.TransformDirection(Vector3.forward) * 1f,
 					new Vector3(0.2f, 1f, 0.75f), transform.rotation);
 
+			// Check each thing
 			foreach (Collider c in colliders)
 			{
 				// Interact with things
@@ -95,7 +97,7 @@ namespace Frank
 						{
 							// Tell the object what we just interacted with
 							// Check if it wants to be dropped
-							if (heldGameObject.GetComponent<IPickup>().YoureBeingHeldButThePlayerJustInteractedWithoutSomethingElse(
+							if (heldGameObject.GetComponent<IPickup>().YoureBeingHeldButThePlayerJustInteractedWithSomethingElse(
 								    interactable))
 							{
 								// Item said it's dealing with it, so drop it
