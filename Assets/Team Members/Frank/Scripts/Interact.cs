@@ -41,10 +41,13 @@ namespace Frank
         public void TryPickup()
         {
             if (!IsServer) return;
+            
+            // Check whatever is in front
             Collider[] colliders =
                 Physics.OverlapBox(transform.position + transform.TransformDirection(Vector3.forward) * 1f,
                     new Vector3(0.2f, 1f, 0.75f), transform.rotation, pickupLayerMask);
-
+            
+            // Check each thing
             foreach (Collider c in colliders)
             {
                 // Interact with things
@@ -97,14 +100,13 @@ namespace Frank
 
             heldGameObject.transform.SetParent(transform.root, false);
             //the player(root) has to be the parent not the Model hands as they dont have network object. 
-            //update position to match the hands position
             HoldObjectPosition_Rpc(heldNetworkObject);
         }
 
 
         [Rpc(SendTo.ClientsAndHost, Delivery = RpcDelivery.Reliable)]
         private void HoldObjectPosition_Rpc(NetworkObjectReference heldObjectRef)
-        {
+        { //update position to match the hands position for all clients
             if (heldObjectRef.TryGet(out var heldNetworkObject))
             {
                 heldNetworkObject.transform.position = handsTransform.position;
@@ -150,7 +152,7 @@ namespace Frank
                             // Tell the object what we just interacted with
                             // Check if it wants to be dropped
                             if (heldGameObject.GetComponent<IPickup>()
-                                .YoureBeingHeldButThePlayerJustInteractedWithoutSomethingElse(
+                                .YoureBeingHeldButThePlayerJustInteractedWithSomethingElse(
                                     interactable))
                             {
                                 // Item said it's dealing with it, so drop it

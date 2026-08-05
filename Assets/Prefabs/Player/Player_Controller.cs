@@ -91,11 +91,11 @@ public class Player_Controller : NetworkBehaviour, IFovDetectable
         {
             var stickInput = callbackContext.ReadValue<Vector2>();
             if (stickInput.sqrMagnitude > 0.01f)
-                player_Model.Look(stickInput.normalized);
+                player_Model.Look_Rpc(stickInput.normalized);
         }
         else
         {
-            player_Model.Look(GetMouseLookDirection());
+            player_Model.Look_Rpc(GetMouseLookDirection());
         }
     }
 
