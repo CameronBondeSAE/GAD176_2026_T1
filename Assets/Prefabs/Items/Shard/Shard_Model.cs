@@ -31,34 +31,26 @@ public class Shard_Model : MonoBehaviour, IPickup
 	{
 		if (other is IPowered target)
 		{
-			float powerUsed = target.ReceivePotentialEnergy(this);
-			UseEnergy((int)powerUsed);
+			float usedPower = target.ReceivePotentialEnergy(this);
+			currentEnergy -= usedPower;
 		}
 	}
-	
 
 	private void OnTriggerExit(Collider other)
 	{
 		if (other is IPowered target)
 		{
-			float powerUsed = target.PotentialEnergyRemoved(this);
+			float usedPower = target.PotentialEnergyRemoved(this);
 		}
 	}
 	
 	public bool UseEnergy(int amount)
 	{
-		currentEnergy -= amount;
-		if (currentEnergy <= 0)
-		{
-			onShardDestroy?.Invoke();
-			return false;
-		}
-		else
-		{
-			
-		}
-
-		return true;
+		// Check for totals
+		// Take off amount from your total
+		// Destroy if zero
+		
+		return true;		// TODO: Return false if not enough power
 	}
 	
 
