@@ -19,7 +19,7 @@ public class Shard_Model : MonoBehaviour, IPickup
 	/// <summary>
 	/// Trigger when the shard energy reaches 0
 	/// </summary>
-	public UnityEvent onShardDestroy;
+	public UnityEvent<Shard_Model> onShardDestroy;
 		
 		
 	private void Start()
@@ -59,7 +59,7 @@ public class Shard_Model : MonoBehaviour, IPickup
 		if (currentEnergy <= 0)
 		{
 			// Invoke the shard destroyed
-			onShardDestroy?.Invoke();
+			onShardDestroy?.Invoke(this);
 			return true;
 		}
 
