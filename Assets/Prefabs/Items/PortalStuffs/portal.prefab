@@ -45,13 +45,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2509f8610cd94564ea684619f5599d5c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lightning1: {fileID: 4740798624101648683}
-  lightning2: {fileID: 5701756829330169498}
-  lightning3: {fileID: 7820532386193458240}
-  lightning4: {fileID: 399394794729130271}
-  lightning5: {fileID: 721511514061006613}
-  lightning6: {fileID: 6170585555298893697}
-  lightning7: {fileID: 5641989110880164890}
+  lightnings:
+  - {fileID: 4740798624101648683}
+  - {fileID: 5701756829330169498}
+  - {fileID: 7820532386193458240}
+  - {fileID: 399394794729130271}
+  - {fileID: 721511514061006613}
+  - {fileID: 6170585555298893697}
+  - {fileID: 5641989110880164890}
+  neededEnergy: 0
+  totalEnergy: 0
+  activationEnergy: 0
+  enoughEnergy: 0
+  continuespawning: 0
+  portalFXRunning: 0
+  shardList: []
 --- !u!1001 &1836868450704013603
 PrefabInstance:
   m_ObjectHideFlags: 0
