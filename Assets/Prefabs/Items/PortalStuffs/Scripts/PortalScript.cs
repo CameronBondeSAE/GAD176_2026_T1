@@ -18,7 +18,17 @@ public class PortalScript : MonoBehaviour, IPowered
     public int totalEnergy;
 
     public List<Shard_Model> shardList = new List<Shard_Model>();
-	
+
+    public void SetPowered(bool powered)
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public bool GetPowered()
+    {
+        throw new System.NotImplementedException();
+    }
+
     void ReceivePotentialEnergy(Shard_Model shard)
     {
         shardList.Add(shard);
@@ -29,18 +39,17 @@ public class PortalScript : MonoBehaviour, IPowered
         shardList.Remove(shard);
     }
 
-    public IEnumerator calcloop;
+    void Start()
     {
-        yield return new WaitForSeconds(1);
-        CalculateNeededEnergy();
+        StartCoroutine(calcloop());
     }
-	
+    
     void CalculateNeededEnergy()
     {
         // Pass 1: Count total energy
         foreach (Shard_Model shard in shardList)
         {
-            totalEnergy += shard.myenergy;
+            totalEnergy += shard.CurrentEnergy;
         }
 
         if (totalEnergy >= neededEnergy)
@@ -53,14 +62,14 @@ public class PortalScript : MonoBehaviour, IPowered
                 if (remainingToRemove <= 0)
                     break;
 
-                if (shard.myenergy <= remainingToRemove)
+                if (shard.CurrentEnergy <= remainingToRemove)
                 {
-                    remainingToRemove -= shard.myenergy;
+                    shard.UseEnergy(shard.CurrentEnergy);
                     Destroy(shard.gameObject);
                 }
                 else
                 {
-                    shard.myenergy -= remainingToRemove;
+                    shard.UseEnergy(remainingToRemove);
                     remainingToRemove = 0;
                 }
             }
@@ -70,14 +79,14 @@ public class PortalScript : MonoBehaviour, IPowered
             totalEnergy = 0;
         }
     }
-    
-    public void SetPowered(bool powered)
-    {
-        throw new System.NotImplementedException();
-    }
 
-    public bool GetPowered()
+    public IEnumerator calcloop()
     {
-        throw new System.NotImplementedException();
+        while (true)
+        {
+            yield return new WaitForSeconds(1);
+            CalculateNeededEnergy();
+        }
     }
+    
 }
