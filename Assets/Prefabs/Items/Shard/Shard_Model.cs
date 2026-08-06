@@ -49,7 +49,7 @@ public class Shard_Model : MonoBehaviour, IPickup
 	{
 		if (other is IPowered target)
 		{
-			float usedPower = target.PotentialEnergyRemoved(this);
+			target.PotentialEnergyRemoved(this);
 		}
 	}
 	
