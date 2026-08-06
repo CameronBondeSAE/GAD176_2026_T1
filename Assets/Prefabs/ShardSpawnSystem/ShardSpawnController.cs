@@ -11,7 +11,7 @@ namespace Keegan.ShardSpawn
         {
             None,
             Collected,
-            RemovedFromSpawn,
+            AfterPickup,
             Loop
         }
         
@@ -66,9 +66,6 @@ namespace Keegan.ShardSpawn
             BoxCollider groundCollider = GetComponentInChildren<BoxCollider>();
             if (groundCollider != null)
                 groundCollider.size = spawnBoxBounds;
-
-            if (exitCollider && respawnType != RespawnType.RemovedFromSpawn)
-                exitCollider.SetActive(false);
         }
 
         private void OnEnable()
@@ -91,7 +88,8 @@ namespace Keegan.ShardSpawn
         private void OnTriggerExit(Collider other)
         {
             Shard_Model shard = other.GetComponentInChildren<Shard_Model>();
-            
+            if(shard != null)
+                Debug.Log("Hello World!");
         }
 
         /// <summary>
@@ -137,11 +135,14 @@ namespace Keegan.ShardSpawn
                     Shard_Model shard = instance.GetComponentInChildren<Shard_Model>();
                     if (shard != null)
                     {
-                        shard.onShardDestroy.AddListener(OnShardCollected);
+                        shard.onShardPickedUp.AddListener(OnShardCollected);
                         spawnedShards.Add(shard);
                     }
                     else
                     {
+                        #if UNITY_EDITOR
+                        Debug.LogError($"Failed to get the shard_model");
+                        #endif
                         Destroy(instance);
                     }
                 }
@@ -201,7 +202,7 @@ namespace Keegan.ShardSpawn
         {
             if (spawnedShards.Contains(collected))
             {
-                collected.onShardDestroy.RemoveListener(OnShardCollected);
+                collected.onShardPickedUp.RemoveListener(OnShardCollected);
                 spawnedShards.Remove(collected);
                 
                 if (respawnType == RespawnType.Collected)
