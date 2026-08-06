@@ -20,7 +20,7 @@ namespace Frank
 			// Check whatever is in front
 			Collider[] colliders =
 				Physics.OverlapBox(transform.position + transform.TransformDirection(Vector3.forward) * 1f,
-					new Vector3(0.2f, 1f, 0.75f), transform.rotation);
+					new Vector3(0.2f, 1f, 0.75f), transform.rotation, Int32.MaxValue, QueryTriggerInteraction.Ignore);
 
 			// Check each thing
 			foreach (Collider c in colliders)

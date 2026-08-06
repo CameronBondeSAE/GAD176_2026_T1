@@ -267,8 +267,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   light: {fileID: 4975591391370556856}
   isPowered: 0
-  isSwitchedOn: 0
+  isSwitchedOn: 1
   debugRandomSwitching: 0
+  requiredEnergyForOneSecond: 1
+  currentNearByShard: {fileID: 0}
 --- !u!1 &4291071466839777841
 GameObject:
   m_ObjectHideFlags: 0

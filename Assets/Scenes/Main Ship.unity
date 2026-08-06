@@ -11765,20 +11765,20 @@ MonoBehaviour:
     _prefab: Assets/Prefabs/Items/PortalStuffs/portal.prefab
   - _gameObject: {fileID: 1374746761}
     _prefab: Assets/Prefabs/Items/PortalStuffs/Portal/source/portal/teleporter.fbx
-  - _gameObject: {fileID: 1412237960}
-    _prefab: Assets/Prefabs/Items/PortalStuffs/portal.prefab
+  - _gameObject: {fileID: 613355873}
+    _prefab: Assets/Prefabs/Items/PortalStuffs/lighting-pack-chain-lighting/source/p_150_lighting.blend
   - _gameObject: {fileID: 743495692}
     _prefab: Assets/Prefabs/Items/PortalStuffs/portal.prefab
   - _gameObject: {fileID: 743495693}
     _prefab: Assets/Prefabs/Items/PortalStuffs/Portal/source/portal/teleporter.fbx
-  - _gameObject: {fileID: 743495692}
-    _prefab: Assets/Prefabs/Items/PortalStuffs/portal.prefab
+  - _gameObject: {fileID: 1650534047}
+    _prefab: Assets/Prefabs/Items/PortalStuffs/lighting-pack-chain-lighting/source/p_150_lighting.blend
   - _gameObject: {fileID: 224232704}
     _prefab: Assets/Prefabs/Items/PortalStuffs/portal.prefab
   - _gameObject: {fileID: 224232705}
     _prefab: Assets/Prefabs/Items/PortalStuffs/Portal/source/portal/teleporter.fbx
-  - _gameObject: {fileID: 224232704}
-    _prefab: Assets/Prefabs/Items/PortalStuffs/portal.prefab
+  - _gameObject: {fileID: 1997274446}
+    _prefab: Assets/Prefabs/Items/PortalStuffs/lighting-pack-chain-lighting/source/p_150_lighting.blend
 --- !u!4 &581867193
 Transform:
   m_ObjectHideFlags: 11
@@ -12175,6 +12175,11 @@ Transform:
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1730026079931984002, guid: 7ff16eef04ff4154580ca07e76412f4b, type: 3}
   m_PrefabInstance: {fileID: 1149745142}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &613355873 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1566328867073328242, guid: 87473d8296dc16341b5e80ec04f9b313, type: 3}
+  m_PrefabInstance: {fileID: 1435229310}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &615062092 stripped
 GameObject:
@@ -28807,6 +28812,11 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 586027537608169653, guid: 567f351c6027259429afe86d33a5d9ff, type: 3}
   m_PrefabInstance: {fileID: 1339047788}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1650534047 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1566328867073328242, guid: 87473d8296dc16341b5e80ec04f9b313, type: 3}
+  m_PrefabInstance: {fileID: 743495691}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1653734122
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -31544,6 +31554,11 @@ GameObject:
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3603667725943351644, guid: f5b6874fad2c2d6419d07c9dde23dfb0, type: 3}
   m_PrefabInstance: {fileID: 1674686307}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1997274446 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1566328867073328242, guid: 87473d8296dc16341b5e80ec04f9b313, type: 3}
+  m_PrefabInstance: {fileID: 224232703}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &2000878266 stripped
 GameObject:

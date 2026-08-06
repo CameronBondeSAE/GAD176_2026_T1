@@ -97,6 +97,7 @@ GameObject:
   - component: {fileID: 1913360336110716051}
   - component: {fileID: 5399163131722457745}
   - component: {fileID: 1941384148205689670}
+  - component: {fileID: 243210382968609589}
   m_Layer: 0
   m_Name: Shard
   m_TagString: Untagged
@@ -153,3 +154,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 381be8dd2f2f2ed4aa7052da7f1e6b9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxEnergy: 100
+  currentEnergy: 0
+  onShardDestroy:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!135 &243210382968609589
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8579136275247557205}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 6.37
+  m_Center: {x: 0, y: 0, z: 0}
