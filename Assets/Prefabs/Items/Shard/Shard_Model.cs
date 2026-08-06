@@ -26,16 +26,25 @@ public class Shard_Model : MonoBehaviour, IPickup
 	{
 		currentEnergy = maxEnergy;
 	}
-
+	
 	private void OnTriggerEnter(Collider other)
 	{
+		
+		// Why are we passing this through to the target rather than just the value of the power used?
+		// Should we be using a coroutine instead to draw the power so that we can update values overtime?
+		// Is this possibly just to check that IPowered has entered and than checks if has enough power to add to IPowered?
 		if (other is IPowered target)
 		{
 			float usedPower = target.ReceivePotentialEnergy(this);
 			currentEnergy -= usedPower;
+			if (currentEnergy <= 0)
+			{
+				onShardDestroy?.Invoke();
+				Destroy(gameObject);
+			}
 		}
 	}
-
+	
 	private void OnTriggerExit(Collider other)
 	{
 		if (other is IPowered target)
