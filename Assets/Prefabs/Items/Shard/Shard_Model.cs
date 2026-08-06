@@ -70,10 +70,10 @@ public class Shard_Model : MonoBehaviour, IPickup
 		{
 			// Invoke the shard destroyed
 			onShardDestroy?.Invoke(this);
-			return true;
+			return false;
 		}
 
-		return false;
+		return true;
 	}
 	
 
