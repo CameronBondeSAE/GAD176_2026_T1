@@ -55,9 +55,6 @@ namespace Keegan.ShardSpawn
         // Reference to all the spawned shards in this spawner
         private List<Shard_Model> spawnedShards = new List<Shard_Model>();
 
-        [SerializeField, Tooltip("Reference to the exit collider from removing on exit")]
-        private GameObject exitCollider;
-
         private SuntoTime sunTime;
 
         private void Start()
