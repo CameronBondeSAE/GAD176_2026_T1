@@ -11,6 +11,7 @@ namespace Keegan.ShardSpawn
         {
             None,
             Collected,
+            RemovedFromSpawn,
             Loop
         }
         
@@ -50,10 +51,12 @@ namespace Keegan.ShardSpawn
 
         [SerializeField, Tooltip("The method used to respawn shards once spawned")]
         private RespawnType respawnType;
-
-        // TODO: Replace GameObject with ShardController
+        
         // Reference to all the spawned shards in this spawner
         private List<Shard_Model> spawnedShards = new List<Shard_Model>();
+
+        [SerializeField, Tooltip("Reference to the exit collider from removing on exit")]
+        private GameObject exitCollider;
 
         private SuntoTime sunTime;
 
@@ -63,6 +66,9 @@ namespace Keegan.ShardSpawn
             BoxCollider groundCollider = GetComponentInChildren<BoxCollider>();
             if (groundCollider != null)
                 groundCollider.size = spawnBoxBounds;
+
+            if (exitCollider && respawnType != RespawnType.RemovedFromSpawn)
+                exitCollider.SetActive(false);
         }
 
         private void OnEnable()
@@ -82,6 +88,12 @@ namespace Keegan.ShardSpawn
                 sunTime.OnHourChange.RemoveListener(OnHourChange);
         }
 
+        private void OnTriggerExit(Collider other)
+        {
+            Shard_Model shard = other.GetComponentInChildren<Shard_Model>();
+            
+        }
+
         /// <summary>
         /// Begins the co routine for spawn shards
         /// </summary>
@@ -90,7 +102,7 @@ namespace Keegan.ShardSpawn
             if(canSpawnShard)
                 StartCoroutine(SpawnShardRoutine(Random.Range(minSpawnTime, maxSpawnTime)));
         }
-
+        
         
         /// <summary>
         /// Routine to countdown to shard spawn
