@@ -53,7 +53,7 @@ namespace Keegan.ShardSpawn
 
         // TODO: Replace GameObject with ShardController
         // Reference to all the spawned shards in this spawner
-        private List<TestShard> spawnedShards = new List<TestShard>();
+        private List<Shard_Model> spawnedShards = new List<Shard_Model>();
 
         private SuntoTime sunTime;
 
@@ -122,11 +122,11 @@ namespace Keegan.ShardSpawn
                 if (targetPosition != Vector3.zero)
                 {
                     instance.transform.position = targetPosition;
-                    TestShard shard = instance.GetComponentInChildren<TestShard>();
+                    Shard_Model shard = instance.GetComponentInChildren<Shard_Model>();
                     if (shard != null)
                     {
+                        shard.onShardDestroy.AddListener(OnShardCollected);
                         spawnedShards.Add(shard);
-                        shard.OnShardCollected.AddListener(OnShardCollected);
                     }
                     else
                     {
@@ -185,11 +185,11 @@ namespace Keegan.ShardSpawn
         /// TODO: Replace GameObject with the ShardController
         /// </summary>
         /// <param name="collected">Reference to the shard that was collected</param>
-        public void OnShardCollected(TestShard collected)
+        public void OnShardCollected(Shard_Model collected)
         {
             if (spawnedShards.Contains(collected))
             {
-                collected.OnShardCollected.RemoveListener(OnShardCollected);
+                collected.onShardDestroy.RemoveListener(OnShardCollected);
                 spawnedShards.Remove(collected);
                 
                 if (respawnType == RespawnType.Collected)
