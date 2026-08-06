@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8648401554987166246}
   - component: {fileID: 2288807335866320190}
   - component: {fileID: 7427269777615180636}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: View
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -98,7 +98,7 @@ GameObject:
   - component: {fileID: 5399163131722457745}
   - component: {fileID: 1941384148205689670}
   - component: {fileID: 243210382968609589}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Shard
   m_TagString: Untagged
   m_Icon: {fileID: 0}

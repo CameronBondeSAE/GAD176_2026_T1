@@ -28,12 +28,12 @@ public class PortalScript : MonoBehaviour, IPowered
         throw new System.NotImplementedException();
     }
 
-    void ReceivePotentialEnergy(Shard_Model shard)
+    public void ReceivePotentialEnergy(Shard_Model shard)
     {
         shardList.Add(shard);
     }
 	
-    void PotentialEnergyRemoved(Shard_Model shard)
+    public void PotentialEnergyRemoved(Shard_Model shard)
     {
         shardList.Remove(shard);
     }
