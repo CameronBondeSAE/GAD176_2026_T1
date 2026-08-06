@@ -35,13 +35,7 @@ public class Shard_Model : MonoBehaviour, IPickup
 		// Is this possibly just to check that IPowered has entered and than checks if has enough power to add to IPowered?
 		if (other is IPowered target)
 		{
-			float usedPower = target.ReceivePotentialEnergy(this);
-			currentEnergy -= usedPower;
-			if (currentEnergy <= 0)
-			{
-				onShardDestroy?.Invoke();
-				Destroy(gameObject);
-			}
+			target.ReceivePotentialEnergy(this);
 		}
 	}
 	
