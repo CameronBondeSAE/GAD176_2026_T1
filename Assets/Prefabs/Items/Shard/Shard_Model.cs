@@ -7,14 +7,14 @@ public class Shard_Model : MonoBehaviour, IPickup
 {
 	// Variables for totals, to be read by IPowered things
 	[SerializeField, Tooltip("Reference to the total power the shard has")]
-	private float maxEnergy = 100f;
+	private int maxEnergy = 100;
 	[SerializeField, Tooltip("Reference to the current energy")]
-	private float currentEnergy;
+	private int currentEnergy;
 
 	/// <summary>
 	/// Reference to the current energy of this shard
 	/// </summary>
-	public float CurrentEnergy => currentEnergy;
+	public int CurrentEnergy => currentEnergy;
 
 	/// <summary>
 	/// Trigger when the shard energy reaches 0
