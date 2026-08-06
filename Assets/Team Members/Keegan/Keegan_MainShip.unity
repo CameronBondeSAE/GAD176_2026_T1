@@ -11412,6 +11412,8 @@ MonoBehaviour:
     _prefab: Assets/Prefabs/Managers/Sun Stuff/SunController.prefab
   - _gameObject: {fileID: 1851304516}
     _prefab: Assets/Prefabs/ShardSpawnSystem/ShardSpawner.prefab
+  - _gameObject: {fileID: 660221224}
+    _prefab: Assets/Prefabs/Items/Shard/Shard.prefab
 --- !u!4 &581867193
 Transform:
   m_ObjectHideFlags: 11
@@ -11964,6 +11966,72 @@ GameObject:
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3138120190028446912, guid: 567f351c6027259429afe86d33a5d9ff, type: 3}
   m_PrefabInstance: {fileID: 1339047788}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &660221223
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1913360336110716051, guid: b8fe0a06c7288134fa74f5e9b57cf9de, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 20.906837
+      objectReference: {fileID: 0}
+    - target: {fileID: 1913360336110716051, guid: b8fe0a06c7288134fa74f5e9b57cf9de, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -3.848723
+      objectReference: {fileID: 0}
+    - target: {fileID: 1913360336110716051, guid: b8fe0a06c7288134fa74f5e9b57cf9de, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -11.482169
+      objectReference: {fileID: 0}
+    - target: {fileID: 1913360336110716051, guid: b8fe0a06c7288134fa74f5e9b57cf9de, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1913360336110716051, guid: b8fe0a06c7288134fa74f5e9b57cf9de, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1913360336110716051, guid: b8fe0a06c7288134fa74f5e9b57cf9de, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1913360336110716051, guid: b8fe0a06c7288134fa74f5e9b57cf9de, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1913360336110716051, guid: b8fe0a06c7288134fa74f5e9b57cf9de, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1913360336110716051, guid: b8fe0a06c7288134fa74f5e9b57cf9de, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1913360336110716051, guid: b8fe0a06c7288134fa74f5e9b57cf9de, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5399163131722457745, guid: b8fe0a06c7288134fa74f5e9b57cf9de, type: 3}
+      propertyPath: m_Radius
+      value: 6.08
+      objectReference: {fileID: 0}
+    - target: {fileID: 8579136275247557205, guid: b8fe0a06c7288134fa74f5e9b57cf9de, type: 3}
+      propertyPath: m_Name
+      value: Shard
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: b8fe0a06c7288134fa74f5e9b57cf9de, type: 3}
+--- !u!1 &660221224 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8579136275247557205, guid: b8fe0a06c7288134fa74f5e9b57cf9de, type: 3}
+  m_PrefabInstance: {fileID: 660221223}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &661765703 stripped
 GameObject:
@@ -27465,9 +27533,17 @@ PrefabInstance:
       propertyPath: shardPrefab
       value: 
       objectReference: {fileID: 8579136275247557205, guid: b8fe0a06c7288134fa74f5e9b57cf9de, type: 3}
+    - target: {fileID: 5121907107019764315, guid: 9e3621f5a3249914981ee0387be74d89, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.033
+      objectReference: {fileID: 0}
     - target: {fileID: 6307024101737522769, guid: 9e3621f5a3249914981ee0387be74d89, type: 3}
       propertyPath: m_Name
       value: ShardSpawner
+      objectReference: {fileID: 0}
+    - target: {fileID: 8673905215563127473, guid: 9e3621f5a3249914981ee0387be74d89, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.09
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -33325,3 +33401,4 @@ SceneRoots:
   - {fileID: 67865254}
   - {fileID: 1478896377}
   - {fileID: 1565730389}
+  - {fileID: 660221223}
