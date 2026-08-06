@@ -28,9 +28,6 @@ public class Shard_Model : MonoBehaviour, IPickup
 	
 	public bool UseEnergy(int amount)
 	{
-		// Check for totals
-		// Take off amount from your total
-		// Destroy if zero
 		currentEnergy -= amount;
 		if (currentEnergy <= 0)
 		{
