@@ -20,7 +20,12 @@ public class Shard_Model : MonoBehaviour, IPickup
 	/// <summary>
 	/// Trigger when the shard energy reaches 0
 	/// </summary>
-	public UnityEvent onShardDestroy;
+	public UnityEvent<Shard_Model> onShardDestroy;
+
+	/// <summary>
+	/// Invoked when a shard is picked up
+	/// </summary>
+	public UnityEvent<Shard_Model> onShardPickedUp;
 		
 		
 	private void Start()
@@ -30,22 +35,22 @@ public class Shard_Model : MonoBehaviour, IPickup
 	
 	private void OnTriggerEnter(Collider other)
 	{
-		
-		// Why are we passing this through to the target rather than just the value of the power used?
-		// Should we be using a coroutine instead to draw the power so that we can update values overtime?
-		// Is this possibly just to check that IPowered has entered and than checks if has enough power to add to IPowered?
-		if (other is IPowered target)
-		{
+
+		IPowered target = other.GetComponentInChildren<IPowered>();
+		if(target != null)
 			target.ReceivePotentialEnergy(this);
-		}
 	}
 	
 	private void OnTriggerExit(Collider other)
 	{
-		if (other is IPowered target)
-		{
+		IPowered target = other.GetComponentInChildren<IPowered>();
+		if(target != null)
 			target.PotentialEnergyRemoved(this);
-		}
+	}
+
+	public void PickupShard()
+	{
+		onShardPickedUp?.Invoke(this);
 	}
 	
 	public bool UseEnergy(int amount)
@@ -60,10 +65,10 @@ public class Shard_Model : MonoBehaviour, IPickup
 		if (currentEnergy <= 0)
 		{
 			// Invoke the shard destroyed
-			onShardDestroy?.Invoke();
-			return true;
+			onShardDestroy?.Invoke(this);
+			return false;
 		}
 
-		return false;
+		return true;
 	}
 }

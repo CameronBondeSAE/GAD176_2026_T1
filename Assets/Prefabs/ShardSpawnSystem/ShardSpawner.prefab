@@ -76,7 +76,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47a7e4f82a02540438dd37517758910d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shardPrefab: {fileID: 3230885978483988731, guid: 1dbcf5641c444ad46b527060bfa9ba95, type: 3}
+  shardPrefab: {fileID: 8579136275247557205, guid: b8fe0a06c7288134fa74f5e9b57cf9de, type: 3}
   canSpawnShard: 0
   minSpawnTime: 3
   maxSpawnTime: 8
