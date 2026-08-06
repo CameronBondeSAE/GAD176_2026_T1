@@ -10,6 +10,8 @@ public class Shard_Model : MonoBehaviour, IPickup
 	private int maxEnergy = 100;
 	[SerializeField, Tooltip("Reference to the current energy")]
 	private int currentEnergy;
+	[SerializeField, Tooltip("Reference to the particle effect that plays when it destroys")]
+	private GameObject destroyParticles;
 
 	/// <summary>
 	/// Reference to the current energy of this shard
@@ -34,7 +36,6 @@ public class Shard_Model : MonoBehaviour, IPickup
 	
 	private void OnTriggerEnter(Collider other)
 	{
-
 		IPowered target = other.GetComponentInChildren<IPowered>();
 		if(target != null)
 			target.ReceivePotentialEnergy(this);
@@ -61,15 +62,32 @@ public class Shard_Model : MonoBehaviour, IPickup
 
 		// Remove the energy
 		currentEnergy -= amount;
-		if (currentEnergy <= 0)
+		if (currentEnergy < 0)
 		{
 			// Invoke the shard destroyed
 			onShardDestroy?.Invoke(this);
+			if (destroyParticles != null)
+			{
+				Vector3 targetPosition = transform.position;
+				GameObject.Instantiate(destroyParticles, targetPosition, Quaternion.identity);
+			}
+			
+			GameObject.Destroy(gameObject);
 			return false;
 		}
 
 		return true;
 	}
+	
+	#if UNITY_EDITOR
+
+	[ContextMenu("Use All Energy")]
+	public void UseAllEnergy()
+	{
+		UseEnergy(currentEnergy);
+	}
+	
+	#endif
 	
 
 }

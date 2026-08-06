@@ -156,7 +156,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxEnergy: 100
   currentEnergy: 0
+  destroyParticles: {fileID: 4845566528624793610, guid: 6dcbc4f2ae17dde49b498ee82e25818e, type: 3}
   onShardDestroy:
+    m_PersistentCalls:
+      m_Calls: []
+  onShardPickedUp:
     m_PersistentCalls:
       m_Calls: []
 --- !u!135 &243210382968609589
