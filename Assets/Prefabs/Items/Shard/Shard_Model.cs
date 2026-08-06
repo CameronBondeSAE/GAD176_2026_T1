@@ -14,7 +14,12 @@ public class Shard_Model : MonoBehaviour, IPickup
 	/// Reference to the current energy of this shard
 	/// </summary>
 	public float CurrentEnergy => currentEnergy;
+
+	/// <summary>
+	/// Trigger when the shard energy reaches 0
 	/// </summary>
+	public UnityEvent onShardDestroy;
+		
 		
 	private void Start()
 	{
