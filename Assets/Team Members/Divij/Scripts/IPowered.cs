@@ -15,18 +15,17 @@ namespace Divij
 		/// </summary>
 		/// <param name="shard = THIS, so the energy user can ask it how much energy it has"></param>
 		/// <returns>used energy (if no power used yet, return zero)</returns>
-		int ReceivePotentialEnergy(Shard_Model shard)
+		void ReceivePotentialEnergy(Shard_Model shard)
 		{
-			return 0;
+			
 		}
 
 		/// <summary>
 		/// When a shard moves away from an IPowered, it needs to know
 		/// </summary>
 		/// <param name="shard is so you can remove from your list of power providers"></param>
-		int PotentialEnergyRemoved(Shard_Model shard)
+		void PotentialEnergyRemoved(Shard_Model shard)
 		{
-			return 0;
 		}
 	}
 }
