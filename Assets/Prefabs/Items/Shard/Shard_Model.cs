@@ -1,3 +1,4 @@
+using Divij;
 using Frank;
 using UnityEngine;
 using UnityEngine.Events;
@@ -25,6 +26,24 @@ public class Shard_Model : MonoBehaviour, IPickup
 	{
 		currentEnergy = maxEnergy;
 	}
+
+	private void OnTriggerEnter(Collider other)
+	{
+		if (other is IPowered target)
+		{
+			float powerUsed = target.ReceivePotentialEnergy(this);
+			UseEnergy((int)powerUsed);
+		}
+	}
+	
+
+	private void OnTriggerExit(Collider other)
+	{
+		if (other is IPowered target)
+		{
+			float powerUsed = target.PotentialEnergyRemoved(this);
+		}
+	}
 	
 	public bool UseEnergy(int amount)
 	{
@@ -33,6 +52,10 @@ public class Shard_Model : MonoBehaviour, IPickup
 		{
 			onShardDestroy?.Invoke();
 			return false;
+		}
+		else
+		{
+			
 		}
 
 		return true;
