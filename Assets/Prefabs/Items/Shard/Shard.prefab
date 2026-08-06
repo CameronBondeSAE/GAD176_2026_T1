@@ -153,3 +153,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 381be8dd2f2f2ed4aa7052da7f1e6b9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxEnergy: 100
+  currentEnergy: 0
+  destroyParticles: {fileID: 4845566528624793610, guid: 6dcbc4f2ae17dde49b498ee82e25818e, type: 3}
+  onShardDestroy:
+    m_PersistentCalls:
+      m_Calls: []
+  onShardPickedUp:
+    m_PersistentCalls:
+      m_Calls: []
