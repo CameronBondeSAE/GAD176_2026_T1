@@ -26,7 +26,15 @@ public class Shard_Model : MonoBehaviour, IPickup
 		// Check for totals
 		// Take off amount from your total
 		// Destroy if zero
+		currentEnergy -= amount;
+		if (currentEnergy <= 0)
+		{
+			onShardDestroy?.Invoke();
+			return false;
+		}
 
-		return true; // TODO: This should return false if there's not enough energy to supply the thing
+		return true;
 	}
+	
+
 }
