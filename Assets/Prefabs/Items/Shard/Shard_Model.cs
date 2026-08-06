@@ -2,6 +2,7 @@ using Divij;
 using Frank;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.WSA;
 
 public class Shard_Model : MonoBehaviour, IPickup
 {
@@ -65,6 +66,4 @@ public class Shard_Model : MonoBehaviour, IPickup
 
 		return false;
 	}
-	
-
 }
