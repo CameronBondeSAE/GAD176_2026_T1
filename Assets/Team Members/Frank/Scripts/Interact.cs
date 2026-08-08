@@ -40,17 +40,7 @@ namespace Frank
 							if (pickup !=
 							    null) // if so then get the gameobject and if it has an IHoldable component, then do the following
 							{
-								pickup.Pickup(handsTransform);
-
-								if (c.GetComponent<Rigidbody>() != null)
-								{
-									c.GetComponent<Rigidbody>().isKinematic = true;
-								}
-								
-								// Snap to hands
-								c.transform.parent = handsTransform;
-								c.transform.position = handsTransform.position;
-								heldGameObject = c.transform.gameObject;
+								TryPickup(c.transform.gameObject);
 							}
 						}
 						else if (c.transform != null && heldGameObject != null)
@@ -62,10 +52,43 @@ namespace Frank
 			}
 		}
 
-		private void Drop()
+		/// <summary>Attempts to pick up one explicit object. Useful for both player and AI callers.</summary>
+		public bool TryPickup(GameObject target)
 		{
+			if (target == null || handsTransform == null || heldGameObject != null)
+				return false;
+
+			IPickup pickup = target.GetComponentInParent<IPickup>() ?? target.GetComponentInChildren<IPickup>();
+			if (pickup == null)
+				return false;
+
+			Component pickupComponent = pickup as Component;
+			GameObject pickupObject = pickupComponent != null ? pickupComponent.gameObject : target;
+			Rigidbody targetBody = pickupObject.GetComponent<Rigidbody>() ?? target.GetComponentInParent<Rigidbody>();
+
+			pickup.Pickup(handsTransform);
+			if (targetBody != null)
+			{
+				targetBody.linearVelocity = Vector3.zero;
+				targetBody.angularVelocity = Vector3.zero;
+				targetBody.isKinematic = true;
+			}
+
+			pickupObject.transform.SetParent(handsTransform, false);
+			pickupObject.transform.localPosition = Vector3.zero;
+			pickupObject.transform.localRotation = Quaternion.identity;
+			heldGameObject = pickupObject;
+			return true;
+		}
+
+		public bool TryDrop(Vector3 worldPosition)
+		{
+			if (heldGameObject == null)
+				return false;
+
 			heldGameObject.GetComponentInParent<IPickup>().Drop();
-			heldGameObject.transform.parent = null;
+			heldGameObject.transform.SetParent(null, true);
+			heldGameObject.transform.position = worldPosition;
 			
 			if (heldGameObject.GetComponent<Rigidbody>() != null)
 			{
@@ -73,6 +96,13 @@ namespace Frank
 			}
 
 			heldGameObject = null;
+			return true;
+		}
+
+		private void Drop()
+		{
+			if (heldGameObject != null)
+				TryDrop(heldGameObject.transform.position);
 		}
 
 		public void InteractWith()
