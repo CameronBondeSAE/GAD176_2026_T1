@@ -29,7 +29,7 @@ namespace Howard.ShardAI
             worldState.Set(aAgent.planner, HoldingShard, holding);
             worldState.Set(aAgent.planner, HasDropTarget, hasDrop);
             worldState.Set(aAgent.planner, NearDropTarget, hasDrop &&
-                Vector3.Distance(transform.position, _context.DropPoint.transform.position) <= _context.DropDistance);
+                Vector3.Distance(transform.position, _context.DropPoint.position) <= _context.DropDistance);
             worldState.Set(aAgent.planner, ShardDelivered, _context.Delivered);
         }
     }

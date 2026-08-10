@@ -15,7 +15,7 @@ namespace Howard.ShardAI
         [SerializeField] private float deliveredPulseDuration = 0.3f;
 
         public Shard_Model TargetShard { get; private set; }
-        public SpaceGame.SpawnPoint DropPoint { get; private set; }
+        public Transform DropPoint { get; private set; }
         public NavMeshAgent Agent { get; private set; }
         public Interact Interact => interact;
         public Transform Hands => hands;
@@ -96,17 +96,15 @@ namespace Howard.ShardAI
             float bestDistance = float.PositiveInfinity;
             var path = new NavMeshPath();
 
-            foreach (SpaceGame.SpawnPoint point in FindObjectsByType<SpaceGame.SpawnPoint>(FindObjectsSortMode.None))
+            foreach (GameObject point in GameObject.FindGameObjectsWithTag("DropPoint"))
             {
-                if (point.spawnType != SpaceGame.SpawnPoint.SpawnType.Enemy)
-                    continue;
                 if (!NavMesh.CalculatePath(transform.position, point.transform.position, Agent.areaMask, path) ||
                     path.status != NavMeshPathStatus.PathComplete)
                     continue;
                 float distance = PathLength(path.corners);
                 if (distance < bestDistance)
                 {
-                    DropPoint = point;
+                    DropPoint = point.transform;
                     bestDistance = distance;
                 }
             }

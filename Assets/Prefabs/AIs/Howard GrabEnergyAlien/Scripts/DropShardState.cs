@@ -12,10 +12,10 @@ namespace Howard.ShardAI
                 Finish();
                 return;
             }
-            if (!Motor.Face(Context.DropPoint.transform.position, deltaTime))
+            if (!Motor.Face(Context.DropPoint.position, deltaTime))
                 return;
 
-            Vector3 dropPosition = Context.DropPoint.transform.position;
+            Vector3 dropPosition = Context.DropPoint.position;
             if (NavMesh.SamplePosition(dropPosition, out NavMeshHit hit, 2f, Context.Agent.areaMask))
                 dropPosition = hit.position + Vector3.up * 0.35f;
             if (Context.Interact.TryDrop(dropPosition))

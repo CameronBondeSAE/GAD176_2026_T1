@@ -6,7 +6,7 @@ namespace Howard.ShardAI
         {
             if (Context.DropPoint == null)
                 Context.AcquireDropPoint();
-            if (Context.DropPoint == null || !Motor.MoveTo(Context.DropPoint.transform.position, Context.DropDistance))
+            if (Context.DropPoint == null || !Motor.MoveTo(Context.DropPoint.position, Context.DropDistance))
                 Finish();
         }
 

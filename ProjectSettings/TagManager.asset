@@ -12,6 +12,7 @@ TagManager:
   - AI
   - Alien
   - Shard
+  - DropPoint
   layers:
   - Default
   - TransparentFX
