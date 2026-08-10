@@ -5032,12 +5032,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3071542813545521559, guid: b355c927863a39448a72f327cbc06017, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4491310650733355970, guid: b355c927863a39448a72f327cbc06017, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: b355c927863a39448a72f327cbc06017, type: 3}
 --- !u!1 &323158034 stripped
 GameObject:
@@ -11653,20 +11656,20 @@ MonoBehaviour:
     _prefab: Assets/Prefabs/Items/PortalStuffs/portal.prefab
   - _gameObject: {fileID: 1374746761}
     _prefab: Assets/Prefabs/Items/PortalStuffs/Portal/source/portal/teleporter.fbx
-  - _gameObject: {fileID: 613355873}
-    _prefab: Assets/Prefabs/Items/PortalStuffs/lighting-pack-chain-lighting/source/p_150_lighting.blend
+  - _gameObject: {fileID: 1412237960}
+    _prefab: Assets/Prefabs/Items/PortalStuffs/portal.prefab
   - _gameObject: {fileID: 743495692}
     _prefab: Assets/Prefabs/Items/PortalStuffs/portal.prefab
   - _gameObject: {fileID: 743495693}
     _prefab: Assets/Prefabs/Items/PortalStuffs/Portal/source/portal/teleporter.fbx
-  - _gameObject: {fileID: 1650534047}
-    _prefab: Assets/Prefabs/Items/PortalStuffs/lighting-pack-chain-lighting/source/p_150_lighting.blend
+  - _gameObject: {fileID: 743495692}
+    _prefab: Assets/Prefabs/Items/PortalStuffs/portal.prefab
   - _gameObject: {fileID: 224232704}
     _prefab: Assets/Prefabs/Items/PortalStuffs/portal.prefab
   - _gameObject: {fileID: 224232705}
     _prefab: Assets/Prefabs/Items/PortalStuffs/Portal/source/portal/teleporter.fbx
-  - _gameObject: {fileID: 1997274446}
-    _prefab: Assets/Prefabs/Items/PortalStuffs/lighting-pack-chain-lighting/source/p_150_lighting.blend
+  - _gameObject: {fileID: 224232704}
+    _prefab: Assets/Prefabs/Items/PortalStuffs/portal.prefab
   - _gameObject: {fileID: 70393973}
     _prefab: Assets/Prefabs/ShardSpawnSystem/ShardSpawner.prefab
 --- !u!4 &581867193
@@ -12065,11 +12068,6 @@ Transform:
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1730026079931984002, guid: 7ff16eef04ff4154580ca07e76412f4b, type: 3}
   m_PrefabInstance: {fileID: 1149745142}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &613355873 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1566328867073328242, guid: 87473d8296dc16341b5e80ec04f9b313, type: 3}
-  m_PrefabInstance: {fileID: 1435229310}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &615062092 stripped
 GameObject:
@@ -19263,7 +19261,13 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3153999607126182897, guid: ff3012af44025684ba8b599c4d9a11e1, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1161331722}
+    - targetCorrespondingSourceObject: {fileID: 3153999607126182897, guid: ff3012af44025684ba8b599c4d9a11e1, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1161331721}
   m_SourcePrefab: {fileID: 100100000, guid: ff3012af44025684ba8b599c4d9a11e1, type: 3}
 --- !u!1 &1136770755 stripped
 GameObject:
@@ -19775,6 +19779,57 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7802252156835275268, guid: 8f3cc7aee58a28148b393f13b5614298, type: 3}
   m_PrefabInstance: {fileID: 1160333945}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1161331716 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3153999607126182897, guid: ff3012af44025684ba8b599c4d9a11e1, type: 3}
+  m_PrefabInstance: {fileID: 1136770754}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1161331717 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2834778086852247785, guid: ff3012af44025684ba8b599c4d9a11e1, type: 3}
+  m_PrefabInstance: {fileID: 1136770754}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1161331721
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1161331716}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ecfb91eacb389cd42baf73531e2b518f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ShowTopMostFoldoutHeaderGroup: 1
+  myTransform: {fileID: 1161331717}
+  updateDelay: 0.01
+--- !u!114 &1161331722
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1161331716}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GlobalObjectIdHash: 1221041126
+  InScenePlacedSourceGlobalObjectIdHash: 0
+  DeferredDespawnTick: 0
+  Ownership: 1
+  AlwaysReplicateAsRoot: 0
+  SynchronizeTransform: 1
+  m_InScenePlaced: 1
+  ActiveSceneSynchronization: 0
+  SceneMigrationSynchronization: 0
+  SpawnWithObservers: 1
+  DontDestroyWithOwner: 0
+  AutoObjectParentSync: 1
+  SyncOwnerTransformWhenParented: 1
+  AllowOwnerToParent: 0
 --- !u!1001 &1162411051
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -25821,6 +25876,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 964018126}
     m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: m_InScenePlaced
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: GlobalObjectIdHash
+      value: 341549014
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: SceneMigrationSynchronization
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: InScenePlacedSourceGlobalObjectIdHash
+      value: 2076610202
+      objectReference: {fileID: 0}
     - target: {fileID: 4630921107042037647, guid: 52f322377ca081143bd4f68b9be1aba4, type: 3}
       propertyPath: m_Name
       value: Player (1)
@@ -28741,11 +28812,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 586027537608169653, guid: 567f351c6027259429afe86d33a5d9ff, type: 3}
   m_PrefabInstance: {fileID: 1339047788}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1650534047 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1566328867073328242, guid: 87473d8296dc16341b5e80ec04f9b313, type: 3}
-  m_PrefabInstance: {fileID: 743495691}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1653734122
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -31484,11 +31550,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 3603667725943351644, guid: f5b6874fad2c2d6419d07c9dde23dfb0, type: 3}
   m_PrefabInstance: {fileID: 1674686307}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1997274446 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1566328867073328242, guid: 87473d8296dc16341b5e80ec04f9b313, type: 3}
-  m_PrefabInstance: {fileID: 224232703}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2000878266 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8692389652360029278, guid: dbdba0a6bfb99d34db8e7b8dae93de6b, type: 3}
@@ -32665,7 +32726,7 @@ MonoBehaviour:
   m_JoinAction:
     m_UseReference: 0
     m_Action:
-      m_Name: 
+      m_Name: Join
       m_Type: 0
       m_ExpectedControlType: 
       m_Id: 5626cb06-0d1f-4839-b1bd-5a3be90fcb41
@@ -33796,6 +33857,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 964018126}
     m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: m_InScenePlaced
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: GlobalObjectIdHash
+      value: 4209912405
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: SceneMigrationSynchronization
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: InScenePlacedSourceGlobalObjectIdHash
+      value: 2076610202
+      objectReference: {fileID: 0}
     - target: {fileID: 4630921107042037647, guid: 52f322377ca081143bd4f68b9be1aba4, type: 3}
       propertyPath: m_Name
       value: Player
