@@ -4,7 +4,7 @@ namespace Howard.ShardAI
     {
         public override void Enter()
         {
-            Context.AcquireNearestShard();
+            context.AcquireNearestShard();
             Finish();
         }
     }

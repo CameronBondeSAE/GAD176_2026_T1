@@ -2,36 +2,47 @@ using UnityEngine;
 
 namespace Howard.ShardAI
 {
+    // Stops two aliens from choosing the same shard and stops delivered shards being collected again.
     public class ShardReservation : MonoBehaviour
     {
-        private AlienShardContext _owner;
+        public AlienShardContext owner;
+        public bool isDelivered;
 
-        public bool IsDelivered { get; private set; }
-
-        public bool CanReserve(AlienShardContext requester) =>
-            !IsDelivered && (_owner == null || _owner == requester);
+        public bool CanReserve(AlienShardContext requester)
+        {
+            bool hasNoOwner = owner == null;
+            bool ownedByRequester = owner == requester;
+            return !isDelivered && (hasNoOwner || ownedByRequester);
+        }
 
         public bool TryReserve(AlienShardContext requester)
         {
             if (!CanReserve(requester))
+            {
                 return false;
-            _owner = requester;
+            }
+
+            owner = requester;
             return true;
         }
 
         public void Release(AlienShardContext requester)
         {
-            if (_owner == requester)
-                _owner = null;
+            if (owner == requester)
+            {
+                owner = null;
+            }
         }
 
         public void MarkDelivered(AlienShardContext requester)
         {
-            if (_owner != null && _owner != requester)
+            if (owner != null && owner != requester)
+            {
                 return;
+            }
 
-            IsDelivered = true;
-            _owner = null;
+            isDelivered = true;
+            owner = null;
         }
     }
 }

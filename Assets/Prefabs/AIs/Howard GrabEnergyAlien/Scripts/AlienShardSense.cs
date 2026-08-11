@@ -13,24 +13,41 @@ namespace Howard.ShardAI
         public const string NearDropTarget = "Near Drop Target";
         public const string ShardDelivered = "Shard Delivered";
 
-        private AlienShardContext _context;
+        public AlienShardContext context;
 
-        private void Awake() => _context = GetComponent<AlienShardContext>();
-
-        public void CollectConditions(AntAIAgent aAgent, AntAICondition worldState)
+        private void Awake()
         {
-            bool holding = _context.HoldingShard;
-            bool hasShard = _context.TargetShard != null;
-            bool hasDrop = _context.DropPoint != null;
-            worldState.Set(aAgent.planner, ShardAvailable, _context.HasAvailableShard());
-            worldState.Set(aAgent.planner, HasShardTarget, hasShard);
-            worldState.Set(aAgent.planner, NearShard, hasShard &&
-                Vector3.Distance(transform.position, _context.TargetShard.transform.position) <= _context.PickupDistance);
-            worldState.Set(aAgent.planner, HoldingShard, holding);
-            worldState.Set(aAgent.planner, HasDropTarget, hasDrop);
-            worldState.Set(aAgent.planner, NearDropTarget, hasDrop &&
-                Vector3.Distance(transform.position, _context.DropPoint.position) <= _context.DropDistance);
-            worldState.Set(aAgent.planner, ShardDelivered, _context.Delivered);
+            context = GetComponent<AlienShardContext>();
+        }
+
+        // Sends real scene information to AntAI each time the agent makes a new plan.
+        public void CollectConditions(AntAIAgent aiAgent, AntAICondition worldState)
+        {
+            bool holdingShard = context.IsHoldingShard();
+            bool hasShardTarget = context.targetShard != null;
+            bool hasDropTarget = context.dropPoint != null;
+
+            bool nearShard = false;
+            if (hasShardTarget)
+            {
+                float shardDistance = Vector3.Distance(transform.position, context.targetShard.transform.position);
+                nearShard = shardDistance <= context.pickupDistance;
+            }
+
+            bool nearDropPoint = false;
+            if (hasDropTarget)
+            {
+                float dropDistance = Vector3.Distance(transform.position, context.dropPoint.position);
+                nearDropPoint = dropDistance <= context.dropDistance;
+            }
+
+            worldState.Set(aiAgent.planner, ShardAvailable, context.HasAvailableShard());
+            worldState.Set(aiAgent.planner, HasShardTarget, hasShardTarget);
+            worldState.Set(aiAgent.planner, NearShard, nearShard);
+            worldState.Set(aiAgent.planner, HoldingShard, holdingShard);
+            worldState.Set(aiAgent.planner, HasDropTarget, hasDropTarget);
+            worldState.Set(aiAgent.planner, NearDropTarget, nearDropPoint);
+            worldState.Set(aiAgent.planner, ShardDelivered, context.IsDelivered());
         }
     }
 }

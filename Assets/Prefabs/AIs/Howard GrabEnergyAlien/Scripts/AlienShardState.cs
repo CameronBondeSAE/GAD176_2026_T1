@@ -5,13 +5,13 @@ namespace Howard.ShardAI
 {
     public abstract class AlienShardState : AntAIState
     {
-        protected AlienShardContext Context;
-        protected AlienNavMotor Motor;
+        public AlienShardContext context;
+        public AlienNavMotor motor;
 
         public override void Create(GameObject owner)
         {
-            Context = owner.GetComponent<AlienShardContext>();
-            Motor = owner.GetComponent<AlienNavMotor>();
+            context = owner.GetComponent<AlienShardContext>();
+            motor = owner.GetComponent<AlienNavMotor>();
         }
     }
 }

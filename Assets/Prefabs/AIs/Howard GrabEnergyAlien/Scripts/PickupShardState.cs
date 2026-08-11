@@ -4,17 +4,26 @@ namespace Howard.ShardAI
     {
         public override void Execute(float deltaTime, float timeScale)
         {
-            if (Context.TargetShard == null)
+            if (context.targetShard == null)
             {
                 Finish();
                 return;
             }
-            if (!Motor.Face(Context.TargetShard.transform.position, deltaTime))
+
+            if (!motor.Face(context.targetShard.transform.position, deltaTime))
+            {
                 return;
-            if (Context.Interact.TryPickup(Context.TargetShard.gameObject))
-                Context.AcquireDropPoint();
+            }
+
+            if (context.interact.TryPickup(context.targetShard.gameObject))
+            {
+                context.AcquireDropPoint();
+            }
             else
-                Context.ReleaseShard();
+            {
+                context.ReleaseShard();
+            }
+
             Finish();
         }
     }

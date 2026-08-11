@@ -4,23 +4,29 @@ namespace Howard.ShardAI
     {
         public override void Enter()
         {
-            if (Context.DropPoint == null)
-                Context.AcquireDropPoint();
-            if (Context.DropPoint == null || !Motor.MoveTo(Context.DropPoint.position, Context.DropDistance))
+            if (context.dropPoint == null)
+            {
+                context.AcquireDropPoint();
+            }
+
+            if (context.dropPoint == null || !motor.MoveTo(context.dropPoint.position, context.dropDistance))
+            {
                 Finish();
+            }
         }
 
         public override void Execute(float deltaTime, float timeScale)
         {
-            if (!Context.HoldingShard || Context.DropPoint == null || Motor.PathFailed)
+            if (!context.IsHoldingShard() || context.dropPoint == null || motor.PathFailed())
             {
-                Motor.Stop();
+                motor.Stop();
                 Finish();
                 return;
             }
-            if (Motor.HasArrived(Context.DropDistance))
+
+            if (motor.HasArrived(context.dropDistance))
             {
-                Motor.Stop();
+                motor.Stop();
                 Finish();
             }
         }

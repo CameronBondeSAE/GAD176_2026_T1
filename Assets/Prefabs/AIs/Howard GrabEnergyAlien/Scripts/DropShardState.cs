@@ -7,19 +7,28 @@ namespace Howard.ShardAI
     {
         public override void Execute(float deltaTime, float timeScale)
         {
-            if (!Context.HoldingShard || Context.DropPoint == null)
+            if (!context.IsHoldingShard() || context.dropPoint == null)
             {
                 Finish();
                 return;
             }
-            if (!Motor.Face(Context.DropPoint.position, deltaTime))
-                return;
 
-            Vector3 dropPosition = Context.DropPoint.position;
-            if (NavMesh.SamplePosition(dropPosition, out NavMeshHit hit, 2f, Context.Agent.areaMask))
+            if (!motor.Face(context.dropPoint.position, deltaTime))
+            {
+                return;
+            }
+
+            Vector3 dropPosition = context.dropPoint.position;
+            if (NavMesh.SamplePosition(dropPosition, out NavMeshHit hit, 2f, context.agent.areaMask))
+            {
                 dropPosition = hit.position + Vector3.up * 0.35f;
-            if (Context.Interact.TryDrop(dropPosition))
-                Context.CompleteDelivery();
+            }
+
+            if (context.interact.TryDrop(dropPosition))
+            {
+                context.CompleteDelivery();
+            }
+
             Finish();
         }
     }

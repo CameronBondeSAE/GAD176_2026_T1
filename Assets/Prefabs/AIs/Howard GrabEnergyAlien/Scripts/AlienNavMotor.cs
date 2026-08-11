@@ -6,64 +6,84 @@ namespace Howard.ShardAI
     [RequireComponent(typeof(NavMeshAgent))]
     public class AlienNavMotor : MonoBehaviour
     {
-        [SerializeField] private float turnSpeedDegrees = 360f;
-        [SerializeField] private float facingTolerance = 8f;
-
-        private NavMeshAgent _agent;
-        public bool PathFailed => !_agent.pathPending && _agent.pathStatus == NavMeshPathStatus.PathInvalid;
+        public float turnSpeedDegrees = 360f;
+        public float facingTolerance = 8f;
+        public NavMeshAgent agent;
 
         private void Awake()
         {
-            _agent = GetComponent<NavMeshAgent>();
-            _agent.updateRotation = false;
+            agent = GetComponent<NavMeshAgent>();
+            agent.updateRotation = false;
         }
 
         private void Update()
         {
-            Vector3 direction = _agent.desiredVelocity;
+            Vector3 direction = agent.desiredVelocity;
             direction.y = 0f;
+
             if (direction.sqrMagnitude > 0.001f)
+            {
                 FaceDirection(direction, Time.deltaTime);
+            }
+        }
+
+        public bool PathFailed()
+        {
+            return !agent.pathPending && agent.pathStatus == NavMeshPathStatus.PathInvalid;
         }
 
         public bool MoveTo(Vector3 destination, float stoppingDistance)
         {
-            if (!_agent.isOnNavMesh)
+            if (!agent.isOnNavMesh)
+            {
                 return false;
-            _agent.isStopped = false;
-            _agent.stoppingDistance = stoppingDistance;
-            return _agent.SetDestination(destination);
+            }
+
+            agent.isStopped = false;
+            agent.stoppingDistance = stoppingDistance;
+            return agent.SetDestination(destination);
         }
 
         public bool HasArrived(float distance)
         {
-            return _agent.isOnNavMesh && !_agent.pathPending && _agent.hasPath &&
-                   _agent.pathStatus == NavMeshPathStatus.PathComplete &&
-                   _agent.remainingDistance <= Mathf.Max(distance, _agent.stoppingDistance);
+            bool pathReady = !agent.pathPending && agent.hasPath;
+            bool pathComplete = agent.pathStatus == NavMeshPathStatus.PathComplete;
+            bool closeEnough = agent.remainingDistance <= Mathf.Max(distance, agent.stoppingDistance);
+
+            return agent.isOnNavMesh && pathReady && pathComplete && closeEnough;
         }
 
         public void Stop()
         {
-            if (!_agent.isOnNavMesh)
+            if (!agent.isOnNavMesh)
+            {
                 return;
-            _agent.isStopped = true;
-            _agent.ResetPath();
+            }
+
+            agent.isStopped = true;
+            agent.ResetPath();
         }
 
         public bool Face(Vector3 worldPosition, float deltaTime)
         {
             Vector3 direction = worldPosition - transform.position;
             direction.y = 0f;
+
             if (direction.sqrMagnitude < 0.001f)
+            {
                 return true;
+            }
+
             FaceDirection(direction, deltaTime);
-            return Vector3.Angle(transform.forward, direction) <= facingTolerance;
+            float angleToTarget = Vector3.Angle(transform.forward, direction);
+            return angleToTarget <= facingTolerance;
         }
 
         private void FaceDirection(Vector3 direction, float deltaTime)
         {
-            Quaternion target = Quaternion.LookRotation(direction.normalized, Vector3.up);
-            transform.rotation = Quaternion.RotateTowards(transform.rotation, target, turnSpeedDegrees * deltaTime);
+            Quaternion targetRotation = Quaternion.LookRotation(direction.normalized, Vector3.up);
+            float turnAmount = turnSpeedDegrees * deltaTime;
+            transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, turnAmount);
         }
     }
 }
