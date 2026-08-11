@@ -5032,12 +5032,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3071542813545521559, guid: b355c927863a39448a72f327cbc06017, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents: [{targetCorrespondingSourceObject: {fileID: 4491310650733355970, guid: b355c927863a39448a72f327cbc06017, type: 3}, insertIndex: -1, addedObject: {fileID: 0}}]
   m_SourcePrefab: {fileID: 100100000, guid: b355c927863a39448a72f327cbc06017, type: 3}
 --- !u!1 &323158034 stripped
 GameObject:
@@ -5364,7 +5364,7 @@ PrefabInstance:
     m_TransformParent: {fileID: 1906013054}
     m_Modifications:
     - target: {fileID: 720191144722262764, guid: 5cdd240bc68478642b9efc8dea45850f, type: 3}
-      propertyPath: 'connectedDevices.Array.data[0]'
+      propertyPath: connectedDevices.Array.data[0]
       value: 
       objectReference: {fileID: 439464887}
     - target: {fileID: 6681137893633405280, guid: 5cdd240bc68478642b9efc8dea45850f, type: 3}
@@ -7252,8 +7252,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _scenePrefabInstances:
-  - _gameObject: {fileID: 1136770755}
-    _prefab: Assets/Prefabs/Managers/Sun Stuff/SunController.prefab
   - _gameObject: {fileID: 290874089}
     _prefab: Assets/Prefabs/Utilities/SpawnPoint.prefab
   - _gameObject: {fileID: 685639691}
@@ -11592,6 +11590,8 @@ MonoBehaviour:
     _prefab: Assets/Team Members/Frank/Prefabs/CablePrefabs/PowerCable.prefab
   - _gameObject: {fileID: 1573686648}
     _prefab: Assets/Team Members/Frank/Prefabs/CablePrefabs/PowerCable.prefab
+  - _gameObject: {fileID: 1136770755}
+    _prefab: Assets/Prefabs/Managers/Sun Stuff/SunController.prefab
   - _gameObject: {fileID: 44354009}
     _prefab: Assets/Prefabs/Managers/Sun Stuff/SunAffected(ProllyChange).prefab
   - _gameObject: {fileID: 936728280}
@@ -11655,16 +11655,22 @@ MonoBehaviour:
     _prefab: Assets/Prefabs/Items/PortalStuffs/Portal/source/portal/teleporter.fbx
   - _gameObject: {fileID: 1412237960}
     _prefab: Assets/Prefabs/Items/PortalStuffs/portal.prefab
+  - _gameObject: {fileID: 1412237960}
+    _prefab: Assets/Prefabs/Items/PortalStuffs/portal.prefab
   - _gameObject: {fileID: 743495692}
     _prefab: Assets/Prefabs/Items/PortalStuffs/portal.prefab
   - _gameObject: {fileID: 743495693}
     _prefab: Assets/Prefabs/Items/PortalStuffs/Portal/source/portal/teleporter.fbx
   - _gameObject: {fileID: 743495692}
     _prefab: Assets/Prefabs/Items/PortalStuffs/portal.prefab
+  - _gameObject: {fileID: 743495692}
+    _prefab: Assets/Prefabs/Items/PortalStuffs/portal.prefab
   - _gameObject: {fileID: 224232704}
     _prefab: Assets/Prefabs/Items/PortalStuffs/portal.prefab
   - _gameObject: {fileID: 224232705}
     _prefab: Assets/Prefabs/Items/PortalStuffs/Portal/source/portal/teleporter.fbx
+  - _gameObject: {fileID: 224232704}
+    _prefab: Assets/Prefabs/Items/PortalStuffs/portal.prefab
   - _gameObject: {fileID: 224232704}
     _prefab: Assets/Prefabs/Items/PortalStuffs/portal.prefab
   - _gameObject: {fileID: 70393973}
@@ -12145,11 +12151,11 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2562647758439459723, guid: 0dd71246fb6f61b4398960fb2cd058d7, type: 3}
-      propertyPath: 'm_Materials.Array.data[0]'
+      propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: d6842569d6335794e98c1e1f99602bba, type: 2}
     - target: {fileID: 7685015664291882667, guid: 0dd71246fb6f61b4398960fb2cd058d7, type: 3}
-      propertyPath: 'm_Materials.Array.data[0]'
+      propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: d6842569d6335794e98c1e1f99602bba, type: 2}
     - target: {fileID: 9014336513655778086, guid: 0dd71246fb6f61b4398960fb2cd058d7, type: 3}
@@ -19258,7 +19264,8 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents: [{targetCorrespondingSourceObject: {fileID: 3153999607126182897, guid: ff3012af44025684ba8b599c4d9a11e1, type: 3}, insertIndex: -1, addedObject: {fileID: 1161331722}},
+      {targetCorrespondingSourceObject: {fileID: 3153999607126182897, guid: ff3012af44025684ba8b599c4d9a11e1, type: 3}, insertIndex: -1, addedObject: {fileID: 1161331721}}]
   m_SourcePrefab: {fileID: 100100000, guid: ff3012af44025684ba8b599c4d9a11e1, type: 3}
 --- !u!1 &1136770755 stripped
 GameObject:
@@ -19770,6 +19777,57 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7802252156835275268, guid: 8f3cc7aee58a28148b393f13b5614298, type: 3}
   m_PrefabInstance: {fileID: 1160333945}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1161331716 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3153999607126182897, guid: ff3012af44025684ba8b599c4d9a11e1, type: 3}
+  m_PrefabInstance: {fileID: 1136770754}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1161331717 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2834778086852247785, guid: ff3012af44025684ba8b599c4d9a11e1, type: 3}
+  m_PrefabInstance: {fileID: 1136770754}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1161331721
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1161331716}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ecfb91eacb389cd42baf73531e2b518f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ShowTopMostFoldoutHeaderGroup: 1
+  myTransform: {fileID: 1161331717}
+  updateDelay: 0.01
+--- !u!114 &1161331722
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1161331716}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GlobalObjectIdHash: 1221041126
+  InScenePlacedSourceGlobalObjectIdHash: 0
+  DeferredDespawnTick: 0
+  Ownership: 1
+  AlwaysReplicateAsRoot: 0
+  SynchronizeTransform: 1
+  m_InScenePlaced: 1
+  ActiveSceneSynchronization: 0
+  SceneMigrationSynchronization: 0
+  SpawnWithObservers: 1
+  DontDestroyWithOwner: 0
+  AutoObjectParentSync: 1
+  SyncOwnerTransformWhenParented: 1
+  AllowOwnerToParent: 0
 --- !u!1001 &1162411051
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -25816,6 +25874,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 964018126}
     m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: m_InScenePlaced
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: GlobalObjectIdHash
+      value: 341549014
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: SceneMigrationSynchronization
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: InScenePlacedSourceGlobalObjectIdHash
+      value: 2076610202
+      objectReference: {fileID: 0}
     - target: {fileID: 4630921107042037647, guid: 52f322377ca081143bd4f68b9be1aba4, type: 3}
       propertyPath: m_Name
       value: Player (1)
@@ -32774,7 +32848,7 @@ MonoBehaviour:
   m_JoinAction:
     m_UseReference: 0
     m_Action:
-      m_Name: 
+      m_Name: Join
       m_Type: 0
       m_ExpectedControlType: 
       m_Id: 5626cb06-0d1f-4839-b1bd-5a3be90fcb41
@@ -33905,6 +33979,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 964018126}
     m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: m_InScenePlaced
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: GlobalObjectIdHash
+      value: 4209912405
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: SceneMigrationSynchronization
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: InScenePlacedSourceGlobalObjectIdHash
+      value: 2076610202
+      objectReference: {fileID: 0}
     - target: {fileID: 4630921107042037647, guid: 52f322377ca081143bd4f68b9be1aba4, type: 3}
       propertyPath: m_Name
       value: Player
