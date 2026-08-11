@@ -43,6 +43,7 @@ GameObject:
   - component: {fileID: 8954740891691302476}
   - component: {fileID: 1273103890878380776}
   - component: {fileID: 5374164235821342035}
+  - component: {fileID: 8449597212984816294}
   m_Layer: 3
   m_Name: Player
   m_TagString: Player
@@ -142,6 +143,28 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   OnStaminaUsageEvent:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &8449597212984816294
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4630921107042037647}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e42c14129a239d4e9e7a8a7202400b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healthMax: 100
+  healthCurrent: 0
+  healthMin: 0
+  depleteUI: {fileID: 0}
+  OnDamagedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  OnDeathEvent:
     m_PersistentCalls:
       m_Calls: []
 --- !u!1 &5641126889031950429
