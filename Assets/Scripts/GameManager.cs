@@ -1,5 +1,6 @@
 using System;
 using Unity.Cinemachine;
+using Unity.Netcode;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -10,7 +11,8 @@ public class GameManager : MonoBehaviour
     
     private void OnEnable()
     {
-        playerInputManager.onPlayerJoined += Joined;
+        playerInputManager.onPlayerJoined                  += Joined;
+        // NetworkManager.Singleton.OnClientConnectedCallback += Joined;
     }
 
     private void OnDisable()

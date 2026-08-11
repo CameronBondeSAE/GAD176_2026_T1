@@ -940,11 +940,11 @@ PlayerSettings:
   captureStartupLogs: {}
   activeInputHandler: 2
   windowsGamepadBackendHint: 0
-  cloudProjectId: 2f680951-94c4-43a8-a765-5d742648e659
+  cloudProjectId: ee281c4b-5763-4ad2-a564-80e3bf468024
   framebufferDepthMemorylessMode: 0
   qualitySettingsNames: []
-  projectName: My project 2026-02-03_13-50-16
-  organizationId: cameronbondesae
+  projectName: My project (2)
+  organizationId: sae-melbourne
   cloudEnabled: 0
   legacyClampBlendShapeWeights: 0
   hmiLoadingImage: {fileID: 0}
