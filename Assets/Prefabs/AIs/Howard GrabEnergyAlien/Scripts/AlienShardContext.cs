@@ -12,6 +12,7 @@ namespace Howard.ShardAI
         public Transform hands;
         public float pickupDistance = 1.35f;
         public float dropDistance = 1.5f;
+        public float deliveredAreaRadius = 2f;
         public float deliveredPulseDuration = 0.3f;
 
         public Shard_Model targetShard;
@@ -61,6 +62,11 @@ namespace Howard.ShardAI
             foreach (Shard_Model shard in FindObjectsByType<Shard_Model>(FindObjectsSortMode.None))
             {
                 if (shard == null || shard.transform.IsChildOf(transform))
+                {
+                    continue;
+                }
+
+                if (IsShardInsideDropPoint(shard))
                 {
                     continue;
                 }
@@ -115,8 +121,29 @@ namespace Howard.ShardAI
                     continue;
                 }
 
+                if (IsShardInsideDropPoint(shard))
+                {
+                    continue;
+                }
+
                 ShardReservation reservation = shard.GetComponent<ShardReservation>();
                 if (reservation == null || reservation.CanReserve(this))
+                {
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
+        // A shard already inside a delivery area should not become a new target.
+        public bool IsShardInsideDropPoint(Shard_Model shard)
+        {
+            foreach (GameObject point in GameObject.FindGameObjectsWithTag("DropPoint"))
+            {
+                float distance = Vector3.Distance(shard.transform.position, point.transform.position);
+
+                if (distance <= deliveredAreaRadius)
                 {
                     return true;
                 }
