@@ -5,189 +5,192 @@ using UnityEngine.XR;
 
 namespace Frank
 {
-    public class Interact : NetworkBehaviour
-    {
-        [SerializeField] private Vector3 Hands = new Vector3(0, 0, 0);
+	public class Interact : NetworkBehaviour
+	{
+		[SerializeField]
+		private Vector3 Hands = new Vector3(0, 0, 0);
 
-        public Transform handsTransform;
-        public GameObject heldGameObject;
-        public GameObject cableRef;
-        public GameObject powerCableRef;
+		public Transform  handsTransform;
+		public GameObject heldGameObject;
+		public GameObject cableRef;
+		public GameObject powerCableRef;
 
-        public LayerMask pickupLayerMask;
-        public FixedJoint holdJoint;
-    
-        private NetworkVariable<bool> _isHolding = new NetworkVariable<bool>(false,
-            NetworkVariableReadPermission.Everyone, NetworkVariableWritePermission.Server);
+		public LayerMask  pickupLayerMask;
+		public FixedJoint holdJoint;
 
-        [SerializeField]
-        public override void OnNetworkSpawn()
-        {
-            _isHolding.OnValueChanged += OnIsHoldingChange;
-        }
+		private NetworkVariable<bool> _isHolding = new NetworkVariable<bool>(false,
+		                                                                     NetworkVariableReadPermission.Everyone,
+		                                                                     NetworkVariableWritePermission.Server);
 
-        private void OnIsHoldingChange(bool previousValue, bool newValue)
-        {
-            if (!IsServer) return;
-            //checks if new value to pickup object or drop object
-            if (newValue)
-            {
-                Pickup();
-            }
-            else
-                Drop();
-        }
+		[SerializeField]
+		public override void OnNetworkSpawn()
+		{
+			_isHolding.OnValueChanged += OnIsHoldingChange;
+		}
 
-        public void TryPickup()
-        {
-            if (!IsServer) return;
-            
-            // Check whatever is in front
-            Collider[] colliders =
-                Physics.OverlapBox(transform.position + transform.TransformDirection(Vector3.forward) * 1f,
-                    new Vector3(0.2f, 1f, 0.75f), transform.rotation, pickupLayerMask);
-            
-            // Check each thing
-            foreach (Collider c in colliders)
-            {
-                // Interact with things
-                if (c != null) // primary check - did I hit something - more specifically is there a transform
-                {
-                    Debug.Log("What I hit : " + c.transform.gameObject.name);
+		private void OnIsHoldingChange(bool previousValue, bool newValue)
+		{
+			if (!IsServer) return;
+			//checks if new value to pickup object or drop object
+			if (newValue)
+			{
+				Pickup();
+			}
+			else
+				Drop();
+		}
 
-                    IPickup pickup = c.transform.GetComponentInParent<IPickup>();
+		public void TryPickup()
+		{
+			if (!IsServer) return;
 
+			// Check whatever is in front
+			Collider[] colliders =
+				Physics.OverlapBox(transform.position + transform.TransformDirection(Vector3.forward) * 1f,
+				                   new Vector3(0.2f, 1f, 0.75f), transform.rotation, pickupLayerMask);
 
-                    //Debug.Log("What I hit : " + c.transform.gameObject.name);
-                    if (heldGameObject == null)
-                    {
-                        heldGameObject = c.transform.gameObject;
-                        // if so then get the gameobject and if it has an IHoldable component, then do the following
-                        if (pickup != null)
-                        {
-                            pickup.Pickup(handsTransform);
+			// Check each thing
+			foreach (Collider c in colliders)
+			{
+				// Interact with things
+				if (c != null) // primary check - did I hit something - more specifically is there a transform
+				{
+					Debug.Log("What I hit : " + c.transform.gameObject.name);
 
-                            if (heldGameObject.GetComponent<Rigidbody>() != null)
-                            {
-                                heldGameObject.GetComponent<Rigidbody>().isKinematic = true;
-                            }
+					IPickup pickup = c.transform.GetComponentInParent<IPickup>();
 
-                            _isHolding.Value = true;
-                        }
-                    }
-                    else
-                    {
-                        _isHolding.Value = false;
-                    }
-                }
-            }
-        }
+					if (pickup != null)
+					{
+						//Debug.Log("What I hit : " + c.transform.gameObject.name);
+						if (heldGameObject == null)
+						{
+							heldGameObject = c.transform.gameObject;
+							// if so then get the gameobject and if it has an IHoldable component, then do the following
+							pickup.Pickup(handsTransform);
 
-        private void Pickup()
-        {
-            NetworkObject heldNetworkObject = heldGameObject.GetComponent<NetworkObject>();
+							// Turn off physics
+							if (heldGameObject.GetComponent<Rigidbody>() != null)
+							{
+								heldGameObject.GetComponent<Rigidbody>().isKinematic = true;
+							}
 
-            Debug.Log("GRAB");
-            if (heldGameObject.GetComponent<Rigidbody>() != null)
-            {
-                heldGameObject.GetComponent<Rigidbody>().isKinematic = false;
-                holdJoint = transform.root.gameObject.AddComponent<FixedJoint>();
-                HoldObjectPosition_Rpc(heldNetworkObject);
-                holdJoint.connectedBody = heldGameObject.GetComponent<Rigidbody>();
-                
-                return;
-            } // Snap to hands
+							_isHolding.Value = true;
+						}
+					}
+					else
+					{
+						_isHolding.Value = false;
+					}
+				}
+			}
+		}
 
-            heldGameObject.transform.SetParent(transform.root, false);
-            //the player(root) has to be the parent not the Model hands as they dont have network object. 
-            HoldObjectPosition_Rpc(heldNetworkObject);
-        }
+		private void Pickup()
+		{
+			NetworkObject heldNetworkObject = heldGameObject.GetComponent<NetworkObject>();
 
+			Debug.Log("GRAB");
+			if (heldGameObject.GetComponent<Rigidbody>() != null)
+			{
+				// heldGameObject.GetComponent<Rigidbody>().isKinematic = false;
+				holdJoint = transform.root.gameObject.AddComponent<FixedJoint>();
+				HoldObjectPosition_Rpc(heldNetworkObject);
+				holdJoint.connectedBody = heldGameObject.GetComponent<Rigidbody>();
 
-        [Rpc(SendTo.ClientsAndHost, Delivery = RpcDelivery.Reliable)]
-        private void HoldObjectPosition_Rpc(NetworkObjectReference heldObjectRef)
-        { //update position to match the hands position for all clients
-            if (heldObjectRef.TryGet(out var heldNetworkObject))
-            {
-                heldNetworkObject.transform.position = handsTransform.position;
-            }
-            else
-                Debug.LogError("Object is NOT a Network Object");
-        }
-        
-        private void Drop()
-        {
-            heldGameObject.GetComponentInParent<IPickup>().Drop();
-            heldGameObject.transform.parent = null;
+				return;
+			} // Snap to hands
 
-            if (heldGameObject.GetComponent<Rigidbody>() != null)
-            {
-                heldGameObject.GetComponent<Rigidbody>().isKinematic = false;
-                Destroy(holdJoint);
-            }
-
-            heldGameObject = null;
-        }
-
-        public void InteractWith()
-        {
-            Collider[] colliders =
-                Physics.OverlapBox(transform.position + transform.TransformDirection(Vector3.forward) * 1.5f,
-                    new Vector3(0.2f, 1f, 1f), transform.rotation);
-
-            foreach (Collider c in colliders)
-            {
-                // Interact with things
-                if (c != null) // primary check - did I hit something - more specifically is there a transform
-                {
-                    Debug.Log("What I hit : " + c.transform.gameObject.name);
+			heldGameObject.transform.SetParent(transform.root, false);
+			//the player(root) has to be the parent not the Model hands as they dont have network object. 
+			HoldObjectPosition_Rpc(heldNetworkObject);
+		}
 
 
-                    IInteractable interactable = c.transform.GetComponentInParent<IInteractable>();
+		[Rpc(SendTo.ClientsAndHost, Delivery = RpcDelivery.Reliable)]
+		private void HoldObjectPosition_Rpc(NetworkObjectReference heldObjectRef)
+		{
+			//update position to match the hands position for all clients
+			if (heldObjectRef.TryGet(out var heldNetworkObject))
+			{
+				heldNetworkObject.transform.position = handsTransform.position;
+			}
+			else
+				Debug.LogError("Object is NOT a Network Object");
+		}
 
-                    if (interactable != null)
-                    {
-                        if (heldGameObject != null)
-                        {
-                            // Tell the object what we just interacted with
-                            // Check if it wants to be dropped
-                            if (heldGameObject.GetComponent<IPickup>()
-                                .YoureBeingHeldButThePlayerJustInteractedWithSomethingElse(
-                                    interactable))
-                            {
-                                // Item said it's dealing with it, so drop it
-                                Drop();
-                            }
-                            else
-                            {
-                                interactable.Interact();
-                            }
-                        }
-                        else
-                            interactable.Interact();
+		private void Drop()
+		{
+			heldGameObject.GetComponentInParent<IPickup>().Drop();
+			heldGameObject.transform.parent = null;
+
+			if (heldGameObject.GetComponent<Rigidbody>() != null)
+			{
+				heldGameObject.GetComponent<Rigidbody>().isKinematic = false;
+				Destroy(holdJoint);
+			}
+
+			heldGameObject = null;
+		}
+
+		public void InteractWith()
+		{
+			Collider[] colliders =
+				Physics.OverlapBox(transform.position + transform.TransformDirection(Vector3.forward) * 1.5f,
+				                   new Vector3(0.2f, 1f, 1f), transform.rotation);
+
+			foreach (Collider c in colliders)
+			{
+				// Interact with things
+				if (c != null) // primary check - did I hit something - more specifically is there a transform
+				{
+					Debug.Log("What I hit : " + c.transform.gameObject.name);
 
 
-                        // if (c.transform.GetComponent<PowerSocket>() != null)
-                        // {
-                        // 	if (isHolding == true)
-                        // 	{
-                        // 		heldObject.GetComponent<CableEnd>().PlugIn(c.transform.gameObject);
-                        // 	}
-                        // }
-                        // else if (c.transform.GetComponent<PowerPoint>() != null)
-                        // {
-                        // 	powerCableRef = Instantiate(cableRef, handsTransform.position, Quaternion.identity);
-                        // 	powerCableRef.GetComponent<CableManager>()
-                        // 		.SetReferences(c.transform, handsTransform);
-                        // 	isHolding = true;
-                        // 	Debug.Log(isHolding);
-                        //
-                        // 	// finds the CableManager component on the instantiated power cable.
-                        // 	// It passes in a transform for the PowerPoint and one for the player's hands.
-                        // }
-                    }
-                }
-            }
-        }
-    }
+					IInteractable interactable = c.transform.GetComponentInParent<IInteractable>();
+
+					if (interactable != null)
+					{
+						if (heldGameObject != null)
+						{
+							// Tell the object what we just interacted with
+							// Check if it wants to be dropped
+							if (heldGameObject.GetComponent<IPickup>()
+							                  .YoureBeingHeldButThePlayerJustInteractedWithSomethingElse(
+								                   interactable))
+							{
+								// Item said it's dealing with it, so drop it
+								Drop();
+							}
+							else
+							{
+								interactable.Interact();
+							}
+						}
+						else
+							interactable.Interact();
+
+
+						// if (c.transform.GetComponent<PowerSocket>() != null)
+						// {
+						// 	if (isHolding == true)
+						// 	{
+						// 		heldObject.GetComponent<CableEnd>().PlugIn(c.transform.gameObject);
+						// 	}
+						// }
+						// else if (c.transform.GetComponent<PowerPoint>() != null)
+						// {
+						// 	powerCableRef = Instantiate(cableRef, handsTransform.position, Quaternion.identity);
+						// 	powerCableRef.GetComponent<CableManager>()
+						// 		.SetReferences(c.transform, handsTransform);
+						// 	isHolding = true;
+						// 	Debug.Log(isHolding);
+						//
+						// 	// finds the CableManager component on the instantiated power cable.
+						// 	// It passes in a transform for the PowerPoint and one for the player's hands.
+						// }
+					}
+				}
+			}
+		}
+	}
 }
