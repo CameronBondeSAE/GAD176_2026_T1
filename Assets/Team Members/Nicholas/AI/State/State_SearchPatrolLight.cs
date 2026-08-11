@@ -43,7 +43,7 @@ namespace Nicholas.AI.State
 
         public override void Execute(float deltaTime, float timeScale)
         {
-            Debug.Log($"SEARCHING: {totalRotation}");
+            //Debug.Log($"SEARCHING: {totalRotation}");
 
             if (!controller.IsServer)
             {
