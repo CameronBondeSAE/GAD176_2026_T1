@@ -19271,6 +19271,10 @@ PrefabInstance:
       propertyPath: sunAngle
       value: 120
       objectReference: {fileID: 0}
+    - target: {fileID: 3153999607126182897, guid: ff3012af44025684ba8b599c4d9a11e1, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7064920907142051348, guid: ff3012af44025684ba8b599c4d9a11e1, type: 3}
       propertyPath: m_Name
       value: SunController
@@ -28941,14 +28945,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 1652257842}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ac0f49894e718234f94be83f47320be7, type: 3}
+  m_Script: {fileID: 11500000, guid: 4ceaf62dec7c21e488a7b724bbceec67, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   buttonWidth: 70
   buttonHeight: 40
   transport: {fileID: 1652257843}
-  ipAddress: 127.0.0.1
   joinCode: 
+  autoStartHostAndClient: 1
 --- !u!1001 &1653734122
 PrefabInstance:
   m_ObjectHideFlags: 0
