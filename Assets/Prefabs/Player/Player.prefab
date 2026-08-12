@@ -345,6 +345,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2609d9266c9f13548b56857b29ef3f9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ShowTopMostFoldoutHeaderGroup: 1
   rb: {fileID: 1273103890878380776}
   defaultSpeed: 1
   speedMultiplier: 100
@@ -371,12 +372,8 @@ MonoBehaviour:
   powerCableRef: {fileID: 0}
   pickupLayerMask:
     serializedVersion: 2
-    m_Bits: 2048
-  isHolding:
-    UpdateTraits:
-      MinSecondsBetweenUpdates: 0
-      MaxSecondsBetweenUpdates: 0
-    m_InternalValue: 0
+    m_Bits: 3072
+  holdJoint: {fileID: 0}
 --- !u!1 &7343999748368717727
 GameObject:
   m_ObjectHideFlags: 0
