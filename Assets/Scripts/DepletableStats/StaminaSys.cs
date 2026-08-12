@@ -1,45 +1,74 @@
 using System;
+using Unity.Netcode;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.Serialization;
 using UnityEngine.UIElements;
 
-public class StaminaSys : MonoBehaviour, IDepletableBars
+public class StaminaSys : NetworkBehaviour, IDepletableBars
 {
     public int staminaMax = 100;
-    public int staminaCurrent;
     public int staminaMin = 0;
     public int staminaUsage;
     public DepleteUI depleteUI;
 
-    public void Start()
+    private NetworkVariable<int> staminaCurrent = new NetworkVariable<int>(100, NetworkVariableReadPermission.Everyone,
+        NetworkVariableWritePermission.Server);
+
+    [FormerlySerializedAs("OnStaminaDepletion")]
+    public UnityEvent StaminaDepletedEvent = new UnityEvent();
+
+    public UnityEvent OnStaminaFullEvent = new UnityEvent();
+    public UnityEvent OnStaminaUsageEvent = new UnityEvent();
+
+    /*public void Start()
     {
-	    staminaCurrent = staminaMax;
-	    if (depleteUI != null) depleteUI.DisplayInitialise();
-    }
+        staminaCurrent = staminaMax;
+        if (depleteUI != null) depleteUI.DisplayInitialise();
+    }*/
     //This would be the job of a game manager I think, I purely have it here so that the ui works.
     //TLDR: Remove 'DisplayInitialise' later
 
-    private void FixedUpdate()
+    public override void OnNetworkSpawn()
     {
-        if (staminaCurrent <= staminaMax)
+        if (IsServer)
         {
-            staminaCurrent =+10;
+            staminaCurrent.Value = staminaMax;
         }
 
-        if (staminaCurrent >= staminaMax)
+        staminaCurrent.OnValueChanged += OnStaminaChanged;
+
+        if (depleteUI != null)
         {
-            staminaCurrent = staminaMax;
-            OnStaminaFullEvent.Invoke();
+            depleteUI.DisplayInitialise();
+        }
+    }
+
+    public override void OnNetworkDespawn()
+    {
+        staminaCurrent.OnValueChanged -= OnStaminaChanged;
+    }
+
+    private void FixedUpdate()
+    {
+        if (!IsServer)
+        {
+            return;
+        }
+
+        if (staminaCurrent.Value < staminaMax)
+        {
+            staminaCurrent.Value += 1;
+
+            if (staminaCurrent.Value >= staminaMax)
+            {
+                staminaCurrent.Value = staminaMax;
+                OnStaminaFullEvent.Invoke();
+            }
         }
     }
     //The Idea is that stamina is constantly filling up and then when you sprint, the drain is larger than the
     //refill. When refilled, evoke the StaminaFull Event to tell the SprintTest you can run again.
-    
-
-    [FormerlySerializedAs("OnStaminaDepletion")] public UnityEvent StaminaDepletedEvent = new UnityEvent();
-    public UnityEvent OnStaminaFullEvent = new UnityEvent();
-    public UnityEvent OnStaminaUsageEvent = new UnityEvent();
 
     //These aren't really needed. I put them here after exploring Interfaces, and these were things I could
     //parse through the interface. I don't think its particularly useful functions in this case, but could
@@ -51,31 +80,46 @@ public class StaminaSys : MonoBehaviour, IDepletableBars
 
     public int MinValue()
     {
-        return staminaMax - staminaMax;
+        return staminaMin;
     }
 
     public int CurrentValue()
     {
-        return staminaCurrent;
+        return staminaCurrent.Value;
     }
 
-    public void OnUse(int staminaUsage)
+    public void UseStamina(int amount)
     {
-        if(staminaCurrent == staminaMax)
+        if (amount <= 0)
         {
-            staminaCurrent = staminaMax;
-            staminaCurrent = staminaCurrent - staminaUsage;
-            OnStaminaUsageEvent.Invoke();
+            return;
+        }
+
+        if (IsServer)
+        {
+            staminaCurrent.Value -= amount;
         }
         else
         {
-            staminaCurrent = staminaCurrent - staminaUsage;
-            OnStaminaUsageEvent.Invoke();
-            if (staminaCurrent <= staminaMin)
-            {
-                StaminaDepletedEvent.Invoke();
-            }
-        };
+            UseStaminaRpc(amount);
+        }
     }
     
+    [Rpc(SendTo.Server)]
+    private void UseStaminaRpc(int amount)
+    {
+        staminaCurrent.Value -= amount;
+    }
+
+    private void OnStaminaChanged(int previousStamina, int newStamina)
+    {
+        OnStaminaUsageEvent.Invoke();
+
+        if (newStamina <= staminaMin)
+        {
+            staminaCurrent.Value = staminaMin;
+
+            StaminaDepletedEvent.Invoke();
+        }
+    }
 }
