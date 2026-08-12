@@ -27,7 +27,8 @@ namespace Howard.ShardAI
                 return;
             }
 
-            if (context.interact.TryPickup(context.targetShard.gameObject))
+            // if (context.interact.TryPickup(context.targetShard.gameObject))
+            if (context.interact.TryPickup())
             {
                 ClearPreviousHolder();
                 context.NotifyPickedUp(context.targetShard);

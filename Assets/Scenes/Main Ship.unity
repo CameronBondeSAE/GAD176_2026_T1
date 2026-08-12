@@ -747,6 +747,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3424173018776249042, guid: 9e3621f5a3249914981ee0387be74d89, type: 3}
+      propertyPath: maxSpawnTime
+      value: 797.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3424173018776249042, guid: 9e3621f5a3249914981ee0387be74d89, type: 3}
       propertyPath: spawnBoxBounds.x
       value: 52.72
       objectReference: {fileID: 0}
@@ -3754,6 +3758,10 @@ PrefabInstance:
     - target: {fileID: 1920017501474074588, guid: 87473d8296dc16341b5e80ec04f9b313, type: 3}
       propertyPath: m_Name
       value: portal (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1920017501474074588, guid: 87473d8296dc16341b5e80ec04f9b313, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4461138614716080958, guid: 87473d8296dc16341b5e80ec04f9b313, type: 3}
       propertyPath: m_LocalPosition.x
@@ -7360,8 +7368,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _scenePrefabInstances:
-  - _gameObject: {fileID: 1136770755}
-    _prefab: Assets/Prefabs/Managers/Sun Stuff/SunController.prefab
   - _gameObject: {fileID: 290874089}
     _prefab: Assets/Prefabs/Utilities/SpawnPoint.prefab
   - _gameObject: {fileID: 685639691}
@@ -11700,6 +11706,8 @@ MonoBehaviour:
     _prefab: Assets/Team Members/Frank/Prefabs/CablePrefabs/PowerCable.prefab
   - _gameObject: {fileID: 1573686648}
     _prefab: Assets/Team Members/Frank/Prefabs/CablePrefabs/PowerCable.prefab
+  - _gameObject: {fileID: 1136770755}
+    _prefab: Assets/Prefabs/Managers/Sun Stuff/SunController.prefab
   - _gameObject: {fileID: 44354009}
     _prefab: Assets/Prefabs/Managers/Sun Stuff/SunAffected(ProllyChange).prefab
   - _gameObject: {fileID: 936728280}
@@ -11781,6 +11789,8 @@ MonoBehaviour:
     _prefab: Assets/Prefabs/Items/PortalStuffs/portal.prefab
   - _gameObject: {fileID: 70393973}
     _prefab: Assets/Prefabs/ShardSpawnSystem/ShardSpawner.prefab
+  - _gameObject: {fileID: 772366257}
+    _prefab: Assets/Prefabs/AIs/ShardAIDropPoint.prefab
 --- !u!4 &581867193
 Transform:
   m_ObjectHideFlags: 11
@@ -12994,6 +13004,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: portal (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 1920017501474074588, guid: 87473d8296dc16341b5e80ec04f9b313, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4461138614716080958, guid: 87473d8296dc16341b5e80ec04f9b313, type: 3}
       propertyPath: m_LocalPosition.x
       value: -134
@@ -13185,37 +13199,11 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 8626742593364004398, guid: 567f351c6027259429afe86d33a5d9ff, type: 3}
   m_PrefabInstance: {fileID: 1339047788}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &772366257
+--- !u!1 &772366257 stripped
 GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 5080963189654116803, guid: dbd6d978275cbd94d89fe1c9f26c932e, type: 3}
+  m_PrefabInstance: {fileID: 372777715822311287}
   m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 772366258}
-  m_Layer: 0
-  m_Name: ShardAIDropPoint
-  m_TagString: DropPoint
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &772366258
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 772366257}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.3308442, y: -2.91, z: -25.525898}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &773517130 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4630921107042037647, guid: 08ae22e549a6b904aab84bff4b16c543, type: 3}
@@ -14047,7 +14035,7 @@ Transform:
   m_GameObject: {fileID: 825704598}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 42.148045, y: -3.994053, z: -1.308075}
+  m_LocalPosition: {x: 42.148045, y: -2.9, z: -1.308075}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -28957,131 +28945,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 586027537608169653, guid: 567f351c6027259429afe86d33a5d9ff, type: 3}
   m_PrefabInstance: {fileID: 1339047788}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1652257842
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1652257845}
-  - component: {fileID: 1652257844}
-  - component: {fileID: 1652257843}
-  - component: {fileID: 1652257846}
-  m_Layer: 0
-  m_Name: NetworkManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1652257843
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1652257842}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6960e84d07fb87f47956e7a81d71c4e6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_ProtocolType: 0
-  m_UseWebSockets: 0
-  m_UseEncryption: 0
-  m_MaxPacketQueueSize: 128
-  m_MaxPayloadSize: 6144
-  m_HeartbeatTimeoutMS: 500
-  m_ConnectTimeoutMS: 1000
-  m_MaxConnectAttempts: 60
-  m_DisconnectTimeoutMS: 30000
-  ConnectionData:
-    Address: 127.0.0.1
-    Port: 7777
-    WebSocketPath: /
-    ServerListenAddress: 127.0.0.1
-    ClientBindPort: 0
-  DebugSimulator:
-    PacketDelayMS: 0
-    PacketJitterMS: 0
-    PacketDropRate: 0
---- !u!114 &1652257844
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1652257842}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 593a2fe42fa9d37498c96f9a383b6521, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  NetworkManagerExpanded: 0
-  NetworkConfig:
-    ProtocolVersion: 0
-    NetworkTransport: {fileID: 1652257843}
-    PlayerPrefab: {fileID: 4630921107042037647, guid: 52f322377ca081143bd4f68b9be1aba4, type: 3}
-    Prefabs:
-      NetworkPrefabsLists:
-      - {fileID: 11400000, guid: 3714d26e4ff01d349b18c38f76946c2e, type: 2}
-    TickRate: 30
-    ClientConnectionBufferTimeout: 10
-    ConnectionApproval: 0
-    ConnectionData: 
-    EnableTimeResync: 0
-    TimeResyncInterval: 30
-    EnsureNetworkVariableLengthSafety: 0
-    EnableSceneManagement: 1
-    ForceSamePrefabs: 1
-    RecycleNetworkIds: 1
-    NetworkIdRecycleDelay: 120
-    RpcHashSize: 0
-    LoadSceneTimeOut: 120
-    SpawnTimeout: 10
-    EnableNetworkLogs: 1
-    NetworkTopology: 0
-    UseCMBService: 0
-    AutoSpawnPlayerPrefabClientSide: 1
-    NetworkMessageMetrics: 1
-    NetworkProfilingMetrics: 1
-    OldPrefabList: []
-  RunInBackground: 1
-  LogLevel: 1
---- !u!4 &1652257845
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1652257842}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 21.73024, y: 19.041632, z: -19.296667}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1652257846
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1652257842}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4ceaf62dec7c21e488a7b724bbceec67, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  buttonWidth: 70
-  buttonHeight: 40
-  transport: {fileID: 1652257843}
-  joinCode: 
-  autoStartHostAndClient: 1
 --- !u!1001 &1653734122
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -33028,7 +32891,7 @@ MonoBehaviour:
   m_NotificationBehavior: 3
   m_MaxPlayerCount: -1
   m_AllowJoining: 1
-  m_JoinBehavior: 2
+  m_JoinBehavior: 0
   m_PlayerJoinedEvent:
     m_PersistentCalls:
       m_Calls: []
@@ -33774,6 +33637,63 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 91472468838110738, guid: 0dd71246fb6f61b4398960fb2cd058d7, type: 3}
   m_PrefabInstance: {fileID: 966272927}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &372777715822311287
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3718304895406634257, guid: dbd6d978275cbd94d89fe1c9f26c932e, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 27.07
+      objectReference: {fileID: 0}
+    - target: {fileID: 3718304895406634257, guid: dbd6d978275cbd94d89fe1c9f26c932e, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -2.91
+      objectReference: {fileID: 0}
+    - target: {fileID: 3718304895406634257, guid: dbd6d978275cbd94d89fe1c9f26c932e, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -32.43
+      objectReference: {fileID: 0}
+    - target: {fileID: 3718304895406634257, guid: dbd6d978275cbd94d89fe1c9f26c932e, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3718304895406634257, guid: dbd6d978275cbd94d89fe1c9f26c932e, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3718304895406634257, guid: dbd6d978275cbd94d89fe1c9f26c932e, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3718304895406634257, guid: dbd6d978275cbd94d89fe1c9f26c932e, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3718304895406634257, guid: dbd6d978275cbd94d89fe1c9f26c932e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3718304895406634257, guid: dbd6d978275cbd94d89fe1c9f26c932e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3718304895406634257, guid: dbd6d978275cbd94d89fe1c9f26c932e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5080963189654116803, guid: dbd6d978275cbd94d89fe1c9f26c932e, type: 3}
+      propertyPath: m_Name
+      value: ShardAIDropPoint
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: dbd6d978275cbd94d89fe1c9f26c932e, type: 3}
 --- !u!1001 &792656608633208919
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -34482,10 +34402,6 @@ PrefabInstance:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
-  - {fileID: 2112603516}
-  - {fileID: 2136172984}
-  - {fileID: 1652257845}
-  - {fileID: 1136770754}
   - {fileID: 1227837852}
   - {fileID: 1132919533}
   - {fileID: 820523676}
@@ -34497,7 +34413,10 @@ SceneRoots:
   - {fileID: 391753879}
   - {fileID: 1237788323}
   - {fileID: 1906013054}
+  - {fileID: 2112603516}
   - {fileID: 1797616378}
+  - {fileID: 2136172984}
+  - {fileID: 1136770754}
   - {fileID: 44354008}
   - {fileID: 2082245669}
   - {fileID: 7964680590143510859}
@@ -34509,4 +34428,4 @@ SceneRoots:
   - {fileID: 743495691}
   - {fileID: 224232703}
   - {fileID: 70393972}
-  - {fileID: 772366258}
+  - {fileID: 372777715822311287}

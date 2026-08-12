@@ -39,9 +39,9 @@ namespace Frank
                 Drop();
         }
 
-        public void TryPickup()
+        public bool TryPickup()
         {
-            if (!IsServer) return;
+            if (!IsServer) return false;
 
             // Check whatever is in front
             Collider[] colliders =
@@ -74,16 +74,20 @@ namespace Frank
                         }
 
                         _isHolding.Value = true;
-                        break;
+                        return true;
+                        // break;
                     }
 
                     if (_isHolding.Value)
                     {
                         _isHolding.Value = false;
-                        break;
+                        return false;
+                        // break;
                     }
                 }
             }
+            
+            return false;
         }
 
 
@@ -120,7 +124,7 @@ namespace Frank
                 Debug.LogError("Object is NOT a Network Object");
         }
 
-        private void Drop()
+        public void Drop()
         {
             heldGameObject.GetComponentInParent<IPickup>().Drop();
             heldGameObject.transform.parent = null;

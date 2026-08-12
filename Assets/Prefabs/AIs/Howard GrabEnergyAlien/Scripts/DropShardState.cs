@@ -20,17 +20,18 @@ namespace Howard.ShardAI
                 return;
             }
 
-            Vector3 dropPosition = context.dropPoint.position;
-            if (NavMesh.SamplePosition(dropPosition, out NavMeshHit hit, 2f, context.agent.areaMask))
-            {
-                dropPosition = hit.position + Vector3.up * 0.35f;
-            }
+            
+            // Old drop code wants to make sure it's on a valid navmesh. Disabled for now
+            
+            // Vector3 dropPosition = context.dropPoint.position;
+            // if (NavMesh.SamplePosition(dropPosition, out NavMeshHit hit, 2f, context.agent.areaMask))
+            // {
+            //     dropPosition = hit.position + Vector3.up * 0.35f;
+            // }
 
-            if (context.interact.TryDrop(dropPosition))
-            {
-                context.CompleteDelivery(heldShard);
-            }
-
+            // if (context.interact.Drop(dropPosition))
+            context.CompleteDelivery(heldShard);
+            
             Finish();
         }
     }
