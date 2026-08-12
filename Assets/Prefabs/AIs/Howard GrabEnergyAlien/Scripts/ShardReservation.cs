@@ -2,17 +2,49 @@ using UnityEngine;
 
 namespace Howard.ShardAI
 {
-    // Stops two aliens from choosing the same shard and stops delivered shards being collected again.
+    // Records whether this shard still needs delivery and which alien is working on it.
     public class ShardReservation : MonoBehaviour
     {
         public AlienShardContext owner;
-        public bool isDelivered;
+        public bool isAtDropPoint;
+        public Vector3 dropPosition;
+        public float movedDistanceToNeedDelivery = 0.75f;
+
+        public void RefreshState()
+        {
+            Shard_Model thisShard = GetComponent<Shard_Model>();
+            AlienShardContext alienHolder = FindAlienHolder(thisShard);
+
+            if (alienHolder != null)
+            {
+                isAtDropPoint = false;
+                owner = alienHolder;
+                return;
+            }
+
+            if (isAtDropPoint)
+            {
+                float movedDistance = Vector3.Distance(transform.position, dropPosition);
+
+                if (movedDistance > movedDistanceToNeedDelivery)
+                {
+                    isAtDropPoint = false;
+                }
+            }
+
+            ClearInvalidOwner(thisShard);
+        }
 
         public bool CanReserve(AlienShardContext requester)
         {
-            bool hasNoOwner = owner == null;
-            bool ownedByRequester = owner == requester;
-            return !isDelivered && (hasNoOwner || ownedByRequester);
+            RefreshState();
+
+            if (isAtDropPoint)
+            {
+                return false;
+            }
+
+            return owner == null || owner == requester;
         }
 
         public bool TryReserve(AlienShardContext requester)
@@ -26,6 +58,30 @@ namespace Howard.ShardAI
             return true;
         }
 
+        public void MarkCarried(AlienShardContext carrier)
+        {
+            isAtDropPoint = false;
+            owner = carrier;
+        }
+
+        public void MarkNeedsDelivery()
+        {
+            isAtDropPoint = false;
+            owner = null;
+        }
+
+        public void MarkDelivered(AlienShardContext carrier)
+        {
+            if (owner != null && owner != carrier)
+            {
+                return;
+            }
+
+            isAtDropPoint = true;
+            dropPosition = transform.position;
+            owner = null;
+        }
+
         public void Release(AlienShardContext requester)
         {
             if (owner == requester)
@@ -34,15 +90,33 @@ namespace Howard.ShardAI
             }
         }
 
-        public void MarkDelivered(AlienShardContext requester)
+        private void ClearInvalidOwner(Shard_Model thisShard)
         {
-            if (owner != null && owner != requester)
+            if (owner == null)
             {
                 return;
             }
 
-            isDelivered = true;
-            owner = null;
+            bool ownerIsActive = owner.isActiveAndEnabled;
+            bool ownerStillTargetsShard = owner.targetShard == thisShard;
+
+            if (!ownerIsActive || !ownerStillTargetsShard)
+            {
+                owner = null;
+            }
+        }
+
+        private AlienShardContext FindAlienHolder(Shard_Model shard)
+        {
+            foreach (AlienShardContext alien in FindObjectsByType<AlienShardContext>(FindObjectsSortMode.None))
+            {
+                if (alien.IsShardInHands(shard))
+                {
+                    return alien;
+                }
+            }
+
+            return null;
         }
     }
 }

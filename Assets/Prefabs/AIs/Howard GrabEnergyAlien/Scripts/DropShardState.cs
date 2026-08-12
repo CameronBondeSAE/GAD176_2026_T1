@@ -7,7 +7,9 @@ namespace Howard.ShardAI
     {
         public override void Execute(float deltaTime, float timeScale)
         {
-            if (!context.IsHoldingShard() || context.dropPoint == null)
+            Shard_Model heldShard = context.GetHeldShard();
+
+            if (heldShard == null || context.dropPoint == null)
             {
                 Finish();
                 return;
@@ -26,7 +28,7 @@ namespace Howard.ShardAI
 
             if (context.interact.TryDrop(dropPosition))
             {
-                context.CompleteDelivery();
+                context.CompleteDelivery(heldShard);
             }
 
             Finish();
