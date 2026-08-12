@@ -18,7 +18,7 @@ namespace Keegan.FOV
     {
         // Min distance between each polygon point for drawing
         // (There may be a collider missing or something, that could make this redundant)
-        private static readonly float POLYGON_MIN_DISTANCE_BETWEEN = 3.0f;
+        private static readonly float POLYGON_MIN_DISTANCE_BETWEEN = 0.25f;
         public enum VisualFOV
         {
             Polyline,
@@ -36,7 +36,7 @@ namespace Keegan.FOV
         // The directions the raycast will perform in
         protected List<Vector3> _detectionCastDirections = new List<Vector3>();
         [SerializeField, Tooltip("The Amount of cast from left to right")]
-        protected int _detectionCastCount = 7;
+        protected int _detectionCastCount = 100;
 
         [Header("Radial Cast Settings")]
         [SerializeField]
@@ -144,7 +144,7 @@ namespace Keegan.FOV
             foreach(var direction in _detectionCastDirections)
             {
                 // Perform the raycast for detection
-                int hitCount = Physics.RaycastNonAlloc(transform.position, transform.forward + transform.TransformDirection(direction), _castHitResults, _sightCastDistance, _detectionMask);
+                int hitCount = Physics.RaycastNonAlloc(transform.position, transform.forward + transform.TransformDirection(direction), _castHitResults, _sightCastDistance, _detectionMask, QueryTriggerInteraction.Ignore);
                 if (hitCount > 0 && _castHitResults[0].collider != null)
                 {
                     // Check if the hit collider has the IFovDetectable interface
@@ -215,7 +215,7 @@ namespace Keegan.FOV
                 {
                     Vector3 castPoint =  transform.TransformDirection(dir);
                     //Vector3 worldDirection = Vector3.Normalize((transform.TransformDirection(dir) - transform.position));
-                    int hitCount = Physics.RaycastNonAlloc(transform.position, castPoint, _castPolygonHitPoints, _sightCastDistance, _detectionMask);
+                    int hitCount = Physics.RaycastNonAlloc(transform.position, castPoint, _castPolygonHitPoints, _sightCastDistance, _detectionMask, QueryTriggerInteraction.Ignore);
                     Vector3 finalHitPoint;
                     if (hitCount > 0)
                     {
@@ -226,7 +226,7 @@ namespace Keegan.FOV
                         finalHitPoint = dir;
                     }
 
-                    if (Vector2.Distance(new Vector2(finalHitPoint.x, finalHitPoint.z), p.LastPoint) > POLYGON_MIN_DISTANCE_BETWEEN)
+                    // if (Vector2.Distance(new Vector2(finalHitPoint.x, finalHitPoint.z), p.LastPoint) > POLYGON_MIN_DISTANCE_BETWEEN)
                         p.AddPoint(finalHitPoint.x, finalHitPoint.z);
                 }
                 

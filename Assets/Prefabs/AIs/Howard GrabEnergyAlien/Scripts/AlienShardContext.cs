@@ -1,12 +1,13 @@
 using System.Collections.Generic;
 using Frank;
+using Keegan.FOV;
 using UnityEngine;
 using UnityEngine.AI;
 
 namespace Howard.ShardAI
 {
     [RequireComponent(typeof(NavMeshAgent))]
-    public class AlienShardContext : MonoBehaviour
+    public class AlienShardContext : MonoBehaviour, IFovDetectable
     {
         public Interact interact;
         public Transform hands;
@@ -384,6 +385,11 @@ namespace Howard.ShardAI
             }
 
             return totalDistance;
+        }
+
+        public void SetDetected(bool detected)
+        {
+	        GetComponentInChildren<MeshRenderer>().enabled = detected;
         }
     }
 }

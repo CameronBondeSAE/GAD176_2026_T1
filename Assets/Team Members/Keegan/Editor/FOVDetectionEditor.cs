@@ -83,6 +83,10 @@ namespace Keegan.FOV
             
             // Apply the updated values
             serializedObject.ApplyModifiedProperties();
+            
+            
+            
+            DrawDefaultInspector();
         }
         
     }
