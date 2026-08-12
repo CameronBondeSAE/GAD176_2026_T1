@@ -1,11 +1,14 @@
 using System;
+using System.Linq;
 using System.Net.NetworkInformation;
 using System.Threading.Tasks;
+using Unity.Multiplayer.Playmode;
 using Unity.Netcode.Transports.UTP;
 using Unity.Services.Authentication;
 using Unity.Services.Core;
 using Unity.Services.Relay;
 using Unity.Services.Relay.Models;
+using UnityEditor;
 using UnityEngine;
 using Ping = System.Net.NetworkInformation.Ping;
 
@@ -31,7 +34,37 @@ namespace Unity.Netcode.Samples
 		string ipAddress = "127.0.0.1";
 
 		public string joinCode;
-		
+
+		public bool autoStartHostAndClient = false;
+
+
+		private void OnEnable()
+		{
+			EditorApplication.playModeStateChanged += OnPlayModeStateChanged;
+		}
+
+		private void OnPlayModeStateChanged(PlayModeStateChange obj)
+		{
+			
+			if (autoStartHostAndClient && obj == PlayModeStateChange.EnteredPlayMode)
+			{
+				string[]       mppmTag        = CurrentPlayer.ReadOnlyTags();
+				NetworkManager networkManager = NetworkManager.Singleton;
+				if (mppmTag.Contains("Server"))
+				{
+					networkManager.StartServer();
+				}
+				else if (mppmTag.Contains("Host"))
+				{
+					networkManager.StartHost();
+				}
+				else if (mppmTag.Contains("Client"))
+				{
+					networkManager.StartClient();
+				}
+			}
+		}
+
 
 		public async Task<string> StartHostWithRelay(int maxConnections, string connectionType)
 		{

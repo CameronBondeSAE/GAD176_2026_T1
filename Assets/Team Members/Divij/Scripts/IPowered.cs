@@ -26,7 +26,6 @@ namespace Divij
 		/// <param name="shard is so you can remove from your list of power providers"></param>
 		void PotentialEnergyRemoved(Shard_Model shard)
 		{
-			
 		}
 	}
 }

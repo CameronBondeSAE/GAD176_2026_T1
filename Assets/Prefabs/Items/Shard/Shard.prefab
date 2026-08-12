@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8648401554987166246}
   - component: {fileID: 2288807335866320190}
   - component: {fileID: 7427269777615180636}
-  m_Layer: 11
+  m_Layer: 10
   m_Name: View
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -98,7 +98,8 @@ GameObject:
   - component: {fileID: 5399163131722457745}
   - component: {fileID: 1941384148205689670}
   - component: {fileID: 7946901774068102704}
-  m_Layer: 11
+  - component: {fileID: 243210382968609589}
+  m_Layer: 10
   m_Name: Shard
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -154,6 +155,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 381be8dd2f2f2ed4aa7052da7f1e6b9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxEnergy: 100
+  currentEnergy: 0
+  destroyParticles: {fileID: 4845566528624793610, guid: 6dcbc4f2ae17dde49b498ee82e25818e, type: 3}
+  onShardDestroy:
+    m_PersistentCalls:
+      m_Calls: []
+  onShardPickedUp:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &7946901774068102704
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -180,3 +190,24 @@ MonoBehaviour:
   AutoObjectParentSync: 1
   SyncOwnerTransformWhenParented: 1
   AllowOwnerToParent: 0
+--- !u!135 &243210382968609589
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8579136275247557205}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 6.37
+  m_Center: {x: 0, y: 0, z: 0}

@@ -11,6 +11,7 @@ namespace Keegan.ShardSpawn
         {
             None,
             Collected,
+            AfterPickup,
             Loop
         }
         
@@ -50,10 +51,9 @@ namespace Keegan.ShardSpawn
 
         [SerializeField, Tooltip("The method used to respawn shards once spawned")]
         private RespawnType respawnType;
-
-        // TODO: Replace GameObject with ShardController
+        
         // Reference to all the spawned shards in this spawner
-        private List<TestShard> spawnedShards = new List<TestShard>();
+        private List<Shard_Model> spawnedShards = new List<Shard_Model>();
 
         private SuntoTime sunTime;
 
@@ -82,6 +82,13 @@ namespace Keegan.ShardSpawn
                 sunTime.OnHourChange.RemoveListener(OnHourChange);
         }
 
+        private void OnTriggerExit(Collider other)
+        {
+            Shard_Model shard = other.GetComponentInChildren<Shard_Model>();
+            if(shard != null)
+                Debug.Log("Hello World!");
+        }
+
         /// <summary>
         /// Begins the co routine for spawn shards
         /// </summary>
@@ -90,7 +97,7 @@ namespace Keegan.ShardSpawn
             if(canSpawnShard)
                 StartCoroutine(SpawnShardRoutine(Random.Range(minSpawnTime, maxSpawnTime)));
         }
-
+        
         
         /// <summary>
         /// Routine to countdown to shard spawn
@@ -122,14 +129,17 @@ namespace Keegan.ShardSpawn
                 if (targetPosition != Vector3.zero)
                 {
                     instance.transform.position = targetPosition;
-                    TestShard shard = instance.GetComponentInChildren<TestShard>();
+                    Shard_Model shard = instance.GetComponentInChildren<Shard_Model>();
                     if (shard != null)
                     {
+                        shard.onShardPickedUp.AddListener(OnShardCollected);
                         spawnedShards.Add(shard);
-                        shard.OnShardCollected.AddListener(OnShardCollected);
                     }
                     else
                     {
+                        #if UNITY_EDITOR
+                        Debug.LogError($"Failed to get the shard_model");
+                        #endif
                         Destroy(instance);
                     }
                 }
@@ -185,11 +195,11 @@ namespace Keegan.ShardSpawn
         /// TODO: Replace GameObject with the ShardController
         /// </summary>
         /// <param name="collected">Reference to the shard that was collected</param>
-        public void OnShardCollected(TestShard collected)
+        public void OnShardCollected(Shard_Model collected)
         {
             if (spawnedShards.Contains(collected))
             {
-                collected.OnShardCollected.RemoveListener(OnShardCollected);
+                collected.onShardPickedUp.RemoveListener(OnShardCollected);
                 spawnedShards.Remove(collected);
                 
                 if (respawnType == RespawnType.Collected)
