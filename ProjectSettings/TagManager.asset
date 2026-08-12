@@ -11,6 +11,8 @@ TagManager:
   - Gun
   - AI
   - Alien
+  - Shard
+  - DropPoint
   layers:
   - Default
   - TransparentFX
