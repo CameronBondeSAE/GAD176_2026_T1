@@ -132,7 +132,7 @@ namespace Divij
 			        }
 
 			        // We've gathered enough energy from one or more shards. Turn on
-			        Debug.Log(tempEnergyUsedForMultipleShards);
+			        // Debug.Log(tempEnergyUsedForMultipleShards);
 			        if (tempEnergyUsedForMultipleShards >= requiredEnergyForOneSecond)
 			        {
 				        SetPowered(true);
