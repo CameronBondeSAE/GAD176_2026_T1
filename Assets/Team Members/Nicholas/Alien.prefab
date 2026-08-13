@@ -269,6 +269,7 @@ GameObject:
   - component: {fileID: 5998830100646437924}
   - component: {fileID: 5347148702435088910}
   - component: {fileID: 4196147946951133968}
+  - component: {fileID: 1244791590085134576}
   m_Layer: 0
   m_Name: Alien
   m_TagString: Untagged
@@ -331,7 +332,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GlobalObjectIdHash: 2520655390
+  GlobalObjectIdHash: 345635106
   InScenePlacedSourceGlobalObjectIdHash: 2750325323
   DeferredDespawnTick: 0
   Ownership: 1
@@ -436,6 +437,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   alienSense: {fileID: 4854840890151683823}
+--- !u!114 &1244791590085134576
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3861230167814697102}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fae1bfd12cbc7c84f8039ee99b08f833, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4043127706263036775
 GameObject:
   m_ObjectHideFlags: 0

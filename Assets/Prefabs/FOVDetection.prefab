@@ -51,7 +51,7 @@ MonoBehaviour:
   _castType: 1
   _detectionMask:
     serializedVersion: 2
-    m_Bits: 695
+    m_Bits: 703
   _visualType: 1
   _fovShapeColor: {r: 1, g: 0.5, b: 0.5, a: 0.20392157}
   seenEnemy:
