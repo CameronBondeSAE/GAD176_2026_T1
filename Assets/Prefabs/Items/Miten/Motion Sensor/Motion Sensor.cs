@@ -12,10 +12,9 @@ public class MotionSensor : MonoBehaviour, IPowered, IPickup
     public int activationEnergy;
     public bool enoughEnergy;
     public bool continuespawning;
-    public bool portalFXRunning;
     public GameObject FOV;
 
-    public List<Shard_Model> shardList = new List<Shard_Model>();
+    public HashSet<Shard_Model> shardList = new HashSet<Shard_Model>();
     
     public void SetPowered(bool powered)
     {
@@ -40,11 +39,11 @@ public class MotionSensor : MonoBehaviour, IPowered, IPickup
 
     void Start()
     {
+        activationEnergy = 2;
+        neededEnergy = 2;
         FOV = GameObject.Find("FOVDetection Motion Sensor");
         StartCoroutine(CalcLoop());
         StartCoroutine(PortalOn());
-        activationEnergy = 2;
-        neededEnergy = 2;
     }
     
     bool CalculateNeededEnergy()
@@ -75,9 +74,9 @@ public class MotionSensor : MonoBehaviour, IPowered, IPickup
 
     bool CalculateContinueEnergy()
     {
+        totalEnergy = 0;
         foreach (Shard_Model shard in shardList)
         {
-            totalEnergy = 0;
             totalEnergy += shard.CurrentEnergy;
         }
 
@@ -99,6 +98,7 @@ public class MotionSensor : MonoBehaviour, IPowered, IPickup
         {
             while (continuespawning == true)
             {
+                FOV.SetActive(true);
                 yield return new WaitForSeconds(1);
                 int remainingToRemove = totalEnergy;
                 int neededToCont = 2;
