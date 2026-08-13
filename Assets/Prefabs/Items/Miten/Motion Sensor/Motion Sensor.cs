@@ -1,24 +1,22 @@
 using System.Collections;
 using System.Collections.Generic;
 using Divij;
+using Frank;
+using Keegan.FOV;
 using UnityEngine;
-using UnityEngine.PlayerLoop;
-using UnityEngine.Rendering.HighDefinition;
 
-public class PortalScript : MonoBehaviour, IPowered
+public class MotionSensor : MonoBehaviour, IPowered, IPickup
 {
-    public List<GameObject> lightnings = new List<GameObject>();
-
     public int neededEnergy;
     public int totalEnergy;
     public int activationEnergy;
     public bool enoughEnergy;
     public bool continuespawning;
     public bool portalFXRunning;
+    public GameObject FOV;
 
     public List<Shard_Model> shardList = new List<Shard_Model>();
     
-
     public void SetPowered(bool powered)
     {
         throw new System.NotImplementedException();
@@ -28,7 +26,8 @@ public class PortalScript : MonoBehaviour, IPowered
     {
         throw new System.NotImplementedException();
     }
-
+    
+    
     public void ReceivePotentialEnergy(Shard_Model shard)
     {
         shardList.Add(shard);
@@ -41,7 +40,8 @@ public class PortalScript : MonoBehaviour, IPowered
 
     void Start()
     {
-        StartCoroutine(calcloop());
+        FOV = GameObject.Find("FOVDetection Motion Sensor");
+        StartCoroutine(CalcLoop());
         StartCoroutine(PortalOn());
     }
     
@@ -64,9 +64,8 @@ public class PortalScript : MonoBehaviour, IPowered
         }
         
         if (enoughEnergy)
-        {
-            if (!portalFXRunning)
-                StartCoroutine(portalActivated());
+        { 
+            FOV.SetActive(true);
         }
  
         return enoughEnergy = false;
@@ -98,15 +97,9 @@ public class PortalScript : MonoBehaviour, IPowered
         {
             while (continuespawning == true)
             {
-                if (!portalFXRunning)
-                {
-                    portalFXRunning = true;
-                    StartCoroutine(portalActivated());
-                }
-                
                 yield return new WaitForSeconds(1);
                 int remainingToRemove = totalEnergy;
-                int neededToSpawn = 10;
+                int neededToCont = 10;
 
                 // Pass 2: Remove energy
                 foreach (Shard_Model shard in shardList)
@@ -114,7 +107,7 @@ public class PortalScript : MonoBehaviour, IPowered
                     if (remainingToRemove <= 0)
                         break;
 
-                    if (shard.CurrentEnergy < neededToSpawn)
+                    if (shard.CurrentEnergy < neededToCont)
                     {
                         if (shard.CurrentEnergy <= remainingToRemove)
                         {
@@ -127,9 +120,9 @@ public class PortalScript : MonoBehaviour, IPowered
                             shard.UseEnergy(remainingToRemove);
                             remainingToRemove = 0;
                         }
-                    } else if (shard.CurrentEnergy >= neededToSpawn)
+                    } else if (shard.CurrentEnergy >= neededToCont)
                     {
-                        remainingToRemove = neededToSpawn;
+                        remainingToRemove = neededToCont;
                         if (shard.CurrentEnergy <= remainingToRemove)
                         {
                             shard.UseEnergy(shard.CurrentEnergy);
@@ -147,25 +140,17 @@ public class PortalScript : MonoBehaviour, IPowered
             }
             if (continuespawning == false)
             {
-                portalFXRunning = false;
-                StopCoroutine(portalActivated());
+                FOV.SetActive(false);
             }
         }
     }
 
-    public IEnumerator calcloop()
+    public IEnumerator CalcLoop()
     {
         while (true)
         {
             yield return new WaitForSeconds(1);
             CalculateNeededEnergy();
         }
-    }
-
-    IEnumerator portalActivated()
-    {
-        yield return new WaitForSeconds(0.01f);
-        GameObject chosenlightning = lightnings[Random.Range(0, lightnings.Count)];
-        chosenlightning.gameObject.SetActive(!chosenlightning.gameObject.activeSelf);
     }
 }
