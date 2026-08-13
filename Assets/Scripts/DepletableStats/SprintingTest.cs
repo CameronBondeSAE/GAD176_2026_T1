@@ -2,6 +2,7 @@ using System;
 using Unity.Cinemachine;
 using UnityEngine;
 using UnityEngine.InputSystem;
+
 public class SprintingTest : MonoBehaviour
 {
     private Vector3 velocity;
@@ -11,7 +12,6 @@ public class SprintingTest : MonoBehaviour
     public StaminaSys staminaSys;
     private bool canSprint = true;
 
-    
     private void OnEnable()
     {
         if (staminaSys == null)
@@ -19,6 +19,7 @@ public class SprintingTest : MonoBehaviour
             Debug.LogWarning("NULL: staminaSys is not assigned on player");
             return;
         }
+
         staminaSys.OnStaminaFullEvent.AddListener(StaminaFull);
         staminaSys.StaminaDepletedEvent.AddListener(StaminaEmpty);
     }
@@ -28,10 +29,7 @@ public class SprintingTest : MonoBehaviour
         staminaSys.OnStaminaFullEvent.RemoveListener(StaminaFull);
         staminaSys.StaminaDepletedEvent.RemoveListener(StaminaEmpty);
     }
-    
-    
-    
-    
+
     private void Start()
     {
         playerModel = GetComponentInChildren<Player_Model>();
@@ -39,8 +37,8 @@ public class SprintingTest : MonoBehaviour
         if (playerModel == null)
         {
             Debug.LogWarning("No Player_Model script found in child gameobjects");
-            
         }
+
         if (staminaSys == null)
         {
             Debug.LogWarning("No StaminaSys script found in root gameobjects");
@@ -49,19 +47,18 @@ public class SprintingTest : MonoBehaviour
         {
             baseSpeedMultiplier = GetComponentInChildren<Player_Model>().speedMultiplier;
         }
-        
     }
 
     void FixedUpdate()
     {
-       Sprint();
+        Sprint();
     }
 
     public void StaminaFull()
     {
         canSprint = true;
     }
-    
+
     public void StaminaEmpty()
     {
         canSprint = false;
@@ -70,17 +67,20 @@ public class SprintingTest : MonoBehaviour
 
     public void Sprint()
     {
-        if (canSprint == true)
+        if (playerModel == null || staminaSys == null)
         {
-            if (Keyboard.current.shiftKey.isPressed)
-            {
-                GetComponent<StaminaSys>().OnUse(20);
-                GetComponentInChildren<Player_Model>().speedMultiplier = newSpeedMultiplier;
-            }
-            else
-            {
-                GetComponentInChildren<Player_Model>().speedMultiplier = baseSpeedMultiplier;
-            }
+            return;
+        }
+
+        if (canSprint && Keyboard.current.shiftKey.isPressed)
+        {
+            staminaSys.UseStamina(20);
+
+            playerModel.speedMultiplier = newSpeedMultiplier;
+        }
+        else
+        {
+            playerModel.speedMultiplier = baseSpeedMultiplier;
         }
     }
     //If you're pressing shift, start telling the stamina system you're using stamina, set the movespeed mult

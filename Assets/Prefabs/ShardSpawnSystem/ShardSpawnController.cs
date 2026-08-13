@@ -1,11 +1,13 @@
 using System;
 using System.Collections.Generic;
 using System.Collections;
+using Unity.Netcode;
 using UnityEngine;
 using Random = UnityEngine.Random;
+
 namespace Keegan.ShardSpawn
 {
-    public class ShardSpawnController : MonoBehaviour
+    public class ShardSpawnController : NetworkBehaviour
     {
         public enum RespawnType
         {
@@ -14,12 +16,12 @@ namespace Keegan.ShardSpawn
             AfterPickup,
             Loop
         }
-        
+
         [SerializeField, Tooltip("The prefab for the shard that will spawn")]
         private GameObject shardPrefab;
 
         [SerializeField, Tooltip("True if the shard can be used as it's inside the time range")]
-        private bool canSpawnShard = false;
+        private bool canSpawnShard = true;
 
         [Header("Spawn Time Settings")]
         [SerializeField, Tooltip("The min amount of time before a shard will spawn (again)")]
@@ -36,7 +38,7 @@ namespace Keegan.ShardSpawn
 
         [SerializeField, Tooltip("The hour that the shards stop spawning"), Range(0, 24)]
         private int shardSpawnTo;
-        
+
         [SerializeField, Tooltip("Reference to the transform that the shard will spawn on")]
         private Transform spawnOnTransform;
 
@@ -51,7 +53,7 @@ namespace Keegan.ShardSpawn
 
         [SerializeField, Tooltip("The method used to respawn shards once spawned")]
         private RespawnType respawnType;
-        
+
         // Reference to all the spawned shards in this spawner
         private List<Shard_Model> spawnedShards = new List<Shard_Model>();
 
@@ -60,18 +62,27 @@ namespace Keegan.ShardSpawn
 
         private SuntoTime sunTime;
 
+        public override void OnNetworkSpawn()
+        {
+            Debug.Log("ShardSpawner spawned. IsServer: " + IsServer);
+
+            if (!IsServer)
+            {
+                return;
+            }
+            
+            TriggerShardSpawn();
+        }
+
         private void Start()
         {
-            TriggerShardSpawn();
             BoxCollider groundCollider = GetComponentInChildren<BoxCollider>();
-            if (groundCollider != null)
-                groundCollider.size = spawnBoxBounds;
+            if (groundCollider != null) groundCollider.size = spawnBoxBounds;
         }
 
         private void OnEnable()
         {
-            if (sunTime == null)
-                sunTime = GameObject.FindFirstObjectByType<SuntoTime>();
+            if (sunTime == null) sunTime = GameObject.FindFirstObjectByType<SuntoTime>();
 
             if (sunTime != null)
             {
@@ -81,15 +92,13 @@ namespace Keegan.ShardSpawn
 
         private void OnDisable()
         {
-            if(sunTime != null)
-                sunTime.OnHourChange.RemoveListener(OnHourChange);
+            if (sunTime != null) sunTime.OnHourChange.RemoveListener(OnHourChange);
         }
 
         private void OnTriggerExit(Collider other)
         {
             Shard_Model shard = other.GetComponentInChildren<Shard_Model>();
-            if(shard != null)
-                Debug.Log("Hello World!");
+            if (shard != null) Debug.Log("Hello World!");
         }
 
         /// <summary>
@@ -97,11 +106,17 @@ namespace Keegan.ShardSpawn
         /// </summary>
         public void TriggerShardSpawn()
         {
-            if(canSpawnShard)
+            if (!IsServer)
+            {
+                return;
+            }
+
+            if (canSpawnShard)
+            {
                 StartCoroutine(SpawnShardRoutine(Random.Range(minSpawnTime, maxSpawnTime)));
+            }
         }
-        
-        
+
         /// <summary>
         /// Routine to countdown to shard spawn
         /// </summary>
@@ -119,42 +134,70 @@ namespace Keegan.ShardSpawn
         /// </summary>
         private void OnSpawnShard()
         {
-            if (shardPrefab == null)
+            Debug.Log("Attempting to spawn shard");
+
+            if (!IsServer)
             {
-                Debug.LogError($"Cannot spawn shard as prefab not assigned");
                 return;
             }
 
-
-            if (spawnOnTransform != null)
+            if (shardPrefab == null)
             {
-                GameObject instance = GameObject.Instantiate(shardPrefab, spawnOnTransform);
-                Vector3 targetPosition = GetRandomSpawnPoint(instance.GetComponentInChildren<Collider>().bounds.extents);
-                if (targetPosition != Vector3.zero)
-                {
-                    instance.transform.position = targetPosition;
-                    Shard_Model shard = instance.GetComponentInChildren<Shard_Model>();
-                    if (shard != null)
-                    {
-                        shard.onShardPickedUp.AddListener(OnShardCollected);
-                        spawnedShards.Add(shard);
-                    }
-                    else
-                    {
-                        #if UNITY_EDITOR
-                        Debug.LogError($"Failed to get the shard_model");
-                        #endif
-                        Destroy(instance);
-                    }
-                }
-                else
-                {
-                    Destroy(instance);
-                }
+                Debug.LogError("Cannot spawn shard because prefab is not assigned.");
+                return;
+            }
+
+            if (spawnOnTransform == null)
+            {
+                return;
+            }
+
+            GameObject instance = Instantiate(shardPrefab, spawnOnTransform);
+
+            Collider shardCollider = instance.GetComponentInChildren<Collider>();
+
+            if (shardCollider == null)
+            {
+                Destroy(instance);
+                return;
+            }
+
+            Vector3 targetPosition = GetRandomSpawnPoint(shardCollider.bounds.extents);
+
+            if (targetPosition == Vector3.zero)
+            {
+                Destroy(instance);
+                return;
+            }
+
+            instance.transform.position = targetPosition;
+
+            NetworkObject networkObject = instance.GetComponent<NetworkObject>();
+
+            if (networkObject == null)
+            {
+                Debug.LogError("Shard prefab requires a NetworkObject component.");
+
+                Destroy(instance);
+                return;
+            }
+
+            networkObject.Spawn(true);
+            
+            Debug.Log("SERVER spawned shard: " + networkObject.NetworkObjectId);
+
+            Shard_Model shard = instance.GetComponentInChildren<Shard_Model>();
+
+            if (shard != null)
+            {
+                shard.onShardPickedUp.AddListener(OnShardCollected);
+                spawnedShards.Add(shard);
             }
 
             if (respawnType == RespawnType.Loop)
+            {
                 TriggerShardSpawn();
+            }
         }
 
         /// <summary>
@@ -167,7 +210,7 @@ namespace Keegan.ShardSpawn
             int maxLoop = 30;
             for (var i = 0; i < maxLoop; ++i)
             {
-                Vector3 targetPosition =  new Vector3
+                Vector3 targetPosition = new Vector3
                 {
                     x = transform.position.x + (Random.Range(-spawnBoxBounds.x / 2, spawnBoxBounds.x / 2)),
                     y = 6f,
@@ -179,13 +222,15 @@ namespace Keegan.ShardSpawn
                     targetPosition = hit.point;
                 }
 
-                if (!ShardAtSpawnPosition(new Vector3(targetPosition.x, (targetPosition.y - shardBoundsExtent.y), targetPosition.z), shardBoundsExtent))
+                if (!ShardAtSpawnPosition(
+                        new Vector3(targetPosition.x, (targetPosition.y - shardBoundsExtent.y), targetPosition.z),
+                        shardBoundsExtent))
                     return targetPosition;
             }
-            
-            #if UNITY_EDITOR
+
+#if UNITY_EDITOR
             Debug.LogWarning("Couldn't find a empty place to spawn shard after 30 loops, skipping spawn position");
-            #endif
+#endif
             return Vector3.zero;
         }
 
@@ -201,11 +246,16 @@ namespace Keegan.ShardSpawn
         /// <param name="collected">Reference to the shard that was collected</param>
         public void OnShardCollected(Shard_Model collected)
         {
+            if (!IsServer)
+            {
+                return;
+            }
+
             if (spawnedShards.Contains(collected))
             {
                 collected.onShardPickedUp.RemoveListener(OnShardCollected);
                 spawnedShards.Remove(collected);
-                
+
                 if (respawnType == RespawnType.Collected)
                 {
                     TriggerShardSpawn();
@@ -219,8 +269,12 @@ namespace Keegan.ShardSpawn
         /// <param name="hour">The current hour emitted</param>
         public void OnHourChange()
         {
-            if (sunTime == null)
+            if (!IsServer)
+            {
                 return;
+            }
+
+            if (sunTime == null) return;
 
             // Get the 24 hour time
             int currentHour = sunTime.modhours + (sunTime.AMPM ? 0 : 12);
@@ -235,20 +289,31 @@ namespace Keegan.ShardSpawn
             }
             else
             {
-                if(canSpawnShard)
-                    canSpawnShard = false;
+                if (canSpawnShard) canSpawnShard = false;
             }
         }
-        
-        
-        #if UNITY_EDITOR
+
+#if UNITY_EDITOR
         public void OnDrawGizmosSelected()
         {
-            if (spawnBoxBounds == Vector3.zero)
-                return;
+            if (spawnBoxBounds == Vector3.zero) return;
 
             Gizmos.color = Color.yellow;
             Gizmos.DrawWireCube(transform.position, spawnBoxBounds);
+        }
+        
+        public void DebugSpawnShard()
+        {
+            if (!IsServer)
+            {
+                Debug.LogWarning(
+                    "Cannot spawn shard because this is not the server."
+                );
+
+                return;
+            }
+
+            OnSpawnShard();
         }
 #endif
     }

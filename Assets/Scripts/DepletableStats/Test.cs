@@ -16,7 +16,7 @@ public class Test : MonoBehaviour
     {
         if (hurtArea.tag == "Player")
         {
-            hurtArea.GetComponent<HealthSys>().OnDmg(1);
+            hurtArea.GetComponent<HealthSys>().Damage(1);
         }
         
     }

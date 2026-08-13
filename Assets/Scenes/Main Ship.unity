@@ -825,6 +825,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2475571437998584456, guid: 9e3621f5a3249914981ee0387be74d89, type: 3}
+      propertyPath: m_InScenePlaced
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2475571437998584456, guid: 9e3621f5a3249914981ee0387be74d89, type: 3}
+      propertyPath: GlobalObjectIdHash
+      value: 3618895643
+      objectReference: {fileID: 0}
+    - target: {fileID: 2475571437998584456, guid: 9e3621f5a3249914981ee0387be74d89, type: 3}
+      propertyPath: InScenePlacedSourceGlobalObjectIdHash
+      value: 870816688
+      objectReference: {fileID: 0}
     - target: {fileID: 3424173018776249042, guid: 9e3621f5a3249914981ee0387be74d89, type: 3}
       propertyPath: maxSpawnTime
       value: 121.7
@@ -2027,6 +2039,22 @@ PrefabInstance:
     - target: {fileID: 1913360336110716051, guid: b8fe0a06c7288134fa74f5e9b57cf9de, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2584861037465501343, guid: b8fe0a06c7288134fa74f5e9b57cf9de, type: 3}
+      propertyPath: m_InScenePlaced
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2584861037465501343, guid: b8fe0a06c7288134fa74f5e9b57cf9de, type: 3}
+      propertyPath: GlobalObjectIdHash
+      value: 3321161018
+      objectReference: {fileID: 0}
+    - target: {fileID: 2584861037465501343, guid: b8fe0a06c7288134fa74f5e9b57cf9de, type: 3}
+      propertyPath: SceneMigrationSynchronization
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2584861037465501343, guid: b8fe0a06c7288134fa74f5e9b57cf9de, type: 3}
+      propertyPath: InScenePlacedSourceGlobalObjectIdHash
+      value: 2375795655
       objectReference: {fileID: 0}
     - target: {fileID: 7946901774068102704, guid: b8fe0a06c7288134fa74f5e9b57cf9de, type: 3}
       propertyPath: m_InScenePlaced
@@ -4037,6 +4065,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2584861037465501343, guid: b8fe0a06c7288134fa74f5e9b57cf9de, type: 3}
+      propertyPath: m_InScenePlaced
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2584861037465501343, guid: b8fe0a06c7288134fa74f5e9b57cf9de, type: 3}
+      propertyPath: GlobalObjectIdHash
+      value: 1071473544
+      objectReference: {fileID: 0}
+    - target: {fileID: 2584861037465501343, guid: b8fe0a06c7288134fa74f5e9b57cf9de, type: 3}
+      propertyPath: SceneMigrationSynchronization
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2584861037465501343, guid: b8fe0a06c7288134fa74f5e9b57cf9de, type: 3}
+      propertyPath: InScenePlacedSourceGlobalObjectIdHash
+      value: 2375795655
+      objectReference: {fileID: 0}
     - target: {fileID: 7946901774068102704, guid: b8fe0a06c7288134fa74f5e9b57cf9de, type: 3}
       propertyPath: m_InScenePlaced
       value: 1
@@ -5949,7 +5993,7 @@ PrefabInstance:
     m_TransformParent: {fileID: 1906013054}
     m_Modifications:
     - target: {fileID: 720191144722262764, guid: 5cdd240bc68478642b9efc8dea45850f, type: 3}
-      propertyPath: 'connectedDevices.Array.data[0]'
+      propertyPath: connectedDevices.Array.data[0]
       value: 
       objectReference: {fileID: 439464887}
     - target: {fileID: 6681137893633405280, guid: 5cdd240bc68478642b9efc8dea45850f, type: 3}
@@ -12753,6 +12797,32 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7313568232634554606, guid: 52f322377ca081143bd4f68b9be1aba4, type: 3}
   m_PrefabInstance: {fileID: 1584156554527722514}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &593315131
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 593315126}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GlobalObjectIdHash: 4160344583
+  InScenePlacedSourceGlobalObjectIdHash: 0
+  DeferredDespawnTick: 0
+  Ownership: 1
+  AlwaysReplicateAsRoot: 0
+  SynchronizeTransform: 1
+  m_InScenePlaced: 1
+  ActiveSceneSynchronization: 0
+  SceneMigrationSynchronization: 0
+  SpawnWithObservers: 1
+  DontDestroyWithOwner: 0
+  AutoObjectParentSync: 1
+  SyncOwnerTransformWhenParented: 1
+  AllowOwnerToParent: 0
 --- !u!1 &602940903 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3603667725943351644, guid: f5b6874fad2c2d6419d07c9dde23dfb0, type: 3}
@@ -13132,11 +13202,11 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2562647758439459723, guid: 0dd71246fb6f61b4398960fb2cd058d7, type: 3}
-      propertyPath: 'm_Materials.Array.data[0]'
+      propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: d6842569d6335794e98c1e1f99602bba, type: 2}
     - target: {fileID: 7685015664291882667, guid: 0dd71246fb6f61b4398960fb2cd058d7, type: 3}
-      propertyPath: 'm_Materials.Array.data[0]'
+      propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: d6842569d6335794e98c1e1f99602bba, type: 2}
     - target: {fileID: 9014336513655778086, guid: 0dd71246fb6f61b4398960fb2cd058d7, type: 3}
@@ -14762,6 +14832,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2584861037465501343, guid: b8fe0a06c7288134fa74f5e9b57cf9de, type: 3}
+      propertyPath: m_InScenePlaced
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2584861037465501343, guid: b8fe0a06c7288134fa74f5e9b57cf9de, type: 3}
+      propertyPath: GlobalObjectIdHash
+      value: 2361254589
+      objectReference: {fileID: 0}
+    - target: {fileID: 2584861037465501343, guid: b8fe0a06c7288134fa74f5e9b57cf9de, type: 3}
+      propertyPath: SceneMigrationSynchronization
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2584861037465501343, guid: b8fe0a06c7288134fa74f5e9b57cf9de, type: 3}
+      propertyPath: InScenePlacedSourceGlobalObjectIdHash
+      value: 2375795655
+      objectReference: {fileID: 0}
     - target: {fileID: 7946901774068102704, guid: b8fe0a06c7288134fa74f5e9b57cf9de, type: 3}
       propertyPath: m_InScenePlaced
       value: 1
@@ -14969,6 +15055,22 @@ PrefabInstance:
     - target: {fileID: 1913360336110716051, guid: b8fe0a06c7288134fa74f5e9b57cf9de, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2584861037465501343, guid: b8fe0a06c7288134fa74f5e9b57cf9de, type: 3}
+      propertyPath: m_InScenePlaced
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2584861037465501343, guid: b8fe0a06c7288134fa74f5e9b57cf9de, type: 3}
+      propertyPath: GlobalObjectIdHash
+      value: 3964683240
+      objectReference: {fileID: 0}
+    - target: {fileID: 2584861037465501343, guid: b8fe0a06c7288134fa74f5e9b57cf9de, type: 3}
+      propertyPath: SceneMigrationSynchronization
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2584861037465501343, guid: b8fe0a06c7288134fa74f5e9b57cf9de, type: 3}
+      propertyPath: InScenePlacedSourceGlobalObjectIdHash
+      value: 2375795655
       objectReference: {fileID: 0}
     - target: {fileID: 7946901774068102704, guid: b8fe0a06c7288134fa74f5e9b57cf9de, type: 3}
       propertyPath: m_InScenePlaced
@@ -19707,6 +19809,22 @@ PrefabInstance:
     - target: {fileID: 1913360336110716051, guid: b8fe0a06c7288134fa74f5e9b57cf9de, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2584861037465501343, guid: b8fe0a06c7288134fa74f5e9b57cf9de, type: 3}
+      propertyPath: m_InScenePlaced
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2584861037465501343, guid: b8fe0a06c7288134fa74f5e9b57cf9de, type: 3}
+      propertyPath: GlobalObjectIdHash
+      value: 576496022
+      objectReference: {fileID: 0}
+    - target: {fileID: 2584861037465501343, guid: b8fe0a06c7288134fa74f5e9b57cf9de, type: 3}
+      propertyPath: SceneMigrationSynchronization
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2584861037465501343, guid: b8fe0a06c7288134fa74f5e9b57cf9de, type: 3}
+      propertyPath: InScenePlacedSourceGlobalObjectIdHash
+      value: 2375795655
       objectReference: {fileID: 0}
     - target: {fileID: 7946901774068102704, guid: b8fe0a06c7288134fa74f5e9b57cf9de, type: 3}
       propertyPath: m_InScenePlaced
@@ -29874,6 +29992,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2584861037465501343, guid: b8fe0a06c7288134fa74f5e9b57cf9de, type: 3}
+      propertyPath: m_InScenePlaced
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2584861037465501343, guid: b8fe0a06c7288134fa74f5e9b57cf9de, type: 3}
+      propertyPath: GlobalObjectIdHash
+      value: 3134272133
+      objectReference: {fileID: 0}
+    - target: {fileID: 2584861037465501343, guid: b8fe0a06c7288134fa74f5e9b57cf9de, type: 3}
+      propertyPath: SceneMigrationSynchronization
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2584861037465501343, guid: b8fe0a06c7288134fa74f5e9b57cf9de, type: 3}
+      propertyPath: InScenePlacedSourceGlobalObjectIdHash
+      value: 2375795655
+      objectReference: {fileID: 0}
     - target: {fileID: 7946901774068102704, guid: b8fe0a06c7288134fa74f5e9b57cf9de, type: 3}
       propertyPath: m_InScenePlaced
       value: 1
@@ -34822,6 +34956,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2584861037465501343, guid: b8fe0a06c7288134fa74f5e9b57cf9de, type: 3}
+      propertyPath: m_InScenePlaced
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2584861037465501343, guid: b8fe0a06c7288134fa74f5e9b57cf9de, type: 3}
+      propertyPath: GlobalObjectIdHash
+      value: 2420577362
+      objectReference: {fileID: 0}
+    - target: {fileID: 2584861037465501343, guid: b8fe0a06c7288134fa74f5e9b57cf9de, type: 3}
+      propertyPath: SceneMigrationSynchronization
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2584861037465501343, guid: b8fe0a06c7288134fa74f5e9b57cf9de, type: 3}
+      propertyPath: InScenePlacedSourceGlobalObjectIdHash
+      value: 2375795655
+      objectReference: {fileID: 0}
     - target: {fileID: 7946901774068102704, guid: b8fe0a06c7288134fa74f5e9b57cf9de, type: 3}
       propertyPath: m_InScenePlaced
       value: 1
@@ -34949,6 +35099,22 @@ PrefabInstance:
     - target: {fileID: 1913360336110716051, guid: b8fe0a06c7288134fa74f5e9b57cf9de, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2584861037465501343, guid: b8fe0a06c7288134fa74f5e9b57cf9de, type: 3}
+      propertyPath: m_InScenePlaced
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2584861037465501343, guid: b8fe0a06c7288134fa74f5e9b57cf9de, type: 3}
+      propertyPath: GlobalObjectIdHash
+      value: 2850636960
+      objectReference: {fileID: 0}
+    - target: {fileID: 2584861037465501343, guid: b8fe0a06c7288134fa74f5e9b57cf9de, type: 3}
+      propertyPath: SceneMigrationSynchronization
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2584861037465501343, guid: b8fe0a06c7288134fa74f5e9b57cf9de, type: 3}
+      propertyPath: InScenePlacedSourceGlobalObjectIdHash
+      value: 2375795655
       objectReference: {fileID: 0}
     - target: {fileID: 7946901774068102704, guid: b8fe0a06c7288134fa74f5e9b57cf9de, type: 3}
       propertyPath: m_InScenePlaced
@@ -35408,6 +35574,22 @@ PrefabInstance:
     - target: {fileID: 1913360336110716051, guid: b8fe0a06c7288134fa74f5e9b57cf9de, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2584861037465501343, guid: b8fe0a06c7288134fa74f5e9b57cf9de, type: 3}
+      propertyPath: m_InScenePlaced
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2584861037465501343, guid: b8fe0a06c7288134fa74f5e9b57cf9de, type: 3}
+      propertyPath: GlobalObjectIdHash
+      value: 1702120539
+      objectReference: {fileID: 0}
+    - target: {fileID: 2584861037465501343, guid: b8fe0a06c7288134fa74f5e9b57cf9de, type: 3}
+      propertyPath: SceneMigrationSynchronization
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2584861037465501343, guid: b8fe0a06c7288134fa74f5e9b57cf9de, type: 3}
+      propertyPath: InScenePlacedSourceGlobalObjectIdHash
+      value: 2375795655
       objectReference: {fileID: 0}
     - target: {fileID: 7946901774068102704, guid: b8fe0a06c7288134fa74f5e9b57cf9de, type: 3}
       propertyPath: m_InScenePlaced
@@ -37374,7 +37556,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents: [{targetCorrespondingSourceObject: {fileID: 4630921107042037647, guid: 52f322377ca081143bd4f68b9be1aba4, type: 3}, insertIndex: 4, addedObject: {fileID: 593315131}}]
   m_SourcePrefab: {fileID: 100100000, guid: 52f322377ca081143bd4f68b9be1aba4, type: 3}
 --- !u!1 &1584156554527722515 stripped
 GameObject:
