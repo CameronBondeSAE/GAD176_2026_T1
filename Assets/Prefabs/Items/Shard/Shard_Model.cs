@@ -48,7 +48,7 @@ public class Shard_Model : MonoBehaviour, IPickup
 			target.PotentialEnergyRemoved(this);
 	}
 
-	public void PickupShard()
+	public void Pickup(Transform parent)
 	{
 		onShardPickedUp?.Invoke(this);
 	}

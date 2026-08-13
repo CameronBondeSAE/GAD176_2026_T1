@@ -6,7 +6,7 @@ namespace Nicholas
 {
     public class NetworkBootstrap : MonoBehaviour
     {
-        public bool autoStartHost = false;
+        /*public bool autoStartHost = false;
 
         private void OnEnable()
         {
@@ -19,7 +19,7 @@ namespace Nicholas
             {
                 NetworkManager.Singleton.StartServer();
             }
-        }
+        }*/
 
         public void StartHost()
         {

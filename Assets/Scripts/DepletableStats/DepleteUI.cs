@@ -59,9 +59,9 @@ public class DepleteUI : MonoBehaviour
 
         if (staminaSlider != null && staminaSys != null)
         {
-            staminaSlider.maxValue = staminaSys.staminaMax;
-            staminaSlider.minValue = staminaSys.staminaMin;
-            staminaSlider.value = staminaSys.staminaCurrent;
+            staminaSlider.maxValue = staminaSys.MaxValue();
+            staminaSlider.minValue = staminaSys.MinValue();
+            staminaSlider.value = staminaSys.CurrentValue();
         }
 
         Debug.Log("UI Bar Display Initialised");
@@ -83,7 +83,7 @@ public class DepleteUI : MonoBehaviour
     {
         if (staminaSlider != null && staminaSys != null)
         {
-            staminaSlider.value = staminaSys.staminaCurrent;
+            staminaSlider.value = staminaSys.CurrentValue();
         }
         else
         {
