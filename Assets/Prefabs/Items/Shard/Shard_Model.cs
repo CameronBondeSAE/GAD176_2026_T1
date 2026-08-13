@@ -36,16 +36,24 @@ public class Shard_Model : MonoBehaviour, IPickup
 	
 	private void OnTriggerEnter(Collider other)
 	{
-		IPowered target = other.GetComponentInChildren<IPowered>();
-		if(target != null)
-			target.ReceivePotentialEnergy(this);
+		IPowered[] powereds = other.GetComponentsInChildren<IPowered>();
+
+		foreach (IPowered powered in powereds)
+		{
+			if(powered != null)
+				powered.ReceivePotentialEnergy(this);
+		}
 	}
 	
 	private void OnTriggerExit(Collider other)
 	{
-		IPowered target = other.GetComponentInChildren<IPowered>();
-		if(target != null)
-			target.PotentialEnergyRemoved(this);
+		IPowered[] powereds = other.GetComponentsInChildren<IPowered>();
+
+		foreach (IPowered powered in powereds)
+		{
+			if (powered != null)
+				powered.PotentialEnergyRemoved(this);
+		}
 	}
 
 	public void Pickup(Transform parent)
