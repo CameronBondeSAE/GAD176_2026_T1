@@ -43,6 +43,8 @@ public class MotionSensor : MonoBehaviour, IPowered, IPickup
         FOV = GameObject.Find("FOVDetection Motion Sensor");
         StartCoroutine(CalcLoop());
         StartCoroutine(PortalOn());
+        activationEnergy = 2;
+        neededEnergy = 2;
     }
     
     bool CalculateNeededEnergy()
@@ -99,7 +101,7 @@ public class MotionSensor : MonoBehaviour, IPowered, IPickup
             {
                 yield return new WaitForSeconds(1);
                 int remainingToRemove = totalEnergy;
-                int neededToCont = 10;
+                int neededToCont = 2;
 
                 // Pass 2: Remove energy
                 foreach (Shard_Model shard in shardList)
