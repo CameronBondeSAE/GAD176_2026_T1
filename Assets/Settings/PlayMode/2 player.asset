@@ -18,9 +18,17 @@ MonoBehaviour:
     Name: Main Editor
     <CorrespondingNodeId>k__BackingField: 
     m_Nodes: []
-    m_PlayerTag: Server
+    m_PlayerTag: Host
     m_InitialScene: {fileID: 0}
-  m_EditorInstances: []
+  m_EditorInstances:
+  - Name: Player 2
+    <CorrespondingNodeId>k__BackingField: 
+    m_Nodes: []
+    m_PlayerTag: Client
+    m_InitialScene: {fileID: 0}
+    m_AdvancedConfiguration:
+      StreamLogsToMainEditor: 0
+      LogsColor: {r: 0.3643, g: 0.581, b: 0.8679, a: 1}
   m_LocalInstances: []
   m_OverridePort: 0
   m_Port: 0

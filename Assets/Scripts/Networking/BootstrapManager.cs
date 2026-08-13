@@ -45,21 +45,24 @@ namespace Unity.Netcode.Samples
 
 		private void OnPlayModeStateChanged(PlayModeStateChange obj)
 		{
-			
+			Debug.Log("Networking quick start : OnPlayModeStateChanged");
 			if (autoStartHostAndClient && obj == PlayModeStateChange.EnteredPlayMode)
 			{
 				string[]       mppmTag        = CurrentPlayer.ReadOnlyTags();
 				NetworkManager networkManager = NetworkManager.Singleton;
 				if (mppmTag.Contains("Server"))
 				{
+					Debug.Log("Starting Server");
 					networkManager.StartServer();
 				}
 				else if (mppmTag.Contains("Host"))
 				{
+					Debug.Log("Starting Host");
 					networkManager.StartHost();
 				}
 				else if (mppmTag.Contains("Client"))
 				{
+					Debug.Log("Starting Client");
 					networkManager.StartClient();
 				}
 			}

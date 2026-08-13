@@ -63,7 +63,7 @@ namespace Frank
                     //Debug.Log("What I hit : " + c.transform.gameObject.name);
                     if (heldGameObject == null)
                     {
-                        heldGameObject = c.transform.gameObject;
+                        heldGameObject = (pickup as MonoBehaviour)?.gameObject;
                         // if so then get the gameobject and if it has an IHoldable component, then do the following
                         pickup.Pickup(handsTransform);
 
@@ -95,11 +95,18 @@ namespace Frank
         {
             NetworkObject heldNetworkObject = heldGameObject.GetComponent<NetworkObject>();
 
+            if(heldNetworkObject == null)
+            {
+	            Debug.LogWarning("Pickup NetworkObject is NULL : Needs a Network Object component");
+	            return;
+            }
+            
+            
             Debug.Log("GRAB");
             if (heldGameObject.GetComponent<Rigidbody>() != null)
             {
                 // heldGameObject.GetComponent<Rigidbody>().isKinematic = false;
-                holdJoint = transform.root.gameObject.AddComponent<FixedJoint>();
+                holdJoint = gameObject.AddComponent<FixedJoint>();
                 HoldObjectPosition_Rpc(heldNetworkObject);
                 holdJoint.connectedBody = heldGameObject.GetComponent<Rigidbody>();
 

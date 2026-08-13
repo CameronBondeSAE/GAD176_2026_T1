@@ -66,7 +66,7 @@ public class Player_Model : NetworkBehaviour
     {
         Vector2 readValue = callbackContext.ReadValue<Vector2>();
         Vector3 XZDirection = new Vector3(readValue.x, 0, readValue.y);
-        Debug.Log("Move direction = " + readValue.ToString());
+        // Debug.Log("Move direction = " + readValue.ToString());
         // Debug.Log("		- Phase = " + callbackContext.phase.ToString());
         MoveServer_Rpc(XZDirection);
     }

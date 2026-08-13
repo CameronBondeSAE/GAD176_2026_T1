@@ -147,6 +147,9 @@ namespace Keegan.FOV
                 int hitCount = Physics.RaycastNonAlloc(transform.position, transform.forward + transform.TransformDirection(direction), _castHitResults, _sightCastDistance, _detectionMask, QueryTriggerInteraction.Ignore);
                 if (hitCount > 0 && _castHitResults[0].collider != null)
                 {
+	                if(_drawDebug) // Cam here: Just added this so I can see the actual hit end point, unlike the raw directions
+		                Debug.DrawLine(transform.position, _castHitResults[0].point);
+	                
                     // Check if the hit collider has the IFovDetectable interface
                     IFovDetectable detectable = _castHitResults[0].collider.GetComponentInChildren<IFovDetectable>();
                     if (detectable != null)
@@ -318,6 +321,8 @@ namespace Keegan.FOV
 
         private void OnDrawGizmosSelected()
         {
+	        return; // Cam: Just disabled so I can use the ones in the ray function itself for now
+	        
             if(_drawDebug)
             {
                 Gizmos.color = Color.yellow;
