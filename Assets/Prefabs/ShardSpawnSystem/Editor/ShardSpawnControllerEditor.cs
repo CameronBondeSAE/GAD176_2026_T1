@@ -24,6 +24,7 @@ namespace Keegan.ShardSpawn
         private SerializedProperty shardSpawnToProp;
 
         private SerializedProperty shardSpawnEnabledProp;
+        private SerializedProperty maxInSpawnAreaProp;
 
         private void OnEnable()
         {
@@ -42,6 +43,7 @@ namespace Keegan.ShardSpawn
             obstacleLayerMaskProp = serializedObject.FindProperty("obstacleLayerMask");
             
             shardSpawnEnabledProp = serializedObject.FindProperty("canSpawnShard");
+            maxInSpawnAreaProp = serializedObject.FindProperty("maxInSpawnArea");
         }
 
         public override void OnInspectorGUI()
@@ -54,6 +56,7 @@ namespace Keegan.ShardSpawn
             EditorGUILayout.PropertyField(minSpawnTimeProp);
             EditorGUILayout.PropertyField(maxSpawnTimeProp);
             EditorGUILayout.PropertyField(spawnDuringTimesProp);
+            EditorGUILayout.PropertyField(maxInSpawnAreaProp);
             
             if (spawnDuringTimesProp.boolValue)
             {
@@ -76,7 +79,6 @@ namespace Keegan.ShardSpawn
                 string spawnEnabledStr = shardSpawnEnabledProp.boolValue ? "ON" : "OFF";
                 EditorGUILayout.LabelField($"Is Enabled: {spawnEnabledStr}");
             }
-
             serializedObject.ApplyModifiedProperties();
 
         }

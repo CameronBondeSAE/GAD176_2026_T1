@@ -55,6 +55,9 @@ namespace Keegan.ShardSpawn
         // Reference to all the spawned shards in this spawner
         private List<Shard_Model> spawnedShards = new List<Shard_Model>();
 
+        [SerializeField, Tooltip("The max amount of shards that can be within the spawn error")]
+        private int maxInSpawnArea = 10;
+
         private SuntoTime sunTime;
 
         private void Start()
@@ -107,7 +110,8 @@ namespace Keegan.ShardSpawn
         private IEnumerator SpawnShardRoutine(float spawnTime)
         {
             yield return new WaitForSeconds(spawnTime);
-            OnSpawnShard();
+            if(spawnedShards.Count < maxInSpawnArea)
+                OnSpawnShard();
         }
 
         /// <summary>
