@@ -25130,6 +25130,7 @@ MonoBehaviour:
   enoughEnergy: 0
   continuespawning: 0
   portalFXRunning: 0
+  FOV: {fileID: 0}
   shardList: []
 --- !u!1001 &2039897570424142426
 PrefabInstance:
