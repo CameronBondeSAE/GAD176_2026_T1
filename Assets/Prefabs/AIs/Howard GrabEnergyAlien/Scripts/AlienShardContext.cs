@@ -58,14 +58,14 @@ namespace Howard.ShardAI
         // heldGameObject can be stale after another Interact reparents the shard.
         public Shard_Model GetHeldShard()
         {
-            if (interact == null || interact.heldGameObject == null || hands == null)
+            if (interact == null || interact.heldGameObject == null)
             {
                 return null;
             }
 
-            Shard_Model heldShard = interact.heldGameObject.GetComponentInParent<Shard_Model>();
+            Shard_Model heldShard = GetShardFromHeldObject();
 
-            if (heldShard != null && heldShard.transform.IsChildOf(hands))
+            if (heldShard != null && IsShardAttachedToThisAlien(heldShard))
             {
                 return heldShard;
             }
@@ -81,12 +81,50 @@ namespace Howard.ShardAI
 
         public bool IsShardInHands(Shard_Model shard)
         {
-            if (shard == null || hands == null)
+            if (shard == null)
             {
                 return false;
             }
 
-            return shard.transform.IsChildOf(hands);
+            if (hands != null && shard.transform.IsChildOf(hands))
+            {
+                return true;
+            }
+
+            return GetHeldShard() == shard;
+        }
+
+        /// <summary>
+        /// Checks whether Frank.Interact's held object is the same shard this AI is carrying.
+        /// </summary>
+        private bool IsShardAttachedToThisAlien(Shard_Model shard)
+        {
+            if (shard == null || interact == null || interact.heldGameObject == null)
+            {
+                return false;
+            }
+
+            if (hands != null && shard.transform.IsChildOf(hands))
+            {
+                return true;
+            }
+
+            Transform heldTransform = interact.heldGameObject.transform;
+            return shard.gameObject == interact.heldGameObject ||
+                   shard.transform.IsChildOf(heldTransform) ||
+                   heldTransform.IsChildOf(shard.transform);
+        }
+
+        private Shard_Model GetShardFromHeldObject()
+        {
+            Shard_Model heldShard = interact.heldGameObject.GetComponentInParent<Shard_Model>();
+
+            if (heldShard == null)
+            {
+                heldShard = interact.heldGameObject.GetComponentInChildren<Shard_Model>();
+            }
+
+            return heldShard;
         }
 
         public void UpdateCarryingState()

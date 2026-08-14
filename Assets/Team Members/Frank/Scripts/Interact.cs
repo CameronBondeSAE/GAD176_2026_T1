@@ -90,6 +90,35 @@ namespace Frank
             return false;
         }
 
+        /// <summary>
+        /// Allows AI to pick up a known target directly without using the player-facing overlap scan.
+        /// </summary>
+        public bool TryPickup(GameObject target)
+        {
+            if (!IsServer || target == null || heldGameObject != null) return false;
+
+            IPickup pickup = target.GetComponentInParent<IPickup>();
+            if (pickup == null)
+            {
+                pickup = target.GetComponentInChildren<IPickup>();
+            }
+
+            if (pickup == null) return false;
+
+            heldGameObject = (pickup as MonoBehaviour)?.gameObject;
+            if (heldGameObject == null) return false;
+
+            pickup.Pickup(handsTransform);
+
+            if (heldGameObject.GetComponent<Rigidbody>() != null)
+            {
+                heldGameObject.GetComponent<Rigidbody>().isKinematic = true;
+            }
+
+            _isHolding.Value = true;
+            return true;
+        }
+
 
         private void Pickup()
         {
@@ -129,6 +158,28 @@ namespace Frank
             }
             else
                 Debug.LogError("Object is NOT a Network Object");
+        }
+
+        /// <summary>
+        /// Allows AI to drop the held object at a known destination while keeping Interact's holding state in sync.
+        /// </summary>
+        public bool TryDrop(Vector3 dropPosition)
+        {
+            if (!IsServer || heldGameObject == null) return false;
+
+            GameObject droppedObject = heldGameObject;
+
+            if (_isHolding.Value)
+            {
+                _isHolding.Value = false;
+            }
+            else
+            {
+                Drop();
+            }
+
+            droppedObject.transform.position = dropPosition;
+            return true;
         }
 
         public void Drop()
