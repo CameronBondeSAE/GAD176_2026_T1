@@ -25,7 +25,7 @@ Transform:
   m_GameObject: {fileID: 1535665953133653242}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 1.151}
+  m_LocalPosition: {x: 0, y: -0.4, z: 1.151}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -42,12 +42,12 @@ GameObject:
   - component: {fileID: 7313568232634554606}
   - component: {fileID: 8954740891691302476}
   - component: {fileID: 1273103890878380776}
-  - component: {fileID: 3476988305927693863}
   - component: {fileID: 8170741953626568693}
   - component: {fileID: 345779481355262715}
   - component: {fileID: 7462432181338260691}
   - component: {fileID: 7355364209524790716}
   - component: {fileID: 2353841284990964654}
+  - component: {fileID: 270046152636115772}
   m_Layer: 3
   m_Name: AlienGrabber
   m_TagString: AI
@@ -117,33 +117,11 @@ Rigidbody:
     m_Bits: 0
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
-  m_UseGravity: 0
-  m_IsKinematic: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 80
   m_CollisionDetection: 0
---- !u!195 &3476988305927693863
-NavMeshAgent:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4630921107042037647}
-  m_Enabled: 1
-  m_AgentTypeID: 0
-  m_Radius: 0.45
-  m_Speed: 3.5
-  m_Acceleration: 12
-  avoidancePriority: 50
-  m_AngularSpeed: 720
-  m_StoppingDistance: 1.25
-  m_AutoTraverseOffMeshLink: 1
-  m_AutoBraking: 1
-  m_AutoRepath: 1
-  m_Height: 1.8
-  m_BaseOffset: 0
-  m_WalkableMask: 4294967295
-  m_ObstacleAvoidanceType: 4
 --- !u!114 &8170741953626568693
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -156,9 +134,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2abc88c97fa73c947a4048fe47bc9446, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  turnSpeedDegrees: 360
+  turnSpeedDegrees: 750
   facingTolerance: 8
-  agent: {fileID: 0}
+  moveForce: 100
+  maxSpeed: 4.5
+  cornerReachDistance: 0.5
+  repathDistance: 0.25
+  pathEndpointSearchDistance: 10
+  separationRadius: 2
+  separationForce: 2.5
+  separationMask:
+    serializedVersion: 2
+    m_Bits: 8
+  navMeshAreaMask: -1
+  body: {fileID: 1273103890878380776}
 --- !u!114 &345779481355262715
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -173,16 +162,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interact: {fileID: 0}
   hands: {fileID: 0}
-  pickupDistance: 1.35
-  dropDistance: 1.5
+  moveStoppingDistance: 1
+  pickupDistance: 3
+  pickupHeightTolerance: 2.5
+  dropDistance: 3.5
+  dropHeightTolerance: 2.5
   deliveredPulseDuration: 0.3
   targetCheckInterval: 0.25
   targetSwitchDistance: 1.5
-  targetNavMeshSearchDistance: 3
+  targetNavMeshSearchDistance: 10
+  navMeshEndpointSearchDistance: 5
+  navMeshAreaMask: -1
+  heldShardValidationInterval: 1.5
   targetShard: {fileID: 0}
   lastHeldShard: {fileID: 0}
   dropPoint: {fileID: 0}
-  agent: {fileID: 0}
   deliveredUntil: -1
   nextTargetCheckTime: 0
 --- !u!114 &7462432181338260691
@@ -225,6 +219,32 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fae1bfd12cbc7c84f8039ee99b08f833, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &270046152636115772
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4630921107042037647}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GlobalObjectIdHash: 2307596407
+  InScenePlacedSourceGlobalObjectIdHash: 0
+  DeferredDespawnTick: 0
+  Ownership: 1
+  AlwaysReplicateAsRoot: 0
+  SynchronizeTransform: 1
+  m_InScenePlaced: 0
+  ActiveSceneSynchronization: 0
+  SceneMigrationSynchronization: 0
+  SpawnWithObservers: 1
+  DontDestroyWithOwner: 0
+  AutoObjectParentSync: 1
+  SyncOwnerTransformWhenParented: 1
+  AllowOwnerToParent: 0
 --- !u!1 &6262325026864271667
 GameObject:
   m_ObjectHideFlags: 0
@@ -526,6 +546,10 @@ PrefabInstance:
     - target: {fileID: 8525179777723026157, guid: 53142fedf1d6b8a459defe19e02eaf0e, type: 3}
       propertyPath: m_Name
       value: FOVDetection
+      objectReference: {fileID: 0}
+    - target: {fileID: 8525179777723026157, guid: 53142fedf1d6b8a459defe19e02eaf0e, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

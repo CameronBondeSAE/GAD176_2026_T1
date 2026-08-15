@@ -20,7 +20,7 @@ namespace Howard.ShardAI
             context = GetComponent<AlienShardContext>();
         }
 
-        // Sends real scene information to AntAI each time the agent makes a new plan.
+        // Sends scene information to AntAI each time and makes a new plan.
         public void CollectConditions(AntAIAgent aiAgent, AntAICondition worldState)
         {
             bool holdingShard = context.IsHoldingShard();
@@ -30,16 +30,13 @@ namespace Howard.ShardAI
             bool nearShard = false;
             if (hasShardTarget)
             {
-                Vector3 shardDestination = context.GetShardDestination(context.targetShard);
-                float shardDistance = Vector3.Distance(transform.position, shardDestination);
-                nearShard = shardDistance <= context.pickupDistance;
+                nearShard = context.IsNearShardForPickup(context.targetShard);
             }
 
             bool nearDropPoint = false;
             if (hasDropTarget)
             {
-                float dropDistance = Vector3.Distance(transform.position, context.dropPoint.position);
-                nearDropPoint = dropDistance <= context.dropDistance;
+                nearDropPoint = context.IsNearDropPointForDrop();
             }
 
             worldState.Set(aiAgent.planner, ShardAvailable, context.HasAvailableShard());

@@ -1,4 +1,4 @@
-using Frank;
+﻿using Frank;
 using UnityEngine;
 
 namespace Howard.ShardAI
@@ -13,19 +13,14 @@ namespace Howard.ShardAI
                 return;
             }
 
-            Vector3 destination = context.GetShardDestination(context.targetShard);
-            float distance = Vector3.Distance(context.transform.position, destination);
-
-            if (distance > context.pickupDistance)
+            if (!context.IsNearShardForPickup(context.targetShard))
             {
                 Finish();
                 return;
             }
 
-            if (!motor.Face(context.targetShard.transform.position, deltaTime))
-            {
-                return;
-            }
+            // Facing is only for visual
+            motor.Face(context.targetShard.transform.position, deltaTime);
 
             if (context.interact.TryPickup(context.targetShard.gameObject))
             {

@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.AI;
 
 namespace Howard.ShardAI
@@ -21,7 +21,7 @@ namespace Howard.ShardAI
             }
 
             Vector3 dropPosition = context.dropPoint.position;
-            if (NavMesh.SamplePosition(dropPosition, out NavMeshHit hit, 2f, context.agent.areaMask))
+            if (NavMesh.SamplePosition(dropPosition, out NavMeshHit hit, 2f, context.navMeshAreaMask))
             {
                 dropPosition = hit.position + Vector3.up * 0.35f;
             }
