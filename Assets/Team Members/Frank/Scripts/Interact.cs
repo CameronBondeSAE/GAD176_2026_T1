@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using Unity.Netcode;
 using UnityEngine;
 using UnityEngine.XR;
@@ -115,7 +115,15 @@ namespace Frank
                 heldGameObject.GetComponent<Rigidbody>().isKinematic = true;
             }
 
-            _isHolding.Value = true;
+            if (_isHolding.Value)
+            {
+                Pickup();
+            }
+            else
+            {
+                _isHolding.Value = true;
+            }
+
             return true;
         }
 

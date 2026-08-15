@@ -1,6 +1,6 @@
 namespace Howard.ShardAI
 {
-    public class FindShardState : AlienShardState
+    public class FindShardState : AlienShardStateBase
     {
         public override void Enter()
         {

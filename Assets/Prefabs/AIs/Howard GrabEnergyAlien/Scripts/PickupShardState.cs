@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Howard.ShardAI
 {
-    public class PickupShardState : AlienShardState
+    public class PickupShardState : AlienShardStateBase
     {
         public override void Execute(float deltaTime, float timeScale)
         {

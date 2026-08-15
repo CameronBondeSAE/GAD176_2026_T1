@@ -1,4 +1,4 @@
-using Anthill.AI;
+﻿using Anthill.AI;
 using UnityEngine;
 
 namespace Howard.ShardAI
@@ -30,7 +30,8 @@ namespace Howard.ShardAI
             bool nearShard = false;
             if (hasShardTarget)
             {
-                float shardDistance = Vector3.Distance(transform.position, context.targetShard.transform.position);
+                Vector3 shardDestination = context.GetShardDestination(context.targetShard);
+                float shardDistance = Vector3.Distance(transform.position, shardDestination);
                 nearShard = shardDistance <= context.pickupDistance;
             }
 

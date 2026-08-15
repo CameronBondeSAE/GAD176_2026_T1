@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Frank;
 using Keegan.FOV;
 using UnityEngine;
@@ -17,6 +17,7 @@ namespace Howard.ShardAI
         public float targetCheckInterval = 0.25f;
         public float targetSwitchDistance = 1.5f;
         public float targetNavMeshSearchDistance = 3f;
+        [Min(0.1f)] public float heldShardValidationInterval = 1.5f;
 
         public Shard_Model targetShard;
         public Shard_Model lastHeldShard;
@@ -24,6 +25,7 @@ namespace Howard.ShardAI
         public NavMeshAgent agent;
         public float deliveredUntil = -1f;
         public float nextTargetCheckTime;
+        private float nextHeldShardValidationTime;
 
         private void Awake()
         {
@@ -42,7 +44,13 @@ namespace Howard.ShardAI
 
         private void Update()
         {
-            UpdateCarryingState();
+            if (interact != null &&
+                interact.heldGameObject != null &&
+                Time.time >= nextHeldShardValidationTime)
+            {
+                nextHeldShardValidationTime = Time.time + Mathf.Max(0.1f, heldShardValidationInterval);
+                UpdateCarryingState();
+            }
         }
 
         private void OnDisable()
@@ -70,7 +78,7 @@ namespace Howard.ShardAI
                 return heldShard;
             }
 
-            interact.heldGameObject = null;
+            ResetInvalidHeldShard(heldShard);
             return null;
         }
 
@@ -95,7 +103,7 @@ namespace Howard.ShardAI
         }
 
         /// <summary>
-        /// Checks whether Frank.Interact's held object is the same shard this AI is carrying.
+        /// Checks whether Frank.Interact's held shard is still attached to this alien.
         /// </summary>
         private bool IsShardAttachedToThisAlien(Shard_Model shard)
         {
@@ -110,9 +118,30 @@ namespace Howard.ShardAI
             }
 
             Transform heldTransform = interact.heldGameObject.transform;
-            return shard.gameObject == interact.heldGameObject ||
-                   shard.transform.IsChildOf(heldTransform) ||
-                   heldTransform.IsChildOf(shard.transform);
+            Transform alienRoot = transform.root;
+
+            return shard.transform.root == alienRoot ||
+                   heldTransform.root == alienRoot;
+        }
+
+        /// <summary>
+        /// Resets this AI's carrying state when its held object reference no longer belongs to this alien.
+        /// </summary>
+        private void ResetInvalidHeldShard(Shard_Model shard)
+        {
+            if (shard != null)
+            {
+                GetReservation(shard).MarkNeedsDelivery();
+            }
+
+            if (interact != null)
+            {
+                interact.heldGameObject = null;
+            }
+
+            lastHeldShard = null;
+            targetShard = null;
+            dropPoint = null;
         }
 
         private Shard_Model GetShardFromHeldObject()
@@ -374,6 +403,7 @@ namespace Howard.ShardAI
         {
             targetShard = shard;
             lastHeldShard = shard;
+            nextHeldShardValidationTime = Time.time + Mathf.Max(0.1f, heldShardValidationInterval);
             GetReservation(shard).MarkCarried(this);
         }
 

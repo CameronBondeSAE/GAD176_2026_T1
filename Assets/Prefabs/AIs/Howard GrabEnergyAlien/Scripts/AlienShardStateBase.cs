@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Howard.ShardAI
 {
-    public abstract class AlienShardState : AntAIState
+    public abstract class AlienShardStateBase : AntAIState
     {
         public AlienShardContext context;
         public AlienNavMotor motor;

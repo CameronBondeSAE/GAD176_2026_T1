@@ -2,12 +2,11 @@ using UnityEngine;
 
 namespace Howard.ShardAI
 {
-    public class MoveToShardState : AlienShardState
+    public class MoveToShardState : AlienShardStateBase
     {
         public override void Enter()
         {
-            if (context.targetShard == null ||
-                !motor.MoveTo(context.GetShardDestination(context.targetShard), context.pickupDistance))
+            if (context.targetShard == null || !motor.MoveTo(context.GetShardDestination(context.targetShard), context.pickupDistance))
             {
                 Fail();
             }

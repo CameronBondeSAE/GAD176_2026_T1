@@ -1,6 +1,6 @@
 namespace Howard.ShardAI
 {
-    public class MoveToDropPointState : AlienShardState
+    public class MoveToDropPointState : AlienShardStateBase
     {
         public override void Enter()
         {
