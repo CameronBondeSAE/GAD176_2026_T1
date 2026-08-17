@@ -7,8 +7,9 @@ using UnityEngine.Events;
 using UnityEngine.UIElements;
 using Random = UnityEngine.Random;
 using Divij;
+using Unity.Netcode;
 
-public class SunController : MonoBehaviour
+public class SunController : NetworkBehaviour
 {
     public Transform Sun;
     public int DayNumber = 1;
@@ -64,6 +65,11 @@ public class SunController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (!IsServer)
+        {
+            return;
+        }
+        
         float previousAngle = sunAngle;
 
         IsDay = sunAngle is > 0f and < 180f;
@@ -102,5 +108,17 @@ public class SunController : MonoBehaviour
             DayNumber++;
         }
 
+        UpdateAngleRpc(sunAngle);
+    }
+
+    [Rpc(SendTo.ClientsAndHost, Delivery = RpcDelivery.Unreliable)]
+    private void UpdateAngleRpc(float angle)
+    {
+        sunAngle = angle;
+
+        if (Sun != null)
+        {
+            Sun.transform.rotation = Quaternion.Euler(0, 0, sunAngle);
+        }
     }
 }

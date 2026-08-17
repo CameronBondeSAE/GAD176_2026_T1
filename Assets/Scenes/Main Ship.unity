@@ -5167,11 +5167,6 @@ Transform:
   - {fileID: 1174663005}
   m_Father: {fileID: 358386190}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &288585443 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1566328867073328242, guid: 87473d8296dc16341b5e80ec04f9b313, type: 3}
-  m_PrefabInstance: {fileID: 743495691}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &288980548 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3171172875051223517, guid: 567f351c6027259429afe86d33a5d9ff, type: 3}
@@ -12857,20 +12852,20 @@ MonoBehaviour:
     _prefab: Assets/Prefabs/Items/Miten/PortalStuffs/portal.prefab
   - _gameObject: {fileID: 1374746761}
     _prefab: Assets/Prefabs/Items/Miten/PortalStuffs/Portal/source/portal/teleporter.fbx
-  - _gameObject: {fileID: 1283217760}
-    _prefab: Assets/Prefabs/Items/Miten/PortalStuffs/lighting-pack-chain-lighting/source/p_150_lighting.blend
+  - _gameObject: {fileID: 1412237960}
+    _prefab: Assets/Prefabs/Items/Miten/PortalStuffs/portal.prefab
   - _gameObject: {fileID: 743495692}
     _prefab: Assets/Prefabs/Items/Miten/PortalStuffs/portal.prefab
   - _gameObject: {fileID: 743495693}
     _prefab: Assets/Prefabs/Items/Miten/PortalStuffs/Portal/source/portal/teleporter.fbx
-  - _gameObject: {fileID: 288585443}
-    _prefab: Assets/Prefabs/Items/Miten/PortalStuffs/lighting-pack-chain-lighting/source/p_150_lighting.blend
+  - _gameObject: {fileID: 743495692}
+    _prefab: Assets/Prefabs/Items/Miten/PortalStuffs/portal.prefab
   - _gameObject: {fileID: 224232704}
     _prefab: Assets/Prefabs/Items/Miten/PortalStuffs/portal.prefab
   - _gameObject: {fileID: 224232705}
     _prefab: Assets/Prefabs/Items/Miten/PortalStuffs/Portal/source/portal/teleporter.fbx
-  - _gameObject: {fileID: 1039041786}
-    _prefab: Assets/Prefabs/Items/Miten/PortalStuffs/lighting-pack-chain-lighting/source/p_150_lighting.blend
+  - _gameObject: {fileID: 224232704}
+    _prefab: Assets/Prefabs/Items/Miten/PortalStuffs/portal.prefab
   - _gameObject: {fileID: 70393973}
     _prefab: Assets/Prefabs/ShardSpawnSystem/ShardSpawner.prefab
   - _gameObject: {fileID: 728603286}
@@ -20516,11 +20511,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 8579136275247557205, guid: b8fe0a06c7288134fa74f5e9b57cf9de, type: 3}
   m_PrefabInstance: {fileID: 1038702164}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1039041786 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1566328867073328242, guid: 87473d8296dc16341b5e80ec04f9b313, type: 3}
-  m_PrefabInstance: {fileID: 224232703}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1040963896 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2134038549268005339, guid: 567f351c6027259429afe86d33a5d9ff, type: 3}
@@ -21555,6 +21545,18 @@ PrefabInstance:
     - target: {fileID: 3153999607126182897, guid: ff3012af44025684ba8b599c4d9a11e1, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6321810211801965307, guid: ff3012af44025684ba8b599c4d9a11e1, type: 3}
+      propertyPath: m_InScenePlaced
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6321810211801965307, guid: ff3012af44025684ba8b599c4d9a11e1, type: 3}
+      propertyPath: GlobalObjectIdHash
+      value: 2762801897
+      objectReference: {fileID: 0}
+    - target: {fileID: 6321810211801965307, guid: ff3012af44025684ba8b599c4d9a11e1, type: 3}
+      propertyPath: InScenePlacedSourceGlobalObjectIdHash
+      value: 1239671553
       objectReference: {fileID: 0}
     - target: {fileID: 7064920907142051348, guid: ff3012af44025684ba8b599c4d9a11e1, type: 3}
       propertyPath: m_Name
@@ -24607,11 +24609,6 @@ GameObject:
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2652972408432664744, guid: 567f351c6027259429afe86d33a5d9ff, type: 3}
   m_PrefabInstance: {fileID: 1339047788}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &1283217760 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1566328867073328242, guid: 87473d8296dc16341b5e80ec04f9b313, type: 3}
-  m_PrefabInstance: {fileID: 1435229310}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1289435978 stripped
 GameObject:
