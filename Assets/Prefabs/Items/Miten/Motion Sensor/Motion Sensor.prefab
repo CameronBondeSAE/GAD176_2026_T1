@@ -25060,8 +25060,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7819677453781945110}
-  - component: {fileID: 2173303425952922330}
   - component: {fileID: 6203249870184290677}
+  - component: {fileID: 879042105606020056}
   - component: {fileID: 7918649866193691892}
   - component: {fileID: 1056095030198006529}
   m_Layer: 11
@@ -25091,26 +25091,6 @@ Transform:
   - {fileID: 2674531276292862852}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2173303425952922330
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6312727644033481148}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bca3a1fd05d86694ea91de6007e42800, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  neededEnergy: 0
-  totalEnergy: 0
-  activationEnergy: 0
-  enoughEnergy: 0
-  continuespawning: 0
-  portalFXRunning: 0
-  FOV: {fileID: 0}
-  shardList: []
 --- !u!136 &6203249870184290677
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -25134,6 +25114,24 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
+--- !u!114 &879042105606020056
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6312727644033481148}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a766024087ebe244c938fb8e82cc3f76, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  activationEnergy: 2
+  neededEnergy: 2
+  totalEnergy: 0
+  enoughEnergy: 0
+  continuespawning: 0
+  FOV: {fileID: 7638291741767266487}
 --- !u!114 &7918649866193691892
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -25282,5 +25280,10 @@ PrefabInstance:
 --- !u!4 &2674531276292862852 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4130632152562502110, guid: 53142fedf1d6b8a459defe19e02eaf0e, type: 3}
+  m_PrefabInstance: {fileID: 2039897570424142426}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &7638291741767266487 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8525179777723026157, guid: 53142fedf1d6b8a459defe19e02eaf0e, type: 3}
   m_PrefabInstance: {fileID: 2039897570424142426}
   m_PrefabAsset: {fileID: 0}

@@ -2,22 +2,23 @@ using System.Collections;
 using System.Collections.Generic;
 using Divij;
 using UnityEngine;
-using UnityEngine.PlayerLoop;
-using UnityEngine.Rendering.HighDefinition;
 
 public class PortalScript : MonoBehaviour, IPowered
 {
     public List<GameObject> lightnings = new List<GameObject>();
 
-    public int neededEnergy;
+    public int neededEnergy = 100;
     public int totalEnergy;
-    public int activationEnergy;
+    public int activationEnergy = 700;
+
     public bool enoughEnergy;
     public bool continuespawning;
     public bool portalFXRunning;
 
+    public List<GameObject> Aliens = new List<GameObject>();
+    public GameObject pspawnPoint;
+
     public List<Shard_Model> shardList = new List<Shard_Model>();
-    
 
     public void SetPowered(bool powered)
     {
@@ -31,141 +32,142 @@ public class PortalScript : MonoBehaviour, IPowered
 
     public void ReceivePotentialEnergy(Shard_Model shard)
     {
-        shardList.Add(shard);
+        if (!shardList.Contains(shard))
+        {
+            shardList.Add(shard);
+        }
     }
-	
+
     public void PotentialEnergyRemoved(Shard_Model shard)
     {
         shardList.Remove(shard);
     }
 
-    void Start()
+    private void Start()
     {
-        StartCoroutine(calcloop());
-        StartCoroutine(PortalOn());
+        StartCoroutine(PortalLoop());
     }
-    
-    bool CalculateNeededEnergy()
+
+    private void CalculateTotalEnergy()
     {
-        // Pass 1: Count total energy
         totalEnergy = 0;
-        foreach (Shard_Model shard in shardList)
-        {
-            totalEnergy += shard.CurrentEnergy;
-        }
 
-        if (totalEnergy >= activationEnergy)
+        for (int i = shardList.Count - 1; i >= 0; i--)
         {
-            return enoughEnergy = true;
+            if (shardList[i] == null)
+            {
+                shardList.RemoveAt(i);
+                continue;
+            }
 
-        }else
-        {
-
-        }
-        
-        if (enoughEnergy)
-        {
-            if (!portalFXRunning)
-                StartCoroutine(portalActivated());
-        }
- 
-        return enoughEnergy = false;
-    }
-
-    bool CalculateContinueEnergy()
-    {
-        foreach (Shard_Model shard in shardList)
-        {
-            totalEnergy = 0;
-            totalEnergy += shard.CurrentEnergy;
-        }
-
-        if (totalEnergy >= neededEnergy)
-        {
-            return continuespawning = true;
-        }
-        else
-        {
-            return continuespawning = false;
+            totalEnergy += shardList[i].CurrentEnergy;
         }
     }
 
-
-
-    public IEnumerator PortalOn()
+    private IEnumerator PortalLoop()
     {
-        if (enoughEnergy == true)
+        while (true)
         {
-            while (continuespawning == true)
+            CalculateTotalEnergy();
+
+            enoughEnergy = totalEnergy >= activationEnergy;
+
+            if (enoughEnergy)
             {
                 if (!portalFXRunning)
                 {
                     portalFXRunning = true;
-                    StartCoroutine(portalActivated());
+                    ActivatePortalFX();
                 }
-                
-                yield return new WaitForSeconds(1);
-                int remainingToRemove = totalEnergy;
-                int neededToSpawn = 10;
 
-                // Pass 2: Remove energy
-                foreach (Shard_Model shard in shardList)
+                continuespawning = totalEnergy >= neededEnergy;
+
+                if (continuespawning)
                 {
-                    if (remainingToRemove <= 0)
-                        break;
+                    UseEnergy(neededEnergy);
 
-                    if (shard.CurrentEnergy < neededToSpawn)
-                    {
-                        if (shard.CurrentEnergy <= remainingToRemove)
-                        {
-                            shard.UseEnergy(shard.CurrentEnergy);
-                            shardList.Remove(shard);
-                            Destroy(shard.gameObject);
-                        }
-                        else
-                        {
-                            shard.UseEnergy(remainingToRemove);
-                            remainingToRemove = 0;
-                        }
-                    } else if (shard.CurrentEnergy >= neededToSpawn)
-                    {
-                        remainingToRemove = neededToSpawn;
-                        if (shard.CurrentEnergy <= remainingToRemove)
-                        {
-                            shard.UseEnergy(shard.CurrentEnergy);
-                            Destroy(shard.gameObject);
-                        }
-                        else
-                        {
-                            shard.UseEnergy(remainingToRemove);
-                            remainingToRemove = 0;
-                        }
-                    }
+                    SpawnAlien();
                 }
-
-                CalculateContinueEnergy();
             }
-            if (continuespawning == false)
+            else
             {
+                continuespawning = false;
                 portalFXRunning = false;
-                StopCoroutine(portalActivated());
+
+                DisablePortalFX();
+            }
+
+            yield return new WaitForSeconds(1f);
+        }
+    }
+
+    private void UseEnergy(int amount)
+    {
+        int remaining = amount;
+
+        for (int i = shardList.Count - 1; i >= 0; i--)
+        {
+            if (remaining <= 0)
+                break;
+
+            Shard_Model shard = shardList[i];
+
+            if (shard == null)
+            {
+                shardList.RemoveAt(i);
+                continue;
+            }
+
+            int amountToUse = Mathf.Min(
+                shard.CurrentEnergy,
+                remaining
+            );
+
+            shard.UseEnergy(amountToUse);
+            remaining -= amountToUse;
+
+            if (shard.CurrentEnergy <= 0)
+            {
+                shardList.RemoveAt(i);
+                Destroy(shard.gameObject);
             }
         }
     }
 
-    public IEnumerator calcloop()
+    private void SpawnAlien()
     {
-        while (true)
-        {
-            yield return new WaitForSeconds(1);
-            CalculateNeededEnergy();
-        }
+        if (Aliens.Count == 0 || pspawnPoint == null)
+            return;
+
+        GameObject chosenAlien =
+            Aliens[Random.Range(0, Aliens.Count)];
+
+        Instantiate(
+            chosenAlien,
+            pspawnPoint.transform.position,
+            pspawnPoint.transform.rotation
+        );
     }
 
-    IEnumerator portalActivated()
+    private void ActivatePortalFX()
     {
-        yield return new WaitForSeconds(0.01f);
-        GameObject chosenlightning = lightnings[Random.Range(0, lightnings.Count)];
-        chosenlightning.gameObject.SetActive(!chosenlightning.gameObject.activeSelf);
+        if (lightnings.Count == 0)
+            return;
+
+        GameObject chosenLightning =
+            lightnings[Random.Range(0, lightnings.Count)];
+
+        chosenLightning.SetActive(true);
+    }
+
+    private void DisablePortalFX()
+    {
+        foreach (GameObject lightning in lightnings)
+        {
+            if (lightning != null)
+            {
+                lightning.SetActive(false);
+            }
+        }
     }
 }
