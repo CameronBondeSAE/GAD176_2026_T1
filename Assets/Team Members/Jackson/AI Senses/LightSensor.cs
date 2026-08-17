@@ -6,7 +6,7 @@ using UnityEngine;
 public class LightSensor : MonoBehaviour
 {
     private AIPlayerSense _aiPlayerSense;
-    private Divij.SwitchableLight _switchableLight;
+    private Divij.SwitchableLightModel _switchableLightModel;
 
     void Awake()
     {
@@ -15,9 +15,9 @@ public class LightSensor : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        _switchableLight = other.GetComponent<Divij.SwitchableLight>();
+        _switchableLightModel = other.GetComponent<Divij.SwitchableLightModel>();
 
-        if (_switchableLight != null)
+        if (_switchableLightModel != null)
         {
             //_aiPlayerSense.isLit = _switchableLight.GetPowered();
             _aiPlayerSense.playerWorking = false;

@@ -16,7 +16,6 @@ public class SunController : NetworkBehaviour
     public bool IsDay;
     public float sunAngle;
     public float rotationAmount;
-    
     public bool endgame = false;
     public UnityEvent EndGame;
     
@@ -36,9 +35,6 @@ public class SunController : NetworkBehaviour
         { 4, 1.75f },
         { 5, 2f },
     };
-    
-    
-
 
     void endeternal()
     {
