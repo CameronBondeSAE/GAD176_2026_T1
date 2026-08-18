@@ -1,11 +1,12 @@
 using UnityEngine;
 using Divij;
+using UnityEngine.Serialization;
 
 public class LitSystem : MonoBehaviour
 {
     [SerializeField] int litAmount = 0;
     public BoxCollider lightHitbox;
-    public Divij.SwitchableLight switchableLight;
+    public SwitchableLightModel switchableLightModel;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -15,12 +16,12 @@ public class LitSystem : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if ( switchableLight.isPowered == true)
+        if (switchableLightModel.isPowered.Value)
         {
             lightHitbox.enabled = true;
         }
 
-        if (switchableLight.isPowered == false)
+        if (!switchableLightModel.isPowered.Value)
         {
             lightHitbox.enabled = false;
         }

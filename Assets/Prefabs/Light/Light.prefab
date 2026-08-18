@@ -43,8 +43,9 @@ GameObject:
   - component: {fileID: 7443512469403186702}
   - component: {fileID: 437212960345116025}
   - component: {fileID: 8792949379091094103}
+  - component: {fileID: 6555258718116671863}
   m_Layer: 0
-  m_Name: Cube
+  m_Name: View
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -139,6 +140,20 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &6555258718116671863
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1618872549224064726}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9bf1f2f4e8b7c4e4abadfe6f310cf3a1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  light: {fileID: 4975591391370556856}
+  model: {fileID: 2502405860831825999}
 --- !u!1 &2003506225219000022
 GameObject:
   m_ObjectHideFlags: 0
@@ -235,7 +250,9 @@ GameObject:
   m_Component:
   - component: {fileID: 3164875696677526035}
   - component: {fileID: 2422354995356818212}
-  - component: {fileID: 8241044062138633676}
+  - component: {fileID: 4601826348377588360}
+  - component: {fileID: 2502405860831825999}
+  - component: {fileID: -9077102887741907132}
   m_Layer: 6
   m_Name: Light
   m_TagString: Untagged
@@ -284,7 +301,33 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 0.2
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &8241044062138633676
+--- !u!114 &4601826348377588360
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3014885077939891208}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GlobalObjectIdHash: 3957163020
+  InScenePlacedSourceGlobalObjectIdHash: 0
+  DeferredDespawnTick: 0
+  Ownership: 1
+  AlwaysReplicateAsRoot: 0
+  SynchronizeTransform: 1
+  m_InScenePlaced: 0
+  ActiveSceneSynchronization: 0
+  SceneMigrationSynchronization: 1
+  SpawnWithObservers: 1
+  DontDestroyWithOwner: 0
+  AutoObjectParentSync: 1
+  SyncOwnerTransformWhenParented: 1
+  AllowOwnerToParent: 0
+--- !u!114 &2502405860831825999
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -296,13 +339,35 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7281c3f4e112d274ebf111a753e3140c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  light: {fileID: 4975591391370556856}
-  isPowered: 0
-  isSwitchedOn: 1
+  ShowTopMostFoldoutHeaderGroup: 1
+  isPowered:
+    UpdateTraits:
+      MinSecondsBetweenUpdates: 0
+      MaxSecondsBetweenUpdates: 0
+    m_InternalValue: 0
+  isSwitchedOn:
+    UpdateTraits:
+      MinSecondsBetweenUpdates: 0
+      MaxSecondsBetweenUpdates: 0
+    m_InternalValue: 1
   debugRandomSwitching: 0
   requiredEnergyForOneSecond: 1
   currentNearByShard: {fileID: 0}
   shardsTotalNearBy: 0
+--- !u!114 &-9077102887741907132
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3014885077939891208}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 793b77ec5ab254b44b59fcfd6ab11af1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ShowTopMostFoldoutHeaderGroup: 1
+  model: {fileID: 2502405860831825999}
 --- !u!1 &4291071466839777841
 GameObject:
   m_ObjectHideFlags: 0
