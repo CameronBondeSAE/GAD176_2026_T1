@@ -114,7 +114,7 @@ public class SunController : NetworkBehaviour
 
         if (Sun != null)
         {
-            Sun.transform.rotation = Quaternion.Euler(0, 0, sunAngle);
+            Sun.transform.rotation = Quaternion.Euler(sunAngle, 0, 0);
         }
     }
 }
