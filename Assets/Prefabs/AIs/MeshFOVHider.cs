@@ -22,5 +22,11 @@ public class MeshFOVHider : MonoBehaviour, IFovDetectable
 		{
 			meshRenderer.enabled = detected;
 		}
+
+		FOVDetection[] fovDetections = GetComponentsInChildren<FOVDetection>();
+		foreach (FOVDetection fovDetection in fovDetections)
+		{
+			fovDetection.enabled = detected;
+		}
 	}
 }

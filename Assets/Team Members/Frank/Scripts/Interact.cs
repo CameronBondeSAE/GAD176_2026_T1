@@ -24,11 +24,14 @@ namespace Frank
         [SerializeField]
         public override void OnNetworkSpawn()
         {
+	        Debug.Log("Interact: OnNetworkSpawn");
             _isHolding.OnValueChanged += OnIsHoldingChange;
         }
 
         private void OnIsHoldingChange(bool previousValue, bool newValue)
         {
+	        Debug.Log("Interact: OnIsHoldingChange: Server = " + IsServer);
+	        
             if (!IsServer) return;
             //checks if new value to pickup object or drop object
             if (newValue)
