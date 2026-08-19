@@ -71,7 +71,7 @@ public class Player_Model : NetworkBehaviour
         MoveServer_Rpc(XZDirection);
     }
 
-    [Rpc(SendTo.Server, Delivery = RpcDelivery.Unreliable)]
+    [Rpc(SendTo.Server, Delivery = RpcDelivery.Reliable)]
     private void MoveServer_Rpc(Vector3 direction)
     {
         moveDirection = direction;
