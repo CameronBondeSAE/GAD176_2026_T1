@@ -32,7 +32,7 @@ MonoBehaviour:
   - name: Patrol
     isDefault: 1
     state: {fileID: 2545537895626867019, guid: 25b152719f226e041a498061b0e719b4, type: 3}
-    cost: 0
+    cost: 5
     position: {x: 240, y: 60}
     pre:
     - id: 3
@@ -45,7 +45,7 @@ MonoBehaviour:
   - name: Search Patrol Light
     isDefault: 0
     state: {fileID: 5618152017768730222, guid: 2b6f47dd56240b749805e2a421a22203, type: 3}
-    cost: 0
+    cost: 5
     position: {x: 480, y: 60}
     pre:
     - id: 1
@@ -59,8 +59,6 @@ MonoBehaviour:
       value: 0
     - id: 1
       value: 0
-    - id: 4
-      value: 1
   - name: Chase Player
     isDefault: 0
     state: {fileID: 1945161938312400046, guid: d2d1e22c9c61e304e8cc190b9cf77354, type: 3}
@@ -86,12 +84,10 @@ MonoBehaviour:
     - id: 6
       value: 1
   goals:
-  - name: Kill Player
+  - name: Patrol
     isDefault: 1
-    position: {x: 240, y: 340}
+    position: {x: 240, y: 300}
     conditions:
-    - id: 6
-      value: 1
     - id: 2
       value: 1
   worldStates:

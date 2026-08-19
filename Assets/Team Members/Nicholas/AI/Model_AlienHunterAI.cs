@@ -1,3 +1,4 @@
+using Keegan.FOV;
 using UnityEngine;
 
 namespace Nicholas.AI
@@ -15,7 +16,8 @@ namespace Nicholas.AI
         public bool IsTouchingPlayer { get; private set; }
         public bool PlayerKilled { get; private set; } = false;
         
-
+        
+        
         public void SetPatrolTargetState(bool hasTarget)
         {
             HasPatrolTarget = hasTarget;
