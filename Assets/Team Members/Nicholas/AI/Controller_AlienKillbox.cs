@@ -1,25 +1,22 @@
-using System;
 using Unity.Netcode;
 using UnityEngine;
 
 namespace Nicholas.AI
 {
     /// <summary>
-    /// Generic enemy contact script.
-    /// Removes a player when the enemy touches them.
+    /// Damages a player when the Alien makes contact with them.
+    /// HealthSys handles health reduction, death, and despawning.
     /// </summary>
     public class Controller_AlienKillbox : MonoBehaviour
     {
-        public event Action PlayerKilled;
+        [Header("Damage Settings")] [SerializeField]
+        private int damageAmount = 100;
 
         private void OnTriggerEnter(Collider other)
         {
-            if (NetworkManager.Singleton != null)
+            if (NetworkManager.Singleton != null && !NetworkManager.Singleton.IsServer)
             {
-                if (!NetworkManager.Singleton.IsServer)
-                {
-                    return;
-                }
+                return;
             }
 
             Player_Controller playerController = other.transform.root.GetComponentInChildren<Player_Controller>(true);
@@ -29,24 +26,19 @@ namespace Nicholas.AI
                 return;
             }
 
-            GameObject playerRoot = playerController.transform.root.gameObject;
+            HealthSys healthSystem = playerController.transform.root.GetComponentInChildren<HealthSys>(true);
 
-            NetworkObject playerNetworkObject = playerRoot.GetComponent<NetworkObject>();
-
-            if (playerNetworkObject != null && playerNetworkObject.IsSpawned)
+            if (healthSystem == null)
             {
-                Debug.Log(gameObject.name + " despawned player: " + playerRoot.name);
-
-                playerNetworkObject.Despawn(true);
+                Debug.LogWarning(gameObject.name + " touched a player but no HealthSys was found.");
 
                 return;
             }
 
-            Debug.Log(gameObject.name + " destroyed non-networked player: " + playerRoot.name);
-                
-            PlayerKilled?.Invoke();
+            Debug.Log(gameObject.name + " damaged " + playerController.transform.root.name + " for " + damageAmount +
+                      " damage.");
 
-            Destroy(playerRoot);
+            healthSystem.Damage(damageAmount);
         }
     }
 }
