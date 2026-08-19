@@ -141,7 +141,6 @@ namespace Frank
 	            return;
             }
             
-            
             Debug.Log("GRAB");
             if (heldGameObject.GetComponent<Rigidbody>() != null)
             {
@@ -153,7 +152,7 @@ namespace Frank
                 return;
             } // Snap to hands
 
-            heldGameObject.transform.SetParent(transform.root, false);
+            heldNetworkObject.TrySetParent(transform.root);
             //the player(root) has to be the parent not the Model hands as they dont have network object. 
             HoldObjectPosition_Rpc(heldNetworkObject);
         }
@@ -195,15 +194,17 @@ namespace Frank
 
         public void Drop()
         {
+            NetworkObject heldNetworkObject = heldGameObject.GetComponent<NetworkObject>();
+            
             heldGameObject.GetComponentInParent<IPickup>().Drop();
-            heldGameObject.transform.parent = null;
+            heldNetworkObject.TryRemoveParent(true);
 
             if (heldGameObject.GetComponent<Rigidbody>() != null)
             {
                 heldGameObject.GetComponent<Rigidbody>().isKinematic = false;
                 Destroy(holdJoint);
             }
-
+            
             heldGameObject = null;
         }
 

@@ -21,7 +21,7 @@ public class Player_Controller : NetworkBehaviour, IFovDetectable
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     public override void OnNetworkSpawn()
     {
-        if (!IsLocalPlayer) return;
+        if (!IsOwner) return;
         
         var actions = playerInput.actions;
         actions.Enable();
@@ -37,6 +37,7 @@ public class Player_Controller : NetworkBehaviour, IFovDetectable
 
     public override void OnNetworkDespawn()
     {
+        if (!IsOwner) return;
         var actions = playerInput.actions;
 
         actions.Disable();
