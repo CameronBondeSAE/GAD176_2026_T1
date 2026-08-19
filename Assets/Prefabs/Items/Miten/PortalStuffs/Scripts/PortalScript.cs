@@ -17,6 +17,7 @@ public class PortalScript : MonoBehaviour, IPowered
     public bool portalFXRunning;
 
     public List<Shard_Model> shardList = new List<Shard_Model>();
+    
 
     public void SetPowered(bool powered)
     {
@@ -47,9 +48,9 @@ public class PortalScript : MonoBehaviour, IPowered
     bool CalculateNeededEnergy()
     {
         // Pass 1: Count total energy
+        totalEnergy = 0;
         foreach (Shard_Model shard in shardList)
         {
-            totalEnergy = 0;
             totalEnergy += shard.CurrentEnergy;
         }
 
