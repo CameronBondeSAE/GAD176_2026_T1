@@ -29,20 +29,14 @@ namespace Nicholas.AI
 
         public override void OnNetworkSpawn()
         {
-            if (!IsServer)
-            {
-                if (fovDetection != null)
-                {
-                    fovDetection.enabled = false;
-                }
-
-                return;
-            }
-
             if (fovDetection == null)
             {
                 Debug.LogError("Controller_AlienFOV could not find FOVDetection.");
+                return;
+            }
 
+            if (!IsServer)
+            {
                 return;
             }
 
