@@ -45,6 +45,8 @@ public class PortalScript : MonoBehaviour, IPowered
 
     private void Start()
     {
+        activationEnergy = 700;
+        neededEnergy = 100;
         StartCoroutine(PortalLoop());
     }
 
@@ -80,14 +82,8 @@ public class PortalScript : MonoBehaviour, IPowered
                     ActivatePortalFX();
                 }
 
-                continuespawning = totalEnergy >= neededEnergy;
+                StartCoroutine(continueCheck());
 
-                if (continuespawning)
-                {
-                    UseEnergy(neededEnergy);
-
-                    SpawnAlien();
-                }
             }
             else
             {
@@ -99,6 +95,21 @@ public class PortalScript : MonoBehaviour, IPowered
 
             yield return new WaitForSeconds(1f);
         }
+    }
+
+    private IEnumerator continueCheck()
+    {
+        continuespawning = totalEnergy >= neededEnergy;
+
+        if (continuespawning)
+        {
+            UseEnergy(neededEnergy);
+
+            SpawnAlien();
+            yield return new WaitForSeconds(1);
+        }
+
+        StartCoroutine(continueCheck());
     }
 
     private void UseEnergy(int amount)

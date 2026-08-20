@@ -21,7 +21,7 @@ namespace Keegan.ShardSpawn
         private GameObject shardPrefab;
 
         [SerializeField, Tooltip("True if the shard can be used as it's inside the time range")]
-        private bool canSpawnShard = true;
+        public bool canSpawnShard = true;
 
         [Header("Spawn Time Settings")]
         [SerializeField, Tooltip("The min amount of time before a shard will spawn (again)")]
@@ -78,16 +78,18 @@ namespace Keegan.ShardSpawn
         {
             BoxCollider groundCollider = GetComponentInChildren<BoxCollider>();
             if (groundCollider != null) groundCollider.size = spawnBoxBounds;
+            
+            if (sunTime != null)
+            {
+                sunTime.OnHourChange.AddListener(OnHourChange);
+            }
+
+            maxInSpawnArea = 10;
         }
 
         private void OnEnable()
         {
             if (sunTime == null) sunTime = GameObject.FindFirstObjectByType<SuntoTime>();
-
-            if (sunTime != null)
-            {
-                sunTime.OnHourChange.AddListener(OnHourChange);
-            }
         }
 
         private void OnDisable()

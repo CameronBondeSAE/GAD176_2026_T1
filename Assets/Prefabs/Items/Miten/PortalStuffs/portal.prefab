@@ -61,7 +61,9 @@ MonoBehaviour:
   enoughEnergy: 0
   continuespawning: 0
   portalFXRunning: 0
-  Aliens: []
+  Aliens:
+  - {fileID: 3861230167814697102, guid: aa354da09293c284fa2fa8ab2175f1e4, type: 3}
+  - {fileID: 4630921107042037647, guid: 08ae22e549a6b904aab84bff4b16c543, type: 3}
   pspawnPoint: {fileID: 6750648081380305287}
   shardList: []
 --- !u!65 &7139492386454764337
