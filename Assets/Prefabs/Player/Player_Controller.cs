@@ -21,7 +21,7 @@ public class Player_Controller : NetworkBehaviour, IFovDetectable
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     public override void OnNetworkSpawn()
     {
-        if (!IsLocalPlayer) return;
+        if (!IsOwner) return;
         
         var actions = playerInput.actions;
         actions.Enable();
@@ -29,7 +29,7 @@ public class Player_Controller : NetworkBehaviour, IFovDetectable
         actions["Move"].canceled += player_Model.Move;
         actions["Look"].performed += Look;
         actions["Look"].canceled += Look;
-        actions["Interact"].performed += InteractWith;
+        // actions["Interact"].performed += InteractWith;
         actions["Pickup"].performed += Pickup;
         actions["Mouse Position"].performed += UpdateMousePosition;
         actions["Mouse Position"].canceled += UpdateMousePosition;
@@ -37,6 +37,7 @@ public class Player_Controller : NetworkBehaviour, IFovDetectable
 
     public override void OnNetworkDespawn()
     {
+        if (!IsOwner) return;
         var actions = playerInput.actions;
 
         actions.Disable();
@@ -44,7 +45,7 @@ public class Player_Controller : NetworkBehaviour, IFovDetectable
         actions["Move"].canceled -= player_Model.Move;
         actions["Look"].performed -= Look;
         actions["Look"].canceled -= Look;
-        actions["Interact"].performed -= InteractWith;
+        // actions["Interact"].performed -= InteractWith;
         actions["Pickup"].performed -= Pickup;
         actions["Mouse Position"].performed -= UpdateMousePosition;
         actions["Mouse Position"].canceled -= UpdateMousePosition;
@@ -60,6 +61,7 @@ public class Player_Controller : NetworkBehaviour, IFovDetectable
     [Rpc(SendTo.Server, Delivery = RpcDelivery.Reliable)]
     private void PickupToServer_Rpc()
     {
+	    Debug.Log("Server: PickupToServer_Rpc");
         interact.TryPickup();
     }
 
@@ -67,7 +69,8 @@ public class Player_Controller : NetworkBehaviour, IFovDetectable
     // Just pass along to the real function, without input stuff
     private void InteractWith(InputAction.CallbackContext obj)
     {
-        interact.InteractWith();
+		Debug.Log("Server: InteractWith");
+	    interact.InteractWith();
     }
 
     private void Look(InputAction.CallbackContext obj)
@@ -127,11 +130,11 @@ public class Player_Controller : NetworkBehaviour, IFovDetectable
     {
         if (detected)
         {
-            Debug.Log("Player has been seen by enemy");
+            // Debug.Log("Player has been seen by enemy");
         }
         else
         {
-            Debug.Log("Lost sight of the player");
+            // Debug.Log("Lost sight of the player");
         }
     }
 }

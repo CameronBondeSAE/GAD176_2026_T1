@@ -33,7 +33,7 @@ MonoBehaviour:
     isDefault: 1
     state: {fileID: 4797532796739896826, guid: f099a13df137ce44b93138b2b88330ef, type: 3}
     cost: 1
-    position: {x: 200, y: 30}
+    position: {x: 272, y: 75}
     pre:
     - id: 0
       value: 1
@@ -48,7 +48,7 @@ MonoBehaviour:
     isDefault: 0
     state: {fileID: 3350369941214672293, guid: 5b6a26bd50eb2fa4dacae5cbbc3d1314, type: 3}
     cost: 2
-    position: {x: 200, y: 30}
+    position: {x: 1694, y: 96}
     pre:
     - id: 1
       value: 1
@@ -63,7 +63,7 @@ MonoBehaviour:
     isDefault: 0
     state: {fileID: 437756124653945210, guid: 8f3d16cfbd881bc4689699bdb82520c4, type: 3}
     cost: 1
-    position: {x: 200, y: 30}
+    position: {x: 1472, y: 19}
     pre:
     - id: 1
       value: 1
@@ -80,7 +80,7 @@ MonoBehaviour:
     isDefault: 0
     state: {fileID: 8386289019379977183, guid: 93dba3adbe6b40640a1b047a67b994b3, type: 3}
     cost: 2
-    position: {x: 200, y: 30}
+    position: {x: 927, y: 45}
     pre:
     - id: 3
       value: 1
@@ -95,7 +95,7 @@ MonoBehaviour:
     isDefault: 0
     state: {fileID: 163812032615335861, guid: 8017c3dcbbb99b147a67f27fb0066781, type: 3}
     cost: 1
-    position: {x: 200, y: 30}
+    position: {x: 534, y: 46}
     pre:
     - id: 3
       value: 1

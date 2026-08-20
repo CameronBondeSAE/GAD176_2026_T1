@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using Unity.Netcode;
 using UnityEngine;
 using UnityEngine.XR;
@@ -24,11 +24,14 @@ namespace Frank
         [SerializeField]
         public override void OnNetworkSpawn()
         {
+	        Debug.Log("Interact: OnNetworkSpawn");
             _isHolding.OnValueChanged += OnIsHoldingChange;
         }
 
         private void OnIsHoldingChange(bool previousValue, bool newValue)
         {
+	        Debug.Log("Interact: OnIsHoldingChange: Server = " + IsServer);
+	        
             if (!IsServer) return;
             //checks if new value to pickup object or drop object
             if (newValue)
@@ -90,6 +93,43 @@ namespace Frank
             return false;
         }
 
+        /// <summary>
+        /// Allows AI to pick up a known target directly without using the player-facing overlap scan.
+        /// </summary>
+        public bool TryPickup(GameObject target)
+        {
+            if (!IsServer || target == null || heldGameObject != null) return false;
+
+            IPickup pickup = target.GetComponentInParent<IPickup>();
+            if (pickup == null)
+            {
+                pickup = target.GetComponentInChildren<IPickup>();
+            }
+
+            if (pickup == null) return false;
+
+            heldGameObject = (pickup as MonoBehaviour)?.gameObject;
+            if (heldGameObject == null) return false;
+
+            pickup.Pickup(handsTransform);
+
+            if (heldGameObject.GetComponent<Rigidbody>() != null)
+            {
+                heldGameObject.GetComponent<Rigidbody>().isKinematic = true;
+            }
+
+            if (_isHolding.Value)
+            {
+                Pickup();
+            }
+            else
+            {
+                _isHolding.Value = true;
+            }
+
+            return true;
+        }
+
 
         private void Pickup()
         {
@@ -100,7 +140,6 @@ namespace Frank
 	            Debug.LogWarning("Pickup NetworkObject is NULL : Needs a Network Object component");
 	            return;
             }
-            
             
             Debug.Log("GRAB");
             if (heldGameObject.GetComponent<Rigidbody>() != null)
@@ -113,7 +152,7 @@ namespace Frank
                 return;
             } // Snap to hands
 
-            heldGameObject.transform.SetParent(transform.root, false);
+            heldNetworkObject.TrySetParent(transform.root);
             //the player(root) has to be the parent not the Model hands as they dont have network object. 
             HoldObjectPosition_Rpc(heldNetworkObject);
         }
@@ -131,17 +170,41 @@ namespace Frank
                 Debug.LogError("Object is NOT a Network Object");
         }
 
+        /// <summary>
+        /// Allows AI to drop the held object at a known destination while keeping Interact's holding state in sync.
+        /// </summary>
+        public bool TryDrop(Vector3 dropPosition)
+        {
+            if (!IsServer || heldGameObject == null) return false;
+
+            GameObject droppedObject = heldGameObject;
+
+            if (_isHolding.Value)
+            {
+                _isHolding.Value = false;
+            }
+            else
+            {
+                Drop();
+            }
+
+            droppedObject.transform.position = dropPosition;
+            return true;
+        }
+
         public void Drop()
         {
+            NetworkObject heldNetworkObject = heldGameObject.GetComponent<NetworkObject>();
+            
             heldGameObject.GetComponentInParent<IPickup>().Drop();
-            heldGameObject.transform.parent = null;
+            heldNetworkObject.TryRemoveParent(true);
 
             if (heldGameObject.GetComponent<Rigidbody>() != null)
             {
                 heldGameObject.GetComponent<Rigidbody>().isKinematic = false;
                 Destroy(holdJoint);
             }
-
+            
             heldGameObject = null;
         }
 

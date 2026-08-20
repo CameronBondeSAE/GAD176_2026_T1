@@ -1,18 +1,17 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Netcode;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
 namespace Divij
 {
-    public class SwitchableLight : MonoBehaviour, IInteractable, IPowered
+    public class SwitchableLightModel : NetworkBehaviour, IPowered
     {
-        public Light light;
-        
-        public bool isPowered;
+        public NetworkVariable<bool> isPowered;
 
-        public bool isSwitchedOn = true;
+        public NetworkVariable<bool> isSwitchedOn = new(true);
 
         public bool debugRandomSwitching = false;
 
@@ -29,11 +28,6 @@ namespace Divij
 	        shards = new HashSet<Shard_Model>();
         }
 
-        private void Start()
-        {
-	        CheckPower();
-        }
-
         private void FixedUpdate()
         {
 	        if (debugRandomSwitching && Random.value < 0.003f)
@@ -43,68 +37,53 @@ namespace Divij
 	        }
         }
 
-        // This is the interface entry point
-        public void Interact()
-        {
-            ToggleSwitch();
-        }
-
         public void ToggleSwitch()
         {
-	        isSwitchedOn = !isSwitchedOn;
-	        // Debug.Log("CLICK: SwitchableLight: Toggled = "+isSwitchedOn);
-
-	        CheckPower();
-        }
-
-        public void CheckPower()
-        {
-	        if (light == null)
+	        if (IsServer)
 	        {
-		        Debug.LogWarning("Light needs to be assigned");
-		        return;
+		        isSwitchedOn.Value = !isSwitchedOn.Value;
+		        // Debug.Log("CLICK: SwitchableLight: Toggled = "+isSwitchedOn);
 	        }
-	        
-	        if (isPowered && isSwitchedOn)
-		        light.enabled = true;
-	        else
-		        light.enabled = false;
         }
 
 
         public void SetPowered(bool powered)
         {
-            isPowered = powered;
-
-            CheckPower();
+	        if (IsServer)
+	        {
+		        isPowered.Value = powered;
+	        }
         }
 
         public bool GetPowered()
         {
-	        return isPowered;
+	        return isPowered.Value;
         }
-        
         
         // TODO: Support multiple nearby shards
         Coroutine coroutine;
         public void ReceivePotentialEnergy(Shard_Model shard)
         {
-	        shards.Add(shard);
-	        shardsTotalNearBy = shards.Count;
-	        coroutine = StartCoroutine(CheckToLightUpForOneSecond());
+	        if (IsServer)
+	        {
+		        shards.Add(shard);
+		        shardsTotalNearBy = shards.Count;
+		        coroutine = StartCoroutine(CheckToLightUpForOneSecond());
+	        }
         }
 
         public void PotentialEnergyRemoved(Shard_Model shard)
         {
-	        shards.Remove(shard);
-	        shardsTotalNearBy = shards.Count;
-			// StopCoroutine(coroutine);
+	        if (IsServer)
+	        {
+		        shards.Remove(shard);
+		        shardsTotalNearBy = shards.Count;
+		        // StopCoroutine(coroutine);
+	        }
         }
 
         private IEnumerator CheckToLightUpForOneSecond()
         {
-        
-
 	        int totalEnergyNearBy = 0;
 	        do
 	        {

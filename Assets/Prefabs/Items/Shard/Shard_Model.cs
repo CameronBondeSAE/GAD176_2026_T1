@@ -58,6 +58,7 @@ public class Shard_Model : MonoBehaviour, IPickup
 
 	public void Pickup(Transform parent)
 	{
+		Debug.Log("Shard Pickup");
 		onShardPickedUp?.Invoke(this);
 	}
 	

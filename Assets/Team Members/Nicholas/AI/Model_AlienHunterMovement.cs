@@ -107,5 +107,15 @@ namespace Nicholas.AI
         {
             transform.Rotate(Vector3.up, rotationAmount, Space.Self);
         }
+        
+        public void SetMovementEnabled(bool enabled)
+        {
+            if (navMeshAgent == null)
+            {
+                return;
+            }
+
+            navMeshAgent.enabled = enabled;
+        }
     }
 }

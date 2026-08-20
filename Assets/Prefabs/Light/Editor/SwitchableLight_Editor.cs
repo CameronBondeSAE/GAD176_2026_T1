@@ -1,22 +1,22 @@
 using UnityEditor;
 using UnityEngine;
 
-[CustomEditor(typeof(Divij.SwitchableLight), true)]
+[CustomEditor(typeof(Divij.SwitchableLightModel), true)]
 public class SwitchableLight_Editor : Editor
 {
 	public override void OnInspectorGUI()
 	{
 		base.OnInspectorGUI();
 
-		Divij.SwitchableLight switchableLight = target as Divij.SwitchableLight;
+		Divij.SwitchableLightModel switchableLightModel = target as Divij.SwitchableLightModel;
 
 		if (GUILayout.Button("Toggle"))
 		{
-			switchableLight?.ToggleSwitch();
+			switchableLightModel?.ToggleSwitch();
 		}
 		if (GUILayout.Button("Force Power On"))
 		{
-			switchableLight?.SetPowered(true);
+			switchableLightModel?.SetPowered(true);
 		}
 	}
 }

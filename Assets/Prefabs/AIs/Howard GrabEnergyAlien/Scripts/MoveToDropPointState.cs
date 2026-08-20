@@ -1,6 +1,6 @@
-namespace Howard.ShardAI
+﻿namespace Howard.ShardAI
 {
-    public class MoveToDropPointState : AlienShardState
+    public class MoveToDropPointState : AlienShardStateBase
     {
         public override void Enter()
         {
@@ -9,7 +9,7 @@ namespace Howard.ShardAI
                 context.AcquireDropPoint();
             }
 
-            if (context.dropPoint == null || !motor.MoveTo(context.dropPoint.position, context.dropDistance))
+            if (context.dropPoint == null || !motor.MoveTo(context.dropPoint.position, context.moveStoppingDistance))
             {
                 Finish();
             }
@@ -24,7 +24,7 @@ namespace Howard.ShardAI
                 return;
             }
 
-            if (motor.HasArrived(context.dropDistance))
+            if (context.IsNearDropPointForDrop() || motor.HasArrived(context.moveStoppingDistance))
             {
                 motor.Stop();
                 Finish();

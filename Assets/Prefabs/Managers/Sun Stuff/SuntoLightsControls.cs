@@ -17,7 +17,7 @@ public class SuntoLightsControls : MonoBehaviour
 
         foreach (GameObject obj in allObjects)
         {
-            if (obj.GetComponent<Divij.SwitchableLight>() != null)
+            if (obj.GetComponent<Divij.SwitchableLightModel>() != null)
             {
                 switchableLightObjects.Add(obj);
                 Debug.Log("Found SwitchableLight object: " + obj.name);

@@ -1,9 +1,9 @@
-using Frank;
+﻿using Frank;
 using UnityEngine;
 
 namespace Howard.ShardAI
 {
-    public class PickupShardState : AlienShardState
+    public class PickupShardState : AlienShardStateBase
     {
         public override void Execute(float deltaTime, float timeScale)
         {
@@ -13,22 +13,16 @@ namespace Howard.ShardAI
                 return;
             }
 
-            Vector3 destination = context.GetShardDestination(context.targetShard);
-            float distance = Vector3.Distance(context.transform.position, destination);
-
-            if (distance > context.pickupDistance)
+            if (!context.IsNearShardForPickup(context.targetShard))
             {
                 Finish();
                 return;
             }
 
-            if (!motor.Face(context.targetShard.transform.position, deltaTime))
-            {
-                return;
-            }
+            // Facing is only for visual
+            motor.Face(context.targetShard.transform.position, deltaTime);
 
-            // if (context.interact.TryPickup(context.targetShard.gameObject))
-            if (context.interact.TryPickup())
+            if (context.interact.TryPickup(context.targetShard.gameObject))
             {
                 ClearPreviousHolder();
                 context.NotifyPickedUp(context.targetShard);

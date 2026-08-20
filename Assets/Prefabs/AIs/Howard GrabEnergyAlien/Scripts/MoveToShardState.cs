@@ -1,13 +1,12 @@
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace Howard.ShardAI
 {
-    public class MoveToShardState : AlienShardState
+    public class MoveToShardState : AlienShardStateBase
     {
         public override void Enter()
         {
-            if (context.targetShard == null ||
-                !motor.MoveTo(context.GetShardDestination(context.targetShard), context.pickupDistance))
+            if (context.targetShard == null || !motor.MoveTo(context.GetShardDestination(context.targetShard), context.moveStoppingDistance))
             {
                 Fail();
             }
@@ -25,13 +24,13 @@ namespace Howard.ShardAI
 
             Vector3 destination = context.GetShardDestination(context.targetShard);
 
-            if (!motor.MoveTo(destination, context.pickupDistance) || motor.PathFailed())
+            if (!motor.MoveTo(destination, context.moveStoppingDistance) || motor.PathFailed())
             {
                 Fail();
                 return;
             }
 
-            if (motor.HasArrived(context.pickupDistance))
+            if (context.IsNearShardForPickup(context.targetShard) || motor.HasArrived(context.moveStoppingDistance))
             {
                 motor.Stop();
                 Finish();

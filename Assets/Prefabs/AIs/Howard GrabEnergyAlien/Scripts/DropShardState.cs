@@ -1,9 +1,9 @@
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.AI;
 
 namespace Howard.ShardAI
 {
-    public class DropShardState : AlienShardState
+    public class DropShardState : AlienShardStateBase
     {
         public override void Execute(float deltaTime, float timeScale)
         {
@@ -20,17 +20,16 @@ namespace Howard.ShardAI
                 return;
             }
 
-            
-            // Old drop code wants to make sure it's on a valid navmesh. Disabled for now
-            
-            // Vector3 dropPosition = context.dropPoint.position;
-            // if (NavMesh.SamplePosition(dropPosition, out NavMeshHit hit, 2f, context.agent.areaMask))
-            // {
-            //     dropPosition = hit.position + Vector3.up * 0.35f;
-            // }
+            Vector3 dropPosition = context.dropPoint.position;
+            if (NavMesh.SamplePosition(dropPosition, out NavMeshHit hit, 2f, context.navMeshAreaMask))
+            {
+                dropPosition = hit.position + Vector3.up * 0.35f;
+            }
 
-            // if (context.interact.Drop(dropPosition))
-            context.CompleteDelivery(heldShard);
+            if (context.interact.TryDrop(dropPosition))
+            {
+                context.CompleteDelivery(heldShard);
+            }
             
             Finish();
         }
