@@ -475,6 +475,8 @@ MonoBehaviour:
     _prefab: Assets/Team Members/Nicholas/HunterAlien.prefab
   - _gameObject: {fileID: 1549325377}
     _prefab: Assets/Prefabs/FOVDetection.prefab
+  - _gameObject: {fileID: 1590183279}
+    _prefab: Assets/Team Members/Nicholas/ContactCollider.prefab
   - _gameObject: {fileID: 866942186}
     _prefab: Assets/Prefabs/Space/Prefabs/Spawn Points.prefab
   - _gameObject: {fileID: 738441903}
@@ -1930,6 +1932,11 @@ GameObject:
 --- !u!1 &1549325377 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 9119515170470773698, guid: aa354da09293c284fa2fa8ab2175f1e4, type: 3}
+  m_PrefabInstance: {fileID: 1549325375}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1590183279 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1551653155862279675, guid: aa354da09293c284fa2fa8ab2175f1e4, type: 3}
   m_PrefabInstance: {fileID: 1549325375}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1653139944

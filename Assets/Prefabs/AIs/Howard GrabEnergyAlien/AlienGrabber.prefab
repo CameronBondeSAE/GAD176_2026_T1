@@ -48,6 +48,7 @@ GameObject:
   - component: {fileID: 7355364209524790716}
   - component: {fileID: 2353841284990964654}
   - component: {fileID: 270046152636115772}
+  - component: {fileID: 1217697124522021844}
   m_Layer: 3
   m_Name: AlienGrabber
   m_TagString: AI
@@ -141,7 +142,7 @@ MonoBehaviour:
   cornerReachDistance: 0.5
   repathDistance: 0.25
   pathEndpointSearchDistance: 10
-  separationRadius: 2
+  separationRadius: 3
   separationForce: 2.5
   separationMask:
     serializedVersion: 2
@@ -231,13 +232,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GlobalObjectIdHash: 2307596407
-  InScenePlacedSourceGlobalObjectIdHash: 0
+  GlobalObjectIdHash: 3327584681
+  InScenePlacedSourceGlobalObjectIdHash: 2307596407
   DeferredDespawnTick: 0
   Ownership: 1
   AlwaysReplicateAsRoot: 0
   SynchronizeTransform: 1
-  m_InScenePlaced: 0
+  m_InScenePlaced: 1
   ActiveSceneSynchronization: 0
   SceneMigrationSynchronization: 0
   SpawnWithObservers: 1
@@ -245,6 +246,22 @@ MonoBehaviour:
   AutoObjectParentSync: 1
   SyncOwnerTransformWhenParented: 1
   AllowOwnerToParent: 0
+--- !u!208 &1217697124522021844
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4630921107042037647}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.5, y: 0.5, z: 0.5}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!1 &6262325026864271667
 GameObject:
   m_ObjectHideFlags: 0

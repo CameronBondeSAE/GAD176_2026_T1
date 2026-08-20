@@ -26,8 +26,6 @@ namespace Nicholas.AI
 
         [SerializeField] private float debugInterval = 2.0f;
 
-        [SerializeField] private Controller_AlienKillbox killbox;
-
         private float lostPlayerTimer;
         private bool waitingToLosePlayer;
 
@@ -62,11 +60,6 @@ namespace Nicholas.AI
                 movementModel = GetComponentInParent<Model_AlienHunterMovement>();
             }
 
-            if (killbox == null)
-            {
-                killbox = transform.root.GetComponentInChildren<Controller_AlienKillbox>(true);
-            }
-
             Debug.Assert(alienModel != null, "Model_AlienHunterAI is missing from the Alien.");
 
             Debug.Assert(patrolModel != null, "Model_AlienHunterPatrol is missing from the Alien.");
@@ -82,11 +75,6 @@ namespace Nicholas.AI
         {
             base.OnNetworkSpawn();
 
-            if (killbox != null)
-            {
-                killbox.PlayerKilled += OnPlayerKilled;
-            }
-
             if (IsServer)
             {
                 EnableServerAI();
@@ -94,16 +82,6 @@ namespace Nicholas.AI
             }
 
             DisableClientAI();
-        }
-
-        public override void OnNetworkDespawn()
-        {
-            if (killbox != null)
-            {
-                killbox.PlayerKilled -= OnPlayerKilled;
-            }
-
-            base.OnNetworkDespawn();
         }
 
         private void Update()
@@ -122,7 +100,7 @@ namespace Nicholas.AI
 
             UpdateLostPlayerTimer();
         }
-        
+
         /// <summary>
         /// Checks whether the Alien's current player target still exists.
         /// This handles players being destroyed or network despawned.
@@ -143,7 +121,7 @@ namespace Nicholas.AI
 
             ResetPlayerTarget();
         }
-        
+
         /// <summary>
         /// Clears all state associated with the previous player target.
         /// </summary>
@@ -441,46 +419,6 @@ namespace Nicholas.AI
             }
 
             movementModel.Stop();
-        }
-
-        private void OnPlayerKilled()
-        {
-            if (!IsServer)
-            {
-                return;
-            }
-
-            PlayerKilled();
-        }
-
-        /// <summary>
-        /// Resets the Alien after the current player has been killed.
-        /// Server only.
-        /// </summary>
-        public void PlayerKilled()
-        {
-            if (!IsServer)
-            {
-                return;
-            }
-
-            Debug.Log("Alien killed player.");
-
-            movementModel.Stop();
-
-            alienModel.SetPlayerKilled(true);
-            alienModel.SetTouchingPlayer(false);
-
-            alienModel.ClearPlayerTarget();
-
-            waitingToLosePlayer = false;
-            lostPlayerTimer = 0.0f;
-
-            alienModel.SetPatrolTargetState(false);
-            alienModel.SetAtPatrolTarget(false);
-            alienModel.SetSearchComplete(false);
-
-            patrolModel.ClearPatrolTarget();
         }
     }
 }

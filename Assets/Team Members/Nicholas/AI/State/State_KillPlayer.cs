@@ -9,12 +9,9 @@ namespace Nicholas.AI.State
 
         public override void Create(GameObject gameObject)
         {
-            controller =
-                gameObject.GetComponentInChildren<Controller_AlienHunterAI>(true);
+            controller = gameObject.GetComponentInChildren<Controller_AlienHunterAI>(true);
 
-            Debug.Assert(
-                controller != null,
-                "State_KillPlayer could not find Controller_AlienHunterAI.");
+            Debug.Assert(controller != null, "State_KillPlayer could not find Controller_AlienHunterAI.");
         }
 
         public override void Enter()
@@ -32,8 +29,6 @@ namespace Nicholas.AI.State
             }
 
             Debug.Log("ENTER KILL PLAYER");
-
-            controller.PlayerKilled();
 
             Finish();
         }
