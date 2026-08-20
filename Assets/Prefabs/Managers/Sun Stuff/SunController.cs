@@ -88,7 +88,7 @@ public class SunController : NetworkBehaviour
 	            if (DayNOtoNightLength[DayNumber] == 0)
 	            {
 		            sunAngle = 270;
-		            Sun.transform.rotation = Quaternion.Euler(sunAngle, 0, 0);
+		            Sun.transform.rotation = Quaternion.Euler(sunAngle, 30, 0);
 		            if (endgame == false)
 		            {
 			            EndGame.Invoke();
@@ -115,7 +115,7 @@ public class SunController : NetworkBehaviour
 
         if (Sun != null)
         {
-            Sun.transform.rotation = Quaternion.Euler(sunAngle, 0, 0);
+            Sun.transform.rotation = Quaternion.Euler(sunAngle, 30, 0);
         }
     }
 }
