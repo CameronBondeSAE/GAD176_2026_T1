@@ -17,6 +17,7 @@ public class SunController : NetworkBehaviour
     public float sunAngle;
     public float rotationAmount;
     public bool endgame = false;
+    public float timeScale = 1;
     public UnityEvent EndGame;
     
     public Dictionary<int, float> DayNOtoNightLength = new Dictionary<int, float>()
@@ -72,13 +73,13 @@ public class SunController : NetworkBehaviour
 
         if (sunAngle > 0 && sunAngle < 180) // It is daytime
         {
-            rotationAmount = (DayNOtoDayLength[DayNumber] * Time.deltaTime);
+            rotationAmount = (DayNOtoDayLength[DayNumber] * Time.deltaTime * timeScale);
             Sun.transform.Rotate(Vector3.right * rotationAmount);
             sunAngle += rotationAmount;
         }
         else // It is Nighttime
         {
-            rotationAmount = (DayNOtoNightLength[DayNumber] * Time.deltaTime);
+            rotationAmount = (DayNOtoNightLength[DayNumber] * Time.deltaTime * timeScale);
             if (Sun != null)
             {
 	            Sun.transform.Rotate(Vector3.right * rotationAmount);
